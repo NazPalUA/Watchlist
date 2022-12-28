@@ -1,0 +1,47 @@
+@use '../variables' as v;
+
+.welcome {
+    width: 100%;
+    padding: 20/16*1rem;
+    border: 1px solid v.$clr-accent-dark;
+    border-radius: 8px;
+    background: rgba(v.$clr-semi-light, 0.1);
+
+    font-family: v.$ff-primary;
+    font-weight: v.$fw-reg;
+    line-height: 1;
+    color: v.$clr-font-light;
+
+    &__title {
+        margin: 0 0 35/16*1rem;
+        font-size: var(--fs-h1);
+    }
+
+    &__title span {
+        color: v.$clr-accent;
+    }
+
+    &__paragraph {
+        margin: 0;
+        font-size: var(--fs-extra-big);
+    }
+
+    &__paragraph_2 {
+        display: flex;
+        flex-wrap: wrap;
+        
+        margin-top: 1rem;
+    }
+
+    &__add-icon, &__watched-icon {
+        margin: 0 5px;
+    }
+
+    &__add-icon {
+        height: 35/16*1rem;
+    }
+
+    &__watched-icon {
+        height: 25/16*1rem;
+    }
+}
