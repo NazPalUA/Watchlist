@@ -1,0 +1,12 @@
+@use './variables' as v;
+
+#root {
+    width: 100%;
+}
+
+.App {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: v.$clr-dark;
+}
