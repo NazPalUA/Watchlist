@@ -1,0 +1,51 @@
+@use '../variables' as v;
+
+.movie-card {
+    width: 150px;
+    border-radius: 4px;
+    background-color: v.$clr-semi-dark;
+
+    font-family: v.$ff-primary;
+    font-size: var(--fs-reg);
+    font-weight: v.$fw-reg;
+    line-height: 1;
+    color: v.$clr-font-light;
+
+    &__poster {
+        width: 100%;
+    }
+
+    &__rating-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-right: 5/16*1rem;
+        margin-top: 5/16*1rem;
+    }
+
+    &__smile {
+        width: 21/16*1rem;
+    }
+
+    &__rating {
+        display: flex;
+        align-items: flex-start;
+        margin-left: 5/16*1rem;
+    }
+
+    &__max-rating {
+        font-size: var(--fs-small);
+        margin-left: 1/16*1rem;
+    }
+
+    &__title {
+        margin: 5/16*1rem 0 0;
+        padding: 0 10/16*1rem;
+    }
+
+    &__year {
+        font-weight: v.$fw-light;
+        margin: 0;
+        padding: 0 10/16*1rem 10/16*1rem;
+    }
+}
