@@ -2,7 +2,7 @@
 
 .welcome {
     width: 100%;
-    padding: 20/16*1rem;
+    padding: 20/16*1em;
     border: 1px solid v.$clr-accent-dark;
     border-radius: 8px;
     background: rgba(v.$clr-semi-light, 0.1);
@@ -13,7 +13,7 @@
     color: v.$clr-font-light;
 
     &__title {
-        margin: 0 0 35/16*1rem;
+        margin: 0 0 35/40*1em;
         font-size: var(--fs-h1);
     }
 
@@ -30,18 +30,18 @@
         display: flex;
         flex-wrap: wrap;
         
-        margin-top: 1rem;
+        margin-top: 16/20*1em;
     }
 
     &__add-icon, &__watched-icon {
-        margin: 0 5px;
+        margin: 0 5/20*1em;
     }
 
     &__add-icon {
-        height: 35/16*1rem;
+        height: 35/20*1em;
     }
 
     &__watched-icon {
-        height: 25/16*1rem;
+        height: 25/20*1em;
     }
 }

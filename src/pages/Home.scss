@@ -2,11 +2,11 @@
 
 .home {
     flex: 2 2 80%;
-    padding: 50/16*1rem 70/16*1rem 60/16*1rem 50/16*1rem;
+    padding: 50/16*1em 70/16*1em 60/16*1em 50/16*1em;
     background-color: rgba(v.$clr-light, 0.1);
 
     &__popular-title {
-        margin: 2rem 0;
+        margin: 1em 0;
 
         font-family: v.$ff-primary;
         font-size: var(--fs-h4);

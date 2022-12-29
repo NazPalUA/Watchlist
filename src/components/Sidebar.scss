@@ -8,7 +8,7 @@
     flex-direction: column;
     box-sizing: border-box;
     height: 100vh;
-    padding: 20/16*1rem 40/16*1rem 20/16*1rem 30/16*1rem;
+    padding: 20/16*1em 40/16*1em 20/16*1em 30/16*1em;
     background-color: v.$clr-dark;
 
     font-family: v.$ff-primary;
@@ -19,7 +19,7 @@
 
     &__logo {
         margin-top: 0;
-        margin-bottom: 3rem;
+        margin-bottom: 1em;
         
         font-family: v.$ff-logo;
         font-size: var(--fs-h1);
@@ -34,7 +34,7 @@
     &__navigation-link {
         display: flex;
         align-items: center;
-        padding: 10/16*1rem 12/16*1rem;
+        padding: 10/16*1em 12/16*1em;
         border-radius: 6px;
 
         color: v.$clr-font-light;
@@ -48,7 +48,7 @@
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-            margin-right: 15/16*1rem;
+            margin-right: 15/16*1em;
         }
 
         &:hover {
@@ -58,14 +58,14 @@
     }
 
     &__navigation-link_home {
-        margin-bottom: 20/16*1rem;
+        margin-bottom: 20/16*1em;
         &:before {
             background-image: url(../images/home_icon.svg);
         }
     }
 
     &__navigation-link_history {
-        margin-bottom: 30/16*1rem;
+        margin-bottom: 30/16*1em;
         &:before {
             background-image: url(../images/history_icon.svg);
         }
@@ -73,9 +73,9 @@
 
     &__create-btn {
         width: 100%;
-        padding: 11/16*1rem;
+        padding: 11/16*1em;
         border-radius: 6px;
-        margin-bottom: 20/16*1rem;
+        margin-bottom: 20/16*1em;
         background: v.$clr-accent;
         
         font-weight: v.$fw-bold;
@@ -88,10 +88,10 @@
     }
 
     &__watchlists-header {
-        padding: 20/16*1rem 0;
+        padding: 1em 0;
         border-top: 1px solid rgba(217, 217, 217, 0.3);
         margin: 0;
-        margin-left: 5/16*1rem;
+        margin-left: 5/20*1em;
 
         font-size: var(--fs-h5);
         color: v.$clr-font-dark;
@@ -121,7 +121,7 @@
     &__watchlist-item {
         display: flex;
         align-items: center;
-        padding: 8/16*1rem 12/16*1rem;
+        padding: 8/16*1em 12/16*1em;
         border-radius: 6px;
 
         color: #E1E1E1;
@@ -129,7 +129,7 @@
         cursor: pointer;
 
         &:not(:last-child) {
-            margin-bottom: 1rem;
+            margin-bottom: 1em;
         }
 
         &:before {
@@ -142,7 +142,7 @@
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-            margin-right: 1rem;
+            margin-right: 1em;
             background-image: url(../images/watchlist_icon.svg);
         }
 

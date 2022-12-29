@@ -1,12 +1,12 @@
 @use '../variables' as v;
 
 .search-box {
-    margin-top: 40px;
+    margin-top: 40/16*1em;
     display: flex;
     align-items: center;
     justify-content: stretch;
     width: 100%;
-    padding: 0 0 0 12/16*1rem;
+    padding: 0 0 0 12/16*1em;
     border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;
 
@@ -23,7 +23,7 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        margin-right: 1rem;
+        margin-right: 1em;
         background-image: url(../images/search_icon.svg);
     }
     
@@ -41,7 +41,7 @@
     }
 
     &__button {
-        padding: 13/16*1rem 22/16*1rem;
+        padding: 13/16*1em 22/16*1em;
         border-radius: 6px;
         background: v.$clr-accent;
         color: v.$clr-dark;

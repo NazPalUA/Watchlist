@@ -19,8 +19,8 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        margin-right: 5/16*1rem;
-        margin-top: 5/16*1rem;
+        margin-right: 5/16*1em;
+        margin-top: 5/16*1em;
     }
 
     &__smile {
@@ -30,22 +30,22 @@
     &__rating {
         display: flex;
         align-items: flex-start;
-        margin-left: 5/16*1rem;
+        margin-left: 5/16*1em;
     }
 
     &__max-rating {
         font-size: var(--fs-small);
-        margin-left: 1/16*1rem;
+        margin-left: 1/10*1em;
     }
 
     &__title {
-        margin: 5/16*1rem 0 0;
-        padding: 0 10/16*1rem;
+        margin: 5/16*1em 0 0;
+        padding: 0 10/16*1em;
     }
 
     &__year {
         font-weight: v.$fw-light;
         margin: 0;
-        padding: 0 10/16*1rem 10/16*1rem;
+        padding: 0 10/16*1em 10/16*1em;
     }
 }
