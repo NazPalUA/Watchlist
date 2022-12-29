@@ -3,9 +3,9 @@ import checkmarkWhiteIcon from "../images/checkmark_white_icon.svg"
 import ribbonIcon from "../images/ribbon_icon.svg"
 import './Welcome.scss'
 
-export default function Welcome() {
+export default function Welcome(props) {
     return (
-        <div className="welcome">
+        <div className={`welcome ${props.className}`}>
             <h1 className="welcome__title">
                 Welcome to <span>Watchlists</span>
             </h1>

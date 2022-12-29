@@ -4,10 +4,10 @@ import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
 import './MovieCard.scss'
 
-export default function MovieCard() {
+export default function MovieCard(props) {
 
     return (
-        <div className="movie-card">
+        <div className={`movie-card ${props.className}`}>
             <img 
                 className="movie-card__poster"
                 src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"

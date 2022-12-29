@@ -1,13 +1,9 @@
 @use '../variables' as v;
 
 .sidebar {
-    position: sticky;
-    top: 0;
-    flex: 2 2 15%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 100vh;
     padding: 20/16*1em 40/16*1em 20/16*1em 30/16*1em;
     background-color: v.$clr-dark;
 

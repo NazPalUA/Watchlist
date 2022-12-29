@@ -1,11 +1,9 @@
 @use '../variables' as v;
 
 .search-box {
-    margin-top: 40/16*1em;
     display: flex;
     align-items: center;
     justify-content: stretch;
-    width: 100%;
     padding: 0 0 0 12/16*1em;
     border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;

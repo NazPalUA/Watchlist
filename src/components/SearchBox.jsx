@@ -1,10 +1,10 @@
 import React from "react"
 import './SearchBox.scss'
 
-export default function SearchBox() {
+export default function SearchBox(props) {
 
     return (
-        <div className="search-box">
+        <div className={`search-box ${props.className}`}>
             <input 
                 className="search-box__input"
                 type="text" 

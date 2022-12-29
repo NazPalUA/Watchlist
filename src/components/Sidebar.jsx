@@ -1,10 +1,10 @@
 import React from "react"
 import './Sidebar.scss'
 
-export default function Sidebar() {
+export default function Sidebar(props) {
 
     return (
-        <aside className="sidebar">
+        <aside className={`sidebar ${props.className}`}>
             <div className="sidebar__top">
                 <h1 className="sidebar__logo">
                     Watchlists

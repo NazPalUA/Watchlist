@@ -9,4 +9,15 @@
     display: flex;
     justify-content: space-between;
     background-color: v.$clr-dark;
+
+    &__sidebar {
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        flex: 2 2 15%;
+    }
+
+    &__home {
+        flex: 2 2 80%;
+    }
 }
