@@ -1,7 +1,7 @@
 @use '../variables' as v;
 
 .welcome {
-    padding: 20/16*1em;
+    padding: calc(20/16)*1em;
     border: 1px solid v.$clr-accent-dark;
     border-radius: 8px;
     background: rgba(v.$clr-semi-light, 0.1);
@@ -12,7 +12,7 @@
     color: v.$clr-font-light;
 
     &__title {
-        margin: 0 0 35/40*1em;
+        margin: 0 0 calc(35/40)*1em;
         font-size: var(--fs-h1);
     }
 
@@ -29,18 +29,18 @@
         display: flex;
         flex-wrap: wrap;
         
-        margin-top: 16/20*1em;
+        margin-top: calc(16/20)*1em;
     }
 
     &__add-icon, &__watched-icon {
-        margin: 0 5/20*1em;
+        margin: 0 calc(5/20)*1em;
     }
 
     &__add-icon {
-        height: 35/20*1em;
+        height: calc(35/20)*1em;
     }
 
     &__watched-icon {
-        height: 25/20*1em;
+        height: calc(25/20)*1em;
     }
 }

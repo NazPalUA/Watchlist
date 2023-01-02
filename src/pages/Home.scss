@@ -1,7 +1,7 @@
 @use '../variables' as v;
 
 .home {
-    padding: 50/16*1em 70/16*1em 60/16*1em 50/16*1em;
+    padding: calc(50/16)*1em calc(70/16)*1em calc(60/16)*1em calc(50/16)*1em;
     background-color: rgba(v.$clr-light, 0.1);
 
     &__welcome {
@@ -9,7 +9,7 @@
     }
 
     &__search-box {
-        margin-top: 40/16*1em;
+        margin-top: calc(40/16)*1em;
         width: 100%;
     }
 

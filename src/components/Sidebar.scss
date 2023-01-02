@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 20/16*1em 40/16*1em 20/16*1em 30/16*1em;
+    padding: calc(20/16)*1em calc(40/16)*1em calc(20/16)*1em calc(30/16)*1em;
     background-color: v.$clr-dark;
 
     font-family: v.$ff-primary;
@@ -30,7 +30,7 @@
     &__navigation-link {
         display: flex;
         align-items: center;
-        padding: 10/16*1em 12/16*1em;
+        padding: calc(10/16)*1em calc(12/16)*1em;
         border-radius: 6px;
 
         color: v.$clr-font-light;
@@ -39,12 +39,12 @@
         &:before {
             content: "";
             display: inline-block;
-            height: 20/16*1rem;
-            width: 20/16*1rem;
+            height: calc(20/16)*1rem;
+            width: calc(20/16)*1rem;
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-            margin-right: 15/16*1em;
+            margin-right: calc(15/16)*1em;
         }
 
         &:hover {
@@ -54,14 +54,14 @@
     }
 
     &__navigation-link_home {
-        margin-bottom: 20/16*1em;
+        margin-bottom: calc(20/16)*1em;
         &:before {
             background-image: url(../images/home_icon.svg);
         }
     }
 
     &__navigation-link_history {
-        margin-bottom: 30/16*1em;
+        margin-bottom: calc(30/16)*1em;
         &:before {
             background-image: url(../images/history_icon.svg);
         }
@@ -70,9 +70,9 @@
     &__create-btn {
         display: block;
         width: 100%;
-        padding: 11/16*1em;
+        padding: calc(11/16)*1em;
         border-radius: 6px;
-        margin-bottom: 20/16*1em;
+        margin-bottom: calc(20/1)6*1em;
         background: v.$clr-accent;
         
         font-weight: v.$fw-bold;
@@ -89,7 +89,7 @@
         padding: 1em 0;
         border-top: 1px solid rgba(217, 217, 217, 0.3);
         margin: 0;
-        margin-left: 5/20*1em;
+        margin-left: calc(5/20)*1em;
 
         font-size: var(--fs-h5);
         color: v.$clr-font-dark;
@@ -119,7 +119,7 @@
     &__watchlist-item {
         display: flex;
         align-items: center;
-        padding: 8/16*1em 12/16*1em;
+        padding: calc(8/16)*1em calc(12/16)*1em;
         border-radius: 6px;
 
         color: #E1E1E1;
@@ -133,10 +133,10 @@
         &:before {
             content: "";
             display: inline-block;
-            height: 20/16*1rem;
-            width: 20/16*1rem;
-            min-height: 20/16*1rem;
-            min-width: 20/16*1rem;
+            height: calc(20/16)*1rem;
+            width: calc(20/16)*1rem;
+            min-height: calc(20/16)*1rem;
+            min-width: calc(20/16)*1rem;
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;

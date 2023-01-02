@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: stretch;
-    padding: 0 0 0 12/16*1em;
+    padding: 0 0 0 calc(12/16)*1em;
     border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;
 
@@ -16,8 +16,8 @@
     &::before {
         content: "";
         display: inline-block;
-        height: 21/16*1rem;
-        width: 21/16*1rem;
+        height: calc(21/16)*1rem;
+        width: calc(21/16)*1rem;
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -39,7 +39,7 @@
     }
 
     &__button {
-        padding: 13/16*1em 22/16*1em;
+        padding: calc(13/16)*1em calc(22/16)*1em;
         border-radius: 6px;
         background: v.$clr-accent;
         color: v.$clr-dark;
