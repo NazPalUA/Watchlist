@@ -5,10 +5,12 @@
 }
 
 .App {
+    max-width: v.$max-width;
     width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: v.$clr-dark;
+    margin: 0 auto;
 
     &__sidebar {
         height: 100vh;
