@@ -19,7 +19,7 @@
         flex: 2 2 15%;
     }
 
-    &__home {
+    &__home, &__history, &__create-watchlist {
         flex: 2 2 80%;
     }
 }

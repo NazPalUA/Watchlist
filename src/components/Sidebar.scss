@@ -68,6 +68,7 @@
     }
 
     &__create-btn {
+        display: block;
         width: 100%;
         padding: 11/16*1em;
         border-radius: 6px;
@@ -76,6 +77,7 @@
         
         font-weight: v.$fw-bold;
         color: v.$clr-font-black;
+        text-align: center;
 
         &:hover {
             opacity: 0.9;

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import './Sidebar.scss'
 
 export default function Sidebar(props) {
@@ -10,18 +11,18 @@ export default function Sidebar(props) {
                     Watchlists
                 </h1>
                 <nav className="sidebar__navigation">
-                    <a 
+                    <Link to="/"
                         className="sidebar__navigation-link sidebar__navigation-link_home">
                         Home
-                    </a>
-                    <a 
+                    </Link>
+                    <Link to="/history"
                         className="sidebar__navigation-link sidebar__navigation-link_history">
                         History
-                    </a>
+                    </Link>
                 </nav>
-                <button className="sidebar__create-btn">
+                <Link to="/create_watchlist" className="sidebar__create-btn">
                     +  Create watchlist
-                </button>
+                </Link>
                 <p className="sidebar__watchlists-header">
                     My Lists
                 </p>
