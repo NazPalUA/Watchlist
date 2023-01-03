@@ -1,0 +1,60 @@
+@use '../variables' as v;
+
+.create-watchlist {
+    padding: calc(50/16)*1em calc(67/16)*1em calc(50/16)*1em calc(23/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__title {
+        margin: 0 0 calc(50/32)*1em;
+
+        font-family: v.$ff-primary;
+        font-size: var(--fs-h4);
+        font-weight: v.$fw-reg;
+        line-height: 1;
+        color: v.$clr-font-light;
+    }
+
+    &__form {
+        
+    }
+
+    &__form > * {
+        display: block;
+    }
+
+    &__label {
+        font-size: var(--fs-big);
+        font-weight: v.$fw-bold;
+        margin-bottom: calc(5/18)*1em;
+    }
+
+    &__name, &__description {
+        font-size: var(--fs-extra-big);
+        
+        width: 100%;
+        padding: 0.5em 1em;
+        border: 1px solid v.$clr-font-light;
+        border-radius: 6px;
+        background-color: unset;
+        margin-bottom: calc(30/20)*1em;
+    }
+
+    &__name {
+        
+    }
+
+    &__description {
+        resize: none;
+        height: 126px;
+    }
+
+    &__btn {
+        font-size: var(--fs-big);
+        font-weight: v.$fw-bold;
+        color: v.$clr-font-black;
+
+        padding: calc(10/18)*1em calc(55/18)*1em;
+        background: v.$clr-accent;
+        border-radius: 6px;
+    }
+}
