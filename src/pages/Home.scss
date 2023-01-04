@@ -28,47 +28,20 @@
         padding: 0;
         width: 100%;
 
-        // ***** preliminary grid layout START ***** //
-        display: grid;
-        grid-template-columns: repeat(8, min-content);
-        grid-template-rows: auto;
-        column-gap: calc((100% - 8*150px)/7);
-        row-gap: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc((100% - 8*150px)/7);
+        @media (max-width: 1800px) {gap: calc((100% - 7*150px)/6);}
+        @media (max-width: 1600px) {gap: calc((100% - 6*150px)/5);}
+        @media (max-width: 1400px) {gap: calc((100% - 5*150px)/4);}
+        @media (max-width: 1250px) {gap: calc((100% - 4*150px)/3);}
+        @media (max-width: 1075px) {gap: calc((100% - 3*150px)/2);}
+        @media (max-width: 900px) {gap: calc((100% - 2*150px)/1);}
+        @media (max-width: 750px) {}
+        
+        & > * {margin-bottom: 15px;}
+    
 
-        @media (max-width: 1800px) {
-            grid-template-columns: repeat(7, min-content);
-            column-gap: calc((100% - 7*150px)/6);
-        }
-
-        @media (max-width: 1600px) {
-            grid-template-columns: repeat(6, min-content);
-            column-gap: calc((100% - 6*150px)/5);
-        }
-
-        @media (max-width: 1400px) {
-            grid-template-columns: repeat(5, min-content);
-            column-gap: calc((100% - 5*150px)/4);
-        }
-
-        @media (max-width: 1250px) {
-            grid-template-columns: repeat(4, min-content);
-            column-gap: calc((100% - 4*150px)/3);
-        }
-
-        @media (max-width: 1075px) {
-            grid-template-columns: repeat(3, min-content);
-            column-gap: calc((100% - 3*150px)/2);
-        }
-
-        @media (max-width: 900px) {
-            grid-template-columns: repeat(2, min-content);
-            column-gap: calc((100% - 2*150px)/1);
-        }
-
-        @media (max-width: 750px) {
-            grid-template-columns: min-content;
-        }
-        // ***** preliminary grid layout END ***** //
     }
     
     &__popular-item {
