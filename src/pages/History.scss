@@ -1,0 +1,42 @@
+@use '../variables' as v;
+
+.history {
+    padding: calc(30/16)*1em calc(30/16)*1em calc(60/16)*1em calc(60/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__clear-btn {
+        display: block;
+        padding: 0;
+        border: none;
+        margin: 0 0 calc(40/16)*1em auto;
+
+        font-family: v.$ff-primary;
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-bold;
+        line-height: 1;
+        color: v.$clr-accent;
+
+        &:hover {
+            text-shadow: v.$clr-accent-dark 1px 0 5px;
+        }
+    }
+    
+    &__list {
+        margin: 0;
+        padding: 0;
+        padding-right: calc(40/16)*1em;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+    
+    &__item {
+        list-style: none;
+    }
+
+    &__movie-card {
+        
+    }
+}
