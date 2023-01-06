@@ -1,7 +1,7 @@
 import React from "react"
-import './CreateWatchlist.scss'
+import './CreateWatchlistPage.scss'
 
-export default function CreateWatchlist(props) {
+export default function CreateWatchlistPage(props) {
 
     const [formData, setFormData] = React.useState(
         {
@@ -29,7 +29,7 @@ export default function CreateWatchlist(props) {
     return (
         <div className={`create-watchlist ${props.className}`}>
             <h4 className="create-watchlist__title">
-                Create a new Watchlist
+                Create a new WatchlistPage
             </h4>
             <form className="create-watchlist__form" onSubmit={handleSubmit}>
                 <label className="create-watchlist__label" htmlFor="name">

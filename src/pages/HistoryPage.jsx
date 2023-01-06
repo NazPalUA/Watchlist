@@ -1,8 +1,8 @@
 import React from "react"
 import MovieCard from "../components/MovieCard"
-import './History.scss'
+import './HistoryPage.scss'
 
-export default function History(props) {
+export default function HistoryPage(props) {
     return (
         <div className={`history ${props.className}`}>
             <button className="history__clear-btn">Clear history</button>

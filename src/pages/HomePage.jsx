@@ -2,9 +2,9 @@ import React from "react"
 import Welcome from "../components/Welcome"
 import SearchBox from "../components/SearchBox"
 import MovieCard from "../components/MovieCard"
-import './Home.scss'
+import './HomePage.scss'
 
-export default function Home(props) {
+export default function HomePage(props) {
     return (
         <main className={`home ${props.className}`}>
             <Welcome className="home__welcome" />

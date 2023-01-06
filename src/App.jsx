@@ -1,8 +1,8 @@
 import './App.scss'
 import { Routes, Route } from "react-router-dom"
-import Home from './pages/Home'
-import History from './pages/History'
-import CreateWatchlist from './pages/CreateWatchlist'
+import HomePage from './pages/HomePage'
+import HistoryPage from './pages/HistoryPage'
+import CreateWatchlistPage from './pages/CreateWatchlistPage'
 import Sidebar from './components/Sidebar'
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Sidebar className="App__sidebar" />
       <Routes>
-        <Route path="/" element={<Home className="App__home" />} />
-        <Route path="/history" element={<History className="App__history" />} />
-        <Route path="/create_watchlist" element={<CreateWatchlist className="App__create-watchlist" />} />
+        <Route path="/" element={<HomePage className="App__home" />} />
+        <Route path="/history" element={<HistoryPage className="App__history" />} />
+        <Route path="/create_watchlist" element={<CreateWatchlistPage className="App__create-watchlist" />} />
       </Routes>
     </div>
   )
