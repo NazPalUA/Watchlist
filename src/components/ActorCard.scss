@@ -1,0 +1,29 @@
+@use '../variables' as v;
+
+.actor-card {
+    // width: 150px;
+    border-radius: 4px;
+    background: #1A1A1A;
+
+    font-family: v.$ff-primary;
+    line-height: 1;
+    color: v.$clr-font-light;
+
+    &__photo {
+        width: 100%;
+    }
+
+    &__name {
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-bold;
+        margin: calc(12/16)*1em 0 calc(12/16)*1em;
+        padding: 0 calc(12/16)*1em 0 calc(12/16)*1em;
+    }
+
+    &__role {
+        font-size: var(--fs-middle);
+        font-weight: v.$fw-reg;
+        margin: calc(12/16)*1em 0 0;
+        padding: 0 calc(12/16)*1em calc(12/16)*1em;
+    }
+}
