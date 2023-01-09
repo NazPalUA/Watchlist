@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
+import WatchlistPage from './pages/WatchlistPage'
 import Sidebar from './components/Sidebar'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage className="App__home" />} />
         <Route path="/history" element={<HistoryPage className="App__history" />} />
         <Route path="/create_watchlist" element={<CreateWatchlistPage className="App__create-watchlist" />} />
+        <Route path="/watchlist-page" element={<WatchlistPage className="App__watchlist-page" />} />
       </Routes>
     </div>
   )

@@ -1,0 +1,97 @@
+@use '../variables' as v;
+
+.watchlist-page {
+    font-family: v.$ff-primary;
+    line-height: 1;
+    font-weight: v.$fw-bold;
+    color: v.$clr-font-light;
+
+    padding: calc(26/16)*1em calc(100/16)*1em calc(47/16)*1em calc(30/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__header-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: calc(26/16)*1em;
+    }
+
+    &__header {
+        font-size: var(--fs-h2);
+        margin: 0;
+        margin-right: calc(50/38)*1em;
+    }
+
+    &__edit {
+        padding: 0;
+        border: 0;
+        transform: translateY(calc(4/16)*1em);
+    }
+
+    &__edit-icon {
+        width: calc(25/16)*1em;
+    }
+
+    &__about-title {
+        font-size: var(--fs-h5);
+        margin: 0;
+        margin-bottom: calc(10/20)*1em;
+    }
+
+    &__about {
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-reg;
+        margin: 0;
+        margin-bottom: calc(70/16)*1em;
+    }
+
+    &__boxes-container {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        margin-bottom: calc(70/16)*1em;
+        padding: 0;
+    }
+
+    &__box {
+        padding: calc(15/16)*1em;
+        border: 1px solid v.$clr-accent-dark;
+        border-radius: 8px;
+        margin-right: calc(40/16)*1em;
+        background: rgba(v.$clr-font-dark, 0.1);
+    }
+
+    &__box-name {
+        display: block;
+        margin-bottom: 1em;
+
+        font-size: var(--fs-extra-big);
+        text-align: center;
+    }
+
+    &__box-content {
+        font-size: var(--fs-h2);
+        color: v.$clr-accent;
+
+        margin: 0;
+        text-align: center;
+    }
+
+    &__movie-list {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+
+    &__movie-item {
+        list-style: none;
+    }
+
+    &__movie-card {
+        
+    }
+
+}

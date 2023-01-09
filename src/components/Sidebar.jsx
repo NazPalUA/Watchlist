@@ -30,46 +30,28 @@ export default function Sidebar(props) {
             <div className="sidebar__bottom">
                 <ul className="sidebar__watchlists">
                     <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise rgher er r5 e yy5 y5 45y 54 y54  5y45y 5y 54y54y54rh 56hy54 
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
                     </li>
                     <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
                     </li>
                     <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
                     </li>
                     <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
-                    </li>
-                    <li className="sidebar__watchlist-item">
-                        Movies by Tom Cruise
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
                     </li>
                 </ul>
             </div>
