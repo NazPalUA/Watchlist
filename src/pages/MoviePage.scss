@@ -1,0 +1,155 @@
+@use '../variables' as v;
+
+.movie-page {
+    font-family: v.$ff-primary;
+    line-height: 1;
+
+    padding: calc(60/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__top-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__main-poster {
+        width: 26%;
+        border-radius: 6px;
+    }
+
+    &__top-right-container {
+        width: 70%;
+        padding: calc(30/16)*1em 0;
+    }
+
+    &__title {
+        margin: 0 0 calc(10/36)*1em;
+
+        font-size: var(--fs-h3);
+        font-weight: v.$fw-bold;
+        color: v.$clr-font-light;
+    }
+
+    &__release-year {
+        font-weight: v.$fw-light;
+    }
+
+    &__genre, &__duration {
+        display: inline-block;
+        margin: 0 0 calc(50/16)*1em;
+
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-reg;
+        color: v.$clr-light;
+    }
+
+    &__genre {
+        margin-right: calc(15/16)*1em;
+    }
+
+    &__duration {
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: v.$clr-semi-light;
+            margin-right: calc(15/16)*1em;
+            margin-bottom: calc(4/16)*1em;
+        }
+    }
+
+    &__overview-title {
+        margin: 0 0 calc(10/20)*1em;
+
+        font-size: var(--fs-h5);
+        font-weight: v.$fw-bold;
+        color: v.$clr-light;
+    }
+
+    &__overview {
+        margin: 0 0 calc(56/16)*1em;
+
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-reg;
+        color: v.$clr-font-light;
+    }
+
+    &__score-btn-container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__score-container {
+        padding: calc(15/16)*1em;
+        border: 1px solid v.$clr-accent-dark;
+        border-radius: 8px;
+        margin-right: calc(40/16)*1em;
+        background: rgba(v.$clr-font-dark, 0.1);
+    }
+
+    &__score-header {
+        display: block;
+        margin-bottom: 1em;
+
+        font-size: var(--fs-extra-big);
+        font-weight: v.$fw-bold;
+        color: v.$clr-font-light;
+        text-align: center;
+    }
+
+    &__score {
+        font-size: var(--fs-h3);
+        font-weight: v.$fw-bold;
+        color: v.$clr-accent;
+
+        margin: 0;
+        text-align: center;
+    }
+
+    &__btn {
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-bold;
+        color: v.$clr-dark;
+
+        padding: calc(23/16)*1em calc(31/16)*1em;
+        border: none;
+        background: v.$clr-accent;
+        border-radius: 4px;
+    }
+
+    &__section-title {
+        font-size: var(--fs-h5);
+        font-weight: v.$fw-bold;
+        color: v.$clr-light;
+
+        margin: calc(50/20)*1em 0 1em;
+    }
+
+    &__section-title_movies {
+        margin-top: calc(100/20)*1em;
+    }
+
+    &__list {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+
+    &__list-item {
+        list-style: none;
+    }
+
+    &__link {
+        
+    }
+
+    &__card {
+        
+    }
+}
