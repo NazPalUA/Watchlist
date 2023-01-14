@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import './SearchBox.scss'
 
 export default function SearchBox(props) {
@@ -12,7 +13,7 @@ export default function SearchBox(props) {
                 id="search-box__input"
                 placeholder="Search for movies by title"
             />
-            <button className="search-box__button">search</button>
+            <Link to="/search-results-page" className="search-box__button">search</Link>
         </div>
     )
 }

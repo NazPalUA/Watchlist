@@ -1,0 +1,38 @@
+@use '../variables' as v;
+
+.search-results {
+    padding: calc(40/16)*1em calc(70/16)*1em calc(60/16)*1em calc(60/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__header {
+        margin: 0 0 calc(46/32)*1em auto;
+
+        font-family: v.$ff-primary;
+        font-size: var(--fs-h4);
+        font-weight: v.$fw-reg;
+        line-height: 1;
+        color: v.$clr-font-light;
+    }
+    
+    &__list {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+    
+    &__item {
+        list-style: none;
+    }
+
+    &__link {
+        
+    }
+
+    &__movie-card {
+        
+    }    
+}
