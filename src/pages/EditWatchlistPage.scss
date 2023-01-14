@@ -1,0 +1,152 @@
+@use '../variables' as v;
+
+.edit-watchlist {
+    padding: calc(30/16)*1em calc(60/16)*1em calc(30/16)*1em calc(60/16)*1em;
+    background-color: rgba(v.$clr-light, 0.1);
+
+    &__top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: calc(50/16)*1em;
+    }
+
+    &__header {
+        margin: 0;
+
+        font-family: v.$ff-primary;
+        font-size: var(--fs-h4);
+        font-weight: v.$fw-reg;
+        line-height: 1;
+        color: v.$clr-font-light;
+    }
+
+    &__delete-btn {
+        font-family: v.$ff-primary;
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-bold;
+        line-height: 1;
+        text-decoration: underline;
+        color: v.$clr-accent;
+
+        &:hover {
+            text-shadow: v.$clr-accent-dark 1px 0 5px;
+        }
+    }
+
+    &__form {
+        
+    }
+
+    &__form > * {
+        display: block;
+    }
+
+    &__label {
+        font-family: v.$ff-primary;
+        font-size: var(--fs-big);
+        font-weight: v.$fw-bold;
+        line-height: 1;
+        color: v.$clr-font-light;
+        margin-bottom: calc(5/18)*1em;
+    }
+
+    &__name, &__description {
+        font-family: v.$ff-primary;
+        font-size: var(--fs-extra-big);
+        font-weight: v.$fw-reg;
+        line-height: 1;
+        color: v.$clr-font-light;
+        
+        width: 100%;
+        padding: 0.5em 1em;
+        border: 1px solid v.$clr-font-light;
+        border-radius: 6px;
+        background-color: unset;
+        margin-bottom: calc(30/20)*1em;
+    }
+
+    &__name {
+        
+    }
+
+    &__description {
+        resize: none;
+        height: 126px;
+    }
+
+    &__movies-title {
+        font-family: v.$ff-primary;
+        font-size: var(--fs-big);
+        font-weight: v.$fw-bold;
+        line-height: 1;
+        color: v.$clr-font-light;
+
+        margin-bottom: calc(5/18)*1em;
+    }
+
+    &__movies-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        margin-bottom: calc(40/16)*1em;
+    }
+
+    &__movies-item {
+        font-family: v.$ff-primary;
+        font-size: var(--fs-reg);
+        font-weight: v.$fw-reg;
+        line-height: 1;
+        color: v.$clr-font-light;
+
+        display: flex;
+        align-items: center;
+
+        height: calc(75/16)*1em;
+        border: 1px solid v.$clr-font-light;
+        border-radius: 4px;
+        margin-bottom: calc(10/16)*1em;
+    }
+
+    &__movie-img {
+        max-height: 100%;
+        margin-right: calc(15/16)*1em;
+    }
+
+    &__movie-name {
+
+    }
+
+    &__movie-year {
+        font-weight: v.$fw-light;
+    }
+
+    &__movie-remove-btn {
+        margin-left: auto;
+        margin-right: calc(15/16)*1em;
+        padding: calc(11/16)*1em calc(10/16)*1em;
+        border: 1px solid v.$clr-accent;
+        border-radius: 4px;
+    }
+
+    &__btns-container {
+        display: flex;
+        gap: calc(15/16)*1em;
+    }
+
+    &__btn {
+        font-size: var(--fs-big);
+        font-weight: v.$fw-bold;
+        color: v.$clr-font-black;
+
+        padding: calc(10/18)*1em calc(100/18)*1em;
+        background: v.$clr-accent;
+        border-radius: 6px;
+    }
+
+    &__btn_dark {
+        background-color: v.$clr-semi-light;
+    }
+}

@@ -5,6 +5,7 @@ import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
 import WatchlistPage from './pages/WatchlistPage'
 import SearchResultsPage from './pages/SearchResultsPage'
+import EditWatchlistPage from './pages/EditWatchlistPage'
 import MoviePage from './pages/MoviePage'
 import Sidebar from './components/Sidebar'
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/watchlist-page" element={<WatchlistPage className="App__watchlist-page" />} />
         <Route path="/movie-page" element={<MoviePage className="App__movie-page" />} />
         <Route path="/search-results-page" element={<SearchResultsPage className="App__search-results-page" />} />
+        <Route path="/edit-watchlist-page" element={<EditWatchlistPage className="App__edit-watchlist-page" />} />
       </Routes>
     </div>
   )

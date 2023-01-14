@@ -11,10 +11,10 @@ export default function WatchlistPage(props) {
                 <h2 className="watchlist-page__header">
                     Movies by Tom Cruise
                 </h2>
-                <button className="watchlist-page__edit">
+                <Link to="/edit-watchlist-page" className="watchlist-page__edit">
                     <img className="watchlist-page__edit-icon" 
                         src={editIcon} alt="edit icon" />
-                </button>
+                </Link>
             </div>
             <h5 className="watchlist-page__about-title">
                 About this watchlist
