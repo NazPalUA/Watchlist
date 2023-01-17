@@ -70,7 +70,7 @@
         width: 100%;
         padding: calc(11/16)*1em;
         border-radius: 6px;
-        margin-bottom: calc(20/1)6*1em;
+        margin-bottom: calc(20/16)*1em;
         background: v.$clr-accent;
         
         font-weight: v.$fw-bold;
@@ -115,8 +115,6 @@
     }
 
     &__watchlist-item {
-        display: flex;
-        align-items: center;
         padding: 0;
         border-radius: 6px;
 
@@ -131,6 +129,8 @@
     }
 
     &__watchlist-link {
+        display: flex;
+        align-items: center;
         width: 100%;
         padding: calc(8/16)*1em calc(12/16)*1em;
 
