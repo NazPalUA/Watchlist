@@ -1,0 +1,75 @@
+@use '../variables' as v;
+
+.my-lists-page {
+
+    &__create-btn {
+        display: block;
+        padding: calc(11/16)*1em;
+        border-radius: 6px;
+        margin-bottom: calc(20/16)*1em;
+        background: v.$clr-accent;
+        
+        font-weight: v.$fw-bold;
+        color: v.$clr-font-black;
+        text-align: center;
+
+        &:hover {
+            opacity: 0.9;
+            border-color: v.$clr-accent
+        }
+    }
+
+    &__header {
+        margin: 0 0 0.6em;
+
+        font-size: var(--fs-h5);
+        color: v.$clr-font-light;
+    }
+
+    &__watchlists {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__watchlist-item {
+        margin: 0;
+        border-radius: 6px;
+        background: rgba(v.$clr-semi-light, 0.1);
+
+        list-style: none;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-bottom: 1em;
+        }
+
+        &:hover {
+            outline: 1px solid v.$clr-semi-light;
+        }
+    }
+
+    &__watchlist-link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: calc(8/16)*1em calc(12/16)*1em;
+        color: v.$clr-light;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            height: calc(20/16)*1rem;
+            width: calc(20/16)*1rem;
+            min-height: calc(20/16)*1rem;
+            min-width: calc(20/16)*1rem;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 1em;
+            background-image: url(../images/watchlist_icon.svg);
+        }
+
+
+    }
+
+}
