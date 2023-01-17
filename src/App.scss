@@ -4,13 +4,13 @@
     width: 100%;
 }
 
-.App {
+.app {
     max-width: v.$max-width;
     width: 100%;
+    margin: 0 auto;
+    
     display: flex;
     justify-content: space-between;
-    background-color: v.$clr-dark;
-    margin: 0 auto;
 
     &__sidebar {
         height: 100vh;
@@ -19,8 +19,38 @@
         flex: 2 2 15%;
     }
 
-    &__home, &__history, &__create-watchlist, &__watchlist-page, &__movie-page, &__search-results-page, &__edit-watchlist-page {
+    &__main {
         flex: 2 2 80%;
+
+        padding: calc(50/16)*1em calc(70/16)*1em calc(60/16)*1em calc(50/16)*1em;
+        background-color: rgba(v.$clr-light, 0.13);
+    }
+
+    &__home-page {
+
+    }
+    
+    &__history-page {
+
+    }
+    
+    &__create-watchlist-page {
+
+    }
+    
+    &__watchlist-page {
+
+    }
+    
+    &__movie-page {
+
+    }
+
+    &__search-results-page {
+
+    }
+    
+    &__edit-watchlist-page {
     }
 
 }

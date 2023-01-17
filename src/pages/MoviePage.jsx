@@ -7,7 +7,7 @@ import './MoviePage.scss'
 export default function WatchlistPage(props) {
 
     return (
-        <main className={`movie-page ${props.className}`}>
+        <div className={`movie-page ${props.className}`}>
             <div className="movie-page__top-container">
                 <img className="movie-page__main-poster" 
                     src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSaQBJTZNz49zecP0qdR-4dFjjU1j0ji7OLq0zuIRza0I717XQ9pJl0RRgUn-SUvAGq"alt="movie poster" />
@@ -91,6 +91,6 @@ export default function WatchlistPage(props) {
                 </li>
 
             </ul>
-        </main>
+        </div>
     )
 }

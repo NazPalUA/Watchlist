@@ -27,15 +27,15 @@ export default function CreateWatchlistPage(props) {
     }
 
     return (
-        <div className={`create-watchlist ${props.className}`}>
-            <h4 className="create-watchlist__title">
-                Create a new WatchlistPage
+        <div className={`create-watchlist-page ${props.className}`}>
+            <h4 className="create-watchlist-page__title">
+                Create a new watchlist
             </h4>
-            <form className="create-watchlist__form" onSubmit={handleSubmit}>
-                <label className="create-watchlist__label" htmlFor="name">
+            <form className="create-watchlist-page__form" onSubmit={handleSubmit}>
+                <label className="create-watchlist-page__label" htmlFor="name">
                     Name
                 </label>
-                <input className="create-watchlist__name"
+                <input className="create-watchlist-page__name"
                     type="text"
                     id="name"
                     placeholder=""
@@ -43,17 +43,17 @@ export default function CreateWatchlistPage(props) {
                     name="name"
                     value={formData.name}
                 />
-                <label className="create-watchlist__label" htmlFor="description">
+                <label className="create-watchlist-page__label" htmlFor="description">
                     Description
                 </label>
-                <textarea className="create-watchlist__description"
+                <textarea className="create-watchlist-page__description"
                     id="description"
                     placeholder=""
                     onChange={handleChange}
                     name="description"
                     value={formData.description}
                 />
-                <button className="create-watchlist__btn">Create  watchlist</button>
+                <button className="create-watchlist-page__btn">Create  watchlist</button>
             </form>
         </div>
     )

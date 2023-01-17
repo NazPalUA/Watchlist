@@ -12,17 +12,19 @@ import Sidebar from './components/Sidebar'
 function App() {
 
   return (
-    <div className="App">
-      <Sidebar className="App__sidebar" />
-      <Routes>
-        <Route path="/" element={<HomePage className="App__home" />} />
-        <Route path="/history" element={<HistoryPage className="App__history" />} />
-        <Route path="/create_watchlist" element={<CreateWatchlistPage className="App__create-watchlist" />} />
-        <Route path="/watchlist-page" element={<WatchlistPage className="App__watchlist-page" />} />
-        <Route path="/movie-page" element={<MoviePage className="App__movie-page" />} />
-        <Route path="/search-results-page" element={<SearchResultsPage className="App__search-results-page" />} />
-        <Route path="/edit-watchlist-page" element={<EditWatchlistPage className="App__edit-watchlist-page" />} />
-      </Routes>
+    <div className="app">
+      <Sidebar className="app__sidebar" />
+      <main className="app__main">
+        <Routes>
+          <Route path="/" element={<HomePage className="app__home-page" />} />
+          <Route path="/history" element={<HistoryPage className="app__history-page" />} />
+          <Route path="/create_watchlist" element={<CreateWatchlistPage className="app__create-watchlist-page" />} />
+          <Route path="/watchlist-page" element={<WatchlistPage className="app__watchlist-page" />} />
+          <Route path="/movie-page" element={<MoviePage className="app__movie-page" />} />
+          <Route path="/search-results-page" element={<SearchResultsPage className="app__search-results-page" />} />
+          <Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__edit-watchlist-page" />} />
+        </Routes>
+      </main>
     </div>
   )
 }

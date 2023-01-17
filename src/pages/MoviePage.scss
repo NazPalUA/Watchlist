@@ -1,11 +1,6 @@
 @use '../variables' as v;
 
 .movie-page {
-    font-family: v.$ff-primary;
-    line-height: 1;
-
-    padding: calc(60/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
 
     &__top-container {
         display: flex;
@@ -15,6 +10,7 @@
     &__main-poster {
         width: 26%;
         border-radius: 6px;
+        align-self: flex-start;
     }
 
     &__top-right-container {
@@ -27,7 +23,6 @@
 
         font-size: var(--fs-h3);
         font-weight: v.$fw-bold;
-        color: v.$clr-font-light;
     }
 
     &__release-year {
@@ -38,8 +33,6 @@
         display: inline-block;
         margin: 0 0 calc(50/16)*1em;
 
-        font-size: var(--fs-reg);
-        font-weight: v.$fw-reg;
         color: v.$clr-light;
     }
 
@@ -70,10 +63,6 @@
 
     &__overview {
         margin: 0 0 calc(56/16)*1em;
-
-        font-size: var(--fs-reg);
-        font-weight: v.$fw-reg;
-        color: v.$clr-font-light;
     }
 
     &__score-btn-container {
@@ -95,7 +84,6 @@
 
         font-size: var(--fs-extra-big);
         font-weight: v.$fw-bold;
-        color: v.$clr-font-light;
         text-align: center;
     }
 
@@ -109,8 +97,6 @@
     }
 
     &__btn {
-        font-size: var(--fs-reg);
-        font-weight: v.$fw-bold;
         color: v.$clr-dark;
 
         padding: calc(23/16)*1em calc(31/16)*1em;

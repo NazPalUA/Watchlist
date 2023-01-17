@@ -43,10 +43,10 @@
         border-radius: 6px;
         background: v.$clr-accent;
         color: v.$clr-dark;
+        outline: 1px solid v.$clr-accent;
 
         &:hover {
             opacity: 0.9;
-            border-color: v.$clr-accent
         }
     }
 }

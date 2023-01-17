@@ -33,7 +33,6 @@
         padding: calc(10/16)*1em calc(12/16)*1em;
         border-radius: 6px;
 
-        color: v.$clr-font-light;
         cursor: pointer;
 
         &:before {
@@ -49,7 +48,6 @@
 
         &:hover {
             background-color: v.$clr-semi-dark;
-            color: v.$clr-font-light;
         }
     }
 
@@ -135,7 +133,6 @@
     &__watchlist-link {
         width: 100%;
         padding: calc(8/16)*1em calc(12/16)*1em;
-        color: #E1E1E1;
 
         &:before {
             content: "";

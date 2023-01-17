@@ -5,78 +5,78 @@ import './SearchResultsPage.scss'
 
 export default function SearchResultsPage(props) {
     return (
-        <main className={`search-results ${props.className}`}>
-            <h4 className="search-results__header">
+        <div className={`search-results-page ${props.className}`}>
+            <h4 className="search-results-page__header">
                 Search Results: movies by Tom Cruise
             </h4>
-            <ul className="search-results__list">
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+            <ul className="search-results-page__list">
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
-                <li className="search-results__item">
-                    <Link to="/movie-page" className="search-results__link">
-                        <MovieCard className="search-results__movie-card" />
+                <li className="search-results-page__item">
+                    <Link to="/movie-page" className="search-results-page__link">
+                        <MovieCard className="search-results-page__movie-card" />
                     </Link>
                 </li>
 
             </ul>
-        </main>
+        </div>
     )
 }

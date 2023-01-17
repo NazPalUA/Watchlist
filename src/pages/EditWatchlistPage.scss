@@ -1,8 +1,6 @@
 @use '../variables' as v;
 
-.edit-watchlist {
-    padding: calc(30/16)*1em calc(60/16)*1em calc(30/16)*1em calc(60/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
+.edit-watchlist-page {
 
     &__top {
         width: 100%;
@@ -16,20 +14,19 @@
     &__header {
         margin: 0;
 
-        font-family: v.$ff-primary;
         font-size: var(--fs-h4);
         font-weight: v.$fw-reg;
-        line-height: 1;
-        color: v.$clr-font-light;
     }
 
     &__delete-btn {
-        font-family: v.$ff-primary;
         font-size: var(--fs-reg);
         font-weight: v.$fw-bold;
-        line-height: 1;
         text-decoration: underline;
         color: v.$clr-accent;
+
+        background-color: inherit;
+        padding: 0;
+        border: 0;
 
         &:hover {
             text-shadow: v.$clr-accent-dark 1px 0 5px;
@@ -45,20 +42,13 @@
     }
 
     &__label {
-        font-family: v.$ff-primary;
         font-size: var(--fs-big);
         font-weight: v.$fw-bold;
-        line-height: 1;
-        color: v.$clr-font-light;
         margin-bottom: calc(5/18)*1em;
     }
 
     &__name, &__description {
-        font-family: v.$ff-primary;
         font-size: var(--fs-extra-big);
-        font-weight: v.$fw-reg;
-        line-height: 1;
-        color: v.$clr-font-light;
         
         width: 100%;
         padding: 0.5em 1em;
@@ -78,11 +68,8 @@
     }
 
     &__movies-title {
-        font-family: v.$ff-primary;
         font-size: var(--fs-big);
         font-weight: v.$fw-bold;
-        line-height: 1;
-        color: v.$clr-font-light;
 
         margin-bottom: calc(5/18)*1em;
     }
@@ -95,12 +82,6 @@
     }
 
     &__movies-item {
-        font-family: v.$ff-primary;
-        font-size: var(--fs-reg);
-        font-weight: v.$fw-reg;
-        line-height: 1;
-        color: v.$clr-font-light;
-
         display: flex;
         align-items: center;
 
@@ -129,6 +110,7 @@
         padding: calc(11/16)*1em calc(10/16)*1em;
         border: 1px solid v.$clr-accent;
         border-radius: 4px;
+        background-color: inherit;
     }
 
     &__btns-container {
@@ -143,6 +125,7 @@
 
         padding: calc(10/18)*1em calc(100/18)*1em;
         background: v.$clr-accent;
+        border: none;
         border-radius: 6px;
     }
 

@@ -1,13 +1,7 @@
 @use '../variables' as v;
 
 .watchlist-page {
-    font-family: v.$ff-primary;
-    line-height: 1;
     font-weight: v.$fw-bold;
-    color: v.$clr-font-light;
-
-    padding: calc(26/16)*1em calc(100/16)*1em calc(47/16)*1em calc(30/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
 
     &__header-container {
         display: flex;
@@ -38,7 +32,6 @@
     }
 
     &__about {
-        font-size: var(--fs-reg);
         font-weight: v.$fw-reg;
         margin: 0;
         margin-bottom: calc(70/16)*1em;

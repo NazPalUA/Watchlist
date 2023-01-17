@@ -7,9 +7,11 @@ export default function Sidebar(props) {
     return (
         <aside className={`sidebar ${props.className}`}>
             <div className="sidebar__top">
-                <h1 className="sidebar__logo">
-                    Watchlists
-                </h1>
+                <Link to="/" className="sidebar__logo-link">
+                    <h1 className="sidebar__logo">
+                        Watchlists
+                    </h1>
+                </Link>
                 <nav className="sidebar__navigation">
                     <Link to="/"
                         className="sidebar__navigation-link sidebar__navigation-link_home">

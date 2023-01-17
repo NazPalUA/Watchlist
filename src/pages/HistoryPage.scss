@@ -1,19 +1,16 @@
 @use '../variables' as v;
 
-.history {
-    padding: calc(30/16)*1em calc(30/16)*1em calc(60/16)*1em calc(60/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
+.history-page {
 
     &__clear-btn {
         display: block;
         padding: 0;
         border: none;
         margin: 0 0 calc(40/16)*1em auto;
+        background-color: inherit;
 
-        font-family: v.$ff-primary;
-        font-size: var(--fs-reg);
         font-weight: v.$fw-bold;
-        line-height: 1;
+        font-size: var(--fs-reg);
         color: v.$clr-accent;
 
         &:hover {
@@ -24,7 +21,6 @@
     &__list {
         margin: 0;
         padding: 0;
-        padding-right: calc(40/16)*1em;
         width: 100%;
 
         display: grid;

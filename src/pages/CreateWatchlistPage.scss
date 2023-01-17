@@ -1,17 +1,12 @@
 @use '../variables' as v;
 
-.create-watchlist {
-    padding: calc(50/16)*1em calc(67/16)*1em calc(50/16)*1em calc(23/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
+.create-watchlist-page {
 
     &__title {
         margin: 0 0 calc(50/32)*1em;
 
-        font-family: v.$ff-primary;
         font-size: var(--fs-h4);
-        font-weight: v.$fw-reg;
-        line-height: 1;
-        color: v.$clr-font-light;
+        font-weight: v.$fw-reg;;
     }
 
     &__form {
@@ -55,6 +50,7 @@
 
         padding: calc(10/18)*1em calc(55/18)*1em;
         background: v.$clr-accent;
+        border: none;
         border-radius: 6px;
     }
 }

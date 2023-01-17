@@ -1,8 +1,6 @@
 @use '../variables' as v;
 
-.home {
-    padding: calc(50/16)*1em calc(70/16)*1em calc(60/16)*1em calc(50/16)*1em;
-    background-color: rgba(v.$clr-light, 0.1);
+.home-page {
 
     &__welcome {
         width: 100%;
@@ -16,11 +14,8 @@
     &__popular-title {
         margin: 1em 0;
 
-        font-family: v.$ff-primary;
         font-size: var(--fs-h4);
         font-weight: v.$fw-reg;
-        line-height: 1;
-        color: v.$clr-font-light;
     }
     
     &__popular-list {

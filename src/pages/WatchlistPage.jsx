@@ -6,7 +6,7 @@ import './WatchlistPage.scss'
 
 export default function WatchlistPage(props) {
     return (
-        <main className={`watchlist-page ${props.className}`}>
+        <div className={`watchlist-page ${props.className}`}>
             <div className="watchlist-page__header-container">
                 <h2 className="watchlist-page__header">
                     Movies by Tom Cruise
@@ -91,6 +91,6 @@ export default function WatchlistPage(props) {
                     </Link>
                 </li>
             </ul>
-        </main>
+        </div>
     )
 }
