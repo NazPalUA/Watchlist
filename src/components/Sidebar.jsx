@@ -5,7 +5,7 @@ import './Sidebar.scss'
 export default function Sidebar(props) {
 
     return (
-        <aside className={`sidebar ${props.className}`}>
+        <div className={`sidebar ${props.className}`} id="sidebar">
             <div className="sidebar__top">
                 <Link to="/" className="sidebar__logo-link">
                     <h1 className="sidebar__logo">
@@ -55,8 +55,98 @@ export default function Sidebar(props) {
                             Movies by Tom Cruise
                         </Link>
                     </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
+                    <li className="sidebar__watchlist-item">
+                        <Link to="/watchlist-page"
+                            className="sidebar__watchlist-link">
+                            Movies by Tom Cruise
+                        </Link>
+                    </li>
                 </ul>
             </div>
-        </aside>
+        </div>
     )
 }

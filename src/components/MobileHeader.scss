@@ -3,7 +3,7 @@
 .mobile-header {
     width: 100%;
     padding: calc(20/16)*1em calc(70/16)*1em calc(20/16)*1em calc(50/16)*1em;
-    background-color: v.$clr-dark;
+    background-color: v.$clr-font-black;
 
     font-family: v.$ff-primary;
     font-size: var(--fs-reg);
@@ -11,9 +11,14 @@
     line-height: 1;
     color: v.$clr-font-light;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: none;
+
+    
+    @media (max-width: v.$bp-laptops) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &__logo-link {
 

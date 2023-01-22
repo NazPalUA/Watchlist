@@ -3,7 +3,9 @@
 .sidebar {
     display: flex;
     flex-direction: column;
+    // align-items: center;
     box-sizing: border-box;
+    height: 100%;
     padding: calc(20/16)*1em calc(40/16)*1em calc(20/16)*1em calc(30/16)*1em;
     background-color: v.$clr-dark;
 
@@ -12,6 +14,49 @@
     font-weight: v.$fw-reg;
     line-height: 1;
     color: v.$clr-font-light;
+
+    position: absolute;
+    left: 0;
+    
+    transform: translateX(-100%);
+    transition: transform 0.15s ease-out;
+
+    @media (min-width: v.$bp-tablets) {
+
+    }
+
+    @media (min-width: v.$bp-laptops) {
+        width: 100%;
+        position: static;
+        transform: translateX(0);
+    }
+
+
+    &.open {
+        transform: translateX(0);
+        width: 100vw;
+        @media (min-width: v.$bp-tablets) {
+            width: unset;
+            position: sticky;
+        }
+
+        @media (min-width: v.$bp-laptops) {
+            position: static;
+            transform: translateX(0);
+        }
+    }
+
+    &__top {
+
+    }
+
+
+    &__logo-link {
+        display: none;
+        @media (min-width: v.$bp-laptops) {
+            display: block;
+        }
+    }
 
     &__logo {
         margin-top: 0;
@@ -29,9 +74,14 @@
 
     &__navigation-link {
         display: flex;
+        justify-content: center;
         align-items: center;
         padding: calc(10/16)*1em calc(12/16)*1em;
         border-radius: 6px;
+
+        @media (min-width: v.$bp-tablets) {
+            justify-content: start;
+        }
 
         cursor: pointer;
 
@@ -68,7 +118,7 @@
     &__create-btn {
         display: block;
         width: 100%;
-        padding: calc(11/16)*1em;
+        padding: calc(11/16)*1em 2em;
         border-radius: 6px;
         margin-bottom: calc(20/16)*1em;
         background: v.$clr-accent;
@@ -76,6 +126,7 @@
         font-weight: v.$fw-bold;
         color: v.$clr-font-black;
         text-align: center;
+        white-space: nowrap;
 
         &:hover {
             opacity: 0.9;
@@ -84,13 +135,18 @@
     }
 
     &__watchlists-header {
-        padding: 1em 0;
+        padding: 1em 0 1em calc(5/20)*1em;
         border-top: 1px solid rgba(217, 217, 217, 0.3);
         margin: 0;
-        margin-left: calc(5/20)*1em;
+
+        text-align: center;
 
         font-size: var(--fs-h5);
         color: v.$clr-font-dark;
+
+        @media (min-width: v.$bp-tablets) {
+            text-align: start;
+        }
     }
 
     &__bottom {
@@ -131,8 +187,13 @@
     &__watchlist-link {
         display: flex;
         align-items: center;
+        justify-content: center;
         width: 100%;
         padding: calc(8/16)*1em calc(12/16)*1em;
+
+        @media (min-width: v.$bp-tablets) {
+            justify-content: start;
+        }
 
         &:before {
             content: "";
