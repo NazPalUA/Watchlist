@@ -5,17 +5,14 @@ export default function Burger(props) {
 
     const [isOpen, setIsOpen] = React.useState(false)
 
-    // const sidebar = document.getElementById('sidebar')
     React.useEffect(() => {
         const sidebar = document.getElementById('sidebar')
     })
 
     function toggleOpen() {
         setIsOpen(prevState => !prevState)
-        console.log(isOpen)
         sidebar.classList.toggle("open")
     }
-
 
     return (
         <div 

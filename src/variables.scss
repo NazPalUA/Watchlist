@@ -31,40 +31,33 @@ $min-width: 320px;
 
 
 :root {
-    --fs-h1: 2.5rem; //40px
-    --fs-h2: 2.375rem; //38px
-    --fs-h3: 2.25rem; //36px
-    --fs-h4: 2rem; //32px
-    --fs-h5: 1.25rem; //20px
+    --fs-h1: 2rem; //32px
+    --fs-h2: 1.875rem; //30px
+    --fs-h3: 1.75rem; //28px
+    --fs-h4: 1.625rem; //26px
+    --fs-h5: 1rem; //16px
 
-    --fs-extra-big: 1.25rem; //20px
-    --fs-big: 1.125rem; //18px
-    --fs-reg: 1rem; //16px
-    --fs-middle: 0.875rem; //14px
-    --fs-small: 0.625rem; //10px
-}
+    --fs-extra-big: 1rem; //16px
+    --fs-big: 0.9rem; //14.4px
+    --fs-reg: 0.825rem; //13.2px
+    --fs-middle: 0.7rem; //11.2px
+    --fs-small: 0.5rem; //8px
 
+    --header-height: 4.5rem; //72px
 
-@media screen and (max-width: $max-width) {
-    :root {}
-}
-
-@media screen and (max-width: $bp-large) {
-    :root {}
-}
-
-@media screen and (max-width: $bp-laptops) {
-    :root {}
-}
-
-@media screen and (max-width: $bp-tablets) {
-    :root {}
-}
-
-@media screen and (max-width: $bp-mobile) {
-    :root {}
-}
-
-@media screen and (max-width: $min-width) {
-    :root {}
+    @media (min-width: $bp-mobile) {
+        --fs-h1: 2.5rem; //40px
+        --fs-h2: 2.375rem; //38px
+        --fs-h3: 2.25rem; //36px
+        --fs-h4: 2rem; //32px
+        --fs-h5: 1.25rem; //20px
+    
+        --fs-extra-big: 1.25rem; //20px
+        --fs-big: 1.125rem; //18px
+        --fs-reg: 1rem; //16px
+        --fs-middle: 0.875rem; //14px
+        --fs-small: 0.625rem; //10px
+    
+        --header-height: 5rem; //80px
+    }
 }

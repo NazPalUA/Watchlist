@@ -6,7 +6,7 @@ import './MobileHeader.scss'
 export default function MobileHeader(props) {
 
     return (
-        <nav className={`mobile-header ${props.className}`}>
+        <nav className={`mobile-header ${props.className ? props.className : ""}`}>
             <Link to="/" className="mobile-header__logo-link">
                 <h1 className="mobile-header__logo">
                     Watchlists

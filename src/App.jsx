@@ -16,22 +16,28 @@ function App() {
 	return (
 		<div className="app">
 			<header className="app__header">
-				<MobileHeader />
+				<div className="app__container">
+					<MobileHeader />
+				</div>
 			</header>
 			<aside className="app__aside">
-				<Sidebar className="app__sidebar" />
+				<div className="app__container">
+					<Sidebar className="app__sidebar" />
+				</div>
 			</aside>
 			<main className="app__main">
-				<Routes>
-					<Route path="/" element={<HomePage className="app__home-page" />} />
-					<Route path="/history" element={<HistoryPage className="app__history-page" />} />
-					<Route path="/my-lists" element={<MyListsPage className="app__my-lists-page" />} />
-					<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__create-watchlist-page" />} />
-					<Route path="/watchlist-page" element={<WatchlistPage className="app__watchlist-page" />} />
-					<Route path="/movie-page" element={<MoviePage className="app__movie-page" />} />
-					<Route path="/search-results-page" element={<SearchResultsPage className="app__search-results-page" />} />
-					<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__edit-watchlist-page" />} />
-				</Routes>
+				<div className="app__container">
+					<Routes>
+						<Route path="/" element={<HomePage className="app__home-page" />} />
+						<Route path="/history" element={<HistoryPage className="app__history-page" />} />
+						<Route path="/my-lists" element={<MyListsPage className="app__my-lists-page" />} />
+						<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__create-watchlist-page" />} />
+						<Route path="/watchlist-page" element={<WatchlistPage className="app__watchlist-page" />} />
+						<Route path="/movie-page" element={<MoviePage className="app__movie-page" />} />
+						<Route path="/search-results-page" element={<SearchResultsPage className="app__search-results-page" />} />
+						<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__edit-watchlist-page" />} />
+					</Routes>
+				</div>
 			</main>
 
 		</div>
