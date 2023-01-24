@@ -3,53 +3,14 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    box-sizing: border-box;
+
     height: 100%;
-    padding: calc(20/16)*1em calc(40/16)*1em calc(20/16)*1em calc(30/16)*1em;
-    background-color: v.$clr-dark;
-
-    font-family: v.$ff-primary;
-    font-size: var(--fs-reg);
-    font-weight: v.$fw-reg;
-    line-height: 1;
-    color: v.$clr-font-light;
-
-    position: absolute;
-    left: 0;
+    padding: 2em 4%;
     
-    transform: translateX(-100%);
-    transition: transform 0.15s ease-out;
-
-    @media (min-width: v.$bp-tablets) {
-
-    }
-
-    @media (min-width: v.$bp-laptops) {
-        width: 100%;
-        position: static;
-        transform: translateX(0);
-    }
-
-
-    &.open {
-        transform: translateX(0);
-        width: 100vw;
-        @media (min-width: v.$bp-tablets) {
-            width: unset;
-            position: sticky;
-        }
-
-        @media (min-width: v.$bp-laptops) {
-            position: static;
-            transform: translateX(0);
-        }
-    }
 
     &__top {
 
     }
-
 
     &__logo-link {
         display: none;
@@ -150,24 +111,30 @@
     }
 
     &__bottom {
-        position: relative;
-        height: 100%;
+
+        @media (min-width: v.$bp-tablets) {
+            position: relative;
+            height: 100%;
+        }
     }
 
     &__watchlists {
-        position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
         padding: 0;
         margin: 0;
-        overflow-y: auto;
-        
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        &::-webkit-scrollbar {
-            display: none;
+
+        @media (min-width: v.$bp-tablets) {
+            position: absolute;
+            top: 0; bottom: 0; left: 0; right: 0;
+            overflow-y: auto;
+            
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            /* Hide scrollbar for IE, Edge and Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
-        /* Hide scrollbar for IE, Edge and Firefox */
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
     }
 
     &__watchlist-item {

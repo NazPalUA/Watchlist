@@ -20,23 +20,23 @@ function App() {
 					<MobileHeader />
 				</div>
 			</header>
-			<aside className="app__aside">
-				<div className="app__container">
-					<Sidebar className="app__sidebar" />
-				</div>
-			</aside>
 			<main className="app__main">
-				<div className="app__container">
-					<Routes>
-						<Route path="/" element={<HomePage className="app__home-page" />} />
-						<Route path="/history" element={<HistoryPage className="app__history-page" />} />
-						<Route path="/my-lists" element={<MyListsPage className="app__my-lists-page" />} />
-						<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__create-watchlist-page" />} />
-						<Route path="/watchlist-page" element={<WatchlistPage className="app__watchlist-page" />} />
-						<Route path="/movie-page" element={<MoviePage className="app__movie-page" />} />
-						<Route path="/search-results-page" element={<SearchResultsPage className="app__search-results-page" />} />
-						<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__edit-watchlist-page" />} />
-					</Routes>
+				<div className="app__container app__main-wrapper">
+					<section className="app__main-section app__main-section_sidebar" id="sidebar">
+						<Sidebar className="app__sidebar" />
+					</section>
+					<section className="app__main-section app__main-section_page">
+						<Routes>
+							<Route path="/" element={<HomePage className="app__page" />} />
+							<Route path="/history" element={<HistoryPage className="app__page" />} />
+							<Route path="/my-lists" element={<MyListsPage className="app__page" />} />
+							<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
+							<Route path="/watchlist-page" element={<WatchlistPage className="app__page" />} />
+							<Route path="/movie-page" element={<MoviePage className="app__page" />} />
+							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" />} />
+							<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__page" />} />
+						</Routes>
+					</section>
 				</div>
 			</main>
 

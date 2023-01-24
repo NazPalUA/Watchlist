@@ -5,7 +5,7 @@ import './Sidebar.scss'
 export default function Sidebar(props) {
 
     return (
-        <div className={`sidebar ${props.className}`} id="sidebar">
+        <div className={`sidebar ${props.className}`}>
             <div className="sidebar__top">
                 <Link to="/" className="sidebar__logo-link">
                     <h1 className="sidebar__logo">
