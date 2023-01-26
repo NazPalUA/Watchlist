@@ -112,17 +112,17 @@
 
     &__bottom {
 
-        @media (min-width: v.$bp-tablets) {
+        // @media (min-width: v.$bp-tablets) {
             position: relative;
             height: 100%;
-        }
+        // }
     }
 
     &__watchlists {
         padding: 0;
         margin: 0;
 
-        @media (min-width: v.$bp-tablets) {
+        // @media (min-width: v.$bp-tablets) {
             position: absolute;
             top: 0; bottom: 0; left: 0; right: 0;
             overflow-y: auto;
@@ -134,7 +134,7 @@
             /* Hide scrollbar for IE, Edge and Firefox */
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
-        }
+        // }
     }
 
     &__watchlist-item {

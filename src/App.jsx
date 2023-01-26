@@ -21,7 +21,7 @@ function App() {
 				</div>
 			</header>
 			<main className="app__main">
-				<div className="app__container app__main-wrapper">
+				<div className="app__container app__main-wrapper" id="container">
 					<section className="app__main-section app__main-section_sidebar" id="sidebar">
 						<Sidebar className="app__sidebar" />
 					</section>

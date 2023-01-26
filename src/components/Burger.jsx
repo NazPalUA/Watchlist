@@ -7,11 +7,16 @@ export default function Burger(props) {
 
     React.useEffect(() => {
         const sidebar = document.getElementById('sidebar')
-    })
+    }, [])
+
+
 
     function toggleOpen() {
         setIsOpen(prevState => !prevState)
         sidebar.classList.toggle("open")
+        sidebar.parentElement.classList.toggle("open")
+        sidebar.firstChild.classList.toggle("open")
+        
     }
 
     return (
