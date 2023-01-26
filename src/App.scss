@@ -4,10 +4,11 @@ $sidebar-width: 300px;
 $sidebar-transition-duration: 0.3s;
 $sidebar-timing-function: ease;
 
+// $cnt-width-pr:
+
 .app {
     max-width: v.$max-width;
     min-width: v.$min-width;
-    
     width: 100%;
     margin: 0 auto;
 
@@ -20,7 +21,6 @@ $sidebar-timing-function: ease;
     }
 
     &__main {
-        position: relative;
         min-height: calc(100vh - var(--header-height));
         background-color: rgb(v.$clr-light, 0.13);
 
@@ -35,6 +35,7 @@ $sidebar-timing-function: ease;
     }
 
     &__main-wrapper {
+
         @media (min-width: v.$bp-tablets) {
             display: grid;
             grid-template: 1fr / 0 auto;
@@ -46,6 +47,9 @@ $sidebar-timing-function: ease;
                 grid-template: 1fr / calc($sidebar-width) auto;
             }
         }
+    }
+
+    &__main-wrapper, &__main-wrapper.open {
 
         @media (min-width: v.$bp-laptops) {
             grid-template: 1fr / min-content auto;
@@ -54,8 +58,6 @@ $sidebar-timing-function: ease;
         @media (min-width: v.$bp-large) {
             grid-template: 1fr / minmax(min-content, 25%) auto;
         }
-
-        // overflow-x: hidden;
     }
 
     &__main-section {
@@ -64,31 +66,29 @@ $sidebar-timing-function: ease;
 
     &__main-section_sidebar {
         background-color: v.$clr-dark;
+
         position: absolute;
-        left: 0;
-        top: 0;
-
-        height: calc(100vh - var(--header-height));
-
         width: 100vw;
-        
+        height: calc(100vh - var(--header-height));
+        top: var(--header-height);
+        left: 0;
         transform: translateX(-100%);
+
         transition: transform $sidebar-transition-duration $sidebar-timing-function;
         
         @media (min-width: v.$bp-tablets) {
-            background-color: unset;
-            height: calc(100vh - var(--header-height));
-            width: unset;
+            background-color: inherit;
+
             position: sticky;
-            top: var(--header-height);
+            width: 100%;
+
             transform: translateX(0);
         }
 
         @media (min-width: v.$bp-laptops) {
+            position: sticky;
             top: 0;
             height: 100vh;
-            position: sticky;
-            transform: translateX(0);
         }
 
         &.open {
@@ -97,42 +97,42 @@ $sidebar-timing-function: ease;
     }
 
     &__sidebar {
-
         height: 100%;
+        padding: 2em 4vw;
 
         @media (min-width: v.$bp-tablets) {
+            
             position: absolute;
-            background-color: v.$clr-dark;
+            top: 0;
+            left: -2vw;
             width: $sidebar-width;
-            transform: translateX(calc(-4vw - 100%));
-            transition: transform $sidebar-transition-duration $sidebar-timing-function;
-            padding-left: 4vw !important;
-            padding-right: 4vw !important;
-            left: -4vw;
-        }
+            transform: translateX(calc(-2vw - 100%));
 
-        &.open {
-            @media (min-width: v.$bp-tablets) {
-                
-                transform: translateX(0);
-                top: 0;
-                // left: -4vw;
-                
-            }
+            transition: transform $sidebar-transition-duration $sidebar-timing-function;
+            background-color: v.$clr-dark;
         }
 
         @media (min-width: v.$bp-laptops) {
             transform: translateX(-4vw);
-            top: 0;
             position: static;
-            width: unset;
+            width: 100%;
+        }
+
+        &.open {
+            @media (min-width: v.$bp-tablets) {
+                transform: translateX(-2vw);                
+            }
+
+            @media (min-width: v.$bp-laptops) {
+                transform: translateX(-4vw);                
+            }
         }
     }
 
     &__main-section_page {
         padding: 2em 0;
-        transition: transform $sidebar-transition-duration $sidebar-timing-function;
         transform: translateX(0);
+        transition: transform $sidebar-transition-duration $sidebar-timing-function;
         
     }
     

@@ -19,13 +19,7 @@
     }
     
     &__list {
-        margin: 0;
-        padding: 0;
-        width: 100%;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 30px;
     }
     
     &__item {

@@ -45,7 +45,7 @@ export default function WatchlistPage(props) {
             <h5 className="movie-page__section-title">
                 Cast
             </h5>
-            <ul className="movie-page__list">
+            <ul className="movie-page__list card-grid">
                 <li className="movie-page__list-item">
                     <ActorCard className="movie-page__card"/>
                 </li>
@@ -59,7 +59,7 @@ export default function WatchlistPage(props) {
             <h5 className="movie-page__section-title movie-page__section-title_movies">
                 Related Movies
             </h5>
-            <ul className="movie-page__list">
+            <ul className="movie-page__list card-grid">
                 <li className="movie-page__list-item">
                     <Link to="/movie-page" className="movie-page__link">
                         <MovieCard className="movie-page__card" />

@@ -48,7 +48,7 @@ export default function WatchlistPage(props) {
                     </p>
                 </li>
             </ul>
-            <ul className="watchlist-page__movie-list">
+            <ul className="watchlist-page__movie-list card-grid">
                 <li className="watchlist-page__movie-item">
                     <Link to="/movie-page" className="watchlist-page__link">
                         <MovieCard className="watchlist-page__movie-card" />
