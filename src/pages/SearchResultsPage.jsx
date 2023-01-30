@@ -9,7 +9,7 @@ export default function SearchResultsPage(props) {
             <h4 className="search-results-page__header">
                 Search Results: movies by Tom Cruise
             </h4>
-            <ul className="search-results-page__list">
+            <ul className="search-results-page__list card-grid">
                 <li className="search-results-page__item">
                     <Link to="/movie-page" className="search-results-page__link">
                         <MovieCard className="search-results-page__movie-card" />
