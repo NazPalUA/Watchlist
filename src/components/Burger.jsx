@@ -13,10 +13,7 @@ export default function Burger(props) {
 
     function toggleOpen() {
         setIsOpen(prevState => !prevState)
-        sidebar.classList.toggle("open")
-        sidebar.parentElement.classList.toggle("open")
-        sidebar.firstChild.classList.toggle("open")
-        
+        document.body.classList.toggle("open")
     }
 
     return (
