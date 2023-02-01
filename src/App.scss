@@ -32,6 +32,14 @@ $sidebar-timing-function: ease;
     &__container {
         width: 92%;
         margin: 0 auto;
+
+        @media (min-width: v.$bp-tablets) {
+            width: 94%;
+        }
+
+        @media (min-width: v.$bp-large) {
+            width: 96%;
+        }
     }
 
     &__main-wrapper {
@@ -103,7 +111,8 @@ $sidebar-timing-function: ease;
         padding: 2em 4vw;
 
         @media (min-width: v.$bp-tablets) {
-            
+            padding: 2em 3vw;
+
             position: absolute;
             top: 0;
             left: -2vw;
@@ -115,20 +124,25 @@ $sidebar-timing-function: ease;
         }
 
         @media (min-width: v.$bp-laptops) {
-            transform: translateX(-4vw);
+            transform: translateX(-3vw);
             position: static;
             width: 100%;
+        }
+
+        @media (min-width: v.$bp-large) {
+            padding: 2em 2vw;
+            transform: translateX(-2vw);
         }
 
     }
 
     body.open &__sidebar {
         @media (min-width: v.$bp-tablets) {
-            transform: translateX(-2vw);                
+            transform: translateX(-1.5vw);                
         }
 
         @media (min-width: v.$bp-laptops) {
-            transform: translateX(-4vw);                
+            transform: translateX(-2vw);                
         }
     }
 
@@ -145,9 +159,16 @@ $sidebar-timing-function: ease;
         z-index: -1;
         
         @media (min-width: v.$bp-tablets) {
+            left: 3vw;
+            width: 94vw;
             position: static;
             z-index: 1;
             width: 100%;
+        }
+
+        @media (min-width: v.$bp-large) {
+            left: 2vw;
+            width: 96vw;
         }
     }
 
