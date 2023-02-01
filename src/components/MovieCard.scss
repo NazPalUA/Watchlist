@@ -1,15 +1,8 @@
 @use '../variables' as v;
 
 .movie-card {
-    // width: 150px;
     border-radius: 4px;
     background-color: v.$clr-semi-dark;
-
-    font-family: v.$ff-primary;
-    font-size: var(--fs-reg);
-    font-weight: v.$fw-reg;
-    line-height: 1;
-    color: v.$clr-font-light;
 
     &__poster {
         width: 100%;

@@ -6,11 +6,6 @@
     border-radius: 8px;
     background: rgba(v.$clr-semi-light, 0.1);
 
-    font-family: v.$ff-primary;
-    font-weight: v.$fw-reg;
-    line-height: 1;
-    color: v.$clr-font-light;
-
     &__title {
         margin: 0 0 calc(35/40)*1em;
         font-size: var(--fs-h1);

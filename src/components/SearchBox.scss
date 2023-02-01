@@ -8,11 +8,6 @@
     border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;
 
-    font-family: v.$ff-primary;
-    font-size: var(--fs-reg);
-    font-weight: v.$fw-reg;
-    line-height: 1;
-
     &::before {
         content: "";
         display: inline-block;
@@ -29,7 +24,7 @@
         width: 100%;
         border: none;
         outline: none;
-        color: v.$clr-font-light;
+        color: inherit;
         background-color: initial;
 
         &::placeholder {
