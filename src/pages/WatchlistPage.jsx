@@ -1,10 +1,25 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
 
 export default function WatchlistPage(props) {
+
+    const watchList = []
+    for (let i = 0; i<15; i++) {
+        watchList.push(
+            <li className="watchlist-page__movie-item"
+                key={nanoid()}
+            >
+                <Link to="/movie-page" className="watchlist-page__link">
+                    <MovieCard className="watchlist-page__movie-card" />
+                </Link>
+            </li>
+        )
+    }
+
     return (
         <div className={`watchlist-page ${props.className}`}>
             <div className="watchlist-page__header-container">
@@ -49,47 +64,7 @@ export default function WatchlistPage(props) {
                 </li>
             </ul>
             <ul className="watchlist-page__movie-list card-grid">
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
-
-                <li className="watchlist-page__movie-item">
-                    <Link to="/movie-page" className="watchlist-page__link">
-                        <MovieCard className="watchlist-page__movie-card" />
-                    </Link>
-                </li>
+                {watchList}
             </ul>
         </div>
     )
