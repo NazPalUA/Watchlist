@@ -1,14 +1,18 @@
 @use '../variables' as v;
 
 .welcome {
-    padding: calc(20/16)*1em;
+    padding: 1.25em;
     border: 1px solid v.$clr-accent-dark;
     border-radius: 8px;
     background: rgba(v.$clr-semi-light, 0.1);
 
     &__title {
-        margin: 0 0 calc(35/40)*1em;
-        font-size: var(--fs-h1);
+        margin: 0 0 0.5em;
+        font-size: calc(0.9*var(--fs-h1));
+
+        @media (min-width: 340px) {font-size: var(--fs-h1);}
+        @media (min-width: v.$bp-mobile) {font-size: calc(0.9*var(--fs-h1));}
+        @media (min-width: 500px) {font-size: var(--fs-h1);}
     }
 
     &__title span {
@@ -21,21 +25,19 @@
     }
 
     &__paragraph_2 {
-        display: flex;
-        flex-wrap: wrap;
-        
-        margin-top: calc(16/20)*1em;
+        margin-top: 0.8em;
     }
 
     &__add-icon, &__watched-icon {
-        margin: 0 calc(5/20)*1em;
+        margin: 0 0.25em;
+        vertical-align: middle;
     }
 
     &__add-icon {
-        height: calc(35/20)*1em;
+        height: 1.75em;
     }
 
     &__watched-icon {
-        height: calc(25/20)*1em;
+        height: 1.25em;
     }
 }
