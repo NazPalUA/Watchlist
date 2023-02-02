@@ -1,10 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import ActorCard from "../components/ActorCard"
 import './MoviePage.scss'
 
-export default function WatchlistPage(props) {
+export default function MoviePage(props) {
+
+    const castList = []
+    for (let i = 0; i<8; i++) {
+        castList.push(
+            <li className="movie-page__list-item"
+                key={nanoid()}
+            >
+                <ActorCard className="movie-page__card"/>
+            </li>
+        )
+    }
+
+    const relatedList = []
+    for (let i = 0; i<10; i++) {
+        relatedList.push(
+            <li className="movie-page__list-item"
+                key={nanoid()}
+            >
+                <Link to="/movie-page" className="movie-page__link">
+                    <MovieCard className="movie-page__card" />
+                </Link>
+            </li>
+        )
+    }
 
     return (
         <div className={`movie-page ${props.className}`}>
@@ -46,50 +71,13 @@ export default function WatchlistPage(props) {
                 Cast
             </h5>
             <ul className="movie-page__list card-grid">
-                <li className="movie-page__list-item">
-                    <ActorCard className="movie-page__card"/>
-                </li>
-                <li className="movie-page__list-item">
-                    <ActorCard className="movie-page__card"/>
-                </li>
-                <li className="movie-page__list-item">
-                    <ActorCard className="movie-page__card"/>
-                </li>
+                {castList}
             </ul>
             <h5 className="movie-page__section-title movie-page__section-title_movies">
                 Related Movies
             </h5>
             <ul className="movie-page__list card-grid">
-                <li className="movie-page__list-item">
-                    <Link to="/movie-page" className="movie-page__link">
-                        <MovieCard className="movie-page__card" />
-                    </Link>
-                </li>
-
-                <li className="movie-page__list-item">
-                    <Link to="/movie-page" className="movie-page__link">
-                        <MovieCard className="movie-page__card" />
-                    </Link>
-                </li>
-
-                <li className="movie-page__list-item">
-                    <Link to="/movie-page" className="movie-page__link">
-                        <MovieCard className="movie-page__card" />
-                    </Link>
-                </li>
-
-                <li className="movie-page__list-item">
-                    <Link to="/movie-page" className="movie-page__link">
-                        <MovieCard className="movie-page__card" />
-                    </Link>
-                </li>
-
-                <li className="movie-page__list-item">
-                    <Link to="/movie-page" className="movie-page__link">
-                        <MovieCard className="movie-page__card" />
-                    </Link>
-                </li>
-
+                {relatedList}
             </ul>
         </div>
     )
