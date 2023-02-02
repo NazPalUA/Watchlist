@@ -6,50 +6,50 @@
     &__header-container {
         display: flex;
         align-items: center;
-        margin-bottom: calc(26/16)*1em;
+        margin-bottom: 1.6em;
     }
 
     &__header {
         font-size: var(--fs-h2);
         margin: 0;
-        margin-right: calc(50/38)*1em;
+        margin-right: 1.3em;
     }
 
     &__edit {
         padding: 0;
         border: 0;
-        transform: translateY(calc(4/16)*1em);
+        transform: translateY(0.25em);
     }
 
     &__edit-icon {
-        width: calc(25/16)*1em;
+        width: 1.55em;
     }
 
     &__about-title {
         font-size: var(--fs-h5);
         margin: 0;
-        margin-bottom: calc(10/20)*1em;
+        margin-bottom: 0.5em;
     }
 
     &__about {
         font-weight: v.$fw-reg;
         margin: 0;
-        margin-bottom: calc(70/16)*1em;
+        margin-bottom: 4em;
     }
 
     &__boxes-container {
         list-style: none;
         display: flex;
         margin: 0;
-        margin-bottom: calc(70/16)*1em;
+        margin-bottom: 4em;
         padding: 0;
     }
 
     &__box {
-        padding: calc(15/16)*1em;
+        padding: 1em;
         border: 1px solid v.$clr-accent-dark;
         border-radius: 8px;
-        margin-right: calc(40/16)*1em;
+        margin-right: 2.5em;
         background: rgba(v.$clr-font-dark, 0.1);
     }
 

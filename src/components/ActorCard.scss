@@ -9,13 +9,13 @@
     }
 
     &__name {
-        margin: calc(12/16)*1em 0 calc(12/16)*1em;
-        padding: 0 calc(12/16)*1em 0 calc(12/16)*1em;
+        margin: 0.75em 0 0.75em;
+        padding: 0 0.75em 0 0.75em;
     }
 
     &__role {
         font-size: var(--fs-middle);
-        margin: calc(12/16)*1em 0 0;
-        padding: 0 calc(12/16)*1em calc(12/16)*1em;
+        margin: 0.75em 0 0;
+        padding: 0 0.75em 0.75em;
     }
 }

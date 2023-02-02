@@ -12,33 +12,33 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        margin-right: calc(5/16)*1em;
-        margin-top: calc(5/16)*1em;
+        margin-right: 0.3em;
+        margin-top: 0.3em;
     }
 
     &__smile {
-        width: calc(21/16)*1rem;
+        width: 1.3rem;
     }
 
     &__rating {
         display: flex;
         align-items: flex-start;
-        margin-left: calc(5/16)*1em;
+        margin-left: 0.3em;
     }
 
     &__max-rating {
         font-size: var(--fs-small);
-        margin-left: calc(1/10)*1em;
+        margin-left: 0.1em;
     }
 
     &__title {
-        margin: calc(5/16)*1em 0 0;
-        padding: 0 calc(10/16)*1em;
+        margin: 0.3em 0 0;
+        padding: 0 0.625em;
     }
 
     &__year {
         font-weight: v.$fw-light;
         margin: 0;
-        padding: 0 calc(10/16)*1em calc(10/16)*1em;
+        padding: 0 0.625em 0.625em;
     }
 }

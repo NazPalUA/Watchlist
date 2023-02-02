@@ -3,7 +3,7 @@
 .create-watchlist-page {
 
     &__title {
-        margin: 0 0 calc(50/32)*1em;
+        margin: 0 0 1.5em;
 
         font-size: var(--fs-h4);
         font-weight: v.$fw-reg;;
@@ -20,7 +20,7 @@
     &__label {
         font-size: var(--fs-big);
         font-weight: v.$fw-bold;
-        margin-bottom: calc(5/18)*1em;
+        margin-bottom: 0.3em;
     }
 
     &__name, &__description {
@@ -31,7 +31,7 @@
         border: 1px solid v.$clr-font-light;
         border-radius: 6px;
         background-color: unset;
-        margin-bottom: calc(30/20)*1em;
+        margin-bottom: 1.5em;
     }
 
     &__name {
@@ -40,7 +40,7 @@
 
     &__description {
         resize: none;
-        height: 126px;
+        height: 7em;
     }
 
     &__btn {
@@ -48,7 +48,7 @@
         font-weight: v.$fw-bold;
         color: v.$clr-font-black;
 
-        padding: calc(10/18)*1em calc(55/18)*1em;
+        padding: 0.6em 3em;
         background: v.$clr-accent;
         border: none;
         border-radius: 6px;

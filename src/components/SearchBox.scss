@@ -4,15 +4,15 @@
     display: flex;
     align-items: center;
     justify-content: stretch;
-    padding: 0 0 0 calc(12/16)*1em;
+    padding: 0 0 0 0.75em;
     border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;
 
     &::before {
         content: "";
         display: inline-block;
-        height: calc(21/16)*1rem;
-        width: calc(21/16)*1rem;
+        height: 1.3rem;
+        width: 1.3rem;
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -34,7 +34,7 @@
     }
 
     &__button {
-        padding: calc(13/16)*1em calc(22/16)*1em;
+        padding: 0.8em 1.4em;
         border-radius: 6px;
         background: v.$clr-accent;
         color: v.$clr-dark;
