@@ -3,30 +3,26 @@
 .edit-watchlist-page {
 
     &__top {
-        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        margin-bottom: calc(50/16)*1em;
+        width: 100%;
+        margin-bottom: 3em;
     }
 
     &__header {
-        margin: 0;
-
         font-size: var(--fs-h4);
-        font-weight: v.$fw-reg;
+        margin: 0;
     }
 
     &__delete-btn {
-        font-size: var(--fs-reg);
-        font-weight: v.$fw-bold;
-        text-decoration: underline;
-        color: v.$clr-accent;
-
-        background-color: inherit;
         padding: 0;
         border: 0;
+        
+        text-decoration: underline;
+        color: v.$clr-accent;
+        background-color: inherit;
 
         &:hover {
             text-shadow: v.$clr-accent-dark 1px 0 5px;
@@ -44,7 +40,7 @@
     &__label {
         font-size: var(--fs-big);
         font-weight: v.$fw-bold;
-        margin-bottom: calc(5/18)*1em;
+        margin-bottom: 0.3em;
     }
 
     &__name, &__description {
@@ -54,8 +50,8 @@
         padding: 0.5em 1em;
         border: 1px solid v.$clr-font-light;
         border-radius: 6px;
+        margin-bottom: 1.5em;
         background-color: unset;
-        margin-bottom: calc(30/20)*1em;
     }
 
     &__name {
@@ -64,36 +60,36 @@
 
     &__description {
         resize: none;
-        height: 126px;
+        height: 7em;
     }
 
     &__movies-title {
         font-size: var(--fs-big);
         font-weight: v.$fw-bold;
 
-        margin-bottom: calc(5/18)*1em;
+        margin-bottom: 0.3em;
     }
 
     &__movies-list {
         margin: 0;
         padding: 0;
         list-style: none;
-        margin-bottom: calc(40/16)*1em;
+        margin-bottom: 2.5em;
     }
 
     &__movies-item {
         display: flex;
         align-items: center;
 
-        height: calc(75/16)*1em;
+        height: 5em;
         border: 1px solid v.$clr-font-light;
         border-radius: 4px;
-        margin-bottom: calc(10/16)*1em;
+        margin-bottom: 0.8em;
     }
 
     &__movie-img {
         max-height: 100%;
-        margin-right: calc(15/16)*1em;
+        margin-right: 1em;
     }
 
     &__movie-name {
@@ -106,8 +102,8 @@
 
     &__movie-remove-btn {
         margin-left: auto;
-        margin-right: calc(15/16)*1em;
-        padding: calc(11/16)*1em calc(10/16)*1em;
+        margin-right: 1em;
+        padding: 0.65em;
         border: 1px solid v.$clr-accent;
         border-radius: 4px;
         background-color: inherit;
@@ -115,7 +111,13 @@
 
     &__btns-container {
         display: flex;
-        gap: calc(15/16)*1em;
+        gap: 1em;
+
+        justify-content: space-between;
+
+        @media (min-width: v.$bp-mobile) {
+            justify-content: flex-start;
+        }
     }
 
     &__btn {
@@ -123,10 +125,16 @@
         font-weight: v.$fw-bold;
         color: v.$clr-font-black;
 
-        padding: calc(10/18)*1em calc(100/18)*1em;
+        width: 48%;
+        padding: 1em 2em;
         background: v.$clr-accent;
         border: none;
         border-radius: 6px;
+
+        @media (min-width: v.$bp-mobile) {
+            width: unset;
+            padding: 0.6em 4em;
+        }
     }
 
     &__btn_dark {
