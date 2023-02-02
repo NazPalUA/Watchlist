@@ -47,11 +47,11 @@
         justify-content: space-between;
         gap: 1em;
 
-        @media (min-width: v.$bp-mobile) {
-            gap: 1.5em;
+        @media (min-width: v.$bp-tablets) {
+            gap: 1.2em;
         }
 
-        @media (min-width: v.$bp-tablets) {
+        @media (min-width: v.$bp-laptops) {
             gap: 2em;
         }
     }
@@ -66,6 +66,10 @@
     body.open &__boxes-container {
         @media (min-width: v.$bp-tablets) {
             justify-content: space-between;
+        }
+
+        @media (min-width: v.$bp-laptops) {
+            justify-content:  flex-start;
         }
     }
 
