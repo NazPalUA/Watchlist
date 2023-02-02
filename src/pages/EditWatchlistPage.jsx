@@ -1,4 +1,5 @@
 import React from "react"
+import { nanoid } from "nanoid"
 import './EditWatchlistPage.scss'
 
 export default function EditWatchlistPage(props) {
@@ -24,6 +25,21 @@ export default function EditWatchlistPage(props) {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
+    }
+
+    const moviesList = []
+    for (let i = 0; i<15; i++) {
+        moviesList.push(
+            <li className="edit-watchlist-page__movies-item"
+                key={nanoid()}
+            >
+                <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
+                <p className="edit-watchlist-page__movie-name">
+                    Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
+                </p>
+                <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
+            </li>
+        )
     }
 
     return (
@@ -61,34 +77,7 @@ export default function EditWatchlistPage(props) {
                 />
                 <strong className="edit-watchlist-page__movies-title">Movies</strong>
                 <ul className="edit-watchlist-page__movies-list">
-                    <li className="edit-watchlist-page__movies-item">
-                        <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
-                        <p className="edit-watchlist-page__movie-name">
-                            Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
-                        </p>
-                        <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
-                    </li>
-                    <li className="edit-watchlist-page__movies-item">
-                        <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
-                        <p className="edit-watchlist-page__movie-name">
-                            Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
-                        </p>
-                        <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
-                    </li>
-                    <li className="edit-watchlist-page__movies-item">
-                        <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
-                        <p className="edit-watchlist-page__movie-name">
-                            Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
-                        </p>
-                        <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
-                    </li>
-                    <li className="edit-watchlist-page__movies-item">
-                        <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
-                        <p className="edit-watchlist-page__movie-name">
-                            Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
-                        </p>
-                        <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
-                    </li>
+                    {moviesList}
                 </ul>
                 <div className="edit-watchlist-page__btns-container">
                     <button className="edit-watchlist-page__btn">Save</button>
