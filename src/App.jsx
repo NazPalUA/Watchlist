@@ -1,3 +1,4 @@
+import React from "react"
 import './App.scss'
 import { Routes, Route } from "react-router-dom"
 import HomePage from './pages/HomePage'
@@ -10,8 +11,13 @@ import MyListsPage from './pages/MyListsPage'
 import MoviePage from './pages/MoviePage'
 import Sidebar from './components/Sidebar'
 import MobileHeader from './components/MobileHeader'
+import Modal from './components/Modal'
+import AddToWatchlist from './components/AddToWatchlist'
+
 
 function App() {
+
+	const [modalActive, setModalActive] = React.useState(true)
 
 	return (
 		<div className="app">
@@ -27,7 +33,7 @@ function App() {
 					</section>
 					<section className="app__main-section app__main-section_page">
 						<Routes>
-							<Route path="/" element={<HomePage className="app__page" />} />
+							<Route path="/" element={<HomePage className="app__page" setModalActive={setModalActive}/>} />
 							<Route path="/history" element={<HistoryPage className="app__page" />} />
 							<Route path="/my-lists" element={<MyListsPage className="app__page" />} />
 							<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
@@ -39,7 +45,9 @@ function App() {
 					</section>
 				</div>
 			</main>
-
+			<Modal active={modalActive} setActive={setModalActive}>
+				<AddToWatchlist />
+			</Modal>
 		</div>
 	)
 }

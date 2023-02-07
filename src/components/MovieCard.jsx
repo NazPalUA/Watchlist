@@ -10,7 +10,11 @@ function MovieCard(props) {
     return (
         <div className={`movie-card ${props.className}`}>
             {props.addBtn && 
-                <button className="movie-card__add-btn"></button>
+                <button className="movie-card__add-btn" onClick={e=>{
+                    e.preventDefault()
+                    e.stopPropagation()
+                    props.setModalActive(true)
+                }}></button>
             }
             <img 
                 className="movie-card__poster"
