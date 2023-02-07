@@ -14,7 +14,7 @@ export default function WatchlistPage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="watchlist-page__link">
-                    <MovieCard className="watchlist-page__movie-card" />
+                    <MovieCard className="watchlist-page__movie-card" addBtn={false} />
                 </Link>
             </li>
         )

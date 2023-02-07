@@ -5,13 +5,13 @@ import awfulIcon from "../images/awful_icon.svg"
 import ribbon_icon from "../images/ribbon_icon.svg"
 import './MovieCard.scss'
 
-export default function MovieCard(props) {
+function MovieCard(props) {
 
     return (
         <div className={`movie-card ${props.className}`}>
-            <btn 
-                className="movie-card__add-btn">
-            </btn>
+            {props.addBtn && 
+                <button className="movie-card__add-btn"></button>
+            }
             <img 
                 className="movie-card__poster"
                 src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"
@@ -40,3 +40,10 @@ export default function MovieCard(props) {
         </div>
     )
 }
+
+MovieCard.defaultProps = {
+    className: "",
+    addBtn: true
+}
+    
+export default MovieCard
