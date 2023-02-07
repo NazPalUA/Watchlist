@@ -3,6 +3,30 @@
 .movie-card {
     border-radius: 4px;
     background-color: v.$clr-semi-dark;
+    position: relative;
+
+    &__add-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 52.5px;
+
+        background-image: url("../images/ribbon_icon.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        transition: background-image 0.1s ease-in-out;
+
+        @media (min-width: v.$bp-laptops) {
+            width: 24px;
+            height: 35px;
+        }
+
+        &:hover {
+            background-image: url("../images/ribbon_light_icon.svg");
+        }
+    }
 
     &__poster {
         width: 100%;

@@ -2,12 +2,16 @@ import React from "react"
 import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
+import ribbon_icon from "../images/ribbon_icon.svg"
 import './MovieCard.scss'
 
 export default function MovieCard(props) {
 
     return (
         <div className={`movie-card ${props.className}`}>
+            <btn 
+                className="movie-card__add-btn">
+            </btn>
             <img 
                 className="movie-card__poster"
                 src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"
