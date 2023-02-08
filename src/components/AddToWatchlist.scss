@@ -1,0 +1,37 @@
+@use '../variables' as v;
+
+.add-to-list {
+
+    &__btn-container {
+        margin-top: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (min-width: v.$bp-tablets) {
+            justify-content: flex-start;
+            gap: 1em;
+        }
+    }
+
+    &__btn {
+        color: black;
+        width: 48%;
+        padding: 0.5em 1em;
+        background-color: v.$clr-accent;
+        border: none;
+        border-radius: 5px;
+
+        transition: background-color 0.15s;
+
+        @media (min-width: v.$bp-tablets) {
+            width: auto;
+            padding: 0.8em 3em;
+        }
+
+        &:hover {
+            background-color: rgba(v.$clr-accent, 0.6);
+        }
+    }
+
+}

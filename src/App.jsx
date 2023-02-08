@@ -17,7 +17,7 @@ import AddToWatchlist from './components/AddToWatchlist'
 
 function App() {
 
-	const [modalActive, setModalActive] = React.useState(true)
+	const [modalActive, setModalActive] = React.useState(false)
 
 	return (
 		<div className="app">
@@ -46,7 +46,7 @@ function App() {
 				</div>
 			</main>
 			<Modal active={modalActive} setActive={setModalActive}>
-				<AddToWatchlist />
+				<AddToWatchlist setModalActive={setModalActive} />
 			</Modal>
 		</div>
 	)
