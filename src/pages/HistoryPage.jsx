@@ -13,7 +13,7 @@ export default function HistoryPage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="history-page__link">
-                    <MovieCard className="history-page__movie-card" />
+                    <MovieCard className="history-page__movie-card" setModalActive={props.setModalActive} />
                 </Link>
             </li>
         )

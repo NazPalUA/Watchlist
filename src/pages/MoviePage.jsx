@@ -25,7 +25,7 @@ export default function MoviePage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="movie-page__link">
-                    <MovieCard className="movie-page__card" />
+                    <MovieCard className="movie-page__card" setModalActive={props.setModalActive} />
                 </Link>
             </li>
         )

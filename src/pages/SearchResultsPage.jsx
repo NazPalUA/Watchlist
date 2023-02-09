@@ -13,7 +13,7 @@ export default function SearchResultsPage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="search-results-page__link">
-                    <MovieCard className="search-results-page__movie-card" />
+                    <MovieCard className="search-results-page__movie-card" setModalActive={props.setModalActive} />
                 </Link>
             </li>
         )

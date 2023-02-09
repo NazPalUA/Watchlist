@@ -33,13 +33,13 @@ function App() {
 					</section>
 					<section className="app__main-section app__main-section_page">
 						<Routes>
-							<Route path="/" element={<HomePage className="app__page" setModalActive={setModalActive}/>} />
-							<Route path="/history" element={<HistoryPage className="app__page" />} />
+							<Route path="/" element={<HomePage className="app__page" setModalActive={setModalActive} />} />
+							<Route path="/history" element={<HistoryPage className="app__page" setModalActive={setModalActive} />} />
 							<Route path="/my-lists" element={<MyListsPage className="app__page" />} />
 							<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
 							<Route path="/watchlist-page" element={<WatchlistPage className="app__page" />} />
-							<Route path="/movie-page" element={<MoviePage className="app__page" />} />
-							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" />} />
+							<Route path="/movie-page" element={<MoviePage className="app__page" setModalActive={setModalActive} />} />
+							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" setModalActive={setModalActive} />} />
 							<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__page" />} />
 						</Routes>
 					</section>
