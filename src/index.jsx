@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom"
+import { WatchlistsContextProvider } from './context/WatchlistsContext'
 import App from './App'
 import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <WatchlistsContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </WatchlistsContextProvider>
   </React.StrictMode>,
 )
