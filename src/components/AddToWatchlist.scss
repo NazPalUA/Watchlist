@@ -2,11 +2,17 @@
 
 .add-to-list {
 
+    &__top-text {
+        color: black;
+        font-size: var(--fs-big);
+    }
+
     &__btn-container {
-        margin-top: 1em;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        
+        margin-top: 1em;
 
         @media (min-width: v.$bp-tablets) {
             justify-content: flex-start;
@@ -15,18 +21,20 @@
     }
 
     &__btn {
-        color: black;
         width: 48%;
         padding: 0.5em 1em;
-        background-color: v.$clr-accent;
         border: none;
         border-radius: 5px;
-
+        background-color: v.$clr-accent;
+        
+        font-size: var(--fs-big);
+        color: v.$clr-font-black;
+        
         transition: background-color 0.15s;
 
         @media (min-width: v.$bp-tablets) {
             width: auto;
-            padding: 0.8em 3em;
+            padding: 0.6em 3em;
         }
 
         &:hover {

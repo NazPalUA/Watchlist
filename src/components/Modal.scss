@@ -25,10 +25,13 @@
         padding: 20px;
         border-radius: 12px;
         background-color: #fff;
-        width: 75vw;
+        width: 85vw;
 
         transform: scale(0.5);
         transition: 0.4s all;
+
+        @media (min-width: v.$bp-mobile) {width: 75vw;}
+        @media (min-width: v.$bp-tablets) {width: 700px;}
 
         &.active {
             transform: scale(1);

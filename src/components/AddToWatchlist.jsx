@@ -74,7 +74,7 @@ export default function AddToWatchlist(props) {
     }
     return(
         <div className="add-to-list">
-            <p style={{color: "black"}}>Select Watchlist(s)</p>
+            <p className="add-to-list__top-text">Select Watchlist(s)</p>
             <Select
                 defaultValue={watchlistsArr[0]}
                 options={watchlistsArr}
