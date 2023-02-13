@@ -1,13 +1,18 @@
-import React from "react"
+import React, { useContext, useEffect, useState }  from "react"
+import { WatchlistsContext } from "../context/WatchlistsContext"
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 import { nanoid } from "nanoid"
 import './EditWatchlistPage.scss'
 
 export default function EditWatchlistPage(props) {
 
+    const {watchlistsArr, getActiveWatchlist, deleteWatchlist, editWatchlist} = useContext(WatchlistsContext)
+    const navigate = useNavigate()
     const [formData, setFormData] = React.useState(
         {
-            name: "", 
-            description: ""
+            name: getActiveWatchlist().name, 
+            description: getActiveWatchlist().description
         }
     )
     
@@ -25,6 +30,14 @@ export default function EditWatchlistPage(props) {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
+        editWatchlist(formData.name, formData.description)
+        navigate("/watchlist-page")
+    }
+
+    function deleteCurrentWatchlist() {
+        deleteWatchlist(getActiveWatchlist().id)
+        console.log(watchlistsArr.length)
+        watchlistsArr.length === 1 ? navigate("/") : navigate("/watchlist-page")
     }
 
     const moviesList = []
@@ -48,7 +61,10 @@ export default function EditWatchlistPage(props) {
                 <h4 className="edit-watchlist-page__header">
                     Edit your Watchlist
                 </h4>
-                <button className="edit-watchlist-page__delete-btn">
+                <button 
+                    className="edit-watchlist-page__delete-btn"
+                    onClick={deleteCurrentWatchlist}
+                >
                     Delete Watchlist
                 </button>
             </div>
@@ -81,7 +97,7 @@ export default function EditWatchlistPage(props) {
                 </ul>
                 <div className="edit-watchlist-page__btns-container">
                     <button className="edit-watchlist-page__btn">Save</button>
-                    <button className="edit-watchlist-page__btn edit-watchlist-page__btn_dark">Cancel</button>
+                    <Link to="/watchlist-page" className="edit-watchlist-page__btn edit-watchlist-page__btn_dark">Cancel</Link>
                 </div>
             </form>
 

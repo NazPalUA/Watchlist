@@ -1,23 +1,28 @@
-import React from "react"
+import React, { useContext, useEffect, useState }  from "react"
 import { Link } from "react-router-dom"
 import { nanoid } from "nanoid"
+import { WatchlistsContext } from "../context/WatchlistsContext"
 import './Sidebar.scss'
 
 export default function Sidebar(props) {
 
-    const watchLists = []
-    for (let i = 0; i<25; i++) {
-        watchLists.push(
+    const {watchlistsArr, setActiveWatchlist} = useContext(WatchlistsContext)
+    // console.log(watchlistsArr)
+
+    const watchLists = watchlistsArr.map(watchlist => {
+        return (
             <li className="sidebar__watchlist-item"
                 key={nanoid()}
             >
                 <Link to="/watchlist-page"
-                    className="sidebar__watchlist-link">
-                    Movies by Tom Cruise
+                    className="sidebar__watchlist-link"
+                    onClick={()=>setActiveWatchlist(watchlist.id)}
+                >
+                    {watchlist.name}
                 </Link>
             </li>
         )
-    }
+    })
 
     return (
         <div className={`sidebar ${props.className ? props.className : ""}`}>

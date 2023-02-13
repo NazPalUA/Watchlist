@@ -1,7 +1,12 @@
-import React from "react"
+import React, { useContext, useEffect, useState }  from "react"
+import { WatchlistsContext } from "../context/WatchlistsContext"
+import { useNavigate } from "react-router-dom";
+import { nanoid } from "nanoid"
 import './CreateWatchlistPage.scss'
 
 export default function CreateWatchlistPage(props) {
+    const navigate = useNavigate()
+    const {createWatchlist, setActiveWatchlist} = useContext(WatchlistsContext)
 
     const [formData, setFormData] = React.useState(
         {
@@ -24,6 +29,10 @@ export default function CreateWatchlistPage(props) {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
+        const newId = nanoid()
+        createWatchlist(formData.name, formData.description, newId)
+        setActiveWatchlist(newId)
+        navigate("/watchlist-page")
     }
 
     return (
