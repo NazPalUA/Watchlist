@@ -37,7 +37,7 @@ export default function EditWatchlistPage(props) {
     function deleteCurrentWatchlist() {
         deleteWatchlist(getActiveWatchlist().id)
         console.log(watchlistsArr.length)
-        watchlistsArr.length === 1 ? navigate("/") : navigate("/watchlist-page")
+        navigate("/")
     }
 
     const moviesList = []

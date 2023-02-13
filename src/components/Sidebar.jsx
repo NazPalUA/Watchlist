@@ -16,7 +16,11 @@ export default function Sidebar(props) {
             >
                 <Link to="/watchlist-page"
                     className="sidebar__watchlist-link"
-                    onClick={()=>setActiveWatchlist(watchlist.id)}
+                    onClick={()=>{
+                        setActiveWatchlist(watchlist.id)
+                        document.body.classList.toggle("open")
+                        document.body.classList.toggle("closed")
+                    }}
                 >
                     {watchlist.name}
                 </Link>
@@ -27,22 +31,42 @@ export default function Sidebar(props) {
     return (
         <div className={`sidebar ${props.className ? props.className : ""}`}>
             <div className="sidebar__top">
-                <Link to="/" className="sidebar__logo-link">
+                <Link to="/" className="sidebar__logo-link"
+                    onClick={() => {
+                        document.body.classList.toggle("open")
+                        document.body.classList.toggle("closed")
+                    }}
+                >
                     <h1 className="sidebar__logo">
                         Watchlists
                     </h1>
                 </Link>
                 <nav className="sidebar__navigation">
                     <Link to="/"
-                        className="sidebar__navigation-link sidebar__navigation-link_home">
+                        className="sidebar__navigation-link sidebar__navigation-link_home"
+                        onClick={() => {
+                            document.body.classList.toggle("open")
+                            document.body.classList.toggle("closed")
+                        }}
+                    >
                         Home
                     </Link>
                     <Link to="/history"
-                        className="sidebar__navigation-link sidebar__navigation-link_history">
+                        className="sidebar__navigation-link sidebar__navigation-link_history"
+                        onClick={() => {
+                            document.body.classList.toggle("open")
+                            document.body.classList.toggle("closed")
+                        }}
+                    >
                         History
                     </Link>
                 </nav>
-                <Link to="/create_watchlist" className="sidebar__create-btn">
+                <Link to="/create_watchlist" className="sidebar__create-btn"
+                    onClick={() => {
+                        document.body.classList.toggle("open")
+                        document.body.classList.toggle("closed")
+                    }}
+                >
                     +  Create watchlist
                 </Link>
                 <p className="sidebar__watchlists-header">
