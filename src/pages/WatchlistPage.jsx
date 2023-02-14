@@ -9,7 +9,7 @@ import './WatchlistPage.scss'
 export default function WatchlistPage(props) {
 
     const {watchlistsArr, getActiveWatchlist} = useContext(WatchlistsContext)
-    console.log(getActiveWatchlist())
+    // console.log(getActiveWatchlist())
 
     const watchList = []
     for (let i = 0; i<15; i++) {

@@ -31,7 +31,7 @@ export default function AddToWatchlist(props) {
             // color: "red"
         }),
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-            console.log("option", styles, data, isDisabled, isFocused, isSelected)
+            // console.log("option", styles, data, isDisabled, isFocused, isSelected)
             return ({
                 ...styles,
                 padding: "15px",
@@ -70,7 +70,7 @@ export default function AddToWatchlist(props) {
     }
 
     const handleChange = (selectedOption) => {
-        console.log(selectedOption)
+        // console.log(selectedOption)
     }
     return(
         <div className="add-to-list">

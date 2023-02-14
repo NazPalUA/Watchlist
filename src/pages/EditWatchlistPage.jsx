@@ -29,14 +29,14 @@ export default function EditWatchlistPage(props) {
     function handleSubmit(event) {
         event.preventDefault()
         // submitToApi(formData)
-        console.log(formData)
+        // console.log(formData)
         editWatchlist(formData.name, formData.description)
         navigate("/watchlist-page")
     }
 
     function deleteCurrentWatchlist() {
         deleteWatchlist(getActiveWatchlist().id)
-        console.log(watchlistsArr.length)
+        // console.log(watchlistsArr.length)
         navigate("/")
     }
 

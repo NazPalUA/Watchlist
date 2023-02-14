@@ -8,9 +8,7 @@ import './Sidebar.scss'
 export default function Sidebar(props) {
 
     const {watchlistsArr, setActiveWatchlist} = useContext(WatchlistsContext)
-    // console.log(watchlistsArr)
     const size = useWindowSize()
-    console.log(size)
 
     function toggleSidebar() {
         if(size.width < 768) {

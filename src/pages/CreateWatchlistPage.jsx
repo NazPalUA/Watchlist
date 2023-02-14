@@ -28,7 +28,7 @@ export default function CreateWatchlistPage(props) {
     function handleSubmit(event) {
         event.preventDefault()
         // submitToApi(formData)
-        console.log(formData)
+        // console.log(formData)
         const newId = nanoid()
         createWatchlist(formData.name, formData.description, newId)
         setActiveWatchlist(newId)
