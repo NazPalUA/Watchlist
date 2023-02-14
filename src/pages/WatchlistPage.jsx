@@ -18,7 +18,14 @@ export default function WatchlistPage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="watchlist-page__link">
-                    <MovieCard className="watchlist-page__movie-card" addBtn={false} />
+                    <MovieCard 
+                        className="watchlist-page__movie-card" 
+                        addBtn={false}
+                        title={"Top Gun: Maverick"}
+                        path={"https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"}
+                        year={"2022"}
+                        rating={68}
+                    />
                 </Link>
             </li>
         )

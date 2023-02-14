@@ -18,28 +18,28 @@ function MovieCard(props) {
             }
             <img 
                 className="movie-card__poster"
-                src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"
+                src={props.path}
                 alt="movie poster"
             />
 
             <div className="movie-card__rating-wrapper">
                 <img 
                     className="movie-card__smile"
-                    src={greatIcon} 
+                    src={props.rating > 80 ? greatIcon : props.rating > 35 ? normalIcon : awfulIcon } 
                     alt="rating smile" 
                 />
                 <span className="movie-card__rating">
-                    68
+                    {props.rating}
                     <span className="movie-card__max-rating">/100</span>
                 </span>
             </div>
 
             <p className="movie-card__title">
-                Top Gun: Maverick
+                {props.title}
             </p>
 
             <p className="movie-card__year">
-                (2022)
+                ({props.year})
             </p>
         </div>
     )

@@ -13,7 +13,14 @@ export default function HistoryPage(props) {
                 key={nanoid()}
             >
                 <Link to="/movie-page" className="history-page__link">
-                    <MovieCard className="history-page__movie-card" setModalActive={props.setModalActive} />
+                    <MovieCard 
+                        className="history-page__movie-card" 
+                        setModalActive={props.setModalActive} 
+                        title={"Top Gun: Maverick"}
+                        path={"https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"}
+                        year={"2022"}
+                        rating={68}
+                    />
                 </Link>
             </li>
         )
