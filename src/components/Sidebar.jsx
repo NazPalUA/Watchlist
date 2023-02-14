@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState }  from "react"
 import { Link } from "react-router-dom"
+import useWindowSize from "../tools/useWindowSize"
 import { nanoid } from "nanoid"
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import './Sidebar.scss'
@@ -8,6 +9,15 @@ export default function Sidebar(props) {
 
     const {watchlistsArr, setActiveWatchlist} = useContext(WatchlistsContext)
     // console.log(watchlistsArr)
+    const size = useWindowSize()
+    console.log(size)
+
+    function toggleSidebar() {
+        if(size.width < 768) {
+            document.body.classList.toggle("open")
+            document.body.classList.toggle("closed")
+        }
+    }
 
     const watchLists = watchlistsArr.map(watchlist => {
         return (
@@ -18,8 +28,7 @@ export default function Sidebar(props) {
                     className="sidebar__watchlist-link"
                     onClick={()=>{
                         setActiveWatchlist(watchlist.id)
-                        document.body.classList.toggle("open")
-                        document.body.classList.toggle("closed")
+                        toggleSidebar()
                     }}
                 >
                     {watchlist.name}
@@ -31,12 +40,7 @@ export default function Sidebar(props) {
     return (
         <div className={`sidebar ${props.className ? props.className : ""}`}>
             <div className="sidebar__top">
-                <Link to="/" className="sidebar__logo-link"
-                    onClick={() => {
-                        document.body.classList.toggle("open")
-                        document.body.classList.toggle("closed")
-                    }}
-                >
+                <Link to="/" className="sidebar__logo-link">
                     <h1 className="sidebar__logo">
                         Watchlists
                     </h1>
@@ -45,8 +49,7 @@ export default function Sidebar(props) {
                     <Link to="/"
                         className="sidebar__navigation-link sidebar__navigation-link_home"
                         onClick={() => {
-                            document.body.classList.toggle("open")
-                            document.body.classList.toggle("closed")
+                            toggleSidebar()
                         }}
                     >
                         Home
@@ -54,8 +57,7 @@ export default function Sidebar(props) {
                     <Link to="/history"
                         className="sidebar__navigation-link sidebar__navigation-link_history"
                         onClick={() => {
-                            document.body.classList.toggle("open")
-                            document.body.classList.toggle("closed")
+                            toggleSidebar()
                         }}
                     >
                         History
@@ -63,8 +65,7 @@ export default function Sidebar(props) {
                 </nav>
                 <Link to="/create_watchlist" className="sidebar__create-btn"
                     onClick={() => {
-                        document.body.classList.toggle("open")
-                        document.body.classList.toggle("closed")
+                        toggleSidebar()
                     }}
                 >
                     +  Create watchlist
