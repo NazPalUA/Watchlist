@@ -10,14 +10,15 @@ export default function HomePage(props) {
 
     const [popular, setPopular] = useState([])
 
-    console.log(popular)
+    // console.log(popular)
 
     useEffect(()=>{
         fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=e980138e09662908e00ccbeacd080b08')
             .then(response => response.json())
             .then(response => setPopular(response.results.map(movie => {
+                // console.log(movie)
                 return (<li className="home-page__popular-item" key={nanoid()}>
-                        <Link to="/movie-page" className="home-page__link">
+                        <Link to={`/movie-page/${movie.id}`} className="home-page__link">
                             <MovieCard 
                                 className="home-page__movie-card" 
                                 setModalActive={props.setModalActive}

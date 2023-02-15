@@ -38,7 +38,7 @@ function App() {
 							<Route path="/my-lists" element={<MyListsPage className="app__page" />} />
 							<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
 							<Route path="/watchlist-page" element={<WatchlistPage className="app__page" />} />
-							<Route path="/movie-page" element={<MoviePage className="app__page" setModalActive={setModalActive} />} />
+							<Route path="/movie-page/:movieId" element={<MoviePage className="app__page" setModalActive={setModalActive} />} />
 							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" setModalActive={setModalActive} />} />
 							<Route path="/edit-watchlist-page" element={<EditWatchlistPage className="app__page" />} />
 						</Routes>
