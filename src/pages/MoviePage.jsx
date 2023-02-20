@@ -13,18 +13,21 @@ export default function MoviePage(props) {
     const [relatedData, setRelatedData] = useState([])
     const [castData, setCastData] = useState([])
 
+    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    const BASE_URL = "https://api.themoviedb.org/3/movie"
+
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=e980138e09662908e00ccbeacd080b08&language=en-US`)
+        fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
             .then(response => response.json())
             .then(response => setMovieData(response))
             .catch(err => console.error(err));
 
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=e980138e09662908e00ccbeacd080b08&language=en-US&page=1`)
+        fetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
             .then(response => response.json())
             .then(response => setRelatedData(response.results))
             .catch(err => console.error(err));
 
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=e980138e09662908e00ccbeacd080b08&language=en-US`)
+        fetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
             .then(response => response.json())
             .then(response => setCastData(response.cast))
             .catch(err => console.error(err));
