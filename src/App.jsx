@@ -1,6 +1,6 @@
-import React from "react"
+import React, {useEffect} from "react"
 import './App.scss'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
@@ -18,6 +18,13 @@ import AddToWatchlist from './components/AddToWatchlist'
 function App() {
 
 	const [modalActive, setModalActive] = React.useState(false)
+
+	const { pathname } = useLocation()
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+		console.log("first")
+	}, [pathname])
 
 	return (
 		<div className="app">
