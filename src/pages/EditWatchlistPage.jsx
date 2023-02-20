@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState }  from "react"
 import { WatchlistsContext } from "../context/WatchlistsContext"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom"
 import { nanoid } from "nanoid"
 import './EditWatchlistPage.scss'
 
 export default function EditWatchlistPage(props) {
+
+    const {watchlistId} = useParams()
 
     const {watchlistsArr, getActiveWatchlist, deleteWatchlist, editWatchlist} = useContext(WatchlistsContext)
     const navigate = useNavigate()
@@ -31,7 +33,7 @@ export default function EditWatchlistPage(props) {
         // submitToApi(formData)
         // console.log(formData)
         editWatchlist(formData.name, formData.description)
-        navigate("/watchlist-page")
+        navigate(`/watchlist-page/${watchlistId}`)
     }
 
     function deleteCurrentWatchlist() {

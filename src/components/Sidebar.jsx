@@ -22,7 +22,7 @@ export default function Sidebar(props) {
             <li className="sidebar__watchlist-item"
                 key={nanoid()}
             >
-                <Link to="/watchlist-page"
+                <Link to={`/watchlist-page/${watchlist.id}`}
                     className="sidebar__watchlist-link"
                     onClick={()=>{
                         setActiveWatchlist(watchlist.id)

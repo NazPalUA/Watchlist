@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState }  from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import { WatchlistsContext } from "../context/WatchlistsContext"
@@ -7,13 +7,36 @@ import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
 
 export default function WatchlistPage(props) {
+    const {watchlistId} = useParams()
 
-    const {watchlistsArr, getActiveWatchlist} = useContext(WatchlistsContext)
-    // console.log(getActiveWatchlist())
+    const {watchlistsArr, getActiveWatchlist, getMovieIds} = useContext(WatchlistsContext)
 
-    const watchList = []
-    for (let i = 0; i<15; i++) {
-        watchList.push(
+    const [moviesData, setMoviesData] = useState([])
+    
+    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    const BASE_URL = "https://api.themoviedb.org/3/movie"
+
+    useEffect(()=>{ 
+        const movieIds = getMovieIds(watchlistId)
+    
+        async function fetchData() {
+            try {
+                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
+                if (!responses.every(response => response.ok)) {
+                    throw new Error('Some requests failed')
+                }
+                const data = await Promise.all(responses.map(response => response.json()))
+                setMoviesData(data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        fetchData();
+    },[watchlistId])
+
+    const watchListMoviesHTML = moviesData.map(movie=>{
+        return (
             <li className="watchlist-page__movie-item"
                 key={nanoid()}
             >
@@ -21,15 +44,15 @@ export default function WatchlistPage(props) {
                     <MovieCard 
                         className="watchlist-page__movie-card" 
                         addBtn={false}
-                        title={"Top Gun: Maverick"}
-                        path={"https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg"}
-                        year={"2022"}
-                        rating={68}
+                        title={movie.title}
+                        path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                        year={movie.release_date.slice(0, 4)}
+                        rating={Math.round(movie.vote_average*10)}
                     />
                 </Link>
             </li>
         )
-    }
+    })
 
     return (
         <div className={`watchlist-page ${props.className}`}>
@@ -39,7 +62,7 @@ export default function WatchlistPage(props) {
                         {/* Movies by Tom Cruise */}
                         {getActiveWatchlist().name}
                     </h2>
-                    <Link to="/edit-watchlist-page" className="watchlist-page__edit">
+                    <Link to={`/edit-watchlist-page/${watchlistId}`} className="watchlist-page__edit">
                         <img className="watchlist-page__edit-icon" 
                             src={editIcon} alt="edit icon" />
                     </Link>
@@ -78,7 +101,7 @@ export default function WatchlistPage(props) {
                     </li>
                 </ul>
                 <ul className="watchlist-page__movie-list card-grid">
-                    {watchList}
+                    {watchListMoviesHTML}
                 </ul>
             </>}
         </div>

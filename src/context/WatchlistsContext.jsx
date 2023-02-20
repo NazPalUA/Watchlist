@@ -9,25 +9,22 @@ function WatchlistsContextProvider({children}) {
         {
             id: "1",
             active: false,
-            name: "My new watchlist",
+            name: "Marvel",
             description: "Description of my new watchlist",
-            movieIds: ["yhtyjht", "yukuyuy", "ytjtyjyt"]
+            movieIds: ["505642", "436270", "774752"]
         },
         {
             id: "2",
             active: false,
             name: "Some other watchlist",
             description: "Description of my new watchlist",
-            movieIds: ["hrth", "tyjtyj", "yuk", "rth", "rtrt", "trt", "td"]
-        },
-        {
-            id: "3",
-            active: true,
-            name: "Movies by Tom Cruise",
-            description: "Description of my new watchlist",
-            movieIds: ["hrth", "tyjtyj", "yuk", "rth", "rtrt", "trt", "td"]
+            movieIds: ["632856", "668461", "928344", "505642", "436270", "774752"]
         }
     ])
+
+    function getMovieIds(watchlistId) {
+        return watchlistsArr.find(watchlist => watchlist.id === watchlistId).movieIds
+    }
 
     function getActiveWatchlist() {
         return watchlistsArr.find(watchlist => watchlist.active)
@@ -119,7 +116,8 @@ function WatchlistsContextProvider({children}) {
             addMovieToWatchlist,
             deleteMovieFromWatchlist,
             getActiveWatchlist,
-            setActiveWatchlist
+            setActiveWatchlist,
+            getMovieIds
         }}>
             {children}
         </WatchlistsContext.Provider>
