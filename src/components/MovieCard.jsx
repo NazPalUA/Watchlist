@@ -13,12 +13,16 @@ function MovieCard(props) {
     return (
         <div className={`movie-card ${props.className}`}>
             {props.addBtn && 
-                <button className="movie-card__add-btn" onClick={e=>{
-                    e.preventDefault()
-                    e.stopPropagation()
-                    setIsModalActive(true)
-                    setMovieId(props.movieId)
-                }}></button>
+                <button 
+                    className="movie-card__add-btn" 
+                    onClick={e=>{
+                        e.preventDefault()
+                        e.stopPropagation()
+                        setIsModalActive(true)
+                        setMovieId(props.movieId)
+                    }}
+                >
+                </button>
             }
             <img 
                 className="movie-card__poster"

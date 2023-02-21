@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ModalContext } from "../context/ModalContext"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
@@ -6,7 +7,7 @@ import ActorCard from "../components/ActorCard"
 import './MoviePage.scss'
 
 export default function MoviePage(props) {
-
+    const {setIsModalActive, setMovieId} = useContext(ModalContext)
     const {movieId} = useParams()
 
     const [movieData, setMovieData] = useState()
@@ -57,6 +58,7 @@ export default function MoviePage(props) {
                 <Link to={`/movie-page/${movie.id}`} className="movie-page__link">
                     <MovieCard 
                         className="movie-page__card"
+                        movieId={movie.id}
                         title={movie.title}
                         path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                         year={movie.release_date.slice(0, 4)}
@@ -83,7 +85,6 @@ export default function MoviePage(props) {
                         
                     </h3>
                     <p className="movie-page__genre">
-                        {/* Action, Drama */}
                         {movieData.genres.map(genre => genre.name).join(', ')}
                     </p>
                     <p className="movie-page__duration">
@@ -104,7 +105,15 @@ export default function MoviePage(props) {
                                 {Math.round(movieData.vote_average*10)}
                             </div>
                         </div>
-                        <button className="movie-page__btn">
+                        <button 
+                            className="movie-page__btn"
+                            onClick={e=>{
+                                e.preventDefault()
+                                e.stopPropagation()
+                                setIsModalActive(true)
+                                setMovieId(movieId)
+                            }}
+                        >
                             Add to Watchlist
                         </button>
                     </div>                    

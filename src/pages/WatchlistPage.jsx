@@ -40,9 +40,10 @@ export default function WatchlistPage(props) {
             <li className="watchlist-page__movie-item"
                 key={nanoid()}
             >
-                <Link to="/movie-page" className="watchlist-page__link">
+                <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
                     <MovieCard 
                         className="watchlist-page__movie-card" 
+                        movieId={movie.id}
                         addBtn={false}
                         title={movie.title}
                         path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
