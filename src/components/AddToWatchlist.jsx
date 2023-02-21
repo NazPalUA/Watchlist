@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Select from 'react-select';
+import { useNavigate } from "react-router-dom";
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import { ModalContext } from "../context/ModalContext"
 import "./AddToWatchlist.scss"
@@ -7,7 +8,11 @@ import "./AddToWatchlist.scss"
 export default function AddToWatchlist(props) {
 
     const {watchlistsArr, addMovieToWatchlist} = useContext(WatchlistsContext)
-    const {setIsModalActive, movieId} = useContext(ModalContext)
+    const {isModalActive, setIsModalActive, movieId} = useContext(ModalContext)
+
+    const navigate = useNavigate()
+
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const optionsArr = watchlistsArr.map(watchlist => {
         return { value: watchlist.id, label: watchlist.name}
@@ -15,7 +20,12 @@ export default function AddToWatchlist(props) {
 
     const [selectedIds, setSelectedIds] = useState({watchlist: "", movie: ""})
 
+    useEffect(()=>{
+        !isModalActive && setSelectedOption(null)
+    },[isModalActive])
+
     const handleChange = (selectedOption) => {
+        setSelectedOption(selectedOption)
         setSelectedIds({
             watchlist: selectedOption.value, 
             movie: movieId
@@ -29,6 +39,7 @@ export default function AddToWatchlist(props) {
     function handleSave() {
         addMovieToWatchlist(selectedIds.movie, selectedIds.watchlist)
         setIsModalActive(false)
+        navigate(`/watchlist-page/${selectedIds.watchlist}`)
     }
 
     const colorStyles = {
@@ -82,6 +93,7 @@ export default function AddToWatchlist(props) {
             <p className="add-to-list__top-text">Select Watchlist(s)</p>
             <Select
                 // defaultValue={optionsArr[0]}
+                value={selectedOption}
                 options={optionsArr}
                 onChange={handleChange}
                 // isMulti
