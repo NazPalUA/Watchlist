@@ -9,7 +9,9 @@ export default function EditWatchlistPage(props) {
 
     const {watchlistId} = useParams()
 
-    const {watchlistsArr, getWatchlistData, deleteWatchlist, editWatchlist} = useContext(WatchlistsContext)
+    const [moviesData, setMoviesData] = useState([])
+
+    const { watchlistsArr, getWatchlistData, deleteWatchlist, editWatchlist, getMovieIds, deleteMovieFromWatchlist} = useContext(WatchlistsContext)
     const navigate = useNavigate()
     const [formData, setFormData] = React.useState(
         {
@@ -17,6 +19,28 @@ export default function EditWatchlistPage(props) {
             description: getWatchlistData(watchlistId).description
         }
     )
+
+    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    const BASE_URL = "https://api.themoviedb.org/3/movie"
+
+    useEffect(()=>{ 
+        const movieIds = getMovieIds(watchlistId)
+    
+        async function fetchData() {
+            try {
+                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
+                if (!responses.every(response => response.ok)) {
+                    throw new Error('Some requests failed')
+                }
+                const data = await Promise.all(responses.map(response => response.json()))
+                setMoviesData(data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        fetchData();
+    },[watchlistId, watchlistsArr])
     
     function handleChange(event) {
         const {name, value, type, checked} = event.target
@@ -30,7 +54,6 @@ export default function EditWatchlistPage(props) {
     
     function handleSubmit(event) {
         event.preventDefault()
-        // submitToApi(formData)
         // console.log(formData)
         editWatchlist(formData.name, formData.description, watchlistId)
         navigate(`/watchlist-page/${watchlistId}`)
@@ -38,24 +61,40 @@ export default function EditWatchlistPage(props) {
 
     function deleteCurrentWatchlist() {
         deleteWatchlist(getWatchlistData(watchlistId).id)
-        // console.log(watchlistsArr.length)
         navigate("/")
     }
 
-    const moviesList = []
-    for (let i = 0; i<15; i++) {
-        moviesList.push(
+    function deleteMovie(movieId) {
+        deleteMovieFromWatchlist(movieId, watchlistId)
+    }
+
+    const moviesList = moviesData.map(movie => {
+        return (
             <li className="edit-watchlist-page__movies-item"
                 key={nanoid()}
             >
-                <img className="edit-watchlist-page__movie-img" src="https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg" alt="movie poster" />
+                <img 
+                    className="edit-watchlist-page__movie-img" 
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                    alt="movie poster" 
+                />
                 <p className="edit-watchlist-page__movie-name">
-                    Top Gun: Maverick <span className="edit-watchlist-page__movie-year">(2022)</span>
+                    {movie.title} <span className="edit-watchlist-page__movie-year">({movie.release_date.slice(0, 4)})</span>
                 </p>
-                <button className="edit-watchlist-page__movie-remove-btn">Remove</button>
+                <button 
+                    className="edit-watchlist-page__movie-remove-btn"
+                    onClick={(e) => {
+                        e.preventDefault
+                        deleteMovie(movie.id)
+                    }}
+                >
+                    Remove
+                </button>
             </li>
         )
-    }
+    })
+
+            
 
     return (
         <div className={`edit-watchlist-page ${props.className}`}>

@@ -65,7 +65,6 @@ function WatchlistsContextProvider({children}) {
     function addMovieToWatchlist(movieId, watchlistId) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
-                // console.log(watchlist.movieIds)
                 if(watchlistId !== watchlist.id) return watchlist
                 else return {...watchlist, 
                     movieIds: [...watchlist.movieIds, movieId],
@@ -78,9 +77,12 @@ function WatchlistsContextProvider({children}) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
                 if(watchlistId !== watchlist.id) return watchlist
-                else return watchlist.movieIds.filter(id => {
-                    return id !== movieId
-                })
+                else return {
+                    ...watchlist,
+                    movieIds: watchlist.movieIds.filter(id => {
+                        return id !== movieId
+                    })
+                }
             })
         })
     }
