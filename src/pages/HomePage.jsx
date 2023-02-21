@@ -20,8 +20,8 @@ export default function HomePage(props) {
                 return (<li className="home-page__popular-item" key={nanoid()}>
                         <Link to={`/movie-page/${movie.id}`} className="home-page__link">
                             <MovieCard 
-                                className="home-page__movie-card" 
-                                setModalActive={props.setModalActive}
+                                className="home-page__movie-card"
+                                movieId={movie.id}
                                 title={movie.title}
                                 path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                                 year={movie.release_date.slice(0, 4)}

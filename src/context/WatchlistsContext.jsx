@@ -11,14 +11,14 @@ function WatchlistsContextProvider({children}) {
             active: false,
             name: "Marvel",
             description: "Description of my new watchlist",
-            movieIds: ["505642", "436270", "774752"]
+            movieIds: [505642, 436270, 774752]
         },
         {
             id: "2",
             active: false,
             name: "Some other watchlist",
             description: "Description of my new watchlist",
-            movieIds: ["632856", "668461", "928344", "505642", "436270", "774752"]
+            movieIds: [632856, 668461, 928344, 505642, 436270, 774752]
         }
     ])
 
@@ -87,9 +87,10 @@ function WatchlistsContextProvider({children}) {
     function addMovieToWatchlist(movieId, watchlistId) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
+                // console.log(watchlist.movieIds)
                 if(watchlistId !== watchlist.id) return watchlist
                 else return {...watchlist, 
-                    movieIds: watchlist.movieIds.push(movieId),
+                    movieIds: [...watchlist.movieIds, movieId],
                 }
             })
         })

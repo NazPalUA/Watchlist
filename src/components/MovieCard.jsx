@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import { ModalContext } from "../context/ModalContext"
 import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
@@ -7,13 +8,16 @@ import './MovieCard.scss'
 
 function MovieCard(props) {
 
+    const {setIsModalActive, setMovieId} = useContext(ModalContext)
+
     return (
         <div className={`movie-card ${props.className}`}>
             {props.addBtn && 
                 <button className="movie-card__add-btn" onClick={e=>{
                     e.preventDefault()
                     e.stopPropagation()
-                    props.setModalActive(true)
+                    setIsModalActive(true)
+                    setMovieId(props.movieId)
                 }}></button>
             }
             <img 

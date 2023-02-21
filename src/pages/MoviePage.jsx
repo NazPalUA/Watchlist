@@ -56,8 +56,7 @@ export default function MoviePage(props) {
             >
                 <Link to={`/movie-page/${movie.id}`} className="movie-page__link">
                     <MovieCard 
-                        className="movie-page__card" 
-                        setModalActive={props.setModalActive}
+                        className="movie-page__card"
                         title={movie.title}
                         path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                         year={movie.release_date.slice(0, 4)}

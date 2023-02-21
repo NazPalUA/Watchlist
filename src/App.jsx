@@ -1,6 +1,7 @@
-import React, {useEffect} from "react"
+import React, {useContext, useEffect} from "react"
 import './App.scss'
 import { Routes, Route, useLocation } from "react-router-dom"
+import { ModalContext } from "./context/ModalContext"
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
@@ -17,13 +18,12 @@ import AddToWatchlist from './components/AddToWatchlist'
 
 function App() {
 
-	const [modalActive, setModalActive] = React.useState(false)
+	const {isModalActive, setIsModalActive} = useContext(ModalContext)
 
 	const { pathname } = useLocation()
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-		console.log("first")
 	}, [pathname])
 
 	return (
@@ -40,20 +40,20 @@ function App() {
 					</section>
 					<section className="app__main-section app__main-section_page">
 						<Routes>
-							<Route path="/" element={<HomePage className="app__page" setModalActive={setModalActive} />} />
-							<Route path="/history" element={<HistoryPage className="app__page" setModalActive={setModalActive} />} />
+							<Route path="/" element={<HomePage className="app__page" />} />
+							<Route path="/history" element={<HistoryPage className="app__page" />} />
 							<Route path="/my-lists" element={<MyListsPage className="app__page" />} />
 							<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
 							<Route path="/watchlist-page/:watchlistId" element={<WatchlistPage className="app__page" />} />
-							<Route path="/movie-page/:movieId" element={<MoviePage className="app__page" setModalActive={setModalActive} />} />
-							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" setModalActive={setModalActive} />} />
+							<Route path="/movie-page/:movieId" element={<MoviePage className="app__page" />} />
+							<Route path="/search-results-page" element={<SearchResultsPage className="app__page" />} />
 							<Route path="/edit-watchlist-page/:watchlistId" element={<EditWatchlistPage className="app__page" />} />
 						</Routes>
 					</section>
 				</div>
 			</main>
-			<Modal active={modalActive} setActive={setModalActive}>
-				<AddToWatchlist setModalActive={setModalActive} />
+			<Modal active={isModalActive} setActive={setIsModalActive}>
+				<AddToWatchlist />
 			</Modal>
 		</div>
 	)

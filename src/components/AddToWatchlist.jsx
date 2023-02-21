@@ -1,27 +1,34 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import Select from 'react-select';
+import { WatchlistsContext } from "../context/WatchlistsContext"
+import { ModalContext } from "../context/ModalContext"
 import "./AddToWatchlist.scss"
 
 export default function AddToWatchlist(props) {
-    const watchlistsArr = [
-        { value: 'Action films', label: 'Action films'},
-        { value: 'Adventure films', label: 'Adventure films'},
-        { value: 'Animated films', label: 'Animated films'},
-        { value: 'Comedy films', label: 'Comedy films'},
-        { value: 'Dramas', label: 'Drama'},
-        { value: 'Fantasy films', label: 'Fantasy films'},
-        { value: 'Historical films', label: 'Historical films'},
-        { value: 'Horror films', label: 'Horror films'},
-        { value: 'Musical films', label: 'Musical films'},
-        { value: 'Noir films', label: 'Noir films'},
-        { value: 'Romance films', label: 'Romance films'},
-        { value: 'Science fiction films', label: 'Science fiction films'},
-        { value: 'Thriller films', label: 'Thriller films'},
-        { value: 'Westerns', label: 'Westerns'},
-    ]
+
+    const {watchlistsArr, addMovieToWatchlist} = useContext(WatchlistsContext)
+    const {setIsModalActive, movieId} = useContext(ModalContext)
+
+    const optionsArr = watchlistsArr.map(watchlist => {
+        return { value: watchlist.id, label: watchlist.name}
+    })
+
+    const [selectedIds, setSelectedIds] = useState({watchlist: "", movie: ""})
+
+    const handleChange = (selectedOption) => {
+        setSelectedIds({
+            watchlist: selectedOption.value, 
+            movie: movieId
+        }) 
+    }
 
     function closeModal() {
-        props.setModalActive(false)
+        setIsModalActive(false)
+    }
+
+    function handleSave() {
+        addMovieToWatchlist(selectedIds.movie, selectedIds.watchlist)
+        setIsModalActive(false)
     }
 
     const colorStyles = {
@@ -69,23 +76,21 @@ export default function AddToWatchlist(props) {
 
     }
 
-    const handleChange = (selectedOption) => {
-        // console.log(selectedOption)
-    }
+
     return(
         <div className="add-to-list">
             <p className="add-to-list__top-text">Select Watchlist(s)</p>
             <Select
-                defaultValue={watchlistsArr[0]}
-                options={watchlistsArr}
+                // defaultValue={optionsArr[0]}
+                options={optionsArr}
                 onChange={handleChange}
-                isMulti
+                // isMulti
                 styles={colorStyles}
                 isSearchable={false}
 
             />
             <div className="add-to-list__btn-container">
-                <button className="add-to-list__btn" onClick={()=>closeModal()}>Save</button>
+                <button className="add-to-list__btn" onClick={()=>handleSave()}>Save</button>
                 <button className="add-to-list__btn" onClick={()=>closeModal()}>Cancel</button>
             </div>
         </div>
