@@ -1,31 +1,28 @@
 import React, { useContext, useEffect, useState }  from "react"
 import { WatchlistsContext } from "../context/WatchlistsContext"
-import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { nanoid } from "nanoid"
 import './EditWatchlistPage.scss'
 
 export default function EditWatchlistPage(props) {
-
-    const {watchlistId} = useParams()
-
-    const [moviesData, setMoviesData] = useState([])
-
-    const { watchlistsArr, getWatchlistData, deleteWatchlist, editWatchlist, getMovieIds, deleteMovieFromWatchlist} = useContext(WatchlistsContext)
     const navigate = useNavigate()
-    const [formData, setFormData] = React.useState(
-        {
+    const {watchlistId} = useParams()
+    const [moviesData, setMoviesData] = useState([])
+    
+    const { watchlistsArr, getWatchlistData, deleteWatchlist,
+            editWatchlist, getMovieIds, deleteMovieFromWatchlist} 
+        = useContext(WatchlistsContext)
+        
+        const [formData, setFormData] = React.useState({
             name: getWatchlistData(watchlistId).name, 
             description: getWatchlistData(watchlistId).description
-        }
-    )
+        })
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
     useEffect(()=>{ 
         const movieIds = getMovieIds(watchlistId)
-    
         async function fetchData() {
             try {
                 const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
@@ -64,10 +61,6 @@ export default function EditWatchlistPage(props) {
         navigate("/")
     }
 
-    function deleteMovie(movieId) {
-        deleteMovieFromWatchlist(movieId, watchlistId)
-    }
-
     const moviesList = moviesData.map(movie => {
         return (
             <li className="edit-watchlist-page__movies-item"
@@ -85,7 +78,7 @@ export default function EditWatchlistPage(props) {
                     className="edit-watchlist-page__movie-remove-btn"
                     onClick={(e) => {
                         e.preventDefault
-                        deleteMovie(movie.id)
+                        deleteMovieFromWatchlist(movie.id, watchlistId)
                     }}
                 >
                     Remove
@@ -93,8 +86,6 @@ export default function EditWatchlistPage(props) {
             </li>
         )
     })
-
-            
 
     return (
         <div className={`edit-watchlist-page ${props.className}`}>
@@ -138,7 +129,7 @@ export default function EditWatchlistPage(props) {
                 </ul>
                 <div className="edit-watchlist-page__btns-container">
                     <button className="edit-watchlist-page__btn">Save</button>
-                    <Link to="/watchlist-page" className="edit-watchlist-page__btn edit-watchlist-page__btn_dark">Cancel</Link>
+                    <Link to={`/watchlist-page/${watchlistId}`} className="edit-watchlist-page__btn edit-watchlist-page__btn_dark">Back</Link>
                 </div>
             </form>
 
