@@ -7,7 +7,7 @@ import './Sidebar.scss'
 
 export default function Sidebar(props) {
 
-    const {watchlistsArr, setActiveWatchlist} = useContext(WatchlistsContext)
+    const {watchlistsArr} = useContext(WatchlistsContext)
     const size = useWindowSize()
 
     function toggleSidebar() {
@@ -25,7 +25,6 @@ export default function Sidebar(props) {
                 <Link to={`/watchlist-page/${watchlist.id}`}
                     className="sidebar__watchlist-link"
                     onClick={()=>{
-                        setActiveWatchlist(watchlist.id)
                         toggleSidebar()
                     }}
                 >

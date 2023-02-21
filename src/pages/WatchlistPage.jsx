@@ -9,7 +9,7 @@ import './WatchlistPage.scss'
 export default function WatchlistPage(props) {
     const {watchlistId} = useParams()
 
-    const {watchlistsArr, getActiveWatchlist, getMovieIds} = useContext(WatchlistsContext)
+    const {watchlistsArr, getWatchlistData, getMovieIds} = useContext(WatchlistsContext)
 
     const [moviesData, setMoviesData] = useState([])
     
@@ -61,7 +61,7 @@ export default function WatchlistPage(props) {
                 <div className="watchlist-page__header-container">
                     <h2 className="watchlist-page__header">
                         {/* Movies by Tom Cruise */}
-                        {getActiveWatchlist().name}
+                        {getWatchlistData(watchlistId).name}
                     </h2>
                     <Link to={`/edit-watchlist-page/${watchlistId}`} className="watchlist-page__edit">
                         <img className="watchlist-page__edit-icon" 
@@ -73,7 +73,7 @@ export default function WatchlistPage(props) {
                 </h5>
                 <p className="watchlist-page__about">
                     {/* This list lorem ipsum dolor et blah blah blah */}
-                    {getActiveWatchlist().description}
+                    {getWatchlistData(watchlistId).description}
                 </p>
                 <ul className="watchlist-page__boxes-container">
                     <li className="watchlist-page__box">

@@ -9,12 +9,12 @@ export default function EditWatchlistPage(props) {
 
     const {watchlistId} = useParams()
 
-    const {watchlistsArr, getActiveWatchlist, deleteWatchlist, editWatchlist} = useContext(WatchlistsContext)
+    const {watchlistsArr, getWatchlistData, deleteWatchlist, editWatchlist} = useContext(WatchlistsContext)
     const navigate = useNavigate()
     const [formData, setFormData] = React.useState(
         {
-            name: getActiveWatchlist().name, 
-            description: getActiveWatchlist().description
+            name: getWatchlistData(watchlistId).name, 
+            description: getWatchlistData(watchlistId).description
         }
     )
     
@@ -32,12 +32,12 @@ export default function EditWatchlistPage(props) {
         event.preventDefault()
         // submitToApi(formData)
         // console.log(formData)
-        editWatchlist(formData.name, formData.description)
+        editWatchlist(formData.name, formData.description, watchlistId)
         navigate(`/watchlist-page/${watchlistId}`)
     }
 
     function deleteCurrentWatchlist() {
-        deleteWatchlist(getActiveWatchlist().id)
+        deleteWatchlist(getWatchlistData(watchlistId).id)
         // console.log(watchlistsArr.length)
         navigate("/")
     }

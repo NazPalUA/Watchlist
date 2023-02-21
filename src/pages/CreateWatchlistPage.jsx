@@ -29,10 +29,9 @@ export default function CreateWatchlistPage(props) {
         event.preventDefault()
         // submitToApi(formData)
         // console.log(formData)
-        const newId = nanoid()
-        createWatchlist(formData.name, formData.description, newId)
-        setActiveWatchlist(newId)
-        navigate("/watchlist-page")
+        const watchlistId = nanoid()
+        createWatchlist(formData.name, formData.description, watchlistId)
+        navigate(`/watchlist-page/${watchlistId}`)
     }
 
     return (
