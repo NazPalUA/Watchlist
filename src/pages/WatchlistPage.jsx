@@ -35,6 +35,18 @@ export default function WatchlistPage(props) {
         fetchData();
     },[watchlistId])
 
+    function getAverageVote(movies) {
+        const totalVotes = movies.reduce((acc, movie) => acc + movie.vote_average, 0);
+        return Math.round(totalVotes / movies.length * 10);
+    }
+    const avgScore = moviesData ? getAverageVote(moviesData) : 0;
+
+    function getUnwatchedRuntime(movies) {
+        const totalTime = movies.reduce((acc, movie) => acc + movie.runtime, 0);
+        return totalTime
+    }
+    const unwatchedRuntime = moviesData ? getUnwatchedRuntime(moviesData) : 0;
+
     const watchListMoviesHTML = moviesData.map(movie=>{
         return (
             <li className="watchlist-page__movie-item"
@@ -81,7 +93,7 @@ export default function WatchlistPage(props) {
                             ITEMS ON LIST
                         </strong>
                         <p className="watchlist-page__box-content">
-                            10
+                            {moviesData.length}
                         </p>
                     </li>
                     <li className="watchlist-page__box">
@@ -89,7 +101,7 @@ export default function WatchlistPage(props) {
                             UNWATCHED RUNTIME
                         </strong>
                         <p className="watchlist-page__box-content">
-                            14h 30m
+                            {Math.floor(unwatchedRuntime/60)}h {unwatchedRuntime%60}m
                         </p>
                     </li>
                     <li className="watchlist-page__box">
@@ -97,7 +109,7 @@ export default function WatchlistPage(props) {
                             AVERAGE SCORE
                         </strong>
                         <p className="watchlist-page__box-content">
-                            73
+                            {isNaN(avgScore) ? '0' : avgScore}
                         </p>
                     </li>
                 </ul>
