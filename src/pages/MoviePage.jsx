@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ModalContext } from "../context/ModalContext"
+import { HistoryContext } from "../context/HistoryContext"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
@@ -8,6 +9,7 @@ import './MoviePage.scss'
 
 export default function MoviePage(props) {
     const {setIsModalActive, setMovieId} = useContext(ModalContext)
+    const {addToHistory} = useContext(HistoryContext)
     const {movieId} = useParams()
 
     const [movieData, setMovieData] = useState()
@@ -18,6 +20,8 @@ export default function MoviePage(props) {
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
     useEffect(()=>{
+        addToHistory(movieId)
+        
         fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
             .then(response => response.json())
             .then(response => setMovieData(response))
