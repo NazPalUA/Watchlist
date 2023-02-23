@@ -38,7 +38,8 @@
         border-radius: 6px;
         background: v.$clr-accent;
         color: v.$clr-dark;
-        outline: 1px solid v.$clr-accent;
+        border: none;
+        // outline: 1px solid v.$clr-accent;
 
         &:hover {
             opacity: 0.9;
