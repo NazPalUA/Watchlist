@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import Select from 'react-select';
 import { useNavigate } from "react-router-dom";
 import { WatchlistsContext } from "../context/WatchlistsContext"
+import { HistoryContext } from "../context/HistoryContext"
 import { ModalContext } from "../context/ModalContext"
 import "./AddToWatchlist.scss"
 
@@ -9,6 +10,7 @@ export default function AddToWatchlist(props) {
 
     const {watchlistsArr, addMovieToWatchlist} = useContext(WatchlistsContext)
     const {isModalActive, setIsModalActive, movieId} = useContext(ModalContext)
+    const {addToHistory} = useContext(HistoryContext)
 
     const navigate = useNavigate()
 
@@ -39,6 +41,7 @@ export default function AddToWatchlist(props) {
     function handleSave() {
         addMovieToWatchlist(selectedIds.movie, selectedIds.watchlist)
         setIsModalActive(false)
+        addToHistory(movieId)
         // navigate(`/watchlist-page/${selectedIds.watchlist}`)
     }
 
