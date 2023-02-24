@@ -39,7 +39,7 @@ export default function AddToWatchlist(props) {
     function handleSave() {
         addMovieToWatchlist(selectedIds.movie, selectedIds.watchlist)
         setIsModalActive(false)
-        navigate(`/watchlist-page/${selectedIds.watchlist}`)
+        // navigate(`/watchlist-page/${selectedIds.watchlist}`)
     }
 
     const colorStyles = {
