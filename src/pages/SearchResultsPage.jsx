@@ -44,7 +44,7 @@ export default function SearchResultsPage(props) {
             <li className="search-results-page__item"
                 key={nanoid()}
             >
-                <Link to="/movie-page" className="search-results-page__link">
+                <Link to={`/movie-page/${movie.id}`} className="search-results-page__link">
                     <MovieCard 
                         className="search-results-page__movie-card"
                         movieId={movie.id}
@@ -58,13 +58,10 @@ export default function SearchResultsPage(props) {
         )
     })
 
-
-
-
     return (
         <div className={`search-results-page ${props.className}`}>
             <h4 className="search-results-page__header">
-                Search Results: movies by Tom Cruise
+                Search Results: {searchText}
             </h4>
             <ul className="search-results-page__list card-grid">
                 {searchList}
