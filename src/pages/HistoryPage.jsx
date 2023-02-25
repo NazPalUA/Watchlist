@@ -7,7 +7,7 @@ import './HistoryPage.scss'
 
 export default function HistoryPage(props) {
 
-    const {historyIds} = useContext(HistoryContext)
+    const {historyIds, clearHistory} = useContext(HistoryContext)
 
     const [moviesData, setMoviesData] = useState([])
     
@@ -54,7 +54,12 @@ export default function HistoryPage(props) {
 
     return (
         <div className={`history-page ${props.className}`}>
-            <button className="history-page__clear-btn">Clear history</button>
+            <button 
+                className="history-page__clear-btn"
+                onClick={clearHistory}
+            >
+                Clear history
+            </button>
             <ul className="history-page__list card-grid">
                 {historyList}
             </ul>
