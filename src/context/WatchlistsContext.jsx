@@ -63,14 +63,19 @@ function WatchlistsContextProvider({children}) {
     }
 
     function addMovieToWatchlist(movieId, watchlistId) {
-        setWatchlistsArr(prevWatchlistsArr => {
-            return prevWatchlistsArr.map(watchlist => {
-                if(watchlistId !== watchlist.id) return watchlist
-                else return {...watchlist, 
-                    movieIds: [...watchlist.movieIds, movieId],
+        setWatchlistsArr(prevWatchlistsArr => prevWatchlistsArr.map(watchlist => {
+                if (watchlistId !== watchlist.id) return watchlist
+                else {
+                    if (watchlist.movieIds.includes(String(movieId)) || 
+                        watchlist.movieIds.includes(Number(movieId))) return watchlist
+                    
+                    return {...watchlist, 
+                        movieIds: [...watchlist.movieIds, movieId],
+                    }
                 }
+                
             })
-        })
+        )
     }
 
     function deleteMovieFromWatchlist(movieId, watchlistId) {
