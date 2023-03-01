@@ -49,7 +49,7 @@ export default function SearchResultsPage(props) {
                         className="search-results-page__movie-card"
                         movieId={movie.id}
                         title={movie.title}
-                        path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
                         year={movie.release_date.slice(0, 4)}
                         rating={Math.round(movie.vote_average*10)}
                     />

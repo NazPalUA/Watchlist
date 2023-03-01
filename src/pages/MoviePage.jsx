@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import ActorCard from "../components/ActorCard"
+import posterNotFound from "../images/poster_not_found.png"
 import './MoviePage.scss'
 
 export default function MoviePage(props) {
@@ -48,7 +49,7 @@ export default function MoviePage(props) {
                     className="movie-page__card"
                     character={person.character}
                     name={person.name}
-                    imgPath={`https://image.tmdb.org/t/p/original${person.profile_path}`}
+                    imgPath={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}` : null}
                 />
             </li>
         )
@@ -64,7 +65,7 @@ export default function MoviePage(props) {
                         className="movie-page__card"
                         movieId={movie.id}
                         title={movie.title}
-                        path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
                         year={movie.release_date.slice(0, 4)}
                         rating={Math.round(movie.vote_average*10)}
                     />
@@ -80,7 +81,7 @@ export default function MoviePage(props) {
         <div className={`movie-page ${props.className}`}>
             <div className="movie-page__top-container">
                 <img className="movie-page__main-poster" 
-                    src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
+                    src={movieData.poster_path ? `https://image.tmdb.org/t/p/original${movieData.poster_path}` : posterNotFound}
                     alt="movie poster" 
                 />
                 <div className="movie-page__top-right-container">

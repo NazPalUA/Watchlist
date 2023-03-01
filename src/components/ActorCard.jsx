@@ -1,12 +1,14 @@
 import React from "react";
+import noProfilePhoto from "../images/no_profile_photo.png"
 import './ActorCard.scss'
 
-export default function ActorCard(props) {
+function ActorCard(props) {
+    const imgPath = props.imgPath ? props.imgPath : ActorCard.defaultProps.imgPath
     return (
         <div className={`actor-card ${props.className}`}>
             <img 
                 className="actor-card__photo"
-                src={props.imgPath}
+                src={imgPath}
                 alt="actor photo"
             />
             <p className="actor-card__name">
@@ -18,3 +20,11 @@ export default function ActorCard(props) {
         </div>
     )
 }
+
+ActorCard.defaultProps = {
+    imgPath: noProfilePhoto,
+    name: "",
+    character: ""
+}
+
+export default ActorCard

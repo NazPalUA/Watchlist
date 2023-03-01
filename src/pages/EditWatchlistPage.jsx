@@ -68,7 +68,7 @@ export default function EditWatchlistPage(props) {
             >
                 <img 
                     className="edit-watchlist-page__movie-img" 
-                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                    src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null} 
                     alt="movie poster" 
                 />
                 <p className="edit-watchlist-page__movie-name">

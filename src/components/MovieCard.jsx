@@ -4,11 +4,14 @@ import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
 import ribbon_icon from "../images/ribbon_icon.svg"
+import posterNotFound from "../images/poster_not_found.png"
 import './MovieCard.scss'
 
 function MovieCard(props) {
 
     const {setIsModalActive, setMovieId} = useContext(ModalContext)
+
+    const posterPath = props.path ? props.path : MovieCard.defaultProps.path
 
     return (
         <div className={`movie-card ${props.className}`}>
@@ -26,7 +29,7 @@ function MovieCard(props) {
             }
             <img 
                 className="movie-card__poster"
-                src={props.path}
+                src={posterPath}
                 alt="movie poster"
             />
 
@@ -55,7 +58,8 @@ function MovieCard(props) {
 
 MovieCard.defaultProps = {
     className: "",
-    addBtn: true
+    addBtn: true,
+    path: posterNotFound
 }
     
 export default MovieCard
