@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState }  from "react"
+import React, { useContext }  from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import { WatchlistsContext } from "../context/WatchlistsContext"
+import useMoviesData from "../hooks/useMoviesData"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
 
@@ -11,29 +12,9 @@ export default function WatchlistPage(props) {
 
     const {watchlistsArr, getWatchlistData, getMovieIds} = useContext(WatchlistsContext)
 
-    const [moviesData, setMoviesData] = useState([])
-    
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const BASE_URL = "https://api.themoviedb.org/3/movie"
-
-    useEffect(()=>{ 
-        const movieIds = getMovieIds(watchlistId)
-    
-        async function fetchData() {
-            try {
-                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
-                if (!responses.every(response => response.ok)) {
-                    throw new Error('Some requests failed')
-                }
-                const data = await Promise.all(responses.map(response => response.json()))
-                setMoviesData(data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        fetchData();
-    },[watchlistId])
+    const movieIds = getMovieIds(watchlistId)
+    const moviesData = useMoviesData(movieIds, API_KEY)
 
     function getAverageVote(movies) {
         const totalVotes = movies.reduce((acc, movie) => acc + movie.vote_average, 0);

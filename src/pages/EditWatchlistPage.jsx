@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState }  from "react"
+import React, { useContext }  from "react"
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { nanoid } from "nanoid"
+import useMoviesData from "../hooks/useMoviesData"
 import './EditWatchlistPage.scss'
 
 export default function EditWatchlistPage(props) {
     const navigate = useNavigate()
     const {watchlistId} = useParams()
-    const [moviesData, setMoviesData] = useState([])
-    
+
     const { watchlistsArr, getWatchlistData, deleteWatchlist,
             editWatchlist, getMovieIds, deleteMovieFromWatchlist} 
         = useContext(WatchlistsContext)
@@ -19,26 +19,9 @@ export default function EditWatchlistPage(props) {
         })
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const BASE_URL = "https://api.themoviedb.org/3/movie"
+    const movieIds = getMovieIds(watchlistId)
+    const moviesData = useMoviesData(movieIds, API_KEY);
 
-    useEffect(()=>{ 
-        const movieIds = getMovieIds(watchlistId)
-        async function fetchData() {
-            try {
-                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
-                if (!responses.every(response => response.ok)) {
-                    throw new Error('Some requests failed')
-                }
-                const data = await Promise.all(responses.map(response => response.json()))
-                setMoviesData(data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        fetchData();
-    },[watchlistId, watchlistsArr])
-    
     function handleChange(event) {
         const {name, value, type, checked} = event.target
         setFormData(prevFormData => {

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
 import ActorCard from "../components/ActorCard"
+import useFetch from "../hooks/useFetch"
 import posterNotFound from "../images/poster_not_found.png"
 import './MoviePage.scss'
 
@@ -13,34 +14,18 @@ export default function MoviePage(props) {
     const {addToHistory} = useContext(HistoryContext)
     const {movieId} = useParams()
 
-    const [movieData, setMovieData] = useState()
-    const [relatedData, setRelatedData] = useState([])
-    const [castData, setCastData] = useState([])
-
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
+    const movieData = useFetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`).data
+    const relatedData = useFetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`).data
+    const castData = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`).data
+
     useEffect(()=>{
         addToHistory(movieId)
-        
-        fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
-            .then(response => response.json())
-            .then(response => setMovieData(response))
-            .catch(err => console.error(err));
-
-        fetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
-            .then(response => response.json())
-            .then(response => setRelatedData(response.results))
-            .catch(err => console.error(err));
-
-        fetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
-            .then(response => response.json())
-            .then(response => setCastData(response.cast))
-            .catch(err => console.error(err));
     },[movieId])
 
-
-    const castList = castData.slice(0, 12).map(person => {
+    const castList = !castData ? [] : castData.cast.slice(0, 12).map(person => {
         return (
             <li className="movie-page__list-item"
                 key={nanoid()}
@@ -55,7 +40,7 @@ export default function MoviePage(props) {
         )
     })
 
-    const relatedList = relatedData.map(movie => {
+    const relatedList = !relatedData ? [] : relatedData.results.map(movie => {
         return (
             <li className="movie-page__list-item"
                 key={nanoid()}
@@ -75,7 +60,7 @@ export default function MoviePage(props) {
     })
     
 
-    if(movieData === undefined) return <div className={`movie-page ${props.className}`}></div>
+    if(!movieData) return <div className={`movie-page ${props.className}`}></div>
 
     return (
         <div className={`movie-page ${props.className}`}>

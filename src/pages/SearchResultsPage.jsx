@@ -2,42 +2,22 @@ import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import MovieCard from "../components/MovieCard"
+import useMoviesData from "../hooks/useMoviesData"
+import useFetch from "../hooks/useFetch"
 import './SearchResultsPage.scss'
 
 export default function SearchResultsPage(props) {
     const {searchText} = useParams()
 
     const [movieIds, setMovieIds] = useState([])
-    const [moviesData, setMoviesData] = useState([])
     
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    
-    useEffect(()=>{
-        const BASE_URL = "https://api.themoviedb.org/3/search"
-        fetch(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=1`)
-            .then(response => response.json())
-            .then(response => setMovieIds(response.results.map(i => i.id)))
-            .catch(err => console.error(err));
-    },[searchText])
+    const BASE_URL = "https://api.themoviedb.org/3/search"
+    const { data, loading, error } = useFetch(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=1`)
+    useEffect(() => setMovieIds(data ? data.results.map(i => i.id) : []),[data])
 
-    useEffect(()=>{
-        const BASE_URL = "https://api.themoviedb.org/3/movie"
-        // const movieIds = movieIds
-        async function fetchData() {
-            try {
-                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
-                if (!responses.every(response => response.ok)) {
-                    throw new Error('Some requests failed')
-                }
-                const data = await Promise.all(responses.map(response => response.json()))
-                setMoviesData(data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
 
-        movieIds !== undefined && movieIds.length > 0 && fetchData();
-    },[movieIds])
+    const moviesData = useMoviesData(movieIds, API_KEY)
 
     const searchList = moviesData.map(movie => {
         return(

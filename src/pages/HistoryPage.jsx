@@ -3,35 +3,15 @@ import { Link } from "react-router-dom"
 import { nanoid } from "nanoid"
 import { HistoryContext } from "../context/HistoryContext"
 import MovieCard from "../components/MovieCard"
+import useMoviesData from "../hooks/useMoviesData"
 import './HistoryPage.scss'
 
 export default function HistoryPage(props) {
 
     const {historyIds, clearHistory} = useContext(HistoryContext)
-
-    const [moviesData, setMoviesData] = useState([])
     
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const BASE_URL = "https://api.themoviedb.org/3/movie"
-
-    useEffect(()=>{ 
-        const movieIds = historyIds
-    
-        async function fetchData() {
-            try {
-                const responses = await Promise.all(movieIds.map(movieId => fetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)))
-                if (!responses.every(response => response.ok)) {
-                    throw new Error('Some requests failed')
-                }
-                const data = await Promise.all(responses.map(response => response.json()))
-                setMoviesData(data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        fetchData();
-    },[historyIds])
+    const moviesData = useMoviesData(historyIds, API_KEY);
 
     const historyList = moviesData.map(movie=>{
         return (
@@ -51,6 +31,7 @@ export default function HistoryPage(props) {
             </li>
         )
     })
+    
 
     return (
         <div className={`history-page ${props.className}`}>
