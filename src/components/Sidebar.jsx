@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState }  from "react"
+import React, { useContext }  from "react"
 import { Link } from "react-router-dom"
-import useWindowSize from "../tools/useWindowSize"
+import useWindowSize from "../hooks/useWindowSize"
 import { nanoid } from "nanoid"
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import './Sidebar.scss'
