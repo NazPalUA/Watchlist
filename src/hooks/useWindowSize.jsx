@@ -27,7 +27,9 @@ export default function useWindowSize() {
   return windowSize;
 }
 
-// Usage
+
+// --- usage example --- //
+
 // function App() {
 //   const size = useWindowSize();
 //   return (
