@@ -40,6 +40,11 @@
         &:hover {
             background-color: rgba(v.$clr-accent, 0.6);
         }
+
+        &:disabled {
+            background-color: rgba(v.$clr-accent, 0.1);
+            cursor: not-allowed;
+        }
     }
 
 }
