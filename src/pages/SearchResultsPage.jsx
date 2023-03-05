@@ -13,7 +13,7 @@ export default function SearchResultsPage(props) {
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const BASE_URL = "https://api.themoviedb.org/3/search"
-    const { data, loading } = useFetch(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=1`)
+    const [data, loading] = useFetch(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=1`)
     useEffect(() => setMovieIds(data ? data.results.map(i => i.id) : []), [data])
 
 

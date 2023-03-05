@@ -17,9 +17,9 @@ export default function MoviePage(props) {
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
-    const movieData = useFetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`).data
-    const relatedData = useFetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`).data
-    const castData = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`).data
+    const [movieData] = useFetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
+    const [relatedData] = useFetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+    const [castData] = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
 
     useEffect(()=>{
         addToHistory(movieId)

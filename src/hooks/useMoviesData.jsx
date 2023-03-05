@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 export default function useMoviesData(movieIds, apiKey) {
     
-    const [moviesData, setMoviesData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [moviesData, setMoviesData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         if (movieIds !== undefined || movieIds.length !== 0) {
-            const BASE_URL = "https://api.themoviedb.org/3/movie";
-            const urls = movieIds.map(movieId => `${BASE_URL}/${movieId}?api_key=${apiKey}&language=en-US`);
+            const BASE_URL = "https://api.themoviedb.org/3/movie"
+            const urls = movieIds.map(movieId => `${BASE_URL}/${movieId}?api_key=${apiKey}&language=en-US`)
 
             Promise.all(urls.map(url => fetch(url)))
                 .then(responses => Promise.all(responses.map(response => response.json())))
@@ -17,12 +18,12 @@ export default function useMoviesData(movieIds, apiKey) {
                     setLoading(false)
                 })
                 .catch(error => {
-                    console.log(error)
+                    setError(error)
                     setLoading(false)
-                });
+                })
         }
-    }, [movieIds, apiKey, loading]);
+    }, [movieIds, apiKey, loading])
 
-    return [moviesData, loading];
+    return [moviesData, loading, error]
 }
 

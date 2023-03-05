@@ -11,7 +11,7 @@ export default function HomePage(props) {
 
     const BASE_URL = "https://api.themoviedb.org/3"
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const { data, loading, error } = useFetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`)
+    const [data] = useFetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`)
 
     const popular = !data ? [] : data.results.map(movie => {
         return (
