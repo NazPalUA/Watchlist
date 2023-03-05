@@ -1,4 +1,4 @@
-import React, { useContext }  from "react"
+import React, { useContext, useState }  from "react"
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { nanoid } from "nanoid"
@@ -10,7 +10,7 @@ export default function EditWatchlistPage(props) {
     const {watchlistId} = useParams()
 
     const { watchlistsArr, getWatchlistData, deleteWatchlist,
-            editWatchlist, getMovieIds, deleteMovieFromWatchlist} 
+            editWatchlist, getMovieIds, setMovieIdsToWatchlist} 
         = useContext(WatchlistsContext)
         
         const [formData, setFormData] = React.useState({
@@ -19,7 +19,7 @@ export default function EditWatchlistPage(props) {
         })
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const movieIds = getMovieIds(watchlistId)
+    const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId))
     const moviesData = useMoviesData(movieIds, API_KEY);
 
     function handleChange(event) {
@@ -31,11 +31,19 @@ export default function EditWatchlistPage(props) {
             }
         })
     }
+
+    function deleteMovieId(movieId) {
+        setMovieIds(prevMovieIds => {
+            return prevMovieIds.filter(id => {
+                return id !== movieId
+            })
+        })
+    }
     
     function handleSubmit(event) {
         event.preventDefault()
-        // console.log(formData)
         editWatchlist(formData.name, formData.description, watchlistId)
+        setMovieIdsToWatchlist(watchlistId, movieIds)
         navigate(`/watchlist-page/${watchlistId}`)
     }
 
@@ -61,7 +69,7 @@ export default function EditWatchlistPage(props) {
                     className="edit-watchlist-page__movie-remove-btn"
                     onClick={(e) => {
                         e.preventDefault
-                        deleteMovieFromWatchlist(movie.id, watchlistId)
+                        deleteMovieId(movie.id)
                     }}
                 >
                     Remove

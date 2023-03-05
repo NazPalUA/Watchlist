@@ -97,6 +97,17 @@ function WatchlistsContextProvider({children}) {
         })
     }
 
+    function setMovieIdsToWatchlist(watchlistId, movieIds) {
+        setWatchlistsArr(prevWatchlistsArr => {
+            return prevWatchlistsArr.map(watchlist => {
+                if(watchlistId !== watchlist.id) return watchlist
+                else return {
+                    ...watchlist,
+                    movieIds: movieIds
+                }
+            })
+        })
+    }
 
     return (
         <WatchlistsContext.Provider value={{
@@ -106,6 +117,7 @@ function WatchlistsContextProvider({children}) {
             editWatchlist,
             addMovieToWatchlist,
             deleteMovieFromWatchlist,
+            setMovieIdsToWatchlist,
             getMovieIds,
             getWatchlistData
         }}>
