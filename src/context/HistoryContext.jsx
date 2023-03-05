@@ -1,11 +1,20 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const HistoryContext = React.createContext()
 
 function HistoryContextProvider({children}) {
-    const [historyIds, setHistoryIds] = useState([])
 
-    function addToHistory(movieId) {
+    const [historyIdsLocalStorage, setHistoryIdsLocalStorage] = useLocalStorage('historyIds', []);
+
+    const [historyIds, setHistoryIds] = useState(historyIdsLocalStorage)
+
+    useEffect(() => {
+        setHistoryIdsLocalStorage(historyIds)
+    },[historyIds])
+
+    function addToHistory(id) {
+        const movieId = id.toString()
         setHistoryIds(prevIds => {
             // Check if the given movieId is already in the array
             if (prevIds.includes(movieId)) {

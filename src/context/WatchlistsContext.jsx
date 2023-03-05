@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import { nanoid } from "nanoid"
+import React, { useState, useEffect } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 const WatchlistsContext = React.createContext()
 
 function WatchlistsContextProvider({children}) {
 
-    const [watchlistsArr, setWatchlistsArr] = useState([
+    const [watchlistsArrLocalStorage, setWatchlistsArrLocalStorage] = useLocalStorage("watchlistsArr", [
         {
             id: "1",
-            name: "Marvel",
+            name: "Watchlist name",
             description: "Description of my new watchlist",
             movieIds: [505642, 436270, 774752]
         },
@@ -19,6 +19,11 @@ function WatchlistsContextProvider({children}) {
             movieIds: [632856, 668461, 928344, 505642, 436270, 774752]
         }
     ])
+    const [watchlistsArr, setWatchlistsArr] = useState(watchlistsArrLocalStorage)
+
+    useEffect(() => {
+        setWatchlistsArrLocalStorage(watchlistsArr)
+    },[watchlistsArr])
 
     function getWatchlistData(watchlistId) {
         return watchlistsArr.find(watchlist => watchlist.id === watchlistId)
