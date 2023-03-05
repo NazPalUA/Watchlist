@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function useMoviesData(movieIds, apiKey) {
     
     const [moviesData, setMoviesData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (movieIds !== undefined || movieIds.length !== 0) {
@@ -11,11 +12,17 @@ export default function useMoviesData(movieIds, apiKey) {
 
             Promise.all(urls.map(url => fetch(url)))
                 .then(responses => Promise.all(responses.map(response => response.json())))
-                .then(data => setMoviesData(data))
-                .catch(error => console.log(error));
+                .then(data => {
+                    setMoviesData(data)
+                    setLoading(false)
+                })
+                .catch(error => {
+                    console.log(error)
+                    setLoading(false)
+                });
         }
-    }, [movieIds, apiKey]);
+    }, [movieIds, apiKey, loading]);
 
-    return moviesData;
+    return [moviesData, loading];
 }
 

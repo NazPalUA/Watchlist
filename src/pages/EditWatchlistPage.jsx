@@ -20,7 +20,7 @@ export default function EditWatchlistPage(props) {
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId))
-    const moviesData = useMoviesData(movieIds, API_KEY);
+    const [moviesData] = useMoviesData(movieIds, API_KEY);
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target

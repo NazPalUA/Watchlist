@@ -11,7 +11,7 @@ export default function HistoryPage(props) {
     const {historyIds, clearHistory} = useContext(HistoryContext)
     
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const moviesData = useMoviesData(historyIds, API_KEY);
+    const [moviesData] = useMoviesData(historyIds, API_KEY);
 
     const historyList = moviesData.map(movie=>{
         return (

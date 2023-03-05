@@ -14,7 +14,7 @@ export default function WatchlistPage(props) {
 
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
     const movieIds = getMovieIds(watchlistId)
-    const moviesData = useMoviesData(movieIds, API_KEY)
+    const [moviesData] = useMoviesData(movieIds, API_KEY)
 
     function getAverageVote(movies) {
         const totalVotes = movies.reduce((acc, movie) => acc + movie.vote_average, 0);
