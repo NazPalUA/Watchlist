@@ -119,8 +119,8 @@ export default function EditWatchlistPage(props) {
                     {moviesList}
                 </ul>
                 <div className="edit-watchlist-page__btns-container">
-                    <button className="edit-watchlist-page__btn">Save</button>
                     <Link to={`/watchlist-page/${watchlistId}`} className="edit-watchlist-page__btn edit-watchlist-page__btn_dark">Back</Link>
+                    <button className="edit-watchlist-page__btn">Save</button>
                 </div>
             </form>
 

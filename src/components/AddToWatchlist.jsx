@@ -107,16 +107,16 @@ export default function AddToWatchlist(props) {
             <div className="add-to-list__btn-container">
                 <button 
                     className="add-to-list__btn" 
+                    onClick={()=>closeModal()}
+                >
+                    Cancel
+                </button>
+                <button 
+                    className="add-to-list__btn" 
                     onClick={()=>handleSave()}
                     disabled={!selectedOption}
                 >
                     Save
-                </button>
-                <button 
-                    className="add-to-list__btn" 
-                    onClick={()=>closeModal()}
-                >
-                    Cancel
                 </button>
             </div>
         </div>
