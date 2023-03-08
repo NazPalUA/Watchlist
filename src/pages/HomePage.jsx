@@ -14,7 +14,6 @@ export default function HomePage(props) {
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
 
     let { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${API_KEY}&language=en-US&page=1`)
-    console.log(page)
 
     const popular = !data ? [] : data.map(movie => {
         return (

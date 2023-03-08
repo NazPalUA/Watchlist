@@ -8,7 +8,6 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
 
-    console.log(data)
     const fetchData = async () => {
         try {
             setLoading(true)
