@@ -8,6 +8,7 @@ import ActorCard from "../components/ActorCard"
 import useFetch from "../hooks/useFetch"
 import posterNotFound from "../images/poster_not_found.png"
 import './MoviePage.scss'
+import useRelatedData from "../hooks/useRelatedData";
 
 export default function MoviePage(props) {
     const {setIsModalActive, setMovieId} = useContext(ModalContext)
@@ -18,7 +19,7 @@ export default function MoviePage(props) {
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
     const [movieData] = useFetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
-    const [relatedData] = useFetch(`${BASE_URL}/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+    const { relatedMoviesData, loading, error } = useRelatedData(movieId)
     const [castData] = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
 
     useEffect(()=>{
@@ -40,7 +41,7 @@ export default function MoviePage(props) {
         )
     })
 
-    const relatedList = !relatedData ? [] : relatedData.results.map(movie => {
+    const relatedList = !relatedMoviesData ? [] : relatedMoviesData.map(movie => {
         return (
             <li className="movie-page__list-item"
                 key={nanoid()}
