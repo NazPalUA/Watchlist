@@ -13,7 +13,7 @@ export default function HomePage(props) {
     const BASE_URL = "https://api.themoviedb.org/3"
     const API_KEY = "e980138e09662908e00ccbeacd080b08"
 
-    let { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${API_KEY}&language=en-US&page=1`)
+    const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${API_KEY}&language=en-US&page=1`)
 
     const popular = !data ? [] : data.map(movie => {
         return (

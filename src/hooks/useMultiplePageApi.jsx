@@ -13,6 +13,7 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
             setLoading(true)
             const response = await fetch(url)
             const responseData = await response.json()
+
             setData(prevData => {
                 const newData = [...prevData, ...responseData.results];
                 const uniqueData = newData.reduce((acc, item) => {
@@ -23,7 +24,8 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
                 }, []);
                 return uniqueData;
             });
-            setHasMore(responseData.results.length > 0)
+            // setHasMore(responseData.results.length > 0)
+            setHasMore(responseData.total_pages > page)
             setPage(page + 1)
         } catch (error) {
             setError(error)
