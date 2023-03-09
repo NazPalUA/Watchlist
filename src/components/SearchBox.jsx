@@ -18,6 +18,12 @@ export default function SearchBox(props) {
         setSearchText("")
     }
 
+    function handleKeyDown(event) {
+        if (event.keyCode === 13) {
+            handleSubmit()
+        }
+    }
+
     return (
         <div className={`search-box ${props.className}`}>
             <input 
@@ -27,6 +33,7 @@ export default function SearchBox(props) {
                 id="search-box__input"
                 placeholder="Search for movies by title"
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 value={searchText}
             />
             <button 
