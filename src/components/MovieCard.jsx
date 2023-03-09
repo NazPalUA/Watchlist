@@ -3,6 +3,7 @@ import { ModalContext } from "../context/ModalContext"
 import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
+import confusedIcon from "../images/confused_icon.png"
 import ribbon_icon from "../images/ribbon_icon.svg"
 import posterNotFound from "../images/poster_not_found.png"
 import './MovieCard.scss'
@@ -36,11 +37,11 @@ function MovieCard(props) {
             <div className="movie-card__rating-wrapper">
                 <img 
                     className="movie-card__smile"
-                    src={props.rating > 80 ? greatIcon : props.rating > 35 ? normalIcon : awfulIcon } 
+                    src={props.rating == 0 ? confusedIcon : props.rating > 80 ? greatIcon : props.rating > 35 ? normalIcon : awfulIcon } 
                     alt="rating smile" 
                 />
                 <span className="movie-card__rating">
-                    {props.rating}
+                    {props.rating > 0 ? props.rating : "?"}
                     <span className="movie-card__max-rating">/100</span>
                 </span>
             </div>
