@@ -20,11 +20,16 @@ function App() {
 
 	const {isModalActive, setIsModalActive} = useContext(ModalContext)
 
-	const { pathname } = useLocation()
-
-	useEffect(() => {
+	function handleLinkClick() {
 		window.scrollTo(0, 0)
+	}
+	
+	const { pathname } = useLocation()
+	useEffect(() => {
+		handleLinkClick()
 	}, [pathname])
+
+	document.querySelectorAll("a").forEach(link => link.addEventListener("click", handleLinkClick))
 
 	return (
 		<div className="app">
