@@ -4,19 +4,21 @@
     display: flex;
     align-items: center;
     justify-content: stretch;
+
     padding: 0 0 0 0.75em;
-    border: 1px solid rgba(v.$clr-semi-light, 0.3);
     border-radius: 6px;
+    border: 1px solid rgba(v.$clr-semi-light, 0.3);
 
     &::before {
         content: "";
         display: inline-block;
         height: 1.3rem;
         width: 1.3rem;
+        margin-right: 1em;
+
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        margin-right: 1em;
         background-image: url(../images/search_icon.svg);
     }
     
@@ -36,10 +38,9 @@
     &__button {
         padding: 0.8em 1.4em;
         border-radius: 6px;
+        border: none;
         background: v.$clr-accent;
         color: v.$clr-dark;
-        border: none;
-        // outline: 1px solid v.$clr-accent;
 
         &:hover {
             opacity: 0.9;

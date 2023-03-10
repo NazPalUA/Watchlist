@@ -38,7 +38,7 @@ export default function WatchlistPage(props) {
                     <MovieCard 
                         className="watchlist-page__movie-card" 
                         movieId={movie.id}
-                        addBtn={false}
+                        haveAddBtn={false}
                         title={movie.title}
                         path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
                         year={movie.release_date.slice(0, 4)}

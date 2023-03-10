@@ -3,7 +3,7 @@ import checkmarkWhiteIcon from "../images/checkmark_white_icon.svg"
 import ribbonIcon from "../images/ribbon_icon.svg"
 import './Welcome.scss'
 
-export default function Welcome(props) {
+function Welcome(props) {
     return (
         <div className={`welcome ${props.className}`}>
             <h1 className="welcome__title">
@@ -23,7 +23,12 @@ export default function Welcome(props) {
                     alt="watched icon"
                 />to mark the movie as watched.
             </p>
-
         </div>
     )
 }
+
+Welcome.defaultProps = {
+    className: ""
+}
+    
+export default Welcome

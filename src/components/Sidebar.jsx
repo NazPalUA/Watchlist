@@ -1,15 +1,18 @@
 import React, { useContext }  from "react"
 import { Link } from "react-router-dom"
-import useWindowSize from "../hooks/useWindowSize"
 import { nanoid } from "nanoid"
 import { WatchlistsContext } from "../context/WatchlistsContext"
+import useWindowSize from "../hooks/useWindowSize"
 import './Sidebar.scss'
 
-export default function Sidebar(props) {
-
+function Sidebar(props) {
+    // Get watchlistsArr from WatchlistsContext
     const {watchlistsArr} = useContext(WatchlistsContext)
+
+    // Get window size using the useWindowSize hook
     const size = useWindowSize()
 
+    // Function for opening/closing the sidebar menu
     function toggleSidebar() {
         if(size.width < 768) {
             document.body.classList.toggle("open")
@@ -17,7 +20,7 @@ export default function Sidebar(props) {
         }
     }
 
-    const watchLists = watchlistsArr.map(watchlist => {
+    const watchListsArrHTML = watchlistsArr.map(watchlist => {
         return (
             <li className="sidebar__watchlist-item"
                 key={nanoid()}
@@ -35,7 +38,7 @@ export default function Sidebar(props) {
     })
 
     return (
-        <div className={`sidebar ${props.className ? props.className : ""}`}>
+        <div className={`sidebar ${props.className}`}>
             <div className="sidebar__top">
                 <Link to="/" className="sidebar__logo-link">
                     <h1 className="sidebar__logo">
@@ -73,9 +76,15 @@ export default function Sidebar(props) {
             </div>
             <div className="sidebar__bottom">
                 <ul className="sidebar__watchlists">
-                    {watchLists}
+                    {watchListsArrHTML}
                 </ul>
             </div>
         </div>
     )
 }
+
+Sidebar.defaultProps = {
+    className: ""
+}
+    
+export default Sidebar

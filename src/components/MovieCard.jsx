@@ -4,21 +4,16 @@ import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
 import confusedIcon from "../images/confused_icon.png"
-import ribbon_icon from "../images/ribbon_icon.svg"
 import posterNotFound from "../images/poster_not_found.png"
 import './MovieCard.scss'
 
 function MovieCard(props) {
-
     const {setIsModalActive, setMovieId} = useContext(ModalContext)
-
-    const posterPath = props.path ? props.path : MovieCard.defaultProps.path
 
     return (
         <div className={`movie-card ${props.className}`}>
-            {props.addBtn && 
-                <button 
-                    className="movie-card__add-btn" 
+            {props.haveAddBtn && 
+                <button className="movie-card__add-btn" 
                     onClick={e=>{
                         e.preventDefault()
                         e.stopPropagation()
@@ -28,15 +23,13 @@ function MovieCard(props) {
                 >
                 </button>
             }
-            <img 
-                className="movie-card__poster"
-                src={posterPath}
+            <img className="movie-card__poster"
+                src={props.path ? props.path : MovieCard.defaultProps.path}
                 alt="movie poster"
             />
 
             <div className="movie-card__rating-wrapper">
-                <img 
-                    className="movie-card__smile"
+                <img className="movie-card__smile"
                     src={props.rating == 0 ? confusedIcon : props.rating > 80 ? greatIcon : props.rating > 35 ? normalIcon : awfulIcon } 
                     alt="rating smile" 
                 />
@@ -59,7 +52,7 @@ function MovieCard(props) {
 
 MovieCard.defaultProps = {
     className: "",
-    addBtn: true,
+    haveAddBtn: true,
     path: posterNotFound
 }
     

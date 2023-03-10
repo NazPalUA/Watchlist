@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 import Burger from "./Burger"
 import './MobileHeader.scss'
 
-export default function MobileHeader(props) {
+function MobileHeader(props) {
 
     return (
-        <nav className={`mobile-header ${props.className ? props.className : ""}`}>
+        <nav className={`mobile-header ${props.className}`}>
             <Link to="/" className="mobile-header__logo-link">
                 <h1 className="mobile-header__logo">
                     Watchlists
@@ -16,3 +16,9 @@ export default function MobileHeader(props) {
         </nav>
     )
 }
+
+MobileHeader.defaultProps = {
+    className: ""
+}
+
+export default MobileHeader

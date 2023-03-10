@@ -1,23 +1,26 @@
 import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import './SearchBox.scss'
 
-export default function SearchBox(props) {
-
-    const navigate = useNavigate()
-
+function SearchBox(props) {
+    // Component state to store search query text
     const [searchText, setSearchText] = React.useState("")
 
+    // Navigation hook to navigate to another page
+    const navigate = useNavigate()
+
+    // Handler for input change in search field
     function handleChange(event) {
-        const {value} = event.target
-        setSearchText(value)
+        setSearchText(event.target.value)
     }
     
+    // Handler for submitting search form
     function handleSubmit() {
         navigate(`/search-results-page/${searchText}`)
         setSearchText("")
     }
 
+    // Handler for key down event on search field
     function handleKeyDown(event) {
         if (event.keyCode === 13) {
             handleSubmit()
@@ -26,8 +29,7 @@ export default function SearchBox(props) {
 
     return (
         <div className={`search-box ${props.className}`}>
-            <input 
-                className="search-box__input"
+            <input className="search-box__input"
                 type="text" 
                 name="search" 
                 id="search-box__input"
@@ -36,8 +38,7 @@ export default function SearchBox(props) {
                 onKeyDown={handleKeyDown}
                 value={searchText}
             />
-            <button 
-                className="search-box__button"
+            <button className="search-box__button"
                 onClick={handleSubmit}
                 >
                     search
@@ -45,3 +46,9 @@ export default function SearchBox(props) {
         </div>
     )
 }
+
+SearchBox.defaultProps = {
+    className: ""
+}
+    
+export default SearchBox

@@ -9,7 +9,7 @@ function ActorCard(props) {
             <img 
                 className="actor-card__photo"
                 src={imgPath}
-                alt="actor photo"
+                alt={`${props.name} photo`}
             />
             <p className="actor-card__name">
                 {props.name}
