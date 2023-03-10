@@ -17,8 +17,9 @@ export default function WatchlistPage(props) {
     const [moviesData] = useMoviesData(movieIds, API_KEY)
 
     function getAverageVote(movies) {
-        const totalVotes = movies.reduce((acc, movie) => acc + movie.vote_average, 0);
-        return Math.round(totalVotes / movies.length * 10);
+        const moviesWithScoreData = movies.filter(movie => movie.vote_average > 0)
+        const totalVotes = moviesWithScoreData.reduce((acc, movie) => acc + movie.vote_average, 0);
+        return Math.round(totalVotes / moviesWithScoreData.length * 10);
     }
     const avgScore = moviesData ? getAverageVote(moviesData) : 0;
 
