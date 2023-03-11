@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Link, useParams } from "react-router-dom"
-import { nanoid } from "nanoid"
-import MovieCard from "../components/MovieCard"
 import useMoviesData from "../hooks/useMoviesData"
 import useMultiplePageApi from "../hooks/useMultiplePageApi"
+import MovieCard from "../components/MovieCard"
 import './SearchResultsPage.scss'
 
-export default function SearchResultsPage(props) {
+function SearchResultsPage(props) {
+    // Get the search text from the URL parameter
     const { searchText } = useParams()
 
+    // Set up state to keep track of movie IDs
     const [movieIds, setMovieIds] = useState([])
-
-    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    
+    // Set up API URL and call the custom hook to fetch data
     const BASE_URL = "https://api.themoviedb.org/3/search"
+    const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchText}&page=1`)
 
-    const { data, loading, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=1`)
+    // Update movie IDs state when new data is fetched
     useEffect(() => setMovieIds(data ? data.map(i => i.id) : []), [data])
+    
+    // Call the custom hook to fetch detailed movie data
+    const [moviesData] = useMoviesData(movieIds)
 
-    const [moviesData, loadingMoviesData] = useMoviesData(movieIds, API_KEY)
-
-    const searchList = moviesData.map(movie => {
+    // Map over movie data and render each movie card as a list item
+    const searchListHTML = moviesData.map(movie => {
         return (
             <li className="search-results-page__item"
-                key={nanoid()}
+                key={movie.id}
             >
                 <Link to={`/movie-page/${movie.id}`} className="search-results-page__link">
                     <MovieCard
@@ -46,13 +50,19 @@ export default function SearchResultsPage(props) {
             </h4>
                 <InfiniteScroll
                     dataLength={movieIds.length}
-                    next={()=>setUrl(`${BASE_URL}/movie?api_key=${API_KEY}&query=${searchText}&page=${page}`)}
+                    next={()=>setUrl(`${BASE_URL}/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchText}&page=${page}`)}
                     hasMore={hasMore} 
                     loader={<h4>Loading...</h4>}
                     endMessage={movieIds.length ? <p>No more movies</p> : <p>No results</p>}
             >
-                <ul className="search-results-page__list card-grid">{searchList}</ul>
+                <ul className="search-results-page__list card-grid">{searchListHTML}</ul>
             </InfiniteScroll>
         </div>
     )
 }
+
+SearchResultsPage.defaultProps = {
+    className: ""
+}
+
+export default SearchResultsPage

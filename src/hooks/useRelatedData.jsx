@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 
-const API_KEY = "e980138e09662908e00ccbeacd080b08"
 const BASE_URL = "https://api.themoviedb.org/3"
 
 function useRelatedData(movieId, numberOfItems = 25) {
@@ -12,10 +11,10 @@ function useRelatedData(movieId, numberOfItems = 25) {
         const fetchRelatedData = async () => {
             try {
                 const recommendedMoviesResponse = await fetch(
-                    `${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
+                    `${BASE_URL}/movie/${movieId}/recommendations?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
                 )
                 const popularMoviesResponse = await fetch(
-                    `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+                    `${BASE_URL}/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
                 )
 
                 if (!recommendedMoviesResponse.ok || !popularMoviesResponse.ok) {

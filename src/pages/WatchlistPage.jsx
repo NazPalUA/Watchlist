@@ -1,34 +1,36 @@
 import React, { useContext }  from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
-import MovieCard from "../components/MovieCard"
 import { WatchlistsContext } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
+import MovieCard from "../components/MovieCard"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
 
-export default function WatchlistPage(props) {
+function WatchlistPage(props) {
+    // Get the watchlist ID from the URL parameter
     const {watchlistId} = useParams()
 
-    const {watchlistsArr, getWatchlistData, getMovieIds} = useContext(WatchlistsContext)
+    // Get the watchlist data and the movie IDs in the watchlists from the context
+    const {getWatchlistData, getMovieIds} = useContext(WatchlistsContext)
 
-    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    // Get the movie data for all the movies in the watchlist
     const movieIds = getMovieIds(watchlistId)
-    const [moviesData] = useMoviesData(movieIds, API_KEY)
+    const [moviesData] = useMoviesData(movieIds)
 
+    // Calculate the average vote of the movies in the watchlist
     function getAverageVote(movies) {
         const moviesWithScoreData = movies.filter(movie => movie.vote_average > 0)
-        const totalVotes = moviesWithScoreData.reduce((acc, movie) => acc + movie.vote_average, 0);
-        return Math.round(totalVotes / moviesWithScoreData.length * 10);
+        const totalVotes = moviesWithScoreData.reduce((acc, movie) => acc + movie.vote_average, 0)
+        return Math.round(totalVotes / moviesWithScoreData.length * 10)
     }
-    const avgScore = moviesData ? getAverageVote(moviesData) : 0;
+    const avgScore = moviesData ? getAverageVote(moviesData) : 0
 
-    function getUnwatchedRuntime(movies) {
-        const totalTime = movies.reduce((acc, movie) => acc + movie.runtime, 0);
-        return totalTime
-    }
-    const unwatchedRuntime = moviesData ? getUnwatchedRuntime(moviesData) : 0;
+    // Calculate the total unwatched runtime of the movies in the watchlist
+    function getUnwatchedRuntime(movies) {return movies.reduce((acc, movie) => acc + movie.runtime, 0)}
+    const unwatchedRuntime = moviesData ? getUnwatchedRuntime(moviesData) : 0
 
+    // Generate HTML for each movie in the watchlist
     const watchListMoviesHTML = moviesData.map(movie=>{
         return (
             <li className="watchlist-page__movie-item"
@@ -51,10 +53,8 @@ export default function WatchlistPage(props) {
 
     return (
         <div className={`watchlist-page ${props.className}`}>
-            {watchlistsArr.length && <>
                 <div className="watchlist-page__header-container">
                     <h2 className="watchlist-page__header">
-                        {/* Movies by Tom Cruise */}
                         {getWatchlistData(watchlistId).name}
                     </h2>
                     <Link to={`/edit-watchlist-page/${watchlistId}`} className="watchlist-page__edit">
@@ -66,7 +66,6 @@ export default function WatchlistPage(props) {
                     About this watchlist
                 </h5>
                 <p className="watchlist-page__about">
-                    {/* This list lorem ipsum dolor et blah blah blah */}
                     {getWatchlistData(watchlistId).description}
                 </p>
                 <ul className="watchlist-page__boxes-container">
@@ -98,7 +97,12 @@ export default function WatchlistPage(props) {
                 <ul className="watchlist-page__movie-list card-grid">
                     {watchListMoviesHTML}
                 </ul>
-            </>}
         </div>
     )
 }
+
+WatchlistPage.defaultProps = {
+    className: ""
+}
+
+export default WatchlistPage

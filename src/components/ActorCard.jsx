@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import noProfilePhoto from "../images/no_profile_photo.png"
 import './ActorCard.scss'
 

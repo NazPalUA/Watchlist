@@ -1,37 +1,40 @@
-import React, { useEffect, useState, useContext } from "react";
-import { ModalContext } from "../context/ModalContext"
-import { HistoryContext } from "../context/HistoryContext"
+import React, { useEffect, useContext } from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
+import { ModalContext } from "../context/ModalContext"
+import { HistoryContext } from "../context/HistoryContext"
+import useRelatedData from "../hooks/useRelatedData"
+import useFetch from "../hooks/useFetch"
 import MovieCard from "../components/MovieCard"
 import ActorCard from "../components/ActorCard"
-import useFetch from "../hooks/useFetch"
 import posterNotFound from "../images/poster_not_found.png"
 import './MoviePage.scss'
-import useRelatedData from "../hooks/useRelatedData";
 
-export default function MoviePage(props) {
-    const {setIsModalActive, setMovieId} = useContext(ModalContext)
-    const {addToHistory} = useContext(HistoryContext)
-    const {movieId} = useParams()
+function MoviePage(props) {
+    // useContext to get state and functions from context
+    const { setIsModalActive, setMovieId } = useContext(ModalContext)
+    const { addToHistory } = useContext(HistoryContext)
 
-    const API_KEY = "e980138e09662908e00ccbeacd080b08"
+    // useParams hook to get the movieId from the URL parameter
+    const { movieId } = useParams()
+
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
-    const [movieData] = useFetch(`${BASE_URL}/${movieId}?api_key=${API_KEY}&language=en-US`)
-    const { relatedMoviesData, loading, error } = useRelatedData(movieId)
-    const [castData] = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
+    // useFetch and useRelatedData custom hook to fetch movieData, relatedMoviesData and castData
+    const [movieData] = useFetch(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    const { relatedMoviesData } = useRelatedData(movieId)
+    const [castData] = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
 
-    useEffect(()=>{
-        addToHistory(movieId)
-    },[movieId])
+     // useEffect hook to add current movieId to history array in HistoryContext
+    useEffect(() => addToHistory(movieId), [movieId])
 
-    const castList = !castData ? [] : castData.cast.slice(0, 12).map(person => {
+    // create castListHTML and relatedList elements based on fetched data
+    const castListHTML = !castData ? [] : castData.cast.slice(0, 12).map(person => {
         return (
             <li className="movie-page__list-item"
                 key={nanoid()}
             >
-                <ActorCard 
+                <ActorCard
                     className="movie-page__card"
                     character={person.character}
                     name={person.name}
@@ -47,39 +50,38 @@ export default function MoviePage(props) {
                 key={nanoid()}
             >
                 <Link to={`/movie-page/${movie.id}`} className="movie-page__link">
-                    <MovieCard 
+                    <MovieCard
                         className="movie-page__card"
                         movieId={movie.id}
                         title={movie.title}
                         path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
                         year={movie.release_date.slice(0, 4)}
-                        rating={Math.round(movie.vote_average*10)}
+                        rating={Math.round(movie.vote_average * 10)}
                     />
                 </Link>
             </li>
         )
     })
-    
 
-    if(!movieData) return <div className={`movie-page ${props.className}`}></div>
+    if (!movieData) return <div className={`movie-page ${props.className}`}></div>
 
     return (
         <div className={`movie-page ${props.className}`}>
             <div className="movie-page__top-container">
-                <img className="movie-page__main-poster" 
+                <img className="movie-page__main-poster"
                     src={movieData.poster_path ? `https://image.tmdb.org/t/p/original${movieData.poster_path}` : posterNotFound}
-                    alt="movie poster" 
+                    alt="movie poster"
                 />
                 <div className="movie-page__top-right-container">
                     <h3 className="movie-page__title">
                         {movieData.original_title} <span className="movie-page__release-year">({movieData.release_date.slice(0, 4)})</span>
-                        
+
                     </h3>
                     <p className="movie-page__genre">
                         {movieData.genres.map(genre => genre.name).join(', ')}
                     </p>
                     <p className="movie-page__duration">
-                        {Math.floor(movieData.runtime/60)}h {movieData.runtime%60}m
+                        {Math.floor(movieData.runtime / 60)}h {movieData.runtime % 60}m
                     </p>
                     <h5 className="movie-page__overview-title">
                         Overview
@@ -93,12 +95,12 @@ export default function MoviePage(props) {
                                 Score
                             </strong>
                             <div className="movie-page__score">
-                                {Math.round(movieData.vote_average*10)}
+                                {Math.round(movieData.vote_average * 10)}
                             </div>
                         </div>
-                        <button 
+                        <button
                             className="movie-page__btn"
-                            onClick={e=>{
+                            onClick={e => {
                                 e.preventDefault()
                                 e.stopPropagation()
                                 setIsModalActive(true)
@@ -107,14 +109,14 @@ export default function MoviePage(props) {
                         >
                             Add to Watchlist
                         </button>
-                    </div>                    
+                    </div>
                 </div>
             </div>
             <h5 className="movie-page__section-title">
                 Cast
             </h5>
             <ul className="movie-page__list card-grid">
-                {castList}
+                {castListHTML}
             </ul>
             <h5 className="movie-page__section-title movie-page__section-title_movies">
                 Related Movies
@@ -125,3 +127,9 @@ export default function MoviePage(props) {
         </div>
     )
 }
+
+MoviePage.defaultProps = {
+    className: ""
+}
+
+export default MoviePage

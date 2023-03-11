@@ -1,36 +1,40 @@
-import React, { useContext, useEffect, useState }  from "react"
-import { WatchlistsContext } from "../context/WatchlistsContext"
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { nanoid } from "nanoid"
+import { WatchlistsContext } from "../context/WatchlistsContext"
 import './CreateWatchlistPage.scss'
-
-export default function CreateWatchlistPage(props) {
+function CreateWatchlistPage(props) {
+    // Use the useNavigate hook from react-router to navigate to another page
     const navigate = useNavigate()
-    const {createWatchlist, setActiveWatchlist} = useContext(WatchlistsContext)
 
-    const [formData, setFormData] = React.useState(
-        {
-            name: "", 
-            description: ""
-        }
-    )
-    
+     // Use the useContext hook to get the value of the state from WatchlistsContext
+    const { createWatchlist } = useContext(WatchlistsContext)
+
+    const [watchlistData, setWatchlistData] = useState({
+        name: "",
+        description: ""
+    })
+
+    // Function to handle changes in the form
     function handleChange(event) {
-        const {name, value, type, checked} = event.target
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
+        const { name, value } = event.target
+        setWatchlistData(prevWatchlistData => ({
+            ...prevWatchlistData,
+            [name]: value
+        }))
     }
-    
+
+    // Function to handle the submit event of the form
     function handleSubmit(event) {
         event.preventDefault()
-        // submitToApi(formData)
-        // console.log(formData)
+
+        // Generate a unique identifier for the new watchlist
         const watchlistId = nanoid()
-        createWatchlist(formData.name, formData.description, watchlistId)
+
+        // Call the createWatchlist function from WatchlistsContext to add a new watchlist
+        createWatchlist(watchlistData.name, watchlistData.description, watchlistId)
+
+        // Navigate to the page with the new watchlist using useNavigate
         navigate(`/watchlist-page/${watchlistId}`)
     }
 
@@ -49,7 +53,7 @@ export default function CreateWatchlistPage(props) {
                     placeholder=""
                     onChange={handleChange}
                     name="name"
-                    value={formData.name}
+                    value={watchlistData.name}
                 />
                 <label className="create-watchlist-page__label" htmlFor="description">
                     Description
@@ -59,10 +63,16 @@ export default function CreateWatchlistPage(props) {
                     placeholder=""
                     onChange={handleChange}
                     name="description"
-                    value={formData.description}
+                    value={watchlistData.description}
                 />
-                <button className="create-watchlist-page__btn">Create  watchlist</button>
+                <button className="create-watchlist-page__btn">Create watchlist</button>
             </form>
         </div>
     )
 }
+
+CreateWatchlistPage.defaultProps = {
+    className: ""
+}
+
+export default CreateWatchlistPage

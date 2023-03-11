@@ -24,14 +24,14 @@
     }
 
     &__name, &__description {
-        font-size: var(--fs-extra-big);
-        
         width: 100%;
         padding: 0.5em 1em;
-        border: 1px solid v.$clr-font-light;
-        border-radius: 6px;
-        background-color: unset;
         margin-bottom: 1.5em;
+        border-radius: 6px;
+        border: 1px solid v.$clr-font-light;
+        background-color: unset;
+        
+        font-size: var(--fs-extra-big);
     }
 
     &__name {
@@ -39,8 +39,8 @@
     }
 
     &__description {
-        resize: none;
         height: 7em;
+        resize: none;
     }
 
     &__btn {
@@ -49,8 +49,8 @@
         color: v.$clr-font-black;
 
         padding: 0.6em 3em;
-        background: v.$clr-accent;
-        border: none;
         border-radius: 6px;
+        border: none;
+        background: v.$clr-accent;
     }
 }

@@ -1,22 +1,18 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { nanoid } from "nanoid"
 import { HistoryContext } from "../context/HistoryContext"
-import MovieCard from "../components/MovieCard"
 import useMoviesData from "../hooks/useMoviesData"
+import MovieCard from "../components/MovieCard"
 import './HistoryPage.scss'
 
-export default function HistoryPage(props) {
-
+function HistoryPage(props) {
     const {historyIds, clearHistory} = useContext(HistoryContext)
-    
-    const API_KEY = "e980138e09662908e00ccbeacd080b08"
-    const [moviesData] = useMoviesData(historyIds, API_KEY);
+    const [moviesData] = useMoviesData(historyIds)
 
-    const historyList = moviesData.map(movie=>{
+    const historyListHTML = moviesData.map(movie=>{
         return (
             <li className="watchlist-page__movie-item"
-                key={nanoid()}
+                key={movie.id}
             >
                 <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
                     <MovieCard 
@@ -42,8 +38,14 @@ export default function HistoryPage(props) {
                 Clear history
             </button>
             <ul className="history-page__list card-grid">
-                {historyList}
+                {historyListHTML}
             </ul>
         </div>
     )
 }
+
+HistoryPage.defaultProps = {
+    className: ""
+}
+
+export default HistoryPage
