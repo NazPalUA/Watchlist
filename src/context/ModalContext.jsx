@@ -3,6 +3,7 @@ import React, { useState } from "react"
 const ModalContext = React.createContext()
 
 function ModalContextProvider({children}) {
+    // set initial state values
     const [isModalActive, setIsModalActive] = useState(false)
     const [movieId, setMovieId] = useState("")
 
