@@ -22,7 +22,7 @@ function EditWatchlistPage(props) {
 
     // Get the copy of current movieIds and their data using the custom hook
     const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId))
-    const [moviesData] = useMoviesData(movieIds)
+    const {moviesData} = useMoviesData(movieIds)
     
     // Get the current watchlist's name and description as initial values for the form
     const [formData, setFormData] = useState({

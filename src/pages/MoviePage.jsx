@@ -20,10 +20,10 @@ function MoviePage(props) {
 
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
-    // useFetch and useRelatedData custom hook to fetch movieData, relatedMoviesData and castData
-    const [movieData] = useFetch(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
-    const { relatedMoviesData } = useRelatedData(movieId)
-    const [castData] = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    // useFetch and useRelatedData custom hook to fetch movieData, relatedData and castData
+    const {data: movieData} = useFetch(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    const { relatedData } = useRelatedData(movieId)
+    const {data: castData} = useFetch(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
 
      // useEffect hook to add current movieId to history array in HistoryContext
     useEffect(() => addToHistory(movieId), [movieId])
@@ -44,7 +44,7 @@ function MoviePage(props) {
         )
     })
 
-    const relatedList = !relatedMoviesData ? [] : relatedMoviesData.map(movie => {
+    const relatedList = !relatedData ? [] : relatedData.map(movie => {
         return (
             <li className="movie-page__list-item"
                 key={nanoid()}

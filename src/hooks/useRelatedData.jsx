@@ -3,9 +3,9 @@ import { useState, useEffect } from "react"
 const BASE_URL = "https://api.themoviedb.org/3"
 
 function useRelatedData(movieId, numberOfItems = 25) {
-    const [relatedMoviesData, setRelatedMoviesData] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [relatedData, setRelatedData] = useState([])
+    const [relatedLoading, setRelatedLoading] = useState(true)
+    const [relatedError, setRelatedError] = useState(null)
 
     useEffect(() => {
         const fetchRelatedData = async () => {
@@ -35,18 +35,18 @@ function useRelatedData(movieId, numberOfItems = 25) {
                     relatedMovies = relatedMovies.slice(0, numberOfItems)
                 }
 
-                setRelatedMoviesData(relatedMovies)
-                setLoading(false)
-            } catch (error) {
-                setError(error)
-                setLoading(false)
+                setRelatedData(relatedMovies)
+                setRelatedLoading(false)
+            } catch (relatedError) {
+                setRelatedError(relatedError)
+                setRelatedLoading(false)
             }
         }
 
         fetchRelatedData()
     }, [movieId])
 
-    return { relatedMoviesData, loading, error }
+    return { relatedData, relatedLoading, relatedError }
 }
 
 export default useRelatedData

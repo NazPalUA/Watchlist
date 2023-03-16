@@ -5,12 +5,12 @@ const HistoryContext = React.createContext()
 
 function HistoryContextProvider({children}) {
 
-    const [historyIdsLocalStorage, setHistoryIdsLocalStorage] = useLocalStorage('historyIds', []);
+    const {storedValue, setStoredValue} = useLocalStorage('historyIds', []);
 
-    const [historyIds, setHistoryIds] = useState(historyIdsLocalStorage)
+    const [historyIds, setHistoryIds] = useState(storedValue)
 
     useEffect(() => {
-        setHistoryIdsLocalStorage(historyIds)
+        setStoredValue(historyIds)
     },[historyIds])
 
     function addToHistory(id) {

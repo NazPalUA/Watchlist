@@ -13,7 +13,7 @@ function SearchResultsPage(props) {
     // Set up state to keep track of movie IDs
     const [movieIds, setMovieIds] = useState([])
     
-    // Set up API URL and call the custom hook to fetch data
+    // // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the movies data for search for the first page
     const BASE_URL = "https://api.themoviedb.org/3/search"
     const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchText}&page=1`)
 
@@ -21,7 +21,7 @@ function SearchResultsPage(props) {
     useEffect(() => setMovieIds(data ? data.map(i => i.id) : []), [data])
     
     // Call the custom hook to fetch detailed movie data
-    const [moviesData] = useMoviesData(movieIds)
+    const {moviesData} = useMoviesData(movieIds)
 
     // Map over movie data and render each movie card as a list item
     const searchListHTML = moviesData.map(movie => {

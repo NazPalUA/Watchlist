@@ -5,7 +5,7 @@ const WatchlistsContext = React.createContext()
 
 function WatchlistsContextProvider({children}) {
 
-    const [watchlistsArrLocalStorage, setWatchlistsArrLocalStorage] = useLocalStorage("watchlistsArr", [
+    const {storedValue, setStoredValue} = useLocalStorage("watchlistsArr", [
         {
             id: "1",
             name: "Watchlist name",
@@ -19,10 +19,10 @@ function WatchlistsContextProvider({children}) {
             movieIds: [632856, 668461, 928344, 505642, 436270, 774752]
         }
     ])
-    const [watchlistsArr, setWatchlistsArr] = useState(watchlistsArrLocalStorage)
+    const [watchlistsArr, setWatchlistsArr] = useState(storedValue)
 
     useEffect(() => {
-        setWatchlistsArrLocalStorage(watchlistsArr)
+        setStoredValue(watchlistsArr)
     },[watchlistsArr])
 
     function getWatchlistData(watchlistId) {

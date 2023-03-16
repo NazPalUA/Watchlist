@@ -10,6 +10,8 @@ import './HomePage.scss'
 
 function HomePage(props) {
     const BASE_URL = "https://api.themoviedb.org/3"
+
+    // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the popular movies data for the first page
     const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
 
     const popularMoviesListHTML = !data ? [] : data.map(movie => {

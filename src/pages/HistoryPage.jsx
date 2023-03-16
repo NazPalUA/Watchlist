@@ -7,7 +7,7 @@ import './HistoryPage.scss'
 
 function HistoryPage(props) {
     const {historyIds, clearHistory} = useContext(HistoryContext)
-    const [moviesData] = useMoviesData(historyIds)
+    const {moviesData} = useMoviesData(historyIds)
 
     const historyListHTML = moviesData.map(movie=>{
         return (

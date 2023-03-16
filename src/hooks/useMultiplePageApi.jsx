@@ -15,15 +15,15 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
             const responseData = await response.json()
 
             setData(prevData => {
-                const newData = [...prevData, ...responseData.results];
+                const newData = [...prevData, ...responseData.results]
                 const uniqueData = newData.reduce((acc, item) => {
                     if (!acc.find(i => i.id === item.id)) {
-                        acc.push(item);
+                        acc.push(item)
                     }
-                    return acc;
-                }, []);
-                return uniqueData;
-            });
+                    return acc
+                }, [])
+                return uniqueData
+            })
             // setHasMore(responseData.results.length > 0)
             setHasMore(responseData.total_pages > page)
             setPage(page + 1)

@@ -16,7 +16,7 @@ function WatchlistPage(props) {
 
     // Get the movie data for all the movies in the watchlist
     const movieIds = getMovieIds(watchlistId)
-    const [moviesData] = useMoviesData(movieIds)
+    const {moviesData} = useMoviesData(movieIds)
 
     // Calculate the average vote of the movies in the watchlist
     function getAverageVote(movies) {

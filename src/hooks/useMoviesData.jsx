@@ -3,8 +3,8 @@ import { useState, useEffect } from "react"
 export default function useMoviesData(movieIds) {
     
     const [moviesData, setMoviesData] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [moviesLoading, setMoviesLoading] = useState(true)
+    const [moviesError, setMoviesError] = useState(null)
 
     useEffect(() => {
         if (movieIds !== undefined || movieIds.length !== 0) {
@@ -15,15 +15,15 @@ export default function useMoviesData(movieIds) {
                 .then(responses => Promise.all(responses.map(response => response.json())))
                 .then(data => {
                     setMoviesData(data)
-                    setLoading(false)
+                    setMoviesLoading(false)
                 })
-                .catch(error => {
-                    setError(error)
-                    setLoading(false)
+                .catch(moviesError => {
+                    setMoviesError(moviesError)
+                    setMoviesLoading(false)
                 })
         }
-    }, [movieIds, loading])
+    }, [movieIds, moviesLoading])
 
-    return [moviesData, loading, error]
+    return {moviesData, moviesLoading, moviesError}
 }
 

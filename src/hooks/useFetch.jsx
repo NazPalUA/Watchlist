@@ -20,14 +20,14 @@ export default function useFetch(url) {
         fetchData()
     }, [url])
 
-    return [ data, loading, error ]
+    return { data, loading, error }
 }
 
 
 // --- usage example --- //
 
 // function App() {
-//     const [data, loading, error] = useFetch('https://api.example.com/data')
+//     const {data, loading, error} = useFetch('https://api.example.com/data')
 
 //     if (loading) {
 //         return <div>Loading...</div>
