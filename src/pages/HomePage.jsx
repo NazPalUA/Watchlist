@@ -15,6 +15,7 @@ function HomePage(props) {
     const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
 
     const popularMoviesListHTML = !data ? [] : data.map(movie => {
+        console.log(movie.release_date)
         return (
             <li className="home-page__popular-item" key={nanoid()}>
                 <Link to={`/movie-page/${movie.id}`} className="home-page__link">
@@ -23,7 +24,7 @@ function HomePage(props) {
                         movieId={movie.id}
                         title={movie.title}
                         path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
-                        year={movie.release_date.slice(0, 4)}
+                        year={movie.release_date ? movie.release_date.slice(0, 4) : "?"}
                         rating={Math.round(movie.vote_average * 10)}
                     />
                 </Link>
