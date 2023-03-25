@@ -15,7 +15,6 @@ function HomePage(props) {
     const { data, hasMore, page, setUrl } = useMultiplePageApi(`${BASE_URL}/movie//popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`)
 
     const popularMoviesListHTML = !data ? [] : data.map(movie => {
-        console.log(movie.release_date)
         return (
             <li className="home-page__popular-item" key={nanoid()}>
                 <Link to={`/movie-page/${movie.id}`} className="home-page__link">
