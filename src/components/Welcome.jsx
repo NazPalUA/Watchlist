@@ -7,7 +7,7 @@ function Welcome(props) {
     return (
         <div className={`welcome ${props.className}`}>
             <h1 className="welcome__title">
-                Welcome to <span>Watchlists</span>
+                Welcome to <span>Watchlists 2099</span>
             </h1>
             <p className="welcome__paragraph">
                 Browse movies, add them to watchlists and share them with friends. 
