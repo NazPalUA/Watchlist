@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { ModalContext } from "../context/ModalContext"
 import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
@@ -7,53 +7,57 @@ import confusedIcon from "../images/confused_icon.png"
 import posterNotFound from "../images/poster_not_found.png"
 import './MovieCard.scss'
 
-function MovieCard(props) {
+type MovieCardPropTypes = {
+    className?: string,
+    haveAddBtn: boolean,
+    movieId: string,
+    path: string,
+    rating: number,
+    title: string,
+    year: string
+}
+
+function MovieCard({className, haveAddBtn = true, movieId, path = posterNotFound, rating, title, year}: MovieCardPropTypes) {
     const {setIsModalActive, setMovieId} = useContext(ModalContext)
 
     return (
-        <div className={`movie-card ${props.className}`}>
-            {props.haveAddBtn && 
+        <div className={`movie-card ${className}`}>
+            {haveAddBtn && 
                 <button className="movie-card__add-btn" 
                     onClick={e=>{
                         e.preventDefault()
                         e.stopPropagation()
                         setIsModalActive(true)
-                        setMovieId(props.movieId)
+                        setMovieId(movieId)
                     }}
                 >
                 </button>
             }
             <img className="movie-card__poster"
-                src={props.path ? props.path : MovieCard.defaultProps.path}
+                src={path ? path : posterNotFound}
                 alt="movie poster"
             />
 
             <div className="movie-card__rating-wrapper">
                 <img className="movie-card__smile"
-                    src={props.rating == 0 ? confusedIcon : props.rating > 80 ? greatIcon : props.rating > 35 ? normalIcon : awfulIcon } 
+                    src={rating == 0 ? confusedIcon : rating > 80 ? greatIcon : rating > 35 ? normalIcon : awfulIcon } 
                     alt="rating smile" 
                 />
                 <span className="movie-card__rating">
-                    {props.rating > 0 ? props.rating : "?"}
+                    {rating > 0 ? rating : "?"}
                     <span className="movie-card__max-rating">/100</span>
                 </span>
             </div>
 
             <p className="movie-card__title">
-                {props.title}
+                {title}
             </p>
 
             <p className="movie-card__year">
-                ({props.year})
+                ({year})
             </p>
         </div>
     )
-}
-
-MovieCard.defaultProps = {
-    className: "",
-    haveAddBtn: true,
-    path: posterNotFound
 }
     
 export default MovieCard
