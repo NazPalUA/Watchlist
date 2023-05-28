@@ -1,6 +1,6 @@
 import { useState, FC, ReactNode, createContext } from "react"
 
-type ModalContextType = {
+export type ModalContextType = {
     isModalActive: boolean,
     setIsModalActive: (value: boolean) => void,
     movieId: string,

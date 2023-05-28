@@ -1,7 +1,7 @@
 import { useEffect, useState, createContext, FC, ReactNode } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
-type HistoryContextType = {
+export type HistoryContextType = {
     historyIds: string[],
     addToHistory: (id: string) => void,
     clearHistory: () => void

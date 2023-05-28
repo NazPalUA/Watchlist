@@ -8,7 +8,7 @@ type WatchlistType = {
     movieIds: string[]
 }
 
-type WatchlistsContextType = {
+export type WatchlistsContextType = {
     watchlistsArr: WatchlistType[],
     getWatchlistData: (watchlistId: string) => WatchlistType | undefined,
     getMovieIds: (watchlistId: string) => string[] | undefined,
