@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ModalContext } from "../context/ModalContext"
+import { ModalContext, ModalContextType } from "../context/ModalContext"
 import greatIcon from "../images/great_icon.svg"
 import normalIcon from "../images/normal_icon.svg"
 import awfulIcon from "../images/awful_icon.svg"
@@ -18,7 +18,7 @@ type MovieCardPropTypes = {
 }
 
 function MovieCard({className, haveAddBtn = true, movieId, path = posterNotFound, rating, title, year}: MovieCardPropTypes) {
-    const {setIsModalActive, setMovieId} = useContext(ModalContext)
+    const {setIsModalActive, setMovieId} = useContext(ModalContext) as ModalContextType
 
     return (
         <div className={`movie-card ${className}`}>
