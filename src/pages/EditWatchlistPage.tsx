@@ -1,18 +1,22 @@
-import { useContext, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
-import { WatchlistsContext } from "../context/WatchlistsContext"
+import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
 import posterNotFound from "../images/poster_not_found.png"
 import './EditWatchlistPage.scss'
 
-function EditWatchlistPage(props) {
+type EditWatchlistPagePropTypes = {
+    className?: string
+}
+
+function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
     // Get the necessary functions from the WatchlistsContext
     const { 
         getWatchlistData, 
         deleteWatchlist, 
         editWatchlist,
         getMovieIds
-    } = useContext(WatchlistsContext)
+    } = useContext(WatchlistsContext) as WatchlistsContextType
     
     // Get the navigation function from react-router-dom
     const navigate = useNavigate()
@@ -21,29 +25,31 @@ function EditWatchlistPage(props) {
     const { watchlistId } = useParams()
 
     // Get the copy of current movieIds and their data using the custom hook
-    const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId))
+    const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId) || [])
     const {moviesData} = useMoviesData(movieIds)
     
     // Get the current watchlist's name and description as initial values for the form
     const [formData, setFormData] = useState({
-        name: getWatchlistData(watchlistId).name,
-        description: getWatchlistData(watchlistId).description
+        name: getWatchlistData(watchlistId)?.name,
+        description: getWatchlistData(watchlistId)?.description
     })
 
     // Handle changes to the form inputs
-    function handleChange(event) {
-        const { name, value, type, checked } = event.target
+    function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        const { name, value } = event.target
         // Update the formData based on the input's name and type
         setFormData(prevFormData => ({
             ...prevFormData,
-            [name]: type === "checkbox" ? checked : value
+            [name]: value
         }))
     }
 
     // Delete a movieId from the current watchlist
-    function deleteMovieId(e, movieId) {
+    function deleteMovieId(e: MouseEvent, movieId: string) {
         e.preventDefault()
-        setMovieIds(prevMovieIds => prevMovieIds.filter(id => id !== movieId))
+        if (watchlistId) {
+            setMovieIds(prevMovieIds => prevMovieIds.filter(id => id !== movieId))
+        }
     }
     
     // Delete the current watchlist and navigate back to the home page
@@ -52,12 +58,14 @@ function EditWatchlistPage(props) {
         navigate("/")
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(event: FormEvent) {
         event.preventDefault()
-        // Save the performed changes to the watchlist's name, description and movieIds
-        editWatchlist(formData.name, formData.description, movieIds, watchlistId)
-        // Navigate to the watchlist page
-        navigate(`/watchlist-page/${watchlistId}`)
+        if(formData.name && formData.description && watchlistId) {
+            // Save the performed changes to the watchlist's name, description and movieIds
+            editWatchlist(formData.name, formData.description, movieIds, watchlistId)
+            // Navigate to the watchlist page
+            navigate(`/watchlist-page/${watchlistId}`)
+        }
     }
 
     // Create the HTML for each movie in the watchlist
@@ -83,7 +91,7 @@ function EditWatchlistPage(props) {
     ))
 
     return (
-        <div className={`edit-watchlist-page ${props.className}`}>
+        <div className={`edit-watchlist-page ${className}`}>
             <div className="edit-watchlist-page__top">
                 <h4 className="edit-watchlist-page__header">
                     Edit your Watchlist
@@ -129,10 +137,6 @@ function EditWatchlistPage(props) {
             </form>
         </div>
     )
-}
-
-EditWatchlistPage.defaultProps = {
-    className: ""
 }
 
 export default EditWatchlistPage

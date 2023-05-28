@@ -10,11 +10,11 @@ type WatchlistType = {
 
 export type WatchlistsContextType = {
     watchlistsArr: WatchlistType[],
-    getWatchlistData: (watchlistId: string) => WatchlistType | undefined,
-    getMovieIds: (watchlistId: string) => string[] | undefined,
+    getWatchlistData: (watchlistId: string | undefined) => WatchlistType | undefined,
+    getMovieIds: (watchlistId: string | undefined) => string[] | undefined,
     createWatchlist: (name: string, description: string, id: string) => void,
     editWatchlist: (name: string, description: string, movieIds: string[], watchlistId: string) => void,
-    deleteWatchlist: (watchlistId: string) => void,
+    deleteWatchlist: (watchlistId: string | undefined) => void,
     addMovieToWatchlist: (movieId: string, watchlistId: string) => void,
     deleteMovieFromWatchlist: (movieId: string, watchlistId: string) => void
 }
@@ -48,12 +48,14 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
     useEffect(() => {setStoredValue(watchlistsArr)},[watchlistsArr])
 
     // Find a watchlist in the array by ID
-    function getWatchlistData(watchlistId: string) {
+    function getWatchlistData(watchlistId: string | undefined) {
+        if (!watchlistId) return
         return watchlistsArr.find(watchlist => watchlist.id === watchlistId)
     }
 
     // Get an array of movie IDs for a specific watchlist
-    function getMovieIds(watchlistId: string) {
+    function getMovieIds(watchlistId: string | undefined) {
+        if(!watchlistId) return []
         return watchlistsArr.find(watchlist => watchlist.id === watchlistId)?.movieIds
     }
 
@@ -87,7 +89,8 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
     }
     
     // Delete a watchlist from the array by ID
-    function deleteWatchlist(watchlistId: string) {
+    function deleteWatchlist(watchlistId: string | undefined) {
+        if(!watchlistId) return undefined
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.filter(watchlist => {
                 return watchlist.id !== watchlistId
