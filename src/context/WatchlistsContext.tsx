@@ -13,7 +13,7 @@ export type WatchlistsContextType = {
     getWatchlistData: (watchlistId: string | undefined) => WatchlistType | undefined,
     getMovieIds: (watchlistId: string | undefined) => string[] | undefined,
     createWatchlist: (name: string, description: string, id: string) => void,
-    editWatchlist: (name: string, description: string, movieIds: string[], watchlistId: string) => void,
+    editWatchlist: (name: string, description: string | undefined, movieIds: string[], watchlistId: string) => void,
     deleteWatchlist: (watchlistId: string | undefined) => void,
     addMovieToWatchlist: (movieId: string, watchlistId: string) => void,
     deleteMovieFromWatchlist: (movieId: string, watchlistId: string) => void
@@ -75,13 +75,13 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
     }
 
     // Edit an existing watchlist in the array
-    function editWatchlist(name: string, description: string, movieIds: string[], watchlistId: string) {
+    function editWatchlist(name: string, description: string | undefined, movieIds: string[], watchlistId: string) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
                 if(watchlistId !== watchlist.id) return watchlist
                 else return {...watchlist, 
                     name: name,
-                    description: description,
+                    description: description || "",
                     movieIds: movieIds
                 }
             })

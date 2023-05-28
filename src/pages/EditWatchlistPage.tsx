@@ -60,7 +60,7 @@ function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault()
-        if(formData.name && formData.description && watchlistId) {
+        if(formData.name && watchlistId) {
             // Save the performed changes to the watchlist's name, description and movieIds
             editWatchlist(formData.name, formData.description, movieIds, watchlistId)
             // Navigate to the watchlist page
