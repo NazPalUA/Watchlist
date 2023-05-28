@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState, createContext, FC, ReactNode } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
-const HistoryContext = React.createContext()
+type HistoryContextType = {
+    historyIds: string[],
+    addToHistory: (id: string) => void,
+    clearHistory: () => void
+}
 
-function HistoryContextProvider({children}) {
+const HistoryContext = createContext<HistoryContextType | null>(null)
+
+type HistoryContextProviderProps = {
+    children: ReactNode
+}
+
+const HistoryContextProvider: FC<HistoryContextProviderProps> = ({ children } ) => {
     // Use the useLocalStorage hook to get the stored history IDs from local storage
-    const {storedValue, setStoredValue} = useLocalStorage('historyIds', [])
+    const { storedValue, setStoredValue } = useLocalStorage('historyIds', [])
 
     // Use useState to initialize the state of history IDs with the stored value
-    const [historyIds, setHistoryIds] = useState(storedValue)
+    const [historyIds, setHistoryIds] = useState<string[]>(storedValue)
 
     // Use useEffect to update the history IDs at local storage whenever historyIds changes
-    useEffect(() => setStoredValue(historyIds),[historyIds])
+    useEffect(() => setStoredValue(historyIds), [historyIds])
 
     // Define a function that adds a movie ID to the history
-    function addToHistory(id) {
+    function addToHistory(id: string) {
         // Convert the ID to a string
         const movieId = id.toString()
 
@@ -47,4 +57,4 @@ function HistoryContextProvider({children}) {
     )
 }
 
-export {HistoryContextProvider, HistoryContext}
+export { HistoryContextProvider, HistoryContext }

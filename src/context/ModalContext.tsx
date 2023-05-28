@@ -1,8 +1,19 @@
-import React, { useState } from "react"
+import { useState, FC, ReactNode, createContext } from "react"
 
-const ModalContext = React.createContext()
+type ModalContextType = {
+    isModalActive: boolean,
+    setIsModalActive: (value: boolean) => void,
+    movieId: string,
+    setMovieId: (id: string) => void
+}
 
-function ModalContextProvider({children}) {
+const ModalContext = createContext<ModalContextType | null>(null)
+
+type ModalContextProviderProps = {
+    children: ReactNode
+}
+
+const ModalContextProvider: FC<ModalContextProviderProps> = ({children}) => {
     // set initial state values
     const [isModalActive, setIsModalActive] = useState(false)
     const [movieId, setMovieId] = useState("")

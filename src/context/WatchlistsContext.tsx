@@ -1,42 +1,64 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect, createContext, ReactNode, FC } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
-const WatchlistsContext = React.createContext()
+type WatchlistType = {
+    id: string,
+    name: string,
+    description: string,
+    movieIds: string[]
+}
 
-function WatchlistsContextProvider({children}) {
+type WatchlistsContextType = {
+    watchlistsArr: WatchlistType[],
+    getWatchlistData: (watchlistId: string) => WatchlistType | undefined,
+    getMovieIds: (watchlistId: string) => string[] | undefined,
+    createWatchlist: (name: string, description: string, id: string) => void,
+    editWatchlist: (name: string, description: string, movieIds: string[], watchlistId: string) => void,
+    deleteWatchlist: (watchlistId: string) => void,
+    addMovieToWatchlist: (movieId: string, watchlistId: string) => void,
+    deleteMovieFromWatchlist: (movieId: string, watchlistId: string) => void
+}
+
+const WatchlistsContext = createContext<WatchlistsContextType | null>(null)
+
+type WatchlistsContextProviderProps = {
+    children: ReactNode
+}
+
+const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children}) => {
     // Initialize state for the watchlists array using local storage, or default values if none exist
     const {storedValue, setStoredValue} = useLocalStorage("watchlistsArr", [
         {
             id: "1",
             name: "Watchlist name",
             description: "Description of my new watchlist",
-            movieIds: [505642, 436270, 774752]
+            movieIds: ["505642", "436270", "774752"]
         },
         {
             id: "2",
             name: "Some other watchlist",
             description: "Description of my new watchlist",
-            movieIds: [632856, 668461, 928344, 505642, 436270, 774752]
+            movieIds: ["632856", "668461", "928344", "505642", "436270", "774752"]
         }
     ])
     // Set the watchlists array state using the local storage value or the default value
-    const [watchlistsArr, setWatchlistsArr] = useState(storedValue)
+    const [watchlistsArr, setWatchlistsArr] = useState<WatchlistType[]>(storedValue)
 
     // Update the local storage value whenever the watchlists array state changes
     useEffect(() => {setStoredValue(watchlistsArr)},[watchlistsArr])
 
     // Find a watchlist in the array by ID
-    function getWatchlistData(watchlistId) {
+    function getWatchlistData(watchlistId: string) {
         return watchlistsArr.find(watchlist => watchlist.id === watchlistId)
     }
 
     // Get an array of movie IDs for a specific watchlist
-    function getMovieIds(watchlistId) {
-        return watchlistsArr.find(watchlist => watchlist.id === watchlistId).movieIds
+    function getMovieIds(watchlistId: string) {
+        return watchlistsArr.find(watchlist => watchlist.id === watchlistId)?.movieIds
     }
 
     // Create a new watchlist object and add it to the array
-    function createWatchlist(name, description, id) {
+    function createWatchlist(name: string, description: string, id: string) {
         setWatchlistsArr(prevWatchlistsArr => {
             return [
                 ...prevWatchlistsArr,
@@ -51,7 +73,7 @@ function WatchlistsContextProvider({children}) {
     }
 
     // Edit an existing watchlist in the array
-    function editWatchlist(name, description, movieIds, watchlistId) {
+    function editWatchlist(name: string, description: string, movieIds: string[], watchlistId: string) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
                 if(watchlistId !== watchlist.id) return watchlist
@@ -65,7 +87,7 @@ function WatchlistsContextProvider({children}) {
     }
     
     // Delete a watchlist from the array by ID
-    function deleteWatchlist(watchlistId) {
+    function deleteWatchlist(watchlistId: string) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.filter(watchlist => {
                 return watchlist.id !== watchlistId
@@ -75,12 +97,11 @@ function WatchlistsContextProvider({children}) {
 
 
     // Add a movie ID to a specific watchlist's movieIds array
-    function addMovieToWatchlist(movieId, watchlistId) {
+    function addMovieToWatchlist(movieId: string, watchlistId: string) {
         setWatchlistsArr(prevWatchlistsArr => prevWatchlistsArr.map(watchlist => {
                 if (watchlistId !== watchlist.id) return watchlist
                 else {
-                    if (watchlist.movieIds.includes(String(movieId)) || 
-                        watchlist.movieIds.includes(Number(movieId))) return watchlist
+                    if (watchlist.movieIds.includes(String(movieId))) return watchlist
                     
                     return {...watchlist, 
                         movieIds: [...watchlist.movieIds, movieId],
@@ -92,7 +113,7 @@ function WatchlistsContextProvider({children}) {
     }
 
     // Remove a movie ID from a specific watchlist's
-    function deleteMovieFromWatchlist(movieId, watchlistId) {
+    function deleteMovieFromWatchlist(movieId: string, watchlistId: string) {
         setWatchlistsArr(prevWatchlistsArr => {
             return prevWatchlistsArr.map(watchlist => {
                 if(watchlistId !== watchlist.id) return watchlist
