@@ -2,10 +2,28 @@ import { useState, useEffect } from "react"
 
 const BASE_URL = "https://api.themoviedb.org/3"
 
-function useRelatedData(movieId, numberOfItems = 25) {
-    const [relatedData, setRelatedData] = useState([])
+interface Movie {
+    movieId: string,
+    path: string,
+    rating: number,
+    title: string,
+    year: string
+}
+
+interface ApiResponse {
+    results: Movie[];
+}
+
+interface UseRelatedDataReturn {
+    relatedData: Movie[];
+    relatedLoading: boolean;
+    relatedError: Error | null;
+}
+
+function useRelatedData(movieId: string, numberOfItems = 25): UseRelatedDataReturn  {
+    const [relatedData, setRelatedData] = useState<Movie[]>([])
     const [relatedLoading, setRelatedLoading] = useState(true)
-    const [relatedError, setRelatedError] = useState(null)
+    const [relatedError, setRelatedError] = useState<Error | null>(null)
 
     useEffect(() => {
         const fetchRelatedData = async () => {
@@ -21,12 +39,12 @@ function useRelatedData(movieId, numberOfItems = 25) {
                     throw new Error("Some requests failed")
                 }
 
-                const recommendedMoviesData = await recommendedMoviesResponse.json()
-                const popularMoviesData = await popularMoviesResponse.json()
+                const recommendedMoviesData: ApiResponse  = await recommendedMoviesResponse.json()
+                const popularMoviesData: ApiResponse  = await popularMoviesResponse.json()
 
                 let relatedMovies = recommendedMoviesData.results
                 if (relatedMovies.length < numberOfItems) {
-                    const popularMoviesToAdd = popularMoviesData.results.slice(
+                    const popularMoviesToAdd: Movie[] = popularMoviesData.results.slice(
                         0,
                         numberOfItems - relatedMovies.length
                     )
@@ -37,9 +55,13 @@ function useRelatedData(movieId, numberOfItems = 25) {
 
                 setRelatedData(relatedMovies)
                 setRelatedLoading(false)
-            } catch (relatedError) {
-                setRelatedError(relatedError)
-                setRelatedLoading(false)
+            } catch (relatedError: unknown) {
+                if (relatedError instanceof Error) {
+                    setRelatedError(relatedError);
+                } else {
+                    setRelatedError(new Error("An unknown error occurred"));
+                }
+                setRelatedLoading(false);
             }
         }
 
