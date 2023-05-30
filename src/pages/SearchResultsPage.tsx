@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Link, useParams } from "react-router-dom"
 import useMoviesData from "../hooks/useMoviesData"
@@ -6,12 +6,17 @@ import useMultiplePageApi from "../hooks/useMultiplePageApi"
 import MovieCard from "../components/MovieCard"
 import './SearchResultsPage.scss'
 
-function SearchResultsPage(props) {
+type SearchResultsPagePropTypes = {
+    className?: string
+}
+
+
+function SearchResultsPage({className}: SearchResultsPagePropTypes) {
     // Get the search text from the URL parameter
     const { searchText } = useParams()
 
     // Set up state to keep track of movie IDs
-    const [movieIds, setMovieIds] = useState([])
+    const [movieIds, setMovieIds] = useState<string[]>([])
     
     // // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the movies data for search for the first page
     const BASE_URL = "https://api.themoviedb.org/3/search"
@@ -34,7 +39,7 @@ function SearchResultsPage(props) {
                         className="search-results-page__movie-card"
                         movieId={movie.id}
                         title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
+                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
                         year={movie.release_date.slice(0, 4)}
                         rating={Math.round(movie.vote_average * 10)}
                     />
@@ -44,7 +49,7 @@ function SearchResultsPage(props) {
     })
 
     return (
-        <div className={`search-results-page ${props.className}`}>
+        <div className={`search-results-page ${className}`}>
             <h4 className="search-results-page__header">
                 Search Results: {searchText}
             </h4>
@@ -59,10 +64,6 @@ function SearchResultsPage(props) {
             </InfiniteScroll>
         </div>
     )
-}
-
-SearchResultsPage.defaultProps = {
-    className: ""
 }
 
 export default SearchResultsPage

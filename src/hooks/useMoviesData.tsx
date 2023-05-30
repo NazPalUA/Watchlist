@@ -2,10 +2,12 @@ import { useState, useEffect } from "react"
 
 interface Movie {
     movieId: string,
-    path: string,
-    rating: number,
+    poster_path: string,
+    vote_average: number,
     title: string,
-    year: string
+    release_date: string,
+    id: string,
+    runtime: number
 }
 
 type UseMoviesDataReturn = {

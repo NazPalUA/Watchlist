@@ -1,6 +1,6 @@
-import React, {useContext, useEffect} from "react"
+import {useContext, useEffect} from "react"
 import { Routes, Route, useLocation } from "react-router-dom"
-import { ModalContext } from "./context/ModalContext"
+import { ModalContext, ModalContextType } from "./context/ModalContext"
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
@@ -17,7 +17,7 @@ import './App.scss'
 
 function App() {
 	// Get the ModalContext values
-	const {isModalActive, setIsModalActive} = useContext(ModalContext)
+	const {isModalActive, setIsModalActive} = useContext(ModalContext) as ModalContextType
 
 	// Handle the link click to scroll to top
 	function handleLinkClick() {

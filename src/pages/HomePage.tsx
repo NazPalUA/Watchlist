@@ -1,4 +1,3 @@
-import React from "react"
 import { Link } from "react-router-dom"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { nanoid } from "nanoid"
@@ -8,7 +7,11 @@ import SearchBox from "../components/SearchBox"
 import MovieCard from "../components/MovieCard"
 import './HomePage.scss'
 
-function HomePage(props) {
+type HomePagePropTypes = {
+    className?: string
+}
+
+function HomePage({className}: HomePagePropTypes) {
     const BASE_URL = "https://api.themoviedb.org/3"
 
     // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the popular movies data for the first page
@@ -22,7 +25,7 @@ function HomePage(props) {
                         className="home-page__movie-card"
                         movieId={movie.id}
                         title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : null}
+                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : ""}
                         year={movie.release_date ? movie.release_date.slice(0, 4) : "?"}
                         rating={Math.round(movie.vote_average * 10)}
                     />
@@ -32,7 +35,7 @@ function HomePage(props) {
     })
 
     return (
-        <div className={`home-page ${props.className}`}>
+        <div className={`home-page ${className}`}>
             <Welcome className="home-page__welcome" />
             <SearchBox className="home-page__search-box" />
             <h4 className="home-page__popular-title">Popular movies right now</h4>
@@ -49,10 +52,6 @@ function HomePage(props) {
             </InfiniteScroll>
         </div>
     )
-}
-
-HomePage.defaultProps = {
-    className: ""
 }
 
 export default HomePage

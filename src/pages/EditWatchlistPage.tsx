@@ -5,6 +5,11 @@ import useMoviesData from "../hooks/useMoviesData"
 import posterNotFound from "../images/poster_not_found.png"
 import './EditWatchlistPage.scss'
 
+type FormData = {
+    name: string | undefined;
+    description: string | undefined;
+}
+
 type EditWatchlistPagePropTypes = {
     className?: string
 }
@@ -29,7 +34,7 @@ function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
     const {moviesData} = useMoviesData(movieIds)
     
     // Get the current watchlist's name and description as initial values for the form
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: getWatchlistData(watchlistId)?.name,
         description: getWatchlistData(watchlistId)?.description
     })
@@ -45,7 +50,7 @@ function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
     }
 
     // Delete a movieId from the current watchlist
-    function deleteMovieId(e: MouseEvent, movieId: string) {
+    function deleteMovieId(e: React.MouseEvent, movieId: string) {
         e.preventDefault()
         if (watchlistId) {
             setMovieIds(prevMovieIds => prevMovieIds.filter(id => id !== movieId))

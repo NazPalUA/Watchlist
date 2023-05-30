@@ -2,7 +2,7 @@ import noProfilePhoto from "../images/no_profile_photo.png"
 import './ActorCard.scss'
 
 type ActorCardPropTypes = {
-    imgPath: string,
+    imgPath: string | undefined,
     name: string,
     character: string,
     className?: string

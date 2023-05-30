@@ -7,7 +7,7 @@ import { HistoryContextProvider } from './context/HistoryContext'
 import App from './App'
 import './index.scss'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
     <React.StrictMode>
         <ModalContextProvider>
             <WatchlistsContextProvider>

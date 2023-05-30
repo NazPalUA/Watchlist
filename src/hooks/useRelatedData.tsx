@@ -3,11 +3,11 @@ import { useState, useEffect } from "react"
 const BASE_URL = "https://api.themoviedb.org/3"
 
 interface Movie {
-    movieId: string,
-    path: string,
-    rating: number,
+    id: string | undefined,
+    poster_path: string | undefined,
+    vote_average: number,
     title: string,
-    year: string
+    release_date: string
 }
 
 interface ApiResponse {

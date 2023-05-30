@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 
-type FetchState = {
-    data: unknown | null
+type FetchState<T> = {
+    data: T | null
     loading: boolean
     error: Error | null
 }
 
-export default function useFetch(url: string): FetchState {
-    const [data, setData] = useState<unknown | null>(null)
+export default function useFetch<T = unknown>(url: string): FetchState<T> {
+    const [data, setData] = useState<T | null>(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<Error | null>(null)
 
@@ -16,7 +16,7 @@ export default function useFetch(url: string): FetchState {
         async function fetchData() {
             try {
                 const response = await fetch(url)
-                const json = await response.json()
+                const json = await response.json() as T
                 setData(json)
                 setLoading(false)
             } catch (error: any) {

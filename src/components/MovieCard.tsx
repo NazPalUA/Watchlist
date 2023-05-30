@@ -9,9 +9,9 @@ import './MovieCard.scss'
 
 type MovieCardPropTypes = {
     className?: string,
-    haveAddBtn: boolean,
-    movieId: string,
-    path: string,
+    haveAddBtn?: boolean,
+    movieId: string | undefined,
+    path: string | undefined,
     rating: number,
     title: string,
     year: string
@@ -28,7 +28,7 @@ function MovieCard({className, haveAddBtn = true, movieId, path = posterNotFound
                         e.preventDefault()
                         e.stopPropagation()
                         setIsModalActive(true)
-                        setMovieId(movieId)
+                        setMovieId(movieId ? movieId: "")
                     }}
                 >
                 </button>
