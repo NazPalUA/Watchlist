@@ -4,21 +4,12 @@ import { nanoid } from "nanoid"
 import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
 import MovieCard from "../components/MovieCard"
+import { MovieAPIResponse } from "../types/MovieAPI"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
 
 type WatchlistPagePropTypes = {
     className?: string
-}
-
-interface Movie {
-    movieId: string,
-    poster_path: string,
-    vote_average: number,
-    title: string,
-    release_date: string,
-    id: string,
-    runtime: number
 }
 
 function WatchlistPage({className}: WatchlistPagePropTypes) {
@@ -33,7 +24,7 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
     const {moviesData} = useMoviesData(movieIds)
 
     // Calculate the average vote of the movies in the watchlist
-    function getAverageVote(movies: Movie[]) {
+    function getAverageVote(movies: MovieAPIResponse[]) {
         const moviesWithScoreData = movies.filter(movie => movie.vote_average > 0)
         const totalVotes = moviesWithScoreData.reduce((acc, movie) => acc + movie.vote_average, 0)
         return Math.round(totalVotes / moviesWithScoreData.length * 10)
@@ -41,7 +32,7 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
     const avgScore = moviesData ? getAverageVote(moviesData) : 0
 
     // Calculate the total unwatched runtime of the movies in the watchlist
-    function getUnwatchedRuntime(movies: Movie[]) {return movies.reduce((acc, movie) => acc + movie.runtime, 0)}
+    function getUnwatchedRuntime(movies: MovieAPIResponse[]) {return movies.reduce((acc, movie) => acc + movie.runtime, 0)}
     const unwatchedRuntime = moviesData ? getUnwatchedRuntime(moviesData) : 0
 
     // Generate HTML for each movie in the watchlist
@@ -53,11 +44,11 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
                 <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
                     <MovieCard 
                         className="watchlist-page__movie-card" 
-                        movieId={movie.id}
+                        movieId={movie.id.toString()}
                         haveAddBtn={false}
                         title={movie.title}
                         path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
-                        year={movie.release_date.slice(0, 4)}
+                        year={movie.release_date.toString().slice(0, 4)}
                         rating={Math.round(movie.vote_average*10)}
                     />
                 </Link>

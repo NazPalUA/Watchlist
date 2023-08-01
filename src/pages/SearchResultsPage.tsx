@@ -37,10 +37,10 @@ function SearchResultsPage({className}: SearchResultsPagePropTypes) {
                 <Link to={`/movie-page/${movie.id}`} className="search-results-page__link">
                     <MovieCard
                         className="search-results-page__movie-card"
-                        movieId={movie.id}
+                        movieId={movie.id.toString()}
                         title={movie.title}
                         path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
-                        year={movie.release_date.slice(0, 4)}
+                        year={movie.release_date.toString().slice(0, 4)}
                         rating={Math.round(movie.vote_average * 10)}
                     />
                 </Link>

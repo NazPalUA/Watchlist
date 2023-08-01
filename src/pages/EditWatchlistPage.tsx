@@ -84,11 +84,11 @@ function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
                 alt="movie poster"
             />
             <p className="edit-watchlist-page__movie-name">
-                {movie.title} <span className="edit-watchlist-page__movie-year">({movie.release_date.slice(0, 4)})</span>
+                {movie.title} <span className="edit-watchlist-page__movie-year">({movie.release_date.toString().slice(0, 4)})</span>
             </p>
             <button
                 className="edit-watchlist-page__movie-remove-btn"
-                onClick={(e) => deleteMovieId(e, movie.id)}
+                onClick={(e) => deleteMovieId(e, movie.id.toString())}
             >
                 Remove
             </button>
