@@ -18,8 +18,8 @@ function SearchBox({ className }: SearchBoxPropTypes) {
     }
     
     // Handler for submitting search form
+    const navigate = useNavigate()
     function handleSubmit() {
-        const navigate = useNavigate()
         navigate(`/search-results-page/${searchText}`)
         setSearchText("")
     }

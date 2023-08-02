@@ -1,7 +1,8 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { PopularOrSearchMoviesAPIResponse, Result } from '../types/PopularOrSearchMoviesAPI'
 
 type UseMultiplePageApiReturn = {
-    data: any[],
+    data: Result[],
     loading: boolean,
     error: Error | null,
     hasMore: boolean,
@@ -10,7 +11,7 @@ type UseMultiplePageApiReturn = {
 }
 
 
-export default function useMultiplePageApi(initialUrl: string, initialData:[] = []): UseMultiplePageApiReturn {
+export default function useMultiplePageApi(initialUrl: string, initialData: Result[] = []): UseMultiplePageApiReturn {
     const [data, setData] = useState(initialData)
     const [url, setUrl] = useState(initialUrl)
     const [loading, setLoading] = useState(false)
@@ -22,11 +23,11 @@ export default function useMultiplePageApi(initialUrl: string, initialData:[] = 
         try {
             setLoading(true)
             const response = await fetch(url)
-            const responseData = await response.json()
+            const responseData = await response.json() as PopularOrSearchMoviesAPIResponse
 
             setData(prevData => {
                 const newData = [...prevData, ...responseData.results]
-                const uniqueData = newData.reduce((acc:[{id: string}], item) => {
+                const uniqueData = newData.reduce((acc:Result[], item) => {
                     if (!acc.find(i => i.id === item.id)) {
                         acc.push(item)
                     }
