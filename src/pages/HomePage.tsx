@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom"
-import InfiniteScroll from 'react-infinite-scroll-component'
 import InfiniteScrollMoviesList from "../components/InfiniteScrollMoviesList"
 import Welcome from "../components/Welcome"
 import SearchBox from "../components/SearchBox"
