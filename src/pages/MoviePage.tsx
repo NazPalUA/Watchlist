@@ -31,7 +31,6 @@ function MoviePage({ className }: MoviePagePropTypes) {
     const { data: movieData } = useFetch<GetMovieDataAPIResponse | null>(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
     const { relatedData } = useRelatedData(movieId || "")
     const { data: castData } = useFetch<GetCastDataAPIResponse | null>(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
-    console.log(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
 
     // useEffect hook to add current movieId to history array in HistoryContext
     useEffect(() => addToHistory(movieId), [movieId])
