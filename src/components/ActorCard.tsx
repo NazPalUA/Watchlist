@@ -4,7 +4,7 @@ import './ActorCard.scss'
 type ActorCardPropTypes = {
     imgPath: string | undefined,
     name: string,
-    character: string,
+    character: string | undefined,
     className?: string
 }
 
@@ -21,7 +21,7 @@ function ActorCard({ imgPath, name, character, className }: ActorCardPropTypes) 
                 {name}
             </p>
             <p className="actor-card__role">
-                {character}
+                {character ? character: "unknown"}
             </p>
         </div>
     )

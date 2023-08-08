@@ -7,6 +7,8 @@ import useRelatedData from "../hooks/useRelatedData"
 import useFetch from "../hooks/useFetch"
 import MovieCard from "../components/MovieCard"
 import ActorCard from "../components/ActorCard"
+import { GetMovieDataAPIResponse } from "../types/GetMovieData"
+import { GetCastDataAPIResponse } from "../types/GetCastDataAPI"
 import posterNotFound from "../images/poster_not_found.png"
 import './MoviePage.scss'
 
@@ -14,24 +16,6 @@ import './MoviePage.scss'
 type MoviePagePropTypes = {
     className?: string
 }
-
-type MovieDataType = {
-    poster_path: string,
-    original_title: string,
-    release_date: string,
-    genres: { name: string }[],
-    runtime: number,
-    overview: string,
-    vote_average: number
-};
-
-type CastDataType = {
-    cast: {
-        character: string,
-        name: string,
-        profile_path: string
-    }[]
-};
 
 function MoviePage({ className }: MoviePagePropTypes) {
     // useContext to get state and functions from context
@@ -44,9 +28,10 @@ function MoviePage({ className }: MoviePagePropTypes) {
     const BASE_URL = "https://api.themoviedb.org/3/movie"
 
     // useFetch and useRelatedData custom hook to fetch movieData, relatedData and castData
-    const { data: movieData } = useFetch<MovieDataType | null>(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    const { data: movieData } = useFetch<GetMovieDataAPIResponse | null>(`${BASE_URL}/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
     const { relatedData } = useRelatedData(movieId || "")
-    const { data: castData } = useFetch<CastDataType | null>(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    const { data: castData } = useFetch<GetCastDataAPIResponse | null>(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
+    console.log(`${BASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`)
 
     // useEffect hook to add current movieId to history array in HistoryContext
     useEffect(() => addToHistory(movieId), [movieId])
@@ -97,7 +82,7 @@ function MoviePage({ className }: MoviePagePropTypes) {
                 />
                 <div className="movie-page__top-right-container">
                     <h3 className="movie-page__title">
-                        {movieData.original_title} <span className="movie-page__release-year">({movieData.release_date.slice(0, 4)})</span>
+                        {movieData.original_title} <span className="movie-page__release-year">({movieData.release_date.toString().slice(0, 4)})</span>
 
                     </h3>
                     <p className="movie-page__genre">
