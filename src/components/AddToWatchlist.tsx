@@ -1,33 +1,43 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Select from 'react-select'
-import { WatchlistsContext } from "../context/WatchlistsContext"
-import { HistoryContext } from "../context/HistoryContext"
-import { ModalContext } from "../context/ModalContext"
+import { StylesConfig } from 'react-select'
+import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
+import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
+import { ModalContext, ModalContextType } from "../context/ModalContext"
 import "./AddToWatchlist.scss"
 
-export default function AddToWatchlist() {
-    const { watchlistsArr, addMovieToWatchlist } = useContext(WatchlistsContext)
-    const { isModalActive, setIsModalActive, movieId } = useContext(ModalContext)
-    const { addToHistory } = useContext(HistoryContext)
+type OptionType = {
+    value: string,
+    label: string
+}
 
-    const [selectedOption, setSelectedOption] = useState(null)
+type SelectedOptionType = OptionType | null;
+
+export default function AddToWatchlist() {
+    const { watchlistsArr, addMovieToWatchlist } = useContext(WatchlistsContext) as WatchlistsContextType
+    const { isModalActive, setIsModalActive, movieId } = useContext(ModalContext) as ModalContextType
+    const { addToHistory } = useContext(HistoryContext) as HistoryContextType
+
+    const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
     const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })
 
     // Effect to reset selected option when modal is closed
     useEffect(() => { !isModalActive && setSelectedOption(null) }, [isModalActive])
 
     // Create array of options for Select
-    const optionsArr = watchlistsArr.map(watchlist => (
+    const optionsArr: OptionType[] = watchlistsArr.map(watchlist => (
         { value: watchlist.id, label: watchlist.name }
     ))
 
     // Handler for changing selected option
-    function handleChange(selectedOption) {
+    function handleChange(selectedOption: SelectedOptionType) {
         setSelectedOption(selectedOption)
-        setSelectedIds({
-            watchlist: selectedOption.value,
-            movie: movieId
-        })
+        if (selectedOption) {
+            setSelectedIds({
+                watchlist: selectedOption.value,
+                movie: movieId
+            })
+        }
     }
 
     // Handler for clicking save button
@@ -38,38 +48,38 @@ export default function AddToWatchlist() {
     }
 
     // Styles for Select
-    const colorStyles = {
+    const colorStyles: StylesConfig<OptionType, false> = {
         // control: styles => ({
         //     ...styles,
         //     backgroundColor: "red",
         //     color: "red"
         // }),
         option: (styles, { isFocused }) => ({
-                ...styles,
-                padding: "15px",
-                backgroundColor: isFocused ? "#1F1F1F" : styles.backgroundColor,
-                color: isFocused ? "#fff" : "#000"
+            ...styles,
+            padding: "15px",
+            backgroundColor: isFocused ? "#1F1F1F" : styles.backgroundColor,
+            color: isFocused ? "#fff" : "#000"
         }),
         multiValue: (styles) => ({
-                ...styles,
-                backgroundColor: "#ECBFC0",
-                padding: "0.3em 0 0.3em 0.5em",
-                fontSize: "1.2rem"
+            ...styles,
+            backgroundColor: "#ECBFC0",
+            padding: "0.3em 0 0.3em 0.5em",
+            fontSize: "1.2rem"
 
         }),
         multiValueLabel: (styles) => ({
-                ...styles,
-                color: "#141414",
-                fontWeight: "600"
+            ...styles,
+            color: "#141414",
+            fontWeight: "600"
         }),
         multiValueRemove: (styles) => ({
-                ...styles,
-                color: "#141414",
-                cursor: "pointer",
-                paddingRight: "0.5em",
-                ":hover": {
-                    color: "#fff"
-                }
+            ...styles,
+            color: "#141414",
+            cursor: "pointer",
+            paddingRight: "0.5em",
+            ":hover": {
+                color: "#fff"
+            }
         })
     }
 

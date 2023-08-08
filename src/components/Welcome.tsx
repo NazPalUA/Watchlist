@@ -1,23 +1,26 @@
-import React from "react"
 import checkmarkWhiteIcon from "../images/checkmark_white_icon.svg"
 import ribbonIcon from "../images/ribbon_icon.svg"
 import './Welcome.scss'
 
-function Welcome(props) {
+type WelcomePropTypes = {
+    className?: string
+}
+
+function Welcome({ className }: WelcomePropTypes) {
     return (
-        <div className={`welcome ${props.className}`}>
+        <div className={`welcome ${className}`}>
             <h1 className="welcome__title">
                 Welcome to <span>Watchlists</span>
             </h1>
             <p className="welcome__paragraph">
-                Browse movies, add them to watchlists and share them with friends. 
+                Browse movies, add them to watchlists and share them with friends.
             </p>
             <p className="welcome__paragraph welcome__paragraph_2">
-                Just click the<img 
+                Just click the<img
                     className="welcome__add-icon"
                     src={ribbonIcon}
                     alt="add icon"
-                />to add a movie, the poster to see more details or<img 
+                />to add a movie, the poster to see more details or<img
                     className="welcome__watched-icon"
                     src={checkmarkWhiteIcon}
                     alt="watched icon"
@@ -27,8 +30,4 @@ function Welcome(props) {
     )
 }
 
-Welcome.defaultProps = {
-    className: ""
-}
-    
 export default Welcome

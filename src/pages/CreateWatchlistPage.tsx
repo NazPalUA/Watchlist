@@ -1,14 +1,18 @@
-import { useContext, useState } from "react"
+import { useContext, useState, ChangeEvent, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { nanoid } from "nanoid"
-import { WatchlistsContext } from "../context/WatchlistsContext"
+import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import './CreateWatchlistPage.scss'
-function CreateWatchlistPage(props) {
+
+type CreateWatchlistPageTypes = {
+    className?: string
+}
+const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({className}: CreateWatchlistPageTypes) => {
     // Use the useNavigate hook from react-router to navigate to another page
     const navigate = useNavigate()
 
      // Use the useContext hook to get the value of the state from WatchlistsContext
-    const { createWatchlist } = useContext(WatchlistsContext)
+    const { createWatchlist } = useContext(WatchlistsContext) as WatchlistsContextType
 
     const [watchlistData, setWatchlistData] = useState({
         name: "",
@@ -16,7 +20,7 @@ function CreateWatchlistPage(props) {
     })
 
     // Function to handle changes in the form
-    function handleChange(event) {
+    function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = event.target
         setWatchlistData(prevWatchlistData => ({
             ...prevWatchlistData,
@@ -25,7 +29,7 @@ function CreateWatchlistPage(props) {
     }
 
     // Function to handle the submit event of the form
-    function handleSubmit(event) {
+    function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
         // Generate a unique identifier for the new watchlist
@@ -39,7 +43,7 @@ function CreateWatchlistPage(props) {
     }
 
     return (
-        <div className={`create-watchlist-page ${props.className}`}>
+        <div className={`create-watchlist-page ${className}`}>
             <h4 className="create-watchlist-page__title">
                 Create a new watchlist
             </h4>
@@ -69,10 +73,6 @@ function CreateWatchlistPage(props) {
             </form>
         </div>
     )
-}
-
-CreateWatchlistPage.defaultProps = {
-    className: ""
 }
 
 export default CreateWatchlistPage

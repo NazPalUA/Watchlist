@@ -1,37 +1,41 @@
-import React from "react"
+import { useState, ChangeEvent, KeyboardEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import './SearchBox.scss'
 
-function SearchBox(props) {
+
+type SearchBoxPropTypes = {
+    className?: string
+}
+
+function SearchBox({ className }: SearchBoxPropTypes) {
     // Component state to store search query text
-    const [searchText, setSearchText] = React.useState("")
+    const [searchText, setSearchText] = useState("")
 
-    // Navigation hook to navigate to another page
-    const navigate = useNavigate()
-
+    
     // Handler for input change in search field
-    function handleChange(event) {
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setSearchText(event.target.value)
     }
     
     // Handler for submitting search form
+    const navigate = useNavigate()
     function handleSubmit() {
         navigate(`/search-results-page/${searchText}`)
         setSearchText("")
     }
 
     // Handler for key down event on search field
-    function handleKeyDown(event) {
-        if (event.keyCode === 13) {
+    function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+        if (event.key === "Enter") {
             handleSubmit()
         }
     }
 
     return (
-        <div className={`search-box ${props.className}`}>
+        <div className={`search-box ${className}`}>
             <input className="search-box__input"
-                type="text" 
-                name="search" 
+                type="text"
+                name="search"
                 id="search-box__input"
                 placeholder="Search for movies by title"
                 onChange={handleChange}
@@ -40,15 +44,12 @@ function SearchBox(props) {
             />
             <button className="search-box__button"
                 onClick={handleSubmit}
-                >
-                    search
+            >
+                search
             </button>
         </div>
     )
 }
 
-SearchBox.defaultProps = {
-    className: ""
-}
-    
+
 export default SearchBox

@@ -1,10 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { PopularOrSearchMoviesAPIResponse, Result } from '../types/PopularOrSearchMoviesAPI'
 
-export default function useMultiplePageApi(initialUrl, initialData = []) {
+type UseMultiplePageApiReturn = {
+    data: Result[],
+    loading: boolean,
+    error: Error | null,
+    hasMore: boolean,
+    page: number,
+    setUrl: Dispatch<SetStateAction<string>>
+}
+
+
+export default function useMultiplePageApi(initialUrl: string, initialData: Result[] = []): UseMultiplePageApiReturn {
     const [data, setData] = useState(initialData)
     const [url, setUrl] = useState(initialUrl)
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState<Error | null>(null)
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
 
@@ -12,11 +23,11 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
         try {
             setLoading(true)
             const response = await fetch(url)
-            const responseData = await response.json()
+            const responseData = await response.json() as PopularOrSearchMoviesAPIResponse
 
             setData(prevData => {
                 const newData = [...prevData, ...responseData.results]
-                const uniqueData = newData.reduce((acc, item) => {
+                const uniqueData = newData.reduce((acc:Result[], item) => {
                     if (!acc.find(i => i.id === item.id)) {
                         acc.push(item)
                     }
@@ -27,8 +38,13 @@ export default function useMultiplePageApi(initialUrl, initialData = []) {
             // setHasMore(responseData.results.length > 0)
             setHasMore(responseData.total_pages > page)
             setPage(page + 1)
-        } catch (error) {
-            setError(error)
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setError(error)
+            } else {
+                setError(new Error("An unknown error occurred"));
+            }
+
         } finally {
             setLoading(false)
         }

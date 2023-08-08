@@ -1,12 +1,15 @@
-import React from "react"
 import './Burger.scss'
 
-export default function Burger(props) {
+type BurgerPropTypes = {
+    className?: string
+}
+
+export default function Burger({ className }: BurgerPropTypes) {
 
     return (
-        <div 
-            className={`burger ${props.className}`}
-            onClick={()=>{
+        <div
+            className={`burger ${className}`}
+            onClick={() => {
                 document.body.classList.toggle("open")
                 document.body.classList.toggle("closed")
             }}
