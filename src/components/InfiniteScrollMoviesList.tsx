@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useMultiplePageApi from "../hooks/useMultiplePageApi"
 import MovieCard from "../components/MovieCard"
+import { useEffect } from "react"
 
 
 type InfiniteScrollMoviesListPropTypes = {
@@ -11,13 +12,18 @@ type InfiniteScrollMoviesListPropTypes = {
 
 function InfiniteScrollMoviesList({classNamePrefix, searchText}: InfiniteScrollMoviesListPropTypes) {
     
-    // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the popular movies data for the first page
     const BASE_URL = "https://api.themoviedb.org/3"
     const FULL_URL = classNamePrefix === "home" ?
-        `${BASE_URL}/movie//popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`:
-        `${BASE_URL}/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchText}&page=1`
+    `${BASE_URL}/movie//popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`:
+    `${BASE_URL}/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${searchText}&page=1`
+    
+    // use the custom hook to initialize the data, hasMore, page, and setUrl variables with default values and fetches the popular movies data for the first page
+    const { data, hasMore, page, setUrl, setData } = useMultiplePageApi(FULL_URL)
 
-    const { data, hasMore, page, setUrl } = useMultiplePageApi(FULL_URL)
+    useEffect( () => {
+        setData([])
+        setUrl(FULL_URL)
+    }, [FULL_URL])
 
     const moviesListHTML = !data ? [] : data.map(movie => {
         return (

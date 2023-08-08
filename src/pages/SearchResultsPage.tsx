@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import InfiniteScrollMoviesList from '../components/InfiniteScrollMoviesList'
+import SearchBox from "../components/SearchBox"
 import './SearchResultsPage.scss'
 
 type SearchResultsPagePropTypes = {
@@ -13,6 +14,7 @@ function SearchResultsPage({className}: SearchResultsPagePropTypes) {
 
     return (
         <div className={`search-results-page ${className}`}>
+            <SearchBox className="search-results-page__search-box" />
             <h4 className="search-results-page__header">
                 Search Results: {searchText}
             </h4>

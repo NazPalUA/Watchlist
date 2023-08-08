@@ -7,7 +7,8 @@ type UseMultiplePageApiReturn = {
     error: Error | null,
     hasMore: boolean,
     page: number,
-    setUrl: Dispatch<SetStateAction<string>>
+    setUrl: Dispatch<SetStateAction<string>>,
+    setData: any
 }
 
 
@@ -62,5 +63,5 @@ export default function useMultiplePageApi(initialUrl: string, initialData: Resu
         fetchData()
     }, [url])
 
-    return { data, loading, error, hasMore, page, setUrl }
+    return { data, loading, error, hasMore, page, setUrl, setData }
 }
