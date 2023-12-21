@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
 import useMoviesData from "../hooks/useMoviesData"
-import MovieCard from "../components/MovieCard"
+import Card from "../components/Card/index"
 import './HistoryPage.scss'
 
 type HistoryPagePropTypes = {
@@ -20,14 +20,15 @@ function HistoryPage({className}: HistoryPagePropTypes) {
                 key={movie.id}
             >
                 <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
-                    <MovieCard 
-                        className="watchlist-page__movie-card" 
-                        movieId={movie.id.toString()}
-                        title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : ""}
-                        year={movie.release_date.toString().slice(0, 4)}
-                        rating={Math.round(movie.vote_average*10)}
-                    />
+                    <Card className="watchlist-page__movie-card" variant="movie" >
+                        <Card.AddToPlaylistBtn movieId={movie.id}/>
+                        <Card.Image variant="movie-poster">
+                            {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
+                        </Card.Image>
+                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Description variant="movie">{movie.title}</Card.Description>
+                        <Card.Description variant="year">({movie.release_date.toString().slice(0, 4)})</Card.Description>
+                    </Card>
                 </Link>
             </li>
         )

@@ -1,13 +1,19 @@
-@use '../variables' as v;
+@use '../../variables' as v;
 
-.movie-card {
-    position: relative;
-
+.card {
     height: 100%;
     border-radius: 4px;
-    background-color: v.$clr-semi-dark;
+    
+    &--movie {
+        position: relative;
+        background-color: v.$clr-semi-dark;
+    }
 
-    &__add-btn {
+    &--actor {
+        background: #1A1A1A;
+    }
+
+    &__add-to-playlist-btn {
         position: absolute;
         top: 0;
         left: 0;
@@ -18,7 +24,7 @@
         padding: 0;
 
         background-color: transparent;
-        background-image: url("../images/ribbon_icon.svg");
+        background-image: url("../../images/ribbon_icon.svg");
         background-repeat: no-repeat;
         background-size: contain;
 
@@ -30,11 +36,11 @@
         }
 
         &:hover {
-            background-image: url("../images/ribbon_light_icon.svg");
+            background-image: url("../../images/ribbon_light_icon.svg");
         }
     }
 
-    &__poster {
+    &__movie-poster, &__actor-photo {
         width: 100%;
     }
 
@@ -46,7 +52,7 @@
         margin-top: 0.3em;
     }
 
-    &__smile {
+    &__emoji {
         width: 1.3rem;
     }
 
@@ -61,14 +67,29 @@
         margin-left: 0.1em;
     }
 
-    &__title {
-        margin: 0.3em 0 0;
-        padding: 0 0.625em;
-    }
+    &__description {
 
-    &__year {
-        font-weight: v.$fw-light;
-        margin: 0;
-        padding: 0 0.625em 0.625em;
+        &--movie {
+            margin: 0.3em 0 0;
+            padding: 0 0.625em;
+        }
+
+        
+        &--actor {
+            margin: 0.75em 0 0.75em;
+            padding: 0 0.75em 0 0.75em;
+        }
+
+        &--year {
+            font-weight: v.$fw-light;
+            margin: 0;
+            padding: 0 0.625em 0.625em;
+        }
+
+        &--character {
+            font-size: var(--fs-middle);
+            margin: 0.75em 0 0;
+            padding: 0 0.75em 0.75em;
+        }
     }
 }

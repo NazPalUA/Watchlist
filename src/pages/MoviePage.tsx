@@ -5,8 +5,7 @@ import { ModalContext, ModalContextType } from "../context/ModalContext"
 import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
 import useRelatedData from "../hooks/useRelatedData"
 import useFetch from "../hooks/useFetch"
-import MovieCard from "../components/MovieCard"
-import ActorCard from "../components/ActorCard"
+import Card from "../components/Card/index"
 import { GetMovieDataAPIResponse } from "../types/GetMovieData"
 import { GetCastDataAPIResponse } from "../types/GetCastDataAPI"
 import posterNotFound from "../images/poster_not_found.png"
@@ -41,12 +40,11 @@ function MoviePage({ className }: MoviePagePropTypes) {
             <li className="movie-page__list-item"
                 key={nanoid()}
             >
-                <ActorCard
-                    className="movie-page__card"
-                    character={person.character}
-                    name={person.name}
-                    imgPath={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}` : undefined}
-                />
+                <Card className="movie-page__card" variant="actor">
+                    <Card.Image variant="actor-photo">{person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}` : undefined}</Card.Image>
+                    <Card.Description variant="actor">{person.name}</Card.Description>
+                    <Card.Description variant="character">{person.character}</Card.Description>
+                </Card>
             </li>
         )
     })
@@ -57,14 +55,15 @@ function MoviePage({ className }: MoviePagePropTypes) {
                 key={nanoid()}
             >
                 <Link to={`/movie-page/${movie.id}`} className="movie-page__link">
-                    <MovieCard
-                        className="movie-page__card"
-                        movieId={movie.id}
-                        title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
-                        year={movie.release_date.slice(0, 4)}
-                        rating={Math.round(movie.vote_average * 10)}
-                    />
+                    <Card className="movie-page__card" variant="movie" >
+                        <Card.AddToPlaylistBtn movieId={movie.id}/>
+                        <Card.Image variant="movie-poster">
+                            {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
+                        </Card.Image>
+                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Description variant="movie">{movie.title}</Card.Description>
+                        <Card.Description variant="year">({movie.release_date.toString().slice(0, 4)})</Card.Description>
+                    </Card>
                 </Link>
             </li>
         )

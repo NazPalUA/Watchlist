@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useMultiplePageApi from "../hooks/useMultiplePageApi"
-import MovieCard from "../components/MovieCard"
+import Card from "../components/Card/index"
 import { useEffect } from "react"
 
 
@@ -31,14 +31,15 @@ function InfiniteScrollMoviesList({classNamePrefix, searchText}: InfiniteScrollM
                 key={movie.id}
             >
                 <Link to={`/movie-page/${movie.id}`} className={`${classNamePrefix}-page__link`}>
-                    <MovieCard
-                        className={`${classNamePrefix}-page__movie-card`}
-                        movieId={movie.id.toString()}
-                        title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
-                        year={movie.release_date ? movie.release_date.slice(0, 4) : "?"}
-                        rating={Math.round(movie.vote_average * 10)}
-                    />
+                    <Card className={`${classNamePrefix}-page__movie-card`} variant="movie" >
+                        <Card.AddToPlaylistBtn movieId={movie.id}/>
+                        <Card.Image variant="movie-poster">
+                            {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
+                        </Card.Image>
+                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Description variant="movie">{movie.title}</Card.Description>
+                        <Card.Description variant="year">({movie.release_date.toString().slice(0, 4)})</Card.Description>
+                    </Card>
                 </Link>
             </li>
         )
