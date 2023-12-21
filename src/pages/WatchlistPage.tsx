@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
 import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
-import MovieCard from "../components/MovieCard"
+import Card from "../components/Card/index"
 import { MovieAPIResponse } from "../types/MovieAPI"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
@@ -42,15 +42,14 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
                 key={nanoid()}
             >
                 <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
-                    <MovieCard 
-                        className="watchlist-page__movie-card" 
-                        movieId={movie.id.toString()}
-                        haveAddBtn={false}
-                        title={movie.title}
-                        path={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
-                        year={movie.release_date.toString().slice(0, 4)}
-                        rating={Math.round(movie.vote_average*10)}
-                    />
+                    <Card className="watchlist-page__movie-card"  variant="movie" >
+                        <Card.Image variant="movie-poster">
+                            {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
+                        </Card.Image>
+                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Description variant="movie">{movie.title}</Card.Description>
+                        <Card.Description variant="year">({movie.release_date.toString().slice(0, 4)})</Card.Description>
+                    </Card>
                 </Link>
             </li>
         )
