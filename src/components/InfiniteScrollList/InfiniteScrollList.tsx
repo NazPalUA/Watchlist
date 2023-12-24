@@ -1,7 +1,6 @@
-import useInfiniteScrollMoviesList from "../../hooks/useInfiniteScrollMoviesList"
+import useInfiniteScrollMoviesList from "./hooks/useInfiniteScrollMoviesList"
 import InfiniteScroll from 'react-infinite-scroll-component'
-import MoviesList from "./SubComponents/moviesList"
-import getURL from "./utils/getURL"
+import MoviesList from "./SubComponents/MoviesList"
 import './InfiniteScrollList.scss'
 
 type BaseProps = {
@@ -20,8 +19,7 @@ export type PopularProps = BaseProps & {
 type InfiniteScrollListPropTypes = SearchProps | PopularProps;
 
 export default function InfiniteScrollList(props: InfiniteScrollListPropTypes) {
-    const URL = props.variant === "popular" ? getURL(props.variant) : getURL(props.variant, props.searchText)
-    const { movies, hasMore, fetchNextPage } = useInfiniteScrollMoviesList(URL);
+    const { movies, hasMore, fetchNextPage } = useInfiniteScrollMoviesList(props);
 
     return (
         <InfiniteScroll
