@@ -1,3 +1,3 @@
-import InfiniteScrollList from './InfiniteScrollList';
+import InfiniteScrollList from './InfiniteScrollList'
 
-export default InfiniteScrollList;
+export default InfiniteScrollList

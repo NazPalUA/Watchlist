@@ -1,85 +1,94 @@
+import { useState, useEffect, useCallback } from 'react'
+import { PopularOrSearchMoviesAPIResponse, Result as Movie } from '../../../types/PopularOrSearchMoviesAPI'
+import getURL from '../utils/getURL'
+import getUniqueMoviesData from '../utils/getUniqueMoviesData'
+
+// Types for different fetch variants
+export type SearchTypes = {
+    variant: "search"
+    searchText: string | undefined
+}
+
+export type PopularTypes = {
+    variant: "popular"
+}
+
+// State structure for the hook
+type State = {
+    loading: boolean
+    error: Error | null | unknown
+    hasMore: boolean
+}
+
 /**
  * Custom hook for fetching movie data from specified URLs. This hook manages
- * the state for an infinite scroll feature, handling pagination and loading status.
+ * the state for an infinite scroll feature, handling pagination, loading status, and errors.
  * 
  * Note: This hook is specifically designed for URLs returning data in the format
  * defined by PopularOrSearchMoviesAPIResponse in src/types/PopularOrSearchMoviesAPI.ts.
- * The provided URL must adhere to this expected data structure for correct operation.
+ * The provided input must adhere to this expected data structure for correct operation.
  *
- * @param fullUrl The URL used for fetching movie data. This URL should include the base
- *                endpoint and any necessary query parameters, excluding pagination parameters.
- * @returns An object containing the current list of movies (`movies`), a boolean indicating
- *          if more movies are available to fetch (`hasMore`), and a function to fetch the
- *          next page of movies (`fetchNextPage`).
+ * @param input An object containing the parameters for fetching movies, either by search or popular query.
+ * @returns An object containing the current list of movies (`movies`), state with loading status (`loading`),
+ *          error information (`error`), a boolean indicating if more movies are available to fetch (`hasMore`),
+ *          and functions to fetch the next page of movies (`fetchNextPage`) and reset errors (`resetError`).
  */
 
-import { useState, useEffect } from 'react';
-import { PopularOrSearchMoviesAPIResponse, Result as Movie } from '../../../types/PopularOrSearchMoviesAPI';
-import getURL from '../utils/getURL';
-import getUniqueMoviesData from '../utils/getUniqueMoviesData';
-
-
-export type SearchTypes = {
-    variant: "search";
-    searchText: string | undefined;
-}
-
-export type PopularTypes =  {
-    variant: "popular";
-}
-
-
 export default function useInfiniteScrollMoviesList(input: SearchTypes | PopularTypes) {
+    const [movies, setMovies] = useState<Movie[]>([])
+    const [state, setState] = useState<State>({ loading: false, error: null, hasMore: true })
+    const [page, setPage] = useState<number>(1)
 
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const [url, setUrl] = useState(() => getURL(input));
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<Error | null>(null)
-    const [page, setPage] = useState<number>(1);
-    const [hasMore, setHasMore] = useState<boolean>(true);
+    // Function to fetch data from the API
+    const fetchData = useCallback(async (currentPage: number) => {
+        // Construct the URL for the API request
+        const newUrl = getURL({...input, page: currentPage})
+        if (!newUrl) return
+        
+        // Set loading state before starting the fetch
+        setState(prevState => ({ ...prevState, loading: true }))
 
-    // Effect for updating URL when input changes
-    useEffect(() => {
-        const newUrl = getURL(input);
-        setUrl(newUrl);
-        setPage(1); // Reset page to 1 when input changes
-        setMovies([]); // Clear existing movies
-    }, [input]); // Add input or input.searchText here as a dependency
-
-
-    const fetchData = async () => {
-        if (url === null) return
-        setLoading(true)
         try {
-            const response = await fetch(url)
+            // Perform the API request
+            const response = await fetch(newUrl)
             const responseData = await response.json() as PopularOrSearchMoviesAPIResponse
 
+            // Update the movies state and check if more movies are available
             setMovies(prevData => {
-                const newData = [...prevData, ...responseData.results] 
-                return getUniqueMoviesData(newData)
+                const combinedData = currentPage === 1 ? responseData.results : [...prevData, ...responseData.results]
+                return getUniqueMoviesData(combinedData)
             })
-            // setHasMore(responseData.results.length > 0)
-            setHasMore(responseData.total_pages > page)
-            setPage(page + 1)
+            setState(prevState => ({
+                ...prevState,
+                hasMore: responseData.total_pages > currentPage,
+                loading: false
+            }))
         } catch (error: unknown) {
+            // Handle errors during the fetch operation
             if (error instanceof Error) {
-                setError(error)
+                setState(prevState => ({ ...prevState, error, loading: false }))
             } else {
-                setError(new Error("An unknown error occurred"));
+                setState(prevState => ({ ...prevState, error: new Error("An unknown error occurred"), loading: false }))
             }
+        }
+    }, [input])
 
-        } finally {
-            setLoading(false)
+    // Effect for initializing and refetching data when input changes
+    useEffect(() => {
+        setPage(1) 
+        setMovies([])
+        fetchData(1)
+    }, [input, fetchData])
+
+    // Function to fetch the next page of movies
+    const fetchNextPage = () => {
+        if (state.hasMore && !state.loading) {
+            const nextPage = page + 1
+            setPage(nextPage)
+            fetchData(nextPage)
         }
     }
 
-    useEffect(() => {
-        if (!url) return;
-        fetchData();
-    }, [url, page]); // Add page as a dependency to fetch when page changes
-
-
-    const fetchNextPage = () => setPage(prevPage => prevPage + 1);
-
-    return { movies, loading, error, hasMore, page, setUrl, fetchNextPage }
+    // Return the state and functions to be used by the component
+    return { movies, ...state, fetchNextPage }
 }

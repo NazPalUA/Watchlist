@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom"
 import Card from "../../Card/index"
-import { Result as Movie } from '../../../types/PopularOrSearchMoviesAPI';
+import { Result as Movie } from '../../../types/PopularOrSearchMoviesAPI'
 
 type MoviesListProps = {
-    moviesData: Movie[];
+    moviesData: Movie[]
 }
+
+/**
+ * MoviesList component for displaying a list of movies.
+ * Each movie is presented as a card with relevant details.
+ *
+ * @param {MoviesListProps} props - Properties including the array of movies to be displayed.
+ * @returns A list of movie cards.
+ */
 
 export default function MoviesList({ moviesData }: MoviesListProps) {
 
     const moviesListHTML = moviesData.map(movie => {
         return (
-            <li className="infinite-list__item"
-                key={movie.id}
-            >
+            <li className="infinite-list__item" key={movie.id}>
                 <Link to={`/movie-page/${movie.id}`} className={`infinite-list__link`}>
                     <Card className={`infinite-list__card`} variant="movie" >
                         <Card.AddToPlaylistBtn movieId={movie.id}/>
