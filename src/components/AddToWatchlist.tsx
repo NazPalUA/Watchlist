@@ -11,7 +11,7 @@ type OptionType = {
     label: string
 }
 
-type SelectedOptionType = OptionType | null;
+type SelectedOptionType = OptionType | null
 
 export default function AddToWatchlist() {
     const { watchlistsArr, addMovieToWatchlist } = useContext(WatchlistsContext) as WatchlistsContextType

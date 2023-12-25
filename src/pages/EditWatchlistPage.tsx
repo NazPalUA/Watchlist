@@ -6,8 +6,8 @@ import posterNotFound from "../images/poster_not_found.png"
 import './EditWatchlistPage.scss'
 
 type FormData = {
-    name: string | undefined;
-    description: string | undefined;
+    name: string | undefined
+    description: string | undefined
 }
 
 type EditWatchlistPagePropTypes = {

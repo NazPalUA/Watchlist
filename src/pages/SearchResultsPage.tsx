@@ -14,8 +14,6 @@ function SearchResultsPage({className}: SearchResultsPagePropTypes) {
     const { searchText } = useParams()
 
     useEffect(() => {
-        console.log(searchText)
-
     }, [searchText])
 
     return (
