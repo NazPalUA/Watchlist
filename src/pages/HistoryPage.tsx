@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
 import useMoviesData from "../hooks/useMoviesData"
-import Card from "../components/Card/index"
+import Card from "../components/Card"
 import formatRating from "../utils/formatRating"
 import formatYear from "../utils/formatYear"
 import './HistoryPage.scss'

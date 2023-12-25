@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Card from "../../Card/index"
+import Card from "../../Card"
 import formatRating from "../../../utils/formatRating"
 import formatYear from "../../../utils/formatYear"
 import { Result as Movie } from '../../../types/PopularOrSearchMoviesAPI'
