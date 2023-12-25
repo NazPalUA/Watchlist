@@ -9,11 +9,11 @@ type ModalPropTypes = {
 
 export default function Modal({ active, setActive, children }: ModalPropTypes) {
 
-    const modalClass = active ? "modal active" : "modal";
-    const modalContentClass = active ? "modal__content active" : "modal__content";
+    const modalClass = active ? "modal active" : "modal"
+    const modalContentClass = active ? "modal__content active" : "modal__content"
 
-    const handleClick = () => setActive(false);
-    const handleContentClick = (e: React.MouseEvent) => e.stopPropagation();
+    const handleClick = () => setActive(false)
+    const handleContentClick = (e: React.MouseEvent) => e.stopPropagation()
 
     return (
         <div className={modalClass} onClick={handleClick}>

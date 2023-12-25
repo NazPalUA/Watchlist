@@ -1,4 +1,4 @@
-import InfiniteScrollMoviesList from "../components/InfiniteScrollMoviesList"
+import InfiniteScrollList from "../components/InfiniteScrollList"
 import Welcome from "../components/Welcome"
 import SearchBox from "../components/SearchBox"
 import './HomePage.scss'
@@ -14,7 +14,7 @@ function HomePage({className}: HomePagePropTypes) {
             <Welcome className="home-page__welcome" />
             <SearchBox className="home-page__search-box" />
             <h4 className="home-page__popular-title">Popular movies right now</h4>
-            <InfiniteScrollMoviesList classNamePrefix="home" />
+            <InfiniteScrollList className="home-page__popular-list" variant="popular" />
         </div>
     )
 }

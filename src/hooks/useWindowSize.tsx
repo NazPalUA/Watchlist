@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 
 interface WindowSize {
-  width: number | undefined;
-  height: number | undefined;
+  width: number | undefined
+  height: number | undefined
 }
 
 // Hook

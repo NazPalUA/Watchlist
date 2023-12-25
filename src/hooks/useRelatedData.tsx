@@ -11,13 +11,13 @@ interface Movie {
 }
 
 interface ApiResponse {
-    results: Movie[];
+    results: Movie[]
 }
 
 interface UseRelatedDataReturn {
-    relatedData: Movie[];
-    relatedLoading: boolean;
-    relatedError: Error | null;
+    relatedData: Movie[]
+    relatedLoading: boolean
+    relatedError: Error | null
 }
 
 function useRelatedData(movieId: string, numberOfItems = 25): UseRelatedDataReturn  {
@@ -57,11 +57,11 @@ function useRelatedData(movieId: string, numberOfItems = 25): UseRelatedDataRetu
                 setRelatedLoading(false)
             } catch (relatedError: unknown) {
                 if (relatedError instanceof Error) {
-                    setRelatedError(relatedError);
+                    setRelatedError(relatedError)
                 } else {
-                    setRelatedError(new Error("An unknown error occurred"));
+                    setRelatedError(new Error("An unknown error occurred"))
                 }
-                setRelatedLoading(false);
+                setRelatedLoading(false)
             }
         }
 

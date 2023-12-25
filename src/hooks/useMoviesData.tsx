@@ -3,9 +3,9 @@ import { MovieAPIResponse } from "../types/MovieAPI"
 
 
 type UseMoviesDataReturn = {
-    moviesData: MovieAPIResponse[];
-    moviesLoading: boolean;
-    moviesError: Error | null;
+    moviesData: MovieAPIResponse[]
+    moviesLoading: boolean
+    moviesError: Error | null
 }
 
 export default function useMoviesData(movieIds: string[] | undefined): UseMoviesDataReturn {
