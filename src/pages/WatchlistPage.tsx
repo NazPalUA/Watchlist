@@ -4,6 +4,8 @@ import { nanoid } from "nanoid"
 import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
 import Card from "../components/Card/index"
+import formatRating from "../utils/formatRating"
+import formatYear from "../utils/formatYear"
 import { MovieAPIResponse } from "../types/MovieAPI"
 import editIcon from "../images/edit_icon.svg"
 import './WatchlistPage.scss'
@@ -46,9 +48,9 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
                         <Card.Image variant="movie-poster">
                             {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
                         </Card.Image>
-                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Rating>{formatRating(movie.vote_average)}</Card.Rating> 
                         <Card.Description variant="movie">{movie.title}</Card.Description>
-                        <Card.Description variant="year">({movie.release_date.toString().slice(0, 4)})</Card.Description>
+                        <Card.Description variant="year">({formatYear(movie.release_date)})</Card.Description>
                     </Card>
                 </Link>
             </li>

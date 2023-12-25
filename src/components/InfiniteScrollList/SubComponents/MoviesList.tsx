@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import Card from "../../Card/index"
+import formatRating from "../../../utils/formatRating"
+import formatYear from "../../../utils/formatYear"
 import { Result as Movie } from '../../../types/PopularOrSearchMoviesAPI'
 
 type MoviesListProps = {
@@ -25,9 +27,9 @@ export default function MoviesList({ moviesData }: MoviesListProps) {
                         <Card.Image variant="movie-poster">
                             {movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : undefined}
                         </Card.Image>
-                        <Card.Rating>{Math.round(movie.vote_average*10)}</Card.Rating> 
+                        <Card.Rating>{formatRating(movie.vote_average)}</Card.Rating> 
                         <Card.Description variant="movie">{movie.title}</Card.Description>
-                        <Card.Description variant="year">({movie.release_date?.toString().slice(0, 4)})</Card.Description>
+                        <Card.Description variant="year">({formatYear(movie.release_date)})</Card.Description>
                     </Card>
                 </Link>
             </li>
