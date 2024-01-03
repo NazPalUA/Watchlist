@@ -28,14 +28,14 @@ function App() {
 	return (
 		<>
 			<Routes>
-				<Route element={<Layout />}>
-					<Route path="/" element={<HomePage className="app__page" />} />
-					<Route path="/history" element={<HistoryPage className="app__page" />} />
-					<Route path="/create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
-					<Route path="/watchlist-page/:watchlistId" element={<WatchlistPage className="app__page" />} />
-					<Route path="/movie-page/:movieId" element={<MoviePage className="app__page" />} />
-					<Route path="/search-results-page/:searchText" element={<SearchResultsPage className="app__page" />} />
-					<Route path="/edit-watchlist-page/:watchlistId" element={<EditWatchlistPage className="app__page" />} />
+				<Route path="/" element={<Layout />}>
+					<Route index element={<HomePage className="app__page" />} />
+					<Route path="history" element={<HistoryPage className="app__page" />} />
+					<Route path="create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
+					<Route path="watchlist-page/:watchlistId" element={<WatchlistPage className="app__page" />} />
+					<Route path="movie-page/:movieId" element={<MoviePage className="app__page" />} />
+					<Route path="search-results-page/:searchText" element={<SearchResultsPage className="app__page" />} />
+					<Route path="edit-watchlist-page/:watchlistId" element={<EditWatchlistPage className="app__page" />} />
 				</Route>
 			</Routes>
 		</>
