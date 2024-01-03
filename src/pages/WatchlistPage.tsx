@@ -63,7 +63,7 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
                     <h2 className="watchlist-page__header">
                         {getWatchlistData(watchlistId)?.name}
                     </h2>
-                    <Link to={`/edit-watchlist-page/${watchlistId}`} className="watchlist-page__edit">
+                    <Link to={`edit`} className="watchlist-page__edit">
                         <img className="watchlist-page__edit-icon" 
                             src={editIcon} alt="edit icon" />
                     </Link>

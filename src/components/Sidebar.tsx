@@ -1,5 +1,5 @@
 import { useContext }  from "react"
-import { Link } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import { nanoid } from "nanoid"
 import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
 import useWindowSize from "../hooks/useWindowSize"
@@ -34,14 +34,15 @@ function Sidebar({className}: SidebarPropTypes) {
             <li className="sidebar__watchlist-item"
                 key={nanoid()}
             >
-                <Link to={`/watchlist-page/${watchlist.id}`}
+                <NavLink to={`/watchlist-page/${watchlist.id}`}
                     className="sidebar__watchlist-link"
                     onClick={()=>{
                         toggleSidebar()
                     }}
+                    style={({isActive}) => isActive ? {color: "red"} : {} }
                 >
                     {watchlist.name}
-                </Link>
+                </NavLink>
             </li>
         )
     })
@@ -55,22 +56,24 @@ function Sidebar({className}: SidebarPropTypes) {
                     </h1>
                 </Link>
                 <nav className="sidebar__navigation">
-                    <Link to="/"
+                    <NavLink to="/"
                         className="sidebar__navigation-link sidebar__navigation-link_home"
                         onClick={() => {
                             toggleSidebar()
                         }}
+                        style={({isActive}) => isActive ? {color: "red"} : {} }
                     >
                         Home
-                    </Link>
-                    <Link to="/history"
+                    </NavLink>
+                    <NavLink to="/history"
                         className="sidebar__navigation-link sidebar__navigation-link_history"
                         onClick={() => {
                             toggleSidebar()
                         }}
+                        style={({isActive}) => isActive ? {color: "red"} : {} }
                     >
                         History
-                    </Link>
+                    </NavLink>
                 </nav>
                 <Link to="/create_watchlist" className="sidebar__create-btn"
                     onClick={() => {
