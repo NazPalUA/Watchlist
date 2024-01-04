@@ -59,6 +59,10 @@
         &:hover {
             background-color: v.$clr-semi-dark;
         }
+
+        &.active {
+            color: v.$clr-accent;;
+        }
     }
 
     &__navigation-link_home {
@@ -171,6 +175,10 @@
 
         &:hover {
             background-color: v.$clr-semi-dark;
+        }
+
+        &.active {
+            color: v.$clr-accent;
         }
     }
 }

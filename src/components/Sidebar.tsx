@@ -35,11 +35,10 @@ function Sidebar({className}: SidebarPropTypes) {
                 key={nanoid()}
             >
                 <NavLink to={`/watchlist-page/${watchlist.id}`}
-                    className="sidebar__watchlist-link"
+                    className={({isActive}) => isActive ? "sidebar__watchlist-link active" : "sidebar__watchlist-link" }
                     onClick={()=>{
                         toggleSidebar()
                     }}
-                    style={({isActive}) => isActive ? {color: "red"} : {} }
                 >
                     {watchlist.name}
                 </NavLink>
@@ -57,20 +56,18 @@ function Sidebar({className}: SidebarPropTypes) {
                 </Link>
                 <nav className="sidebar__navigation">
                     <NavLink to="/"
-                        className="sidebar__navigation-link sidebar__navigation-link_home"
+                        className={({isActive}) => isActive ? "sidebar__navigation-link sidebar__navigation-link_home active" : "sidebar__navigation-link sidebar__navigation-link_home" }
                         onClick={() => {
                             toggleSidebar()
                         }}
-                        style={({isActive}) => isActive ? {color: "red"} : {} }
                     >
                         Home
                     </NavLink>
                     <NavLink to="/history"
-                        className="sidebar__navigation-link sidebar__navigation-link_history"
+                        className={({isActive}) => isActive ? "sidebar__navigation-link sidebar__navigation-link_history active" : "sidebar__navigation-link sidebar__navigation-link_history" }
                         onClick={() => {
                             toggleSidebar()
                         }}
-                        style={({isActive}) => isActive ? {color: "red"} : {} }
                     >
                         History
                     </NavLink>
