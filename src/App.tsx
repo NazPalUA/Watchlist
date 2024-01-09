@@ -1,5 +1,5 @@
 import {useEffect} from "react"
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useLocation, Navigate } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
@@ -32,9 +32,12 @@ function App() {
 					<Route index element={<HomePage className="app__page" />} />
 					<Route path="history" element={<HistoryPage className="app__page" />} />
 					<Route path="create_watchlist" element={<CreateWatchlistPage className="app__page" />} />
+					<Route path="watchlist-page" element={<Navigate to="/" />} />
 					<Route path="watchlist-page/:watchlistId" element={<WatchlistPage className="app__page" />} />
 					<Route path="watchlist-page/:watchlistId/edit" element={<EditWatchlistPage className="app__page" />} />
+					<Route path="movie-page" element={<Navigate to="/" />} />
 					<Route path="movie-page/:movieId" element={<MoviePage className="app__page" />} />
+					<Route path="search-results-page" element={<Navigate to="/" />} />
 					<Route path="search-results-page/:searchText" element={<SearchResultsPage className="app__page" />} />
 				</Route>
 			</Routes>
