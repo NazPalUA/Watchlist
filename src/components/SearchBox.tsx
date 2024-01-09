@@ -16,12 +16,16 @@ function SearchBox({ className }: SearchBoxPropTypes) {
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setSearchText(event.target.value)
     }
+
+    function formatSearchText(searchText: string) {
+        return searchText.replace(/\s+/g, '+')
+    }
     
     // Handler for submitting search form
     const navigate = useNavigate()
     function handleSubmit() {
         if(searchText) {
-            navigate(`/search-results-page/${searchText}`)
+            navigate(`/search-results-page?text=${formatSearchText(searchText)}`)
             setSearchText("")
         }
     }

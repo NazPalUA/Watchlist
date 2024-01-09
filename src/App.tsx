@@ -37,8 +37,7 @@ function App() {
 					<Route path="watchlist-page/:watchlistId/edit" element={<EditWatchlistPage className="app__page" />} />
 					<Route path="movie-page" element={<Navigate to="/" />} />
 					<Route path="movie-page/:movieId" element={<MoviePage className="app__page" />} />
-					<Route path="search-results-page" element={<Navigate to="/" />} />
-					<Route path="search-results-page/:searchText" element={<SearchResultsPage className="app__page" />} />
+					<Route path="search-results-page" element={<SearchResultsPage className="app__page" />} />
 				</Route>
 			</Routes>
 		</>

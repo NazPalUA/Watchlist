@@ -4,7 +4,7 @@ type BaseTypes = {
 
 export type SearchTypes = BaseTypes & {
     variant: "search"
-    searchText: string | undefined
+    searchText: string | undefined | null
 }
 
 export type PopularTypes = BaseTypes & {

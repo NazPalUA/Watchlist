@@ -9,7 +9,7 @@ type BaseProps = {
 
 export type SearchProps = BaseProps & {
     variant: "search"
-    searchText: string | undefined // Required for 'search' variant
+    searchText: string | undefined | null // Required for 'search' variant
 }
 
 export type PopularProps = BaseProps & {
@@ -29,6 +29,8 @@ type InfiniteScrollListPropTypes = SearchProps | PopularProps
 export default function InfiniteScrollList(props: InfiniteScrollListPropTypes) {
     // Extracting movies and related states from the custom hook
     const { movies, hasMore, fetchNextPage, error } = useInfiniteScrollMoviesList(props)
+
+    if(props.variant==="search" && !props.searchText) return <p>No results</p>
 
     // Function to render the end message based on the current state
     const getEndMessage = () => {

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import InfiniteScrollList from '../components/InfiniteScrollList'
 import SearchBox from "../components/SearchBox"
 import './SearchResultsPage.scss'
@@ -11,7 +11,9 @@ type SearchResultsPagePropTypes = {
 
 function SearchResultsPage({className}: SearchResultsPagePropTypes) {
     // Get the search text from the URL parameter
-    const { searchText } = useParams()
+    const [searchParams] = useSearchParams()
+
+    const searchText = searchParams ? searchParams.get("text") : null
 
     useEffect(() => {
     }, [searchText])

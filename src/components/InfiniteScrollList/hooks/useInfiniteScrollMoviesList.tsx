@@ -6,7 +6,7 @@ import getUniqueMoviesData from '../utils/getUniqueMoviesData'
 // Types for different fetch variants
 export type SearchTypes = {
     variant: "search"
-    searchText: string | undefined
+    searchText: string | undefined | null
 }
 
 export type PopularTypes = {
