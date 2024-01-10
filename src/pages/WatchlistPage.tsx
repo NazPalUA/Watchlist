@@ -19,7 +19,10 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
     const {watchlistId} = useParams()
 
     // Get the watchlist data and the movie IDs in the watchlists from the context
-    const {getWatchlistData, getMovieIds} = useContext(WatchlistsContext) as WatchlistsContextType
+    const {isExist, getWatchlistData, getMovieIds} = useContext(WatchlistsContext) as WatchlistsContextType
+
+    const exist = isExist(watchlistId)
+    if (!exist) return <h1>Watchlist not found!</h1>
 
     // Get the movie data for all the movies in the watchlist
     const movieIds = getMovieIds(watchlistId)

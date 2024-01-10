@@ -10,6 +10,7 @@ type WatchlistType = {
 
 export type WatchlistsContextType = {
     watchlistsArr: WatchlistType[],
+    isExist: (watchlistId: string | undefined) => boolean,
     getWatchlistData: (watchlistId: string | undefined) => WatchlistType | undefined,
     getMovieIds: (watchlistId: string | undefined) => string[] | undefined,
     createWatchlist: (name: string, description: string, id: string) => void,
@@ -46,6 +47,10 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
 
     // Update the local storage value whenever the watchlists array state changes
     useEffect(() => {setStoredValue(watchlistsArr)},[watchlistsArr])
+
+    function isExist(watchlistId: string | undefined) {
+        return watchlistsArr.some(watchlist => watchlist.id === watchlistId)
+    }
 
     // Find a watchlist in the array by ID
     function getWatchlistData(watchlistId: string | undefined) {
@@ -133,6 +138,7 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
     return (
         <WatchlistsContext.Provider value={{
             watchlistsArr,
+            isExist,
             getWatchlistData,
             getMovieIds,
             createWatchlist,

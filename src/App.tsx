@@ -38,6 +38,7 @@ function App() {
 					<Route path="movie-page" element={<Navigate to="/" />} />
 					<Route path="movie-page/:movieId" element={<MoviePage className="app__page" />} />
 					<Route path="search-results-page" element={<SearchResultsPage className="app__page" />} />
+					<Route path="*" element={<h1>Page not found!</h1>} />
 				</Route>
 			</Routes>
 		</>
