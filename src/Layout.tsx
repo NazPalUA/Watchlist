@@ -1,19 +1,21 @@
 import { Outlet } from "react-router-dom"
-import {useContext} from "react"
-import { ModalContext, ModalContextType } from "./context/ModalContext"
-import Sidebar from './components/Sidebar'
+import { useModalContext } from "./context/ModalContext"
+import Sidebar from './components/Sidebar/Sidebar'
 import MobileHeader from './components/MobileHeader'
 import Modal from './components/Modal'
 import AddToWatchlist from './components/AddToWatchlist'
+import { useSidebarContext } from "./context/SidebarContext"
 import './App.scss'
 
 
 export default function Layout() {
     // Get the ModalContext values
-	const {isModalActive, setIsModalActive} = useContext(ModalContext) as ModalContextType
+	const {isModalActive, setIsModalActive} = useModalContext()
+
+    const { getSidebarStateClass } = useSidebarContext()
 
     return (
-        <div className="app">
+        <div className={`app app--${getSidebarStateClass()}`}>
             <header className="app__header">
                 <div className="app__container">
                     <MobileHeader />

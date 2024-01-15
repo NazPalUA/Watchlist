@@ -1,6 +1,5 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
+import { useHistoryContext } from "../context/HistoryContext"
 import useMoviesData from "../hooks/useMoviesData"
 import Card from "../components/Card"
 import formatRating from "../utils/formatRating"
@@ -13,7 +12,7 @@ type HistoryPagePropTypes = {
 
 
 function HistoryPage({className}: HistoryPagePropTypes) {
-    const {historyIds, clearHistory} = useContext(HistoryContext) as HistoryContextType
+    const {historyIds, clearHistory} = useHistoryContext()
     const {moviesData} = useMoviesData(historyIds)
 
     const historyListHTML = moviesData.map(movie=>{

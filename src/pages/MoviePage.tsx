@@ -1,8 +1,8 @@
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
-import { ModalContext, ModalContextType } from "../context/ModalContext"
-import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
+import { useModalContext } from "../context/ModalContext"
+import { useHistoryContext } from "../context/HistoryContext"
 import useRelatedData from "../hooks/useRelatedData"
 import useFetch from "../hooks/useFetch"
 import Card from "../components/Card"
@@ -20,8 +20,8 @@ type MoviePagePropTypes = {
 
 function MoviePage({ className }: MoviePagePropTypes) {
     // useContext to get state and functions from context
-    const { setIsModalActive, setMovieId } = useContext(ModalContext) as ModalContextType
-    const { addToHistory } = useContext(HistoryContext) as HistoryContextType
+    const { setIsModalActive, setMovieId } = useModalContext()
+    const { addToHistory } = useHistoryContext()
 
     // useParams hook to get the movieId from the URL parameter
     const { movieId } = useParams()

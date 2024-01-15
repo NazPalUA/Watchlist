@@ -1,7 +1,7 @@
-import { useEffect, useState, createContext, FC, ReactNode } from "react"
+import { useEffect, useState, createContext, FC, ReactNode, useContext } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
-export type HistoryContextType = {
+type HistoryContextType = {
     historyIds: string [],
     addToHistory: (id: string | undefined) => void,
     clearHistory: () => void
@@ -57,4 +57,12 @@ const HistoryContextProvider: FC<HistoryContextProviderProps> = ({ children } ) 
     )
 }
 
-export { HistoryContextProvider, HistoryContext }
+export const useHistoryContext = () => {
+    const context = useContext(HistoryContext);
+    if (!context) {
+        throw new Error("useHistoryContext must be used within a HistoryContextProvider");
+    }
+    return context;
+}
+
+export { HistoryContextProvider }

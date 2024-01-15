@@ -1,3 +1,4 @@
+import { useSidebarContext } from '../context/SidebarContext'
 import './Burger.scss'
 
 type BurgerPropTypes = {
@@ -6,13 +7,12 @@ type BurgerPropTypes = {
 
 export default function Burger({ className }: BurgerPropTypes) {
 
+    const { toggleSidebar } = useSidebarContext()
+
     return (
         <div
             className={`burger ${className}`}
-            onClick={() => {
-                document.body.classList.toggle("open")
-                document.body.classList.toggle("closed")
-            }}
+            onClick={() => toggleSidebar() }
         >
             <div className="burger__bar"></div>
             <div className="burger__bar"></div>

@@ -37,7 +37,7 @@
         margin-bottom: 4em;
     }
 
-    body.open &__boxes-container, &__boxes-container {
+    app--sidebar-open &__boxes-container, &__boxes-container {
         list-style: none;
         display: flex;
         margin: 0;
@@ -63,7 +63,7 @@
         }
     }
 
-    body.open &__boxes-container {
+    app--sidebar-open &__boxes-container {
         @media (min-width: v.$bp-tablets) {
             justify-content: space-between;
         }

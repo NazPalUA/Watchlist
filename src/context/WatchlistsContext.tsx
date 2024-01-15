@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, ReactNode, FC } from "react"
+import { useState, useEffect, createContext, ReactNode, FC, useContext } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
 type WatchlistType = {
@@ -8,7 +8,7 @@ type WatchlistType = {
     movieIds: string[]
 }
 
-export type WatchlistsContextType = {
+type WatchlistsContextType = {
     watchlistsArr: WatchlistType[],
     isExist: (watchlistId: string | undefined) => boolean,
     getWatchlistData: (watchlistId: string | undefined) => WatchlistType | undefined,
@@ -152,4 +152,12 @@ const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children
     )
 }
 
-export {WatchlistsContextProvider, WatchlistsContext}
+export const useWatchlistsContext = () => {
+    const context = useContext(WatchlistsContext);
+    if (!context) {
+        throw new Error("useWatchlistsContext must be used within a WatchlistsContextProvider");
+    }
+    return context;
+}
+
+export {WatchlistsContextProvider }

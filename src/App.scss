@@ -51,14 +51,14 @@ $sidebar-timing-function: ease;
         }
     }
 
-    body.open &__main-wrapper {
+    &--sidebar-open &__main-wrapper {
 
         @media (min-width: v.$bp-tablets) {
             grid-template: 1fr / calc($sidebar-width) auto;
         }
     }
 
-    &__main-wrapper, body.open &__main-wrapper {
+    &__main-wrapper, &--sidebar-open &__main-wrapper {
 
         @media (min-width: v.$bp-laptops) {
             grid-template: 1fr / min-content auto;
@@ -102,7 +102,7 @@ $sidebar-timing-function: ease;
 
     }
 
-    body.open &__main-section_sidebar {
+    &--sidebar-open &__main-section_sidebar {
         transform: translateX(0);
     }
 
@@ -136,7 +136,7 @@ $sidebar-timing-function: ease;
 
     }
 
-    body.open &__sidebar {
+    &--sidebar-open &__sidebar {
         @media (min-width: v.$bp-tablets) {
             transform: translateX(-1.5vw);                
         }
@@ -150,7 +150,7 @@ $sidebar-timing-function: ease;
         padding: 2em 0;
     }
     
-    body.open &__main-section_page {
+    &--sidebar-open &__main-section_page {
         
         position: fixed;
         top: var(--header-height);

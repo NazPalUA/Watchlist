@@ -1,7 +1,7 @@
-import { useContext, useState, ChangeEvent, FormEvent } from "react"
+import { useState, ChangeEvent, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { nanoid } from "nanoid"
-import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
+import { useWatchlistsContext } from "../context/WatchlistsContext"
 import './CreateWatchlistPage.scss'
 
 type CreateWatchlistPageTypes = {
@@ -12,7 +12,7 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({className}: Cr
     const navigate = useNavigate()
 
      // Use the useContext hook to get the value of the state from WatchlistsContext
-    const { createWatchlist } = useContext(WatchlistsContext) as WatchlistsContextType
+    const { createWatchlist } = useWatchlistsContext()
 
     const [watchlistData, setWatchlistData] = useState({
         name: "",

@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Select from 'react-select'
 import { StylesConfig } from 'react-select'
-import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
-import { HistoryContext, HistoryContextType } from "../context/HistoryContext"
-import { ModalContext, ModalContextType } from "../context/ModalContext"
+import { useWatchlistsContext } from "../context/WatchlistsContext"
+import { useHistoryContext } from "../context/HistoryContext"
+import { useModalContext } from "../context/ModalContext"
 import "./AddToWatchlist.scss"
 
 type OptionType = {
@@ -14,9 +14,9 @@ type OptionType = {
 type SelectedOptionType = OptionType | null
 
 export default function AddToWatchlist() {
-    const { watchlistsArr, addMovieToWatchlist } = useContext(WatchlistsContext) as WatchlistsContextType
-    const { isModalActive, setIsModalActive, movieId } = useContext(ModalContext) as ModalContextType
-    const { addToHistory } = useContext(HistoryContext) as HistoryContextType
+    const { watchlistsArr, addMovieToWatchlist } = useWatchlistsContext()
+    const { isModalActive, setIsModalActive, movieId } = useModalContext()
+    const { addToHistory } = useHistoryContext()
 
     const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
     const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })

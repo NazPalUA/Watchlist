@@ -1,7 +1,7 @@
 import { useContext }  from "react"
 import { Link, useParams } from "react-router-dom"
 import { nanoid } from "nanoid"
-import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
+import { useWatchlistsContext } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
 import Card from "../components/Card"
 import formatRating from "../utils/formatRating"
@@ -19,7 +19,7 @@ function WatchlistPage({className}: WatchlistPagePropTypes) {
     const {watchlistId} = useParams()
 
     // Get the watchlist data and the movie IDs in the watchlists from the context
-    const {isExist, getWatchlistData, getMovieIds} = useContext(WatchlistsContext) as WatchlistsContextType
+    const {isExist, getWatchlistData, getMovieIds} = useWatchlistsContext() 
 
     const exist = isExist(watchlistId)
     if (!exist) return <h1>Watchlist not found!</h1>

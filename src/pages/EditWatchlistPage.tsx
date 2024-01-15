@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
-import { WatchlistsContext, WatchlistsContextType } from "../context/WatchlistsContext"
+import { useWatchlistsContext } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
 import posterNotFound from "../images/poster_not_found.png"
 import './EditWatchlistPage.scss'
@@ -21,7 +21,7 @@ function EditWatchlistPage({className}: EditWatchlistPagePropTypes) {
         deleteWatchlist, 
         editWatchlist,
         getMovieIds
-    } = useContext(WatchlistsContext) as WatchlistsContextType
+    } = useWatchlistsContext()
     
     // Get the navigation function from react-router-dom
     const navigate = useNavigate()
