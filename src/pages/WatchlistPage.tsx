@@ -7,7 +7,7 @@ import Card from "../components/Card"
 import formatRating from "../utils/formatRating"
 import formatYear from "../utils/formatYear"
 import { MovieAPIResponse } from "../types/MovieAPI"
-import editIcon from "../images/edit_icon.svg"
+import editIcon from "../assets/images/edit_icon.svg"
 import './WatchlistPage.scss'
 
 type WatchlistPagePropTypes = {

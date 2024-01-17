@@ -159,16 +159,13 @@ $sidebar-timing-function: ease;
         z-index: -1;
         
         @media (min-width: v.$bp-tablets) {
-            left: 3vw;
-            width: 94vw;
             position: static;
             z-index: 1;
             width: 100%;
         }
 
         @media (min-width: v.$bp-large) {
-            left: 2vw;
-            width: 96vw;
+
         }
     }
 

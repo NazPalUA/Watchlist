@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
 import { useWatchlistsContext } from "../context/WatchlistsContext"
 import useMoviesData from "../hooks/useMoviesData"
-import posterNotFound from "../images/poster_not_found.png"
+import posterNotFound from "../assets/images/poster_not_found.png"
 import './EditWatchlistPage.scss'
 
 type FormData = {

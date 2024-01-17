@@ -10,7 +10,7 @@ import formatRating from "../utils/formatRating"
 import formatYear from "../utils/formatYear"
 import { GetMovieDataAPIResponse } from "../types/GetMovieData"
 import { GetCastDataAPIResponse } from "../types/GetCastDataAPI"
-import posterNotFound from "../images/poster_not_found.png"
+import posterNotFound from "../assets/images/poster_not_found.png"
 import './MoviePage.scss'
 
 
