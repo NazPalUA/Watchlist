@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
 import CreateWatchlistPage from './pages/CreateWatchlistPage'
 import WatchlistPage from './pages/WatchlistPage'
-import SearchResultsPage from './pages/SearchResultsPage'
 import EditWatchlistPage from './pages/EditWatchlistPage'
 import MoviePage from './pages/MoviePage'
 import Layout from "./Layout"
@@ -37,7 +36,6 @@ function App() {
 					<Route path="watchlist-page/:watchlistId/edit" element={<EditWatchlistPage className="app__page" />} />
 					<Route path="movie-page" element={<Navigate to="/" />} />
 					<Route path="movie-page/:movieId" element={<MoviePage className="app__page" />} />
-					<Route path="search-results-page" element={<SearchResultsPage className="app__page" />} />
 					<Route path="*" element={<h1>Page not found!</h1>} />
 				</Route>
 			</Routes>

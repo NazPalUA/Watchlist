@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Burger from "./Burger"
+import Burger from "../Burger/Burger"
 import './MobileHeader.scss'
 
 type MobileHeaderPropTypes = {

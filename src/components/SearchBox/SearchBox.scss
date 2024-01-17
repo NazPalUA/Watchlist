@@ -1,4 +1,4 @@
-@use '../variables' as v;
+@use '../../variables' as v;
 
 .search-box {
     display: flex;
@@ -19,7 +19,7 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url(../images/search_icon.svg);
+        background-image: url(../../images/search_icon.svg);
     }
     
     &__input {

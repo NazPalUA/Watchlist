@@ -1,4 +1,4 @@
-import { useSidebarContext } from '../context/SidebarContext'
+import { useSidebarContext } from '../../context/SidebarContext'
 import './Burger.scss'
 
 type BurgerPropTypes = {

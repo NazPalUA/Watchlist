@@ -1,5 +1,5 @@
-import checkmarkWhiteIcon from "../images/checkmark_white_icon.svg"
-import ribbonIcon from "../images/ribbon_icon.svg"
+import checkmarkWhiteIcon from "../../images/checkmark_white_icon.svg"
+import ribbonIcon from "../../images/ribbon_icon.svg"
 import './Welcome.scss'
 
 type WelcomePropTypes = {

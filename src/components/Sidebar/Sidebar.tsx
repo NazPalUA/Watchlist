@@ -1,6 +1,6 @@
 import SidebarLink from "./subComponents/SidebarLink"
 import manageSidebarOpening from "./utils/manageSidebarOpening"
-import WatchlistsList from "./subComponents/WatchListsList"
+import WatchlistsList from "./subComponents/WatchlistsList"
 import './Sidebar.scss'
 
 type SidebarPropTypes = { className?: string }

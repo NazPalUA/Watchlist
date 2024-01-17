@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { useModalContext } from "./context/ModalContext"
 import Sidebar from './components/Sidebar/Sidebar'
-import MobileHeader from './components/MobileHeader'
+import MobileHeader from './components/MobileHeader/MobileHeader'
 import Modal from './components/Modal'
 import AddToWatchlist from './components/AddToWatchlist'
 import { useSidebarContext } from "./context/SidebarContext"

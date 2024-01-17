@@ -1,6 +1,7 @@
+import { useSearchParams } from "react-router-dom"
 import InfiniteScrollList from "../components/InfiniteScrollList"
-import Welcome from "../components/Welcome"
-import SearchBox from "../components/SearchBox"
+// import Welcome from "../components/Welcome/Welcome"
+import SearchBox from "../components/SearchBox/SearchBox"
 import './HomePage.scss'
 
 type HomePagePropTypes = {
@@ -8,13 +9,19 @@ type HomePagePropTypes = {
 }
 
 function HomePage({className}: HomePagePropTypes) {
+    const [searchParams] = useSearchParams()
+
+    const searchFilter = searchParams.get("search") || null
+
 
     return (
         <div className={`home-page ${className}`}>
-            <Welcome className="home-page__welcome" />
+            {/* <Welcome className="home-page__welcome" /> */}
             <SearchBox className="home-page__search-box" />
-            <h4 className="home-page__popular-title">Popular movies right now</h4>
-            <InfiniteScrollList className="home-page__popular-list" variant="popular" />
+            {searchFilter 
+                ? <InfiniteScrollList className="home-page__popular-list" variant="search" searchText={searchFilter} />
+                : <InfiniteScrollList className="home-page__popular-list" variant="popular" />
+            }
         </div>
     )
 }

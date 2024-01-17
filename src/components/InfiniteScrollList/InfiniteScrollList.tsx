@@ -2,6 +2,7 @@ import useInfiniteScrollMoviesList from "./hooks/useInfiniteScrollMoviesList"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import MoviesList from "./SubComponents/MoviesList"
 import './InfiniteScrollList.scss'
+import EndMessage from "./SubComponents/EndMessage"
 
 type BaseProps = {
     className?: string
@@ -18,39 +19,28 @@ export type PopularProps = BaseProps & {
 
 type InfiniteScrollListPropTypes = SearchProps | PopularProps
 
-/**
- * InfiniteScrollList component that utilizes the useInfiniteScrollMoviesList hook
- * to render a list of movies with infinite scrolling capability.
- * 
- * @param props Component properties for fetching and displaying movies.
- * @returns The InfiniteScrollList component with movies displayed in an infinite scroll layout.
- */
-
 export default function InfiniteScrollList(props: InfiniteScrollListPropTypes) {
-    // Extracting movies and related states from the custom hook
+    
     const { movies, hasMore, fetchNextPage, error } = useInfiniteScrollMoviesList(props)
 
-    if(props.variant==="search" && !props.searchText) return <p>No results</p>
-
-    // Function to render the end message based on the current state
-    const getEndMessage = () => {
-        if (error) {
-            return <p>Error loading movies. Please try again later.</p>
-        }
-        return movies.length ? <p>No more movies</p> : <p>No results</p>
-    }
+    if(props.variant==="search" && !props.searchText) return <p>Invalid search input</p>
 
     return (
-        <InfiniteScroll
-            dataLength={movies.length}
-            next={fetchNextPage}
-            hasMore={hasMore} 
-            loader={<h4>Loading...</h4>}
-            endMessage={getEndMessage()}
-        >
-            <ul className={`${props.className} infinite-list card-grid`}>
-                <MoviesList moviesData={movies} />
-            </ul>
-        </InfiniteScroll>
+        <>
+            <h4 className="infinite-list__title">
+                {props.variant==="popular" ? "Popular movies right now" : "Search Results:"}
+            </h4>
+            <InfiniteScroll
+                dataLength={movies.length}
+                next={fetchNextPage}
+                hasMore={hasMore} 
+                loader={<h4>Loading...</h4>}
+                endMessage={<EndMessage error={error} length={movies.length}/>}
+            >
+                <ul className={`${props.className} infinite-list card-grid`}>
+                    <MoviesList moviesData={movies} />
+                </ul>
+            </InfiniteScroll>
+        </>
     )
 }
