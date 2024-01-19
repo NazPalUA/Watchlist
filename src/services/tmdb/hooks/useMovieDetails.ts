@@ -1,6 +1,10 @@
 import { useQuery } from 'react-query'
-import { getMovieDetails } from '../api'
+import { axiosInstance } from '../api'
+import { MovieDetails } from '../types'
 
 export const useMovieDetails = (movieId: string) => {
-  return useQuery(['movieDetails', movieId], () => getMovieDetails(movieId))
+  return useQuery<MovieDetails, Error>(['movieDetails', movieId], async () => {
+    const { data } = await axiosInstance.get(`/movie/${movieId}`)
+    return data
+  })
 }

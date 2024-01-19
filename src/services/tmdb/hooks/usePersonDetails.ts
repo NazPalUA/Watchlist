@@ -1,6 +1,10 @@
 import { useQuery } from 'react-query'
-import { getPersonDetails } from '../api'
+import { axiosInstance } from '../api'
+import { PersonDetails } from '../types'
 
-export const usePersonDetails = (movieId: string) => {
-  return useQuery(['personDetails', movieId], () => getPersonDetails(movieId))
+export const usePersonDetails = (personId: string) => {
+  return useQuery<PersonDetails, Error>(['personDetails', personId], async () => {
+    const { data } = await axiosInstance.get(`/person/${personId}`)
+    return data
+  })
 }

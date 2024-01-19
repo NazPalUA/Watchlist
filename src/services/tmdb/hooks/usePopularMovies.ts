@@ -1,6 +1,10 @@
 import { useQuery } from 'react-query'
-import { getPopularMovies } from '../api'
+import { axiosInstance } from '../api'
+import { PopularMovies } from '../types'
 
 export const usePopularMovies = (page: number) => {
-    return useQuery(['popularMovies', page], () => getPopularMovies(page))
+    return useQuery<PopularMovies, Error>(['popularMovies', page], async () => {
+        const { data } = await axiosInstance.get(`/movie/popular?page=${page}`)
+        return data
+    })
 }

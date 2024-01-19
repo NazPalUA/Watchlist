@@ -1,6 +1,10 @@
 import { useQuery } from 'react-query'
-import { searchPerson } from '../api'
+import { axiosInstance } from '../api'
+import { SearchPerson } from '../types'
 
 export const useSearchPerson = (query: string, page: number) => {
-  return useQuery(['searchPerson', query, page], () => searchPerson(query, page))
+  return useQuery<SearchPerson, Error>(['searchPerson', query, page], async () => {
+    const { data } = await axiosInstance.get(`/search/person?query=${encodeURIComponent(query)}&page=${page}`)
+    return data
+  })
 }
