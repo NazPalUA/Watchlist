@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { fetchTmdbApi } from '../api'
 import { Credits, MovieDetails, MoviesWithPerson, PersonDetails, SearchMovie, 
     SearchPerson, PopularMovies, Recommendations } from '../types'
@@ -39,10 +39,27 @@ const usePopularMovies = (page: number = 1) =>
         queryFn: () => fetchTmdbApi<PopularMovies>(`/movie/popular?page=${page}`), 
 })
 
+const useInfinitePopularMovies = () => 
+    useInfiniteQuery ({
+        queryKey: ["infinitePopularMovies"], 
+        queryFn: ({ pageParam }) => fetchTmdbApi<PopularMovies>(`/movie/popular?page=${pageParam}`),
+        initialPageParam: 1,
+        getNextPageParam: (data) => data.page + 1
+})
+
 const useSearchMovie = (query: string, page: number = 1) => 
     useQuery({
         queryKey: ["searchMovie", query, page], 
         queryFn: () => fetchTmdbApi<SearchMovie>(`/search/movie?query=${encodeURIComponent(query)}&page=${page}`), 
+})
+
+
+const useInfiniteSearchMovie = (query: string) => 
+    useInfiniteQuery ({
+        queryKey: ["infiniteSearchMovie", query], 
+        queryFn: ({ pageParam }) => fetchTmdbApi<PopularMovies>(`/search/movie?query=${encodeURIComponent(query)}&page=${pageParam}`),
+        initialPageParam: 1,
+        getNextPageParam: (data) => data.page + 1
 })
 
 const useSearchPerson = (query: string, page: number = 1) => 
@@ -53,4 +70,4 @@ const useSearchPerson = (query: string, page: number = 1) =>
 
 
 export { useMovieDetails, useMovieCredits, useMovieRecommendations, usePersonDetails, 
-    useMoviesWithPerson, usePopularMovies, useSearchMovie, useSearchPerson }
+    useMoviesWithPerson, usePopularMovies, useInfinitePopularMovies, useSearchMovie, useInfiniteSearchMovie, useSearchPerson }
