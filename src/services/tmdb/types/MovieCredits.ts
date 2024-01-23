@@ -1,4 +1,4 @@
-export type Credits = {
+export type MovieCredits = {
     id: number,
     cast: Cast[],
     crew: Crew[],

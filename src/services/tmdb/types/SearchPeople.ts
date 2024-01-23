@@ -1,6 +1,6 @@
 import { PersonWithMediaType } from "."
 
-export type SearchPerson = {
+export type SearchPeople = {
     page: number,
     results: PersonWithMediaType[],
     total_pages: number,

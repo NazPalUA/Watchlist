@@ -1,4 +1,4 @@
-export type Recommendations = {
+export type RecommendedMovies = {
     page: number,
     results: Recommendation[],
     total_pages: number,

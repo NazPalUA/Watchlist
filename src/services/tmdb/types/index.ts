@@ -1,10 +1,10 @@
-export * from './Credits'
+export * from './MovieCredits'
 export * from './MovieDetails'
 export * from './PersonDetails'
 export * from './PopularMovies'
-export * from './Recommendations'
-export * from './SearchMovie'
-export * from './SearchPerson'
+export * from './RecommendedMovies'
+export * from './SearchMovieResults'
+export * from './SearchPeople'
 export * from './MoviesWithPerson'
 
 export type Movie = {
