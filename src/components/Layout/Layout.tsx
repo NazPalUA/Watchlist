@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom"
-import "./App.scss"
-import MobileHeader from "./components/MobileHeader/MobileHeader"
-import Sidebar from "./components/Sidebar/Sidebar"
-import { useSidebarContext } from "./context/SidebarContext"
+import { useSidebarContext } from "../../context/SidebarContext"
+import MobileHeader from "../MobileHeader/MobileHeader"
+import Sidebar from "../Sidebar/Sidebar"
+import "./Layout.scss"
 
 export default function Layout() {
   const { getSidebarStateClass } = useSidebarContext()
