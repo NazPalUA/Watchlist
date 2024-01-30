@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import "./App.scss"
 import Layout from "./Layout"
+import Overlays from "./components/Overlays"
 import CreateWatchlistPage from "./pages/CreateWatchlistPage/CreateWatchlistPage"
 import EditWatchlistPage from "./pages/EditWatchlistPage/EditWatchlistPage"
 import HistoryPage from "./pages/HistoryPage/HistoryPage"
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <Overlays />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage className="app__page" />} />
