@@ -1,0 +1,21 @@
+@use "../../variables" as v;
+
+.home-page {
+  &__title {
+    margin: 1em 0;
+
+    font-size: var(--fs-h4);
+    font-weight: v.$fw-reg;
+  }
+  &__welcome {
+    width: 100%;
+  }
+
+  &__search-box {
+    // margin-top: 2.5em;
+    width: 100%;
+  }
+
+  &__popular-list {
+  }
+}
