@@ -1,12 +1,19 @@
 type EndMessageProps = {
-  error: boolean | null
+  isError: boolean | null
   length: number
+  isFetching: boolean
 }
 
 // Component to render the end message based on the current state
-export default function EndMessage({ error, length }: EndMessageProps) {
-  if (error) {
+export default function EndMessage({
+  isError,
+  length,
+  isFetching,
+}: EndMessageProps) {
+  if (isError) {
     return <p>Error loading movies. Please try again later.</p>
+  } else if (isFetching) {
+    return <p>Loading...</p>
   }
   return length ? <p>No more movies</p> : <p>No results</p>
 }

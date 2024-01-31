@@ -6,7 +6,7 @@ import Card from "../Card"
 import styles from "./MoviesList.module.scss"
 
 type MoviesListProps = {
-  moviesData: Movie[] | MovieDetails[]
+  moviesData: (Movie | MovieDetails)[]
   className?: string
 }
 
