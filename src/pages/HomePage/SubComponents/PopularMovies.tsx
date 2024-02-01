@@ -1,4 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component"
+import CustomLoader from "../../../components/CustomLoader"
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
 import MoviesList from "../../../components/MoviesList/MoviesList"
 import { useInfinitePopularMovies } from "../../../services/tmdb"
@@ -25,7 +26,7 @@ export default function PopularMovies() {
           dataLength={uniqueMovies.length}
           next={fetchNextPage}
           hasMore={hasNextPage}
-          loader={<h4>Loading...</h4>}
+          loader={<CustomLoader timeDelay={false} />}
           endMessage={
             <EndMessage
               isError={isError}

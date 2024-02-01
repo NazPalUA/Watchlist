@@ -1,3 +1,5 @@
+import CustomLoader from "../../../components/CustomLoader"
+
 type EndMessageProps = {
   isError: boolean | null
   length: number
@@ -13,7 +15,7 @@ export default function EndMessage({
   if (isError) {
     return <p>Error loading movies. Please try again later.</p>
   } else if (isFetching) {
-    return <p>Loading...</p>
+    return <CustomLoader time={1000} />
   }
   return length ? <p>No more movies</p> : <p>No results</p>
 }
