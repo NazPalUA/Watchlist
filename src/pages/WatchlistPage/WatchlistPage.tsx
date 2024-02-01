@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
+import CustomLoader from "../../components/CustomLoader"
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import { useWatchlistsContext } from "../../context/WatchlistsContext"
-import useMoviesData from "../../hooks/useMoviesData"
+import { useMoviesDetails } from "../../services/tmdb"
 import getUniqueIds from "../../utils/getUniqueIds"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
@@ -12,24 +14,36 @@ type WatchlistPagePropTypes = {
 
 function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
-
-  if (!watchlistId) return <h1>Watchlist not found!</h1>
-
-  // Get the watchlist data and the movie IDs in the watchlists from the context
-  const { isExist, getMovieIds } = useWatchlistsContext()
-
+  const { isExist, getMovieIds, getWatchlistData } = useWatchlistsContext()
   const exist = isExist(watchlistId)
-  if (!exist) return <h1>Watchlist not found!</h1>
-
-  // Get the movie data for all the movies in the watchlist
   const allMovieIds = getMovieIds(watchlistId)
   const movieIds = allMovieIds ? getUniqueIds(allMovieIds) : []
-  const { moviesData } = useMoviesData(movieIds)
+  const { data, isError, error, isLoading } = useMoviesDetails(movieIds)
+
+  const watchlistData = getWatchlistData(watchlistId)
+  const { name: watchlistName, description: watchlistDescription } =
+    watchlistData || {}
+
+  if (isLoading) return <CustomLoader />
+
+  if (!watchlistId || !exist)
+    return <ErrorMessage>Watchlist not found!</ErrorMessage>
+
+  if (isError || !data)
+    return (
+      <ErrorMessage error={error}>
+        Something went wrong! Please try again later.
+      </ErrorMessage>
+    )
 
   return (
     <div className={`watchlist-page ${className}`}>
-      <WatchlistDetails moviesData={moviesData} watchlistId={watchlistId} />
-      <Movies moviesData={moviesData} />
+      <WatchlistDetails
+        moviesData={data}
+        name={watchlistName ?? ""}
+        description={watchlistDescription ?? ""}
+      />
+      <Movies moviesData={data} />
     </div>
   )
 }
