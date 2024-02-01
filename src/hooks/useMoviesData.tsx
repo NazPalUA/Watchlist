@@ -1,14 +1,18 @@
-import { MovieDetails, useMovieDetails } from "../services/tmdb"
+import { useQuery } from "@tanstack/react-query"
+import { getMovieDetails } from "../services/tmdb"
 
-export default function useMoviesData(movieIds: string[] | undefined) {
-  const moviesData: MovieDetails[] = []
+//TODO: Replace this with a custom hook that uses the useQuery hook from react-query. It is located in services/tmdb
 
-  if (movieIds !== undefined && movieIds.length !== 0) {
-    movieIds.forEach((movieId) => {
-      const { data } = useMovieDetails(movieId)
-      data && moviesData.push(data)
-    })
-  }
-
-  return { moviesData }
+export default function useMoviesData(movieIds: string[]) {
+  return useQuery({
+    queryKey: ["movies", movieIds],
+    queryFn: async () => {
+      if (movieIds) {
+        const promises = movieIds.map((movieId) => getMovieDetails(movieId))
+        const moviesData = await Promise.all(promises)
+        return moviesData
+      }
+      return []
+    },
+  })
 }

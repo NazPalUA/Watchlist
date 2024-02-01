@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import posterNotFound from "../../assets/images/poster_not_found.png"
 import { useWatchlistsContext } from "../../context/WatchlistsContext"
-import useMoviesData from "../../hooks/useMoviesData"
+import { useMoviesDetails } from "../../services/tmdb"
 import "./EditWatchlistPage.scss"
 
 type FormData = {
@@ -27,7 +27,7 @@ function EditWatchlistPage({ className }: EditWatchlistPagePropTypes) {
 
   // Get the copy of current movieIds and their data using the custom hook
   const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId) || [])
-  const { moviesData } = useMoviesData(movieIds)
+  const { data: moviesData } = useMoviesDetails(movieIds)
 
   // Get the current watchlist's name and description as initial values for the form
   const [formData, setFormData] = useState<FormData>({
