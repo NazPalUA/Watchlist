@@ -3,7 +3,7 @@ import styles from "./ErrorMessage.module.scss"
 
 type ErrorMessageProps = {
   children: ReactNode
-  error?: Error
+  error?: Error | null
 }
 
 export default function ErrorMessage({ error, children }: ErrorMessageProps) {
