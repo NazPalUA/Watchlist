@@ -1,0 +1,29 @@
+@use "../../../../variables.scss" as v;
+
+.item {
+  display: flex;
+  align-items: center;
+
+  height: 5em;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 4px;
+  margin-bottom: 0.8em;
+}
+
+.poster {
+  max-height: 100%;
+  margin-right: 1em;
+}
+
+.movieYear {
+  font-weight: v.$fw-light;
+}
+
+.removeBtn {
+  margin-left: auto;
+  margin-right: 1em;
+  padding: 0.65em;
+  border: 1px solid v.$clr-accent;
+  border-radius: 4px;
+  background-color: inherit;
+}

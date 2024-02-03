@@ -1,0 +1,60 @@
+@use "../../../../variables.scss" as v;
+
+.form > * {
+  display: block;
+}
+
+.label {
+  font-size: var(--fs-big);
+  font-weight: v.$fw-bold;
+  margin-bottom: 0.3em;
+}
+
+.title,
+.description {
+  font-size: var(--fs-extra-big);
+
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 6px;
+  margin-bottom: 1.5em;
+  background-color: unset;
+}
+
+.description {
+  resize: none;
+  height: 7em;
+}
+
+.btnsContainer {
+  display: flex;
+  gap: 1em;
+
+  justify-content: space-between;
+
+  @media (min-width: v.$bp-mobile) {
+    justify-content: flex-start;
+  }
+}
+
+.btn {
+  font-size: var(--fs-big);
+  font-weight: v.$fw-bold;
+  color: v.$clr-font-black;
+
+  width: 48%;
+  padding: 1em 2em;
+  background: v.$clr-accent;
+  border: none;
+  border-radius: 6px;
+
+  @media (min-width: v.$bp-mobile) {
+    width: unset;
+    padding: 0.6em 4em;
+  }
+}
+
+.btn_dark {
+  background-color: v.$clr-semi-light;
+}
