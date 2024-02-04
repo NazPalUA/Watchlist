@@ -66,7 +66,8 @@ export const useInfinitePopularMovies = () =>
     queryFn: ({ pageParam }) => getPopularMovies(pageParam),
     initialPageParam: 1,
     getNextPageParam: (data) => {
-      if (data.results.length === 0) return undefined
+      if (data.results.length === 0 || data.page === data.total_pages)
+        return undefined
       return data.page + 1
     },
   })
@@ -83,7 +84,8 @@ export const useInfiniteSearchMovie = (query: string) =>
     queryFn: ({ pageParam }) => searchMovies(query, pageParam),
     initialPageParam: 1,
     getNextPageParam: (data) => {
-      if (data.results.length === 0) return undefined
+      if (data.results.length === 0 || data.page === data.total_pages)
+        return undefined
       return data.page + 1
     },
   })
@@ -100,7 +102,8 @@ export const useInfiniteSearchPeople = (query: string) =>
     queryFn: ({ pageParam }) => searchPeople(query, pageParam),
     initialPageParam: 1,
     getNextPageParam: (data) => {
-      if (data.results.length === 0) return undefined
+      if (data.results.length === 0 || data.page === data.total_pages)
+        return undefined
       return data.page + 1
     },
   })
