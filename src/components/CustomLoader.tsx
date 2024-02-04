@@ -5,9 +5,7 @@ type CustomLoaderProps = { timeDelay?: number }
 
 export default function CustomLoader({ timeDelay = 0 }: CustomLoaderProps) {
   const isTimeDelay = Boolean(timeDelay)
-
   const [showLoader, setShowLoader] = useState(!isTimeDelay)
-  console.log(showLoader)
 
   useEffect(() => {
     let timer: number | undefined
