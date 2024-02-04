@@ -65,7 +65,10 @@ export const useInfinitePopularMovies = () =>
     queryKey: ["movies", "popular", "infinite"],
     queryFn: ({ pageParam }) => getPopularMovies(pageParam),
     initialPageParam: 1,
-    getNextPageParam: (data) => data.page + 1,
+    getNextPageParam: (data) => {
+      if (data.results.length === 0) return undefined
+      return data.page + 1
+    },
   })
 
 export const useSearchMovie = (query: string, page: number = 1) =>
@@ -79,7 +82,10 @@ export const useInfiniteSearchMovie = (query: string) =>
     queryKey: ["movies", "search", "infinite", query],
     queryFn: ({ pageParam }) => searchMovies(query, pageParam),
     initialPageParam: 1,
-    getNextPageParam: (data) => data.page + 1,
+    getNextPageParam: (data) => {
+      if (data.results.length === 0) return undefined
+      return data.page + 1
+    },
   })
 
 export const useSearchPeople = (query: string, page: number = 1) =>
@@ -93,5 +99,8 @@ export const useInfiniteSearchPeople = (query: string) =>
     queryKey: ["people", "search", "infinite", query],
     queryFn: ({ pageParam }) => searchPeople(query, pageParam),
     initialPageParam: 1,
-    getNextPageParam: (data) => data.page + 1,
+    getNextPageParam: (data) => {
+      if (data.results.length === 0) return undefined
+      return data.page + 1
+    },
   })
