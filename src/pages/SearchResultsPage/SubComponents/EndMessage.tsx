@@ -6,7 +6,6 @@ type EndMessageProps = {
   length: number
 }
 
-// Component to render the end message based on the current state
 export default function EndMessage({ isLoading, length }: EndMessageProps) {
   return !isLoading && length === 0 ? (
     <ErrorMessage>No results</ErrorMessage>

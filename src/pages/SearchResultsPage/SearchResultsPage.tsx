@@ -10,7 +10,6 @@ type SearchResultsPagePropTypes = {
 function SearchResultsPage({ className }: SearchResultsPagePropTypes) {
   const [searchParams] = useSearchParams()
   const searchTextFilter = searchParams.get("text")
-  console.log(searchTextFilter)
 
   return (
     <div className={className}>
