@@ -15,7 +15,7 @@ export default function EndMessage({
   if (isError) {
     return <p>Error loading movies. Please try again later.</p>
   } else if (isFetching) {
-    return <CustomLoader time={1000} />
+    return <CustomLoader />
   }
   return length ? <p>No more movies</p> : <p>No results</p>
 }

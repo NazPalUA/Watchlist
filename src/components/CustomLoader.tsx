@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react"
 import { ThreeDots } from "react-loader-spinner"
 
-type CustomLoaderProps = { time?: number; timeDelay?: boolean }
+type CustomLoaderProps = { timeDelay?: number }
 
-export default function CustomLoader({
-  time = 1000,
-  timeDelay = true,
-}: CustomLoaderProps) {
-  const [showLoader, setShowLoader] = useState(!timeDelay)
+export default function CustomLoader({ timeDelay = 0 }: CustomLoaderProps) {
+  const isTimeDelay = Boolean(timeDelay)
+
+  const [showLoader, setShowLoader] = useState(!isTimeDelay)
+  console.log(showLoader)
 
   useEffect(() => {
-    let timer: any
-    if (timeDelay) {
-      timer = setTimeout(() => setShowLoader(true), time)
+    let timer: number | undefined
+    if (isTimeDelay) {
+      timer = window.setTimeout(() => setShowLoader(true), timeDelay)
     }
-    return () => timer && clearTimeout(timer)
-  }, [time, timeDelay])
+    return () => {
+      if (timer) {
+        window.clearTimeout(timer)
+      }
+    }
+  }, [timeDelay, isTimeDelay])
 
-  if (!showLoader) return null
-
-  return (
+  return showLoader ? (
     <ThreeDots
       height="60"
       width="60"
@@ -27,5 +29,5 @@ export default function CustomLoader({
       radius="5"
       ariaLabel="three-dots-loading"
     />
-  )
+  ) : null
 }

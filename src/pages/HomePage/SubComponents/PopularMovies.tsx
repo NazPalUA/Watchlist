@@ -26,7 +26,7 @@ export default function PopularMovies() {
           dataLength={uniqueMovies.length}
           next={fetchNextPage}
           hasMore={hasNextPage}
-          loader={<CustomLoader timeDelay={false} />}
+          loader={<CustomLoader />}
           endMessage={
             <EndMessage
               isError={isError}
