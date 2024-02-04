@@ -1,10 +1,7 @@
-import InfiniteScroll from "react-infinite-scroll-component"
 import { useSearchParams } from "react-router-dom"
-import MoviesList from "../../components/MoviesList/MoviesList"
 import SearchBox from "../../components/SearchBox/SearchBox"
-import { useInfiniteSearchMovie } from "../../services/tmdb"
-import "./SearchResultsPage.scss"
-import EndMessage from "./SubComponents/EndMessage"
+import styles from "./SearchResultsPage.module.scss"
+import SearchResultsInfiniteScroll from "./SubComponents/SearchResultsInfiniteScroll"
 
 type SearchResultsPagePropTypes = {
   className?: string
@@ -12,28 +9,16 @@ type SearchResultsPagePropTypes = {
 
 function SearchResultsPage({ className }: SearchResultsPagePropTypes) {
   const [searchParams] = useSearchParams()
-
-  const searchTextFilter = searchParams.get("text") || null
-
-  const { data, isError, fetchNextPage, hasNextPage } = useInfiniteSearchMovie(
-    searchTextFilter || ""
-  )
-
-  const movies = data?.pages.map((page) => page.results).flat() || []
+  const searchTextFilter = searchParams.get("text")
+  console.log(searchTextFilter)
 
   return (
-    <div className={`search-results-page ${className}`}>
-      <SearchBox className="search-results-page__search-box" />
-      <h4 className="search-results-page__title">Search Results:</h4>
-      <InfiniteScroll
-        dataLength={movies.length}
-        next={fetchNextPage}
-        hasMore={hasNextPage}
-        loader={<h4>Loading...</h4>}
-        endMessage={<EndMessage error={isError} length={movies.length} />}
-      >
-        <MoviesList moviesData={movies} />
-      </InfiniteScroll>
+    <div className={className}>
+      <SearchBox className={styles.search} />
+      <h4 className={styles.title}>Search Results:</h4>
+      {searchTextFilter && (
+        <SearchResultsInfiniteScroll searchText={searchTextFilter} />
+      )}
     </div>
   )
 }

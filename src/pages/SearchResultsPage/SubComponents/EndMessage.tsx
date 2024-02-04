@@ -1,12 +1,16 @@
+import CustomLoader from "../../../components/CustomLoader"
+import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
+
 type EndMessageProps = {
-  error: boolean | null
+  isLoading: boolean
   length: number
 }
 
 // Component to render the end message based on the current state
-export default function EndMessage({ error, length }: EndMessageProps) {
-  if (error) {
-    return <p>Error loading movies. Please try again later.</p>
-  }
-  return length ? <p>No more movies</p> : <p>No results</p>
+export default function EndMessage({ isLoading, length }: EndMessageProps) {
+  return !isLoading && length === 0 ? (
+    <ErrorMessage>No results</ErrorMessage>
+  ) : (
+    <CustomLoader />
+  )
 }
