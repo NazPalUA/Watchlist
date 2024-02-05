@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import { Movie, MovieDetails } from "../../services/tmdb/types"
+import { Movie, MovieDetails, Recommendation } from "../../services/tmdb/types"
 import formatRating from "../../utils/formatRating"
 import formatYear from "../../utils/formatYear"
 import Card from "../Card"
 import styles from "./MoviesList.module.scss"
 
 type MoviesListProps = {
-  moviesData: (Movie | MovieDetails)[]
+  moviesData: (Movie | MovieDetails | Recommendation)[]
   className?: string
 }
 
