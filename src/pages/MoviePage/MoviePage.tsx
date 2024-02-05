@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
+import CustomLoader from "../../components/CustomLoader"
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import { useHistoryContext } from "../../context/HistoryContext"
+import { useMovieDetails } from "../../services/tmdb"
 import "./MoviePage.scss"
 import Cast from "./SubComponents/Cast"
 import MovieDetails from "./SubComponents/MovieDetails"
@@ -19,9 +22,24 @@ export default function MoviePage({ className }: MoviePagePropTypes) {
   const { addToHistory } = useHistoryContext()
   useEffect(() => addToHistory(movieId), [movieId])
 
+  const {
+    data: movieData,
+    isLoading: isMovieDataLoading,
+    isError: isMovieDataError,
+    error: movieDataError,
+  } = useMovieDetails(movieId)
+
+  if (isMovieDataLoading) return <CustomLoader />
+  else if (isMovieDataError || !movieData)
+    return (
+      <ErrorMessage error={movieDataError}>
+        Error Loading Movie! Please try again later
+      </ErrorMessage>
+    )
+
   return (
     <div className={`movie-page ${className}`}>
-      <MovieDetails movieId={movieId} />
+      <MovieDetails movieData={movieData} />
       <Cast movieId={movieId} />
       <RelatedMovies movieId={movieId} />
     </div>

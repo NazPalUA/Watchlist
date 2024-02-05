@@ -1,25 +1,14 @@
 import posterNotFound from "../../../assets/images/poster_not_found.png"
 import { useModalContext } from "../../../context/ModalContext"
-import { useMovieDetails } from "../../../services/tmdb"
+import { MovieDetails as MovieDetailsType } from "../../../services/tmdb"
 
 type MovieDetailsPropTypes = {
-  movieId: string
+  movieData: MovieDetailsType
 }
 
-export default function MovieDetails({ movieId }: MovieDetailsPropTypes) {
+export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
   // useContext to get state and functions from context
   const { setIsModalActive, setMovieId } = useModalContext()
-  const {
-    isLoading: isMovieDataLoading,
-    error: movieDataError,
-    data: movieData,
-  } = useMovieDetails(movieId)
-
-  if (isMovieDataLoading) return <div>Loading...</div>
-
-  if (movieDataError) return <div>Error</div>
-
-  if (!movieData) return <div>Error</div>
 
   return (
     <div className="movie-page__top-container">

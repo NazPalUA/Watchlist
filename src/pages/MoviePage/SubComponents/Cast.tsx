@@ -1,4 +1,6 @@
 import Card from "../../../components/Card"
+import CustomLoader from "../../../components/CustomLoader"
+import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
 import { useMovieCredits } from "../../../services/tmdb"
 
 type CastListPropTypes = {
@@ -7,9 +9,10 @@ type CastListPropTypes = {
 
 export default function Cast({ movieId }: CastListPropTypes) {
   const {
+    data: movieCredits,
     isLoading: isMovieCreditsLoading,
     isError: isMovieCreditsError,
-    data: movieCredits,
+    error: movieCreditsError,
   } = useMovieCredits(movieId)
 
   if (!movieCredits) return <div>Error</div>
@@ -31,10 +34,19 @@ export default function Cast({ movieId }: CastListPropTypes) {
     )
   })
 
+  let Return =
+    isMovieCreditsError || !movieCredits.cast.length ? (
+      <ErrorMessage error={movieCreditsError}>
+        Error Loading cast! No data found.
+      </ErrorMessage>
+    ) : (
+      <ul className="movie-page__list card-grid">{castListArray}</ul>
+    )
+
   return (
     <>
       <h5 className="movie-page__section-title">Cast</h5>
-      <ul className="movie-page__list card-grid">{castListArray}</ul>
+      {isMovieCreditsLoading ? <CustomLoader /> : Return}
     </>
   )
 }
