@@ -1,4 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import getUniqueMoviesData from "../../utils/getUniqueMoviesData"
 import {
   getMovieCredits,
   getMovieDetails,
@@ -105,5 +106,52 @@ export const useInfiniteSearchPeople = (query: string) =>
       if (data.results.length === 0 || data.page === data.total_pages)
         return undefined
       return data.page + 1
+    },
+  })
+
+export const useRelatedMovies = (movieId: string, length: number) =>
+  useQuery({
+    queryKey: ["movies", "related", movieId],
+    queryFn: async () => {
+      let recommendedPage = 1
+      let recommendedMovies = await getMovieRecommendations(
+        movieId,
+        recommendedPage
+      )
+      let uniqueRecommendedMovies = getUniqueMoviesData(
+        recommendedMovies.results
+      )
+
+      while (
+        uniqueRecommendedMovies.length < length &&
+        recommendedMovies.total_pages > recommendedPage
+      ) {
+        recommendedPage++
+        recommendedMovies = await getMovieRecommendations(
+          movieId,
+          recommendedPage
+        )
+        uniqueRecommendedMovies = getUniqueMoviesData([
+          ...uniqueRecommendedMovies,
+          ...recommendedMovies.results,
+        ])
+      }
+
+      let popularPage = 1
+      let popularMovies = await getPopularMovies(popularPage)
+
+      while (
+        uniqueRecommendedMovies.length < length &&
+        popularMovies.total_pages > popularPage
+      ) {
+        popularPage++
+        popularMovies = await getPopularMovies(popularPage)
+        uniqueRecommendedMovies = getUniqueMoviesData([
+          ...uniqueRecommendedMovies,
+          ...popularMovies.results,
+        ])
+      }
+
+      return uniqueRecommendedMovies.slice(0, length)
     },
   })

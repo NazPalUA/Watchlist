@@ -1,7 +1,7 @@
-import { Movie, MovieDetails } from "../services/tmdb/types"
+import { Movie, MovieDetails, Recommendation } from "../services/tmdb/types"
 
 export default function getUniqueMoviesData(
-  moviesData: (Movie | MovieDetails)[]
+  moviesData: (Movie | MovieDetails | Recommendation)[]
 ) {
   const uniqueIds = new Set()
   const uniqueData = moviesData.filter((movie) => {
