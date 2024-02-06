@@ -4,7 +4,7 @@ import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useMovieDetails } from "../../services/tmdb"
-import "./MoviePage.scss"
+
 import Cast from "./SubComponents/Cast/Cast"
 import MovieDetails from "./SubComponents/MovieDetails/MovieDetails"
 import RelatedMovies from "./SubComponents/RelatedMovies/RelatedMovies"
@@ -38,7 +38,7 @@ export default function MoviePage({ className }: MoviePagePropTypes) {
     )
 
   return (
-    <div className={`movie-page ${className}`}>
+    <div className={className}>
       <MovieDetails movieData={movieData} />
       <Cast movieId={movieId} />
       <RelatedMovies movieId={movieId} />
