@@ -1,14 +1,12 @@
-@use "../../variables" as v;
+@use "../../../../variables.scss" as v;
 
-.movie-page {
-  &__top-container {
-    @media (min-width: v.$bp-tablets) {
-      display: flex;
-      justify-content: space-between;
-    }
+.movie {
+  @media (min-width: v.$bp-tablets) {
+    display: flex;
+    justify-content: space-between;
   }
 
-  &__main-poster {
+  &__mainPoster {
     width: 100%;
     border-radius: 6px;
 
@@ -18,7 +16,7 @@
     }
   }
 
-  &__top-right-container {
+  &__topRightContainer {
     @media (min-width: v.$bp-tablets) {
       width: 70%;
     }
@@ -35,7 +33,7 @@
     }
   }
 
-  &__release-year {
+  &__releaseYear {
     font-weight: v.$fw-light;
   }
 
@@ -65,7 +63,7 @@
     }
   }
 
-  &__overview-title {
+  &__overviewTitle {
     margin: 0 0 0.5em;
 
     font-size: var(--fs-h5);
@@ -77,12 +75,12 @@
     margin: 0 0 3.5em;
   }
 
-  &__score-btn-container {
+  &__scoreBtnContainer {
     display: flex;
     align-items: center;
   }
 
-  &__score-container {
+  &__scoreContainer {
     padding: 1em;
     border: 1px solid v.$clr-accent-dark;
     border-radius: 8px;
@@ -90,7 +88,7 @@
     background: rgba(v.$clr-font-dark, 0.1);
   }
 
-  &__score-header {
+  &__scoreHeader {
     display: block;
     margin-bottom: 1em;
 
@@ -115,30 +113,5 @@
     border: none;
     background: v.$clr-accent;
     border-radius: 4px;
-  }
-
-  &__section-title {
-    font-size: var(--fs-h5);
-    font-weight: v.$fw-bold;
-    color: v.$clr-light;
-
-    margin: 2.5em 0 1em;
-  }
-
-  &__section-title_movies {
-    margin-top: 4em;
-  }
-
-  &__list {
-  }
-
-  &__list-item {
-    list-style: none;
-  }
-
-  &__link {
-  }
-
-  &__card {
   }
 }

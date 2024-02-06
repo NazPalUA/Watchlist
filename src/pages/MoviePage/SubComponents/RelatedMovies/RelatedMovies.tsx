@@ -1,7 +1,8 @@
-import CustomLoader from "../../../components/CustomLoader"
-import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
-import MoviesList from "../../../components/MoviesList/MoviesList"
-import { useRelatedMovies } from "../../../services/tmdb"
+import CustomLoader from "../../../../components/CustomLoader"
+import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage"
+import MoviesList from "../../../../components/MoviesList/MoviesList"
+import { useRelatedMovies } from "../../../../services/tmdb"
+import style from "./RelatedMovies.module.scss"
 
 type RelatedMoviesListPropTypes = {
   movieId: string
@@ -20,17 +21,12 @@ export default function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
         Error Loading related movies! Please try again later.
       </ErrorMessage>
     ) : (
-      <MoviesList
-        moviesData={relatedMovies}
-        className="movie-page__list card-grid"
-      />
+      <MoviesList moviesData={relatedMovies} className="card-grid" />
     )
 
   return (
     <>
-      <h5 className="movie-page__section-title movie-page__section-title_movies">
-        Related Movies
-      </h5>
+      <h5 className={style.title}>Related Movies</h5>
       {isRelatedMoviesLoading ? <CustomLoader /> : Return}
     </>
   )

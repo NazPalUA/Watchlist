@@ -1,6 +1,7 @@
-import posterNotFound from "../../../assets/images/poster_not_found.png"
-import { useModalContext } from "../../../context/ModalContext"
-import { MovieDetails as MovieDetailsType } from "../../../services/tmdb"
+import posterNotFound from "../../../../../src/assets/images/poster_not_found.png"
+import { useModalContext } from "../../../../context/ModalContext"
+import { MovieDetails as MovieDetailsType } from "../../../../services/tmdb"
+import styles from "./MovieDetails.module.scss"
 
 type MovieDetailsPropTypes = {
   movieData: MovieDetailsType
@@ -11,9 +12,9 @@ export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
   const { setIsModalActive, setMovieId } = useModalContext()
 
   return (
-    <div className="movie-page__top-container">
+    <div className={styles.movie}>
       <img
-        className="movie-page__main-poster"
+        className={styles.movie__mainPoster}
         src={
           movieData.poster_path
             ? `https://image.tmdb.org/t/p/original${movieData.poster_path}`
@@ -21,30 +22,30 @@ export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
         }
         alt="movie poster"
       />
-      <div className="movie-page__top-right-container">
-        <h3 className="movie-page__title">
+      <div className={styles.movie__topRightContainer}>
+        <h3 className={styles.movie__title}>
           {movieData.original_title}{" "}
-          <span className="movie-page__release-year">
+          <span className={styles.movie__releaseYear}>
             ({movieData.release_date.toString().slice(0, 4)})
           </span>
         </h3>
-        <p className="movie-page__genre">
+        <p className={styles.movie__genre}>
           {movieData.genres.map((genre) => genre.name).join(", ")}
         </p>
-        <p className="movie-page__duration">
+        <p className={styles.movie__duration}>
           {Math.floor(movieData.runtime / 60)}h {movieData.runtime % 60}m
         </p>
-        <h5 className="movie-page__overview-title">Overview</h5>
-        <p className="movie-page__overview">{movieData.overview}</p>
-        <div className="movie-page__score-btn-container">
-          <div className="movie-page__score-container">
-            <strong className="movie-page__score-header">Score</strong>
-            <div className="movie-page__score">
+        <h5 className={styles.movie__overviewTitle}>Overview</h5>
+        <p className={styles.movie__overview}>{movieData.overview}</p>
+        <div className={styles.movie__scoreBtnContainer}>
+          <div className={styles.movie__scoreContainer}>
+            <strong className={styles.movie__scoreHeader}>Score</strong>
+            <div className={styles.movie__score}>
               {Math.round(movieData.vote_average * 10)}
             </div>
           </div>
           <button
-            className="movie-page__btn"
+            className={styles.movie__btn}
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()

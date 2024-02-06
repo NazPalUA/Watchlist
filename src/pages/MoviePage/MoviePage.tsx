@@ -5,9 +5,9 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useMovieDetails } from "../../services/tmdb"
 import "./MoviePage.scss"
-import Cast from "./SubComponents/Cast"
-import MovieDetails from "./SubComponents/MovieDetails"
-import RelatedMovies from "./SubComponents/RelatedMovies"
+import Cast from "./SubComponents/Cast/Cast"
+import MovieDetails from "./SubComponents/MovieDetails/MovieDetails"
+import RelatedMovies from "./SubComponents/RelatedMovies/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string
