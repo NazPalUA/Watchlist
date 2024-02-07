@@ -1,20 +1,14 @@
 import classnames from "classnames"
-import './Card.scss'
-
+import "./Card.scss"
 
 export type CardProps = {
-    children: React.ReactNode,
-    variant: "movie" | "actor",
-    className?: string,
+  children: React.ReactNode
+  variant: "movie" | "actor"
+  className?: string
 }
 
-export default function Card({ children, variant, className  }: CardProps) {
+export default function Card({ children, variant, className }: CardProps) {
+  const allClasses = classnames("card", `card--${variant}`, className)
 
-    const allClasses = classnames("card", `card--${variant}`, className)
-
-    return (
-        <div className={allClasses}>
-            {children}
-        </div>
-    )
+  return <div className={allClasses}>{children}</div>
 }
