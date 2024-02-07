@@ -1,6 +1,6 @@
-import { useState, FC, ReactNode, createContext } from "react"
+import { useState, FC, ReactNode, createContext, useContext } from "react"
 
-export type ModalContextType = {
+type ModalContextType = {
     isModalActive: boolean,
     setIsModalActive: (value: boolean) => void,
     movieId: string,
@@ -30,4 +30,12 @@ const ModalContextProvider: FC<ModalContextProviderProps> = ({children}) => {
     )
 }
 
-export {ModalContextProvider, ModalContext}
+export const useModalContext = () => {
+    const context = useContext(ModalContext);
+    if (!context) {
+        throw new Error("useModalContext must be used within a ModalContextProvider");
+    }
+    return context;
+}
+
+export { ModalContextProvider }

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ModalContext, ModalContextType } from "../../context/ModalContext"
+import { useModalContext } from "../../context/ModalContext"
 
 export type CardAddToPlaylistBtnProps = React.ComponentPropsWithoutRef<"button"> & {
     movieId: string | number | undefined,
@@ -7,7 +7,7 @@ export type CardAddToPlaylistBtnProps = React.ComponentPropsWithoutRef<"button">
 
 export default function CardAddToPlaylistBtn({ className, movieId, ...rest }: CardAddToPlaylistBtnProps) {
 
-    const {setIsModalActive, setMovieId} = useContext(ModalContext) as ModalContextType
+    const {setIsModalActive, setMovieId} = useModalContext()
 
     return (
         <button className="card__add-to-playlist-btn" 

@@ -1,0 +1,31 @@
+@use '../../variables' as v;
+
+.mobile-header {
+    display: none;
+
+    width: 100%;
+    height: var(--header-height);
+
+    @media (max-width: v.$bp-laptops) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo-link {
+
+    }
+
+    &__logo {
+        margin: 0;
+
+        font-family: v.$ff-logo;
+        font-size: var(--fs-h1);
+        font-weight: v.$fw-logo;
+        color: v.$clr-accent;
+    }
+
+    &__burger {
+        
+    }
+}
