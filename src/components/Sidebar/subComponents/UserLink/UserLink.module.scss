@@ -1,0 +1,33 @@
+@use "../../../../variables.scss" as v;
+
+.container {
+  display: flex;
+  align-items: center;
+
+  background: v.$clr-semi-dark;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 4px;
+
+  padding: 0.5em 1em;
+
+  &:hover {
+    border-color: v.$clr-accent;
+  }
+}
+
+.img {
+  margin-right: 0.5rem;
+}
+
+.text {
+  margin: 0;
+  font-size: var(--fs-reg);
+}
+
+.active {
+  color: v.$clr-accent;
+}
+
+.btnIcon {
+  margin-left: auto;
+}
