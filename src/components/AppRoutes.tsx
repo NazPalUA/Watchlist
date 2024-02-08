@@ -3,6 +3,7 @@ import CreateWatchlistPage from "../pages/CreateWatchlistPage/CreateWatchlistPag
 import EditWatchlistPage from "../pages/EditWatchlistPage/EditWatchlistPage"
 import HistoryPage from "../pages/HistoryPage/HistoryPage"
 import HomePage from "../pages/HomePage/HomePage"
+import LogInPage from "../pages/LogInPage/LogInPage"
 import MoviePage from "../pages/MoviePage/MoviePage"
 import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
 import UserPage from "../pages/UserPage/UserPage"
@@ -16,6 +17,11 @@ export default function AppRoutes() {
         <Route index element={<HomePage className="app__page" />} />
 
         <Route path="user" element={<UserPage className="app__page" />} />
+
+        <Route
+          path="authentication"
+          element={<LogInPage className="app__page" />}
+        />
 
         <Route
           path="search"
