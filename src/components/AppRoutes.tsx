@@ -5,6 +5,7 @@ import HistoryPage from "../pages/HistoryPage/HistoryPage"
 import HomePage from "../pages/HomePage/HomePage"
 import MoviePage from "../pages/MoviePage/MoviePage"
 import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
+import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
 import Layout from "./Layout/Layout"
 
@@ -13,6 +14,8 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage className="app__page" />} />
+
+        <Route path="user" element={<UserPage className="app__page" />} />
 
         <Route
           path="search"

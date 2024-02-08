@@ -1,0 +1,88 @@
+@use "../../../../variables.scss" as v;
+
+// General form styles
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: v.$clr-font-light;
+}
+
+// Avatar container styles
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+// Avatar styles
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  // Avatar styles for tablets and larger devices
+  @media (min-width: v.$bp-tablets) {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+// Hide file input
+.fileInput {
+  display: none;
+}
+
+// Avatar label styles
+.avatarLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: var(--fs-reg);
+}
+
+// Form group styles
+.formGroup {
+  margin-bottom: 1em;
+  width: 100%;
+  max-width: 500px;
+}
+
+// Text label styles
+.textLabel {
+  display: block;
+  font-size: var(--fs-extra-big);
+  font-weight: v.$fw-bold;
+  margin-bottom: 0.3em;
+}
+
+// Text input styles
+.textInput {
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 5px;
+  background-color: inherit;
+  font-size: var(--fs-big);
+
+  // Placeholder styles
+  &::placeholder {
+    font-size: var(--fs-small);
+  }
+}
+
+// Submit button styles
+.submitBtn {
+  padding: 1em 3em;
+  margin-top: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: var(--fs-big);
+  font-weight: v.$fw-bold;
+  color: v.$clr-font-black;
+  background-color: v.$clr-accent;
+}
