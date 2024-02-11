@@ -42,7 +42,7 @@
 .submitBtn {
   width: 100%;
   padding: 1em 3em;
-  margin-top: 1em;
+  margin: 1em 0 0.5em;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -54,4 +54,10 @@
   @media (min-width: v.$bp-mobile) {
     width: unset;
   }
+}
+
+.link {
+  color: v.$clr-accent;
+  text-decoration: none;
+  cursor: pointer;
 }

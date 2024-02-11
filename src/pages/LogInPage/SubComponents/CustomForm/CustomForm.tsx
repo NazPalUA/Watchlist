@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import style from "./CustomForm.module.scss"
 
 type CustomFormProps = {}
@@ -31,6 +32,12 @@ export default function CustomForm({}: CustomFormProps) {
         >
           Log In
         </button>
+        <div>
+          <span>or </span>
+          <Link className={style.link} to="/user?action=create&id=43">
+            Create an account
+          </Link>
+        </div>
       </div>
     </form>
   )
