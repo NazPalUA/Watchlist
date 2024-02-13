@@ -16,3 +16,16 @@
     max-width: 70%;
   }
 }
+
+.linkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.link {
+  color: v.$clr-accent;
+  text-decoration: none;
+  cursor: pointer;
+}

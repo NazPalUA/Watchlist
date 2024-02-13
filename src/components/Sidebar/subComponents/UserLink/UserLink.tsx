@@ -1,6 +1,7 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { NavLink, NavLinkProps } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
+import { useAuth } from "../../../../context/AuthContext"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
 
@@ -15,6 +16,8 @@ export default function UserLink({
 }: SidebarLinkProps) {
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
+  let auth = useAuth()
+
   return (
     <NavLink
       className={({ isActive }) =>
@@ -26,7 +29,7 @@ export default function UserLink({
       {...rest}
     >
       <img className={style.img} src={guestIcon} alt="guest icon" />
-      <p className={style.text}>User</p>
+      <p className={style.text}>{auth.user ? auth.user.name : "Guest"}</p>
       <FiMoreHorizontal className={style.btnIcon} color="#e1e1e1" size={32} />
     </NavLink>
   )

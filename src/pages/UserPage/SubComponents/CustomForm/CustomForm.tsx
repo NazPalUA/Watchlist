@@ -1,16 +1,13 @@
 import { useState } from "react"
-import { useSearchParams } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
 import selectAvatarIcon from "../../../../assets/images/selectAvatarIcon.svg"
+import { useAuth } from "../../../../context/AuthContext"
 import style from "./CustomForm.module.scss"
 
 type CustomFormProps = {}
 
 export default function CustomForm({}: CustomFormProps) {
-  // Get the action and user ID from the search params
-  const [searchParams] = useSearchParams()
-  const action = searchParams?.get("action") as "create" | "update"
-  const userId = searchParams?.get("id")
+  let auth = useAuth()
 
   // State for the image source
   const [imageSrc, setImageSrc] = useState(guestIcon)
@@ -23,12 +20,14 @@ export default function CustomForm({}: CustomFormProps) {
   }
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Add form submission logic here
+    let formData = new FormData(e.currentTarget)
+    let username = formData.get("name") as string
+    auth.setUser({ name: username })
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className={style.form}>
         <div className={style.avatarContainer}>
           <img className={style.avatar} src={imageSrc} alt="avatar" />
@@ -47,9 +46,15 @@ export default function CustomForm({}: CustomFormProps) {
           <label className={style.textLabel} htmlFor="name">
             Name
           </label>
-          <input className={style.textInput} type="text" id="name" />
+          <input
+            className={style.textInput}
+            type="text"
+            id="name"
+            name="name"
+          />
         </div>
-        <div className={style.formGroup}>
+        {/* Commented out to simplify the form before implementing the logic */}
+        {/* <div className={style.formGroup}>
           <label className={style.textLabel} htmlFor="email">
             Email
           </label>
@@ -70,17 +75,9 @@ export default function CustomForm({}: CustomFormProps) {
             type="password"
             id="confirmPassword"
           />
-        </div>
-        <button
-          className={style.submitBtn}
-          type="submit"
-          onSubmit={handleSubmit}
-        >
-          {action === "create"
-            ? "Create Profile"
-            : action === "update"
-            ? "Update Profile"
-            : null}
+        </div> */}
+        <button className={style.submitBtn} type="submit">
+          {!auth.user ? "Create Profile" : "Update Profile"}
         </button>
       </div>
     </form>

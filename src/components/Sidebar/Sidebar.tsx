@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
@@ -8,6 +10,7 @@ type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
+  let auth = useAuth()
 
   return (
     <div className={`sidebar ${className}`}>
@@ -39,10 +42,19 @@ function Sidebar({ className }: SidebarPropTypes) {
 
       <div className="sidebar__bottom">
         <p className="sidebar__watchlists-header">My Lists</p>
-        <WatchlistsList />
+        {auth.user ? (
+          <WatchlistsList />
+        ) : (
+          <p>
+            <Link className="sidebar__login-link" to="/login">
+              Log in
+            </Link>{" "}
+            <span> to see your watchlists</span>
+          </p>
+        )}
       </div>
 
-      <UserLink to="/user?action=create&id=43" />
+      <UserLink to={!auth.user ? "/login" : "/user"} />
     </div>
   )
 }
