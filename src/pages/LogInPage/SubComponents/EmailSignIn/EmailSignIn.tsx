@@ -1,13 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { useAuth } from "../../../../context/AuthContext"
-import style from "./CustomForm.module.scss"
+import { useAuthContext } from "../../../../context/AuthContext"
+import style from "./EmailSignIn.module.scss"
 
-type CustomFormProps = {}
+type EmailSignInProps = {}
 
-export default function CustomForm({}: CustomFormProps) {
+export default function EmailSignIn({}: EmailSignInProps) {
   let navigate = useNavigate()
   let location = useLocation()
-  let auth = useAuth()
+  let auth = useAuthContext()
 
   let from = location.state?.from?.pathname || "/"
 

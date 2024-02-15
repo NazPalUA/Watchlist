@@ -1,12 +1,14 @@
 import React from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 import { fakeAuthProvider } from "../utils/auth"
 
 interface User {
-  name: string
+  name?: string | null
+  userID?: string
+  profilePhoto?: string | null
+  isAuth?: boolean
   // email: string
   // password: string
-  // avatar: string
-  // id: string
   // watchlists: string[]
   // history: string[]
 }
@@ -21,7 +23,8 @@ interface AuthContextType {
 let AuthContext = React.createContext<AuthContextType>(null!)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  let [user, setUser] = React.useState<User | null>(null)
+  const { storedValue: user, setStoredValue: setUser } =
+    useLocalStorage<User | null>("authInfo", null)
 
   let signin = (newUser: User | null, callback: VoidFunction) => {
     if (!newUser) return
@@ -43,6 +46,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-export function useAuth() {
+export function useAuthContext() {
   return React.useContext(AuthContext)
 }

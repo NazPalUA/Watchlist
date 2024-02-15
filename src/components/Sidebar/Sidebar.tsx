@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
@@ -10,7 +10,7 @@ type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
-  let auth = useAuth()
+  let auth = useAuthContext()
 
   return (
     <div className={`sidebar ${className}`}>

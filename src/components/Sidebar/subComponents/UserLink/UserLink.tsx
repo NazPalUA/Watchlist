@@ -1,7 +1,7 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { NavLink, NavLinkProps } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
-import { useAuth } from "../../../../context/AuthContext"
+import { useAuthContext } from "../../../../context/AuthContext"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
 
@@ -16,7 +16,7 @@ export default function UserLink({
 }: SidebarLinkProps) {
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
-  let auth = useAuth()
+  let auth = useAuthContext()
 
   return (
     <NavLink

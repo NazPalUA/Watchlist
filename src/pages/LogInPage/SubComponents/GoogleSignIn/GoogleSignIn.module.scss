@@ -1,0 +1,25 @@
+@use "../../../../variables.scss" as v;
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v.$clr-accent;
+  color: v.$clr-font-black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background-color: v.$clr-accent-hover;
+  }
+}

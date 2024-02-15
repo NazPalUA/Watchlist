@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 import CustomForm from "./SubComponents/CustomForm/CustomForm"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
 
 export default function UserPage({ className }: UserPageProps) {
-  let auth = useAuth()
+  let auth = useAuthContext()
   let navigate = useNavigate()
 
   // Determine the title and button visibility based on the action

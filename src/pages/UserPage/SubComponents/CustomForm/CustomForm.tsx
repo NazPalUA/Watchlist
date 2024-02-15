@@ -1,13 +1,13 @@
 import { useState } from "react"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
 import selectAvatarIcon from "../../../../assets/images/selectAvatarIcon.svg"
-import { useAuth } from "../../../../context/AuthContext"
+import { useAuthContext } from "../../../../context/AuthContext"
 import style from "./CustomForm.module.scss"
 
 type CustomFormProps = {}
 
 export default function CustomForm({}: CustomFormProps) {
-  let auth = useAuth()
+  let auth = useAuthContext()
 
   // State for the image source
   const [imageSrc, setImageSrc] = useState(guestIcon)
