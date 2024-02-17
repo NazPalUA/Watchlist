@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth"
 import { useLocation, useNavigate } from "react-router-dom"
-import { auth, provider } from "../../../../config/forebase-config"
 import { useAuthContext } from "../../../../context/AuthContext"
+import { auth, provider } from "../../../../services/firebase/firebase-config"
 import style from "./GoogleSignIn.module.scss"
 
 type GoogleSignInProps = {}

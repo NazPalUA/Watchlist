@@ -1,5 +1,7 @@
+import { signOut } from "firebase/auth"
 import React from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
+import { auth } from "../services/firebase/firebase-config"
 
 interface User {
   name?: string | null
@@ -31,9 +33,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     callback()
   }
 
-  let signout = (callback: VoidFunction) => {
-    setUser(null)
-    callback()
+  let signout = async (callback: VoidFunction) => {
+    try {
+      await signOut(auth)
+      setUser(null)
+      callback()
+    } catch (error) {
+      console.error("Error signing out: ", error)
+    }
   }
 
   let value = { user, signin, signout, setUser }
