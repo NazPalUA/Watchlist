@@ -1,6 +1,5 @@
 import React from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { fakeAuthProvider } from "../utils/auth"
 
 interface User {
   name?: string | null
@@ -28,17 +27,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   let signin = (newUser: User | null, callback: VoidFunction) => {
     if (!newUser) return
-    return fakeAuthProvider.signin(() => {
-      setUser(newUser)
-      callback()
-    })
+    setUser(newUser)
+    callback()
   }
 
   let signout = (callback: VoidFunction) => {
-    return fakeAuthProvider.signout(() => {
-      setUser(null)
-      callback()
-    })
+    setUser(null)
+    callback()
   }
 
   let value = { user, signin, signout, setUser }
