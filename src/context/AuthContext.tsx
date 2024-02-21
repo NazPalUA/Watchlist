@@ -1,24 +1,34 @@
 import { signOut } from "firebase/auth"
 import React from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { auth } from "../services/firebase/firebase-config"
+import {
+  auth,
+  useLoginEmailPassword,
+  useSignInWithGoogle,
+} from "../services/firebase/firebase-auth"
 
-interface User {
-  name?: string | null
-  userID?: string
-  profilePhoto?: string | null
-  isAuth?: boolean
-  // email: string
-  // password: string
-  // watchlists: string[]
-  // history: string[]
-}
+type emailPasswordSignInType = { email: string; password: string }
+
+type User = any
+// {
+// name?: string | null
+// userID?: string
+// profilePhoto?: string | null
+// isAuth?: boolean
+// email?: string
+// password?: string
+// watchlists: string[]
+// history: string[]
+// }
 
 interface AuthContextType {
   user: User | null
-  signin: (user: User | null, callback: VoidFunction) => void
-  signout: (callback: VoidFunction) => void
-  setUser: React.Dispatch<React.SetStateAction<User | null>>
+  googleSignIn: (callback: VoidFunction) => void
+  emailPasswordSignIn: (
+    emailAndPassword: emailPasswordSignInType,
+    callback: VoidFunction
+  ) => void
+  signOutAll: (callback: VoidFunction) => void
 }
 
 let AuthContext = React.createContext<AuthContextType>(null!)
@@ -27,13 +37,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { storedValue: user, setStoredValue: setUser } =
     useLocalStorage<User | null>("authInfo", null)
 
-  let signin = (newUser: User | null, callback: VoidFunction) => {
-    if (!newUser) return
-    setUser(newUser)
-    callback()
+  const { mutate } = useLoginEmailPassword()
+  function emailPasswordSignIn(
+    emailAndPassword: emailPasswordSignInType,
+    callback: VoidFunction
+  ) {
+    mutate(emailAndPassword, {
+      onSuccess: (userCredential) => {
+        setUser(userCredential.user)
+        callback()
+        console.log(userCredential)
+      },
+      onError: (error) => {
+        console.error("Error signing in: ", error)
+      },
+    })
   }
 
-  let signout = async (callback: VoidFunction) => {
+  const { mutate: googleMutate } = useSignInWithGoogle()
+  function googleSignIn(callback: VoidFunction) {
+    googleMutate(undefined, {
+      onSuccess: (userCredential) => {
+        setUser(userCredential.user)
+        callback()
+        console.log("here")
+        console.log(userCredential)
+      },
+      onError: (error) => {
+        console.error("Error signing in: ", error)
+      },
+    })
+  }
+
+  async function signOutAll(callback: VoidFunction) {
     try {
       await signOut(auth)
       setUser(null)
@@ -43,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  let value = { user, signin, signout, setUser }
+  let value = { user, signOutAll, googleSignIn, emailPasswordSignIn }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
