@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import {
+  GoogleAuthProvider,
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth"
-import { GoogleAuthProvider } from "firebase/auth/cordova"
 import { app } from "./firebase-config"
 
 export const auth = getAuth(app)
