@@ -25,7 +25,7 @@ export default function UserPage({ className }: UserPageProps) {
           <button
             className={style.outBtn}
             onClick={() => {
-              auth.signout(() => navigate("/"))
+              auth.signOutAll(() => navigate("/"))
             }}
           >
             Log out

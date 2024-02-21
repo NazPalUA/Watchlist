@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import style from "./LogInPage.module.scss"
+import EmailSignIn from "./SubComponents/EmailSignIn/EmailSignIn"
 import GoogleSignIn from "./SubComponents/GoogleSignIn/GoogleSignIn"
 
 type LogInPageProps = { className?: string }
@@ -14,6 +15,7 @@ export default function LogInPage({ className }: LogInPageProps) {
       </h4>
 
       <GoogleSignIn />
+      <EmailSignIn />
 
       <p className={style.linkWrapper}>
         <span>or </span>

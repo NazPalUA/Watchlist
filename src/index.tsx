@@ -15,21 +15,21 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
   <React.StrictMode>
-    <AuthProvider>
-      <ModalContextProvider>
-        <WatchlistsContextProvider>
-          <HistoryContextProvider>
-            <SidebarContextProvider>
-              <BrowserRouter>
-                <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ModalContextProvider>
+          <WatchlistsContextProvider>
+            <HistoryContextProvider>
+              <SidebarContextProvider>
+                <BrowserRouter>
                   <App />
                   <ReactQueryDevtools initialIsOpen={true} />
-                </QueryClientProvider>
-              </BrowserRouter>
-            </SidebarContextProvider>
-          </HistoryContextProvider>
-        </WatchlistsContextProvider>
-      </ModalContextProvider>
-    </AuthProvider>
+                </BrowserRouter>
+              </SidebarContextProvider>
+            </HistoryContextProvider>
+          </WatchlistsContextProvider>
+        </ModalContextProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 )
