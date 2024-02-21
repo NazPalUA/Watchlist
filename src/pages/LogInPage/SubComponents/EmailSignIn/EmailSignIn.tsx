@@ -1,3 +1,4 @@
+import { AuthErrorCodes } from "firebase/auth"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAuthContext } from "../../../../context/AuthContext"
 import style from "./EmailSignIn.module.scss"
@@ -22,6 +23,13 @@ export default function EmailSignIn({}: EmailSignInProps) {
       navigate(from, { replace: true })
     )
   }
+  const error = auth.emailPasswordError
+
+  const wrongPassword =
+    error?.code === AuthErrorCodes.INVALID_PASSWORD ||
+    AuthErrorCodes.INVALID_APP_CREDENTIAL
+  console.log(AuthErrorCodes.INVALID_PASSWORD)
+
   return (
     <form className={style.form} onSubmit={handleSubmit}>
       <div className={style.formGroup}>
@@ -46,6 +54,11 @@ export default function EmailSignIn({}: EmailSignInProps) {
           id="password"
           name="password"
         />
+        {wrongPassword && (
+          <p className={style.errorText}>
+            The password is invalid or the user does not have a password.
+          </p>
+        )}
       </div>
 
       <button className={style.submitBtn} type="submit">

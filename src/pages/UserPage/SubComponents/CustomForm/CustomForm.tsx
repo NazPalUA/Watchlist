@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
 import selectAvatarIcon from "../../../../assets/images/selectAvatarIcon.svg"
 import { useAuthContext } from "../../../../context/AuthContext"
@@ -8,6 +9,9 @@ type CustomFormProps = {}
 
 export default function CustomForm({}: CustomFormProps) {
   let auth = useAuthContext()
+  let navigate = useNavigate()
+  let location = useLocation()
+  let from = location.state?.from?.pathname || "/"
 
   // State for the image source
   const [imageSrc, setImageSrc] = useState(guestIcon)
@@ -23,8 +27,13 @@ export default function CustomForm({}: CustomFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     let formData = new FormData(e.currentTarget)
-    let username = formData.get("name") as string
-    auth.setUser({ name: username })
+    let email = formData.get("email") as string
+    let password = formData.get("password") as string
+    let confirmPassword = formData.get("confirmPassword") as string
+    let avatar = imageSrc
+    auth.signUpWithEmailPassword({ email, password }, () =>
+      navigate(from, { replace: true })
+    )
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -42,30 +51,31 @@ export default function CustomForm({}: CustomFormProps) {
             {imageSrc === guestIcon ? "Upload new photo" : "Change photo"}
           </label>
         </div>
+
         <div className={style.formGroup}>
-          <label className={style.textLabel} htmlFor="name">
-            Name
-          </label>
-          <input
-            className={style.textInput}
-            type="text"
-            id="name"
-            name="name"
-          />
-        </div>
-        {/* Commented out to simplify the form before implementing the logic */}
-        {/* <div className={style.formGroup}>
           <label className={style.textLabel} htmlFor="email">
             Email
           </label>
-          <input className={style.textInput} type="email" id="email" />
+          <input
+            className={style.textInput}
+            type="email"
+            id="email"
+            name="email"
+          />
         </div>
+
         <div className={style.formGroup}>
           <label className={style.textLabel} htmlFor="password">
             Password
           </label>
-          <input className={style.textInput} type="password" id="password" />
+          <input
+            className={style.textInput}
+            type="password"
+            id="password"
+            name="password"
+          />
         </div>
+
         <div className={style.formGroup}>
           <label className={style.textLabel} htmlFor="confirmPassword">
             Confirm Password
@@ -75,9 +85,9 @@ export default function CustomForm({}: CustomFormProps) {
             type="password"
             id="confirmPassword"
           />
-        </div> */}
+        </div>
         <button className={style.submitBtn} type="submit">
-          {!auth.user ? "Create Profile" : "Update Profile"}
+          {!auth.user?.name ? "Create Profile" : "Update Profile"}
         </button>
       </div>
     </form>

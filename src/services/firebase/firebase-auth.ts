@@ -1,7 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import {
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth"
@@ -42,6 +44,39 @@ export function useLoginEmailPassword() {
 
     onSuccess: () => {
       console.log("Email and Password Sign In Success")
+      queryClient.invalidateQueries({ queryKey: ["EmailPassword Sign"] })
+    },
+  })
+}
+
+export const monitorAuthState = async () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("User is signed in")
+    } else {
+      console.log("No user is signed in")
+    }
+  })
+}
+
+export function useSignUpWithEmailPassword() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: async ({ email, password }: LoginEmailPasswordType) => {
+      console.log("email", email)
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      console.log("userCredential", userCredential)
+
+      return userCredential
+    },
+
+    onSuccess: () => {
+      console.log("Email and Password Sign Up Success")
       queryClient.invalidateQueries({ queryKey: ["EmailPassword Sign"] })
     },
   })
