@@ -1,0 +1,48 @@
+@use "../../variables.scss" as v;
+
+// Profile styles
+.profile {
+  // Add styles as needed
+}
+
+// Title styles
+.title {
+  max-width: 70%;
+  margin: 0;
+  margin-bottom: 2rem;
+
+  color: v.$clr-font-light;
+  font-size: var(--fs-h4);
+  font-weight: v.$fw-reg;
+}
+
+// Out button styles
+.outBtn {
+  padding: 0 0 0.5em 0.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  font-weight: v.$fw-bold;
+  font-size: var(--fs-extra-big);
+  text-decoration: underline;
+  color: v.$clr-accent;
+}
+
+// Form styles
+.form {
+  // Add styles as needed
+}
+
+.linkWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.link {
+  color: v.$clr-accent;
+  text-decoration: none;
+  cursor: pointer;
+}

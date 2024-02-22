@@ -19,7 +19,7 @@ export default function LogInPage({ className }: LogInPageProps) {
 
       <p className={style.linkWrapper}>
         <span>or </span>
-        <Link className={style.link} to="/user">
+        <Link className={style.link} to="/signup">
           Create an account
         </Link>
       </p>
