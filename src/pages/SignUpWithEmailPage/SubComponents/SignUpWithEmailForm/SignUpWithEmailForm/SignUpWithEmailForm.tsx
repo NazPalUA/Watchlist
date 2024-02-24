@@ -1,13 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup"
+import { doc, setDoc } from "firebase/firestore"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { useLocation, useNavigate } from "react-router-dom"
 import * as yup from "yup"
+import { signUpWithEmail } from "../../../../../services/firebase/firebase-auth"
+import { db } from "../../../../../services/firebase/firebase-config"
 import { UserDataType } from "../../../SignUpWithEmailPage"
 import InputGroup from "../InputGroup/InputGroup"
 import style from "./SignUpWithEmailForm.module.scss"
 
-type SignUpWithEmailFormProps = {
-  setSignUpData: (data: UserDataType) => void
-}
+type SignUpWithEmailFormProps = {}
 
 export type InputsType = UserDataType & {
   confirmPassword: string
@@ -25,9 +27,7 @@ const schema = yup
   })
   .required()
 
-export default function SignUpWithEmailForm({
-  setSignUpData,
-}: SignUpWithEmailFormProps) {
+export default function SignUpWithEmailForm({}: SignUpWithEmailFormProps) {
   const {
     register,
     handleSubmit,
@@ -36,9 +36,25 @@ export default function SignUpWithEmailForm({
     resolver: yupResolver(schema),
   })
 
+  let navigate = useNavigate()
+  let location = useLocation()
+  let from = location.state?.from?.pathname || "/"
+
   const onSubmit: SubmitHandler<InputsType> = (data) => {
     const { confirmPassword, ...userData } = data // remove confirmPassword from the data
-    setSignUpData(userData)
+    signUpWithEmail(userData)
+      .then((credentials) => {
+        const docRef = doc(db, "users", credentials.user.uid)
+        setDoc(docRef, {
+          email: userData.email,
+          name: userData.name,
+          photoUrl: null,
+          uid: credentials.user.uid,
+        })
+      })
+      .then(() => {
+        navigate(from, { replace: true })
+      })
   }
 
   return (

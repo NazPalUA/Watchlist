@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import style from "./SignUpWithEmailPage.module.scss"
 import SignUpWithEmailForm from "./SubComponents/SignUpWithEmailForm/SignUpWithEmailForm/SignUpWithEmailForm"
@@ -14,15 +13,12 @@ export type UserDataType = {
 export default function SignUpWithEmailPage({
   className,
 }: SignUpWithEmailPageProps) {
-  const [signUpData, setSignUpData] = useState<UserDataType | null>(null)
-  if (signUpData) console.log(signUpData)
-
   return (
     <div className={`${className} ${style.profile}`}>
       <h4 className={`${style.title}`}>
         Create an account to use the features of this app
       </h4>
-      <SignUpWithEmailForm setSignUpData={setSignUpData} />
+      <SignUpWithEmailForm />
       <p className={style.linkWrapper}>
         <span>or </span>
         <Link className={style.link} to="/login">

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../../../context/AuthContext"
+import { signInWithGoogle } from "../../../../services/firebase/firebase-auth"
 import style from "./GoogleSignIn.module.scss"
 
 type GoogleSignInProps = {}
@@ -8,10 +8,9 @@ export default function GoogleSignIn({}: GoogleSignInProps) {
   let navigate = useNavigate()
   let location = useLocation()
   let from = location.state?.from?.pathname || "/"
-  let authContext = useAuthContext()
 
   function handleSubmit() {
-    authContext.googleSignIn(() => {
+    signInWithGoogle().then(() => {
       navigate(from, { replace: true })
     })
   }

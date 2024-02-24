@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from "react-router-dom"
-import { useAuthContext } from "../context/AuthContext"
+import { useUser } from "../context/UserContext"
 
 export default function RequireAuth({ children }: { children: JSX.Element }) {
-  let auth = useAuthContext()
   let location = useLocation()
+  let { user } = useUser()
 
-  if (!auth.user) {
+  if (!user) {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience

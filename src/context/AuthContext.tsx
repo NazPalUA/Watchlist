@@ -1,122 +1,50 @@
-import { signOut } from "firebase/auth"
-import React from "react"
-import useLocalStorage from "../hooks/useLocalStorage"
+// AuthContext.tsx
+import firebase from "firebase/auth"
 import {
-  auth,
-  useLoginEmailPassword,
-  useSignInWithGoogle,
-  useSignUpWithEmailPassword,
-} from "../services/firebase/firebase-auth"
+  FC,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
+import { auth } from "../services/firebase/firebase-auth"
 
-type emailPasswordSignInType = { email: string; password: string }
-
-type User = any
-// {
-// name?: string | null
-// userID?: string
-// profilePhoto?: string | null
-// isAuth?: boolean
-// email?: string
-// password?: string
-// watchlists: string[]
-// history: string[]
-// }
-
-interface AuthContextType {
-  user: User | null
-  googleSignIn: (callback: VoidFunction) => void
-  emailPasswordSignIn: (
-    emailAndPassword: emailPasswordSignInType,
-    callback: VoidFunction
-  ) => void
-  signUpWithEmailPassword: (
-    emailAndPassword: emailPasswordSignInType,
-    callback: VoidFunction
-  ) => void
-  signOutAll: (callback: VoidFunction) => void
-  emailPasswordError: any
+interface AuthContextProps {
+  currentUser: firebase.User | null
+  loading: boolean
 }
 
-let AuthContext = React.createContext<AuthContextType>(null!)
+const AuthContext = createContext<AuthContextProps | undefined>(undefined)
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const { storedValue: user, setStoredValue: setUser } =
-    useLocalStorage<User | null>("authInfo", null)
-
-  const { mutate, error: emailPasswordError } = useLoginEmailPassword()
-  function emailPasswordSignIn(
-    emailAndPassword: emailPasswordSignInType,
-    callback: VoidFunction
-  ) {
-    mutate(emailAndPassword, {
-      onSuccess: (userCredential) => {
-        setUser(userCredential.user)
-        callback()
-        console.log(userCredential)
-      },
-      onError: (error) => {
-        console.error("Error signing in: ", error)
-        return error
-      },
-    })
-  }
-
-  const { mutate: signUp } = useSignUpWithEmailPassword()
-  function signUpWithEmailPassword(
-    emailAndPassword: emailPasswordSignInType,
-    callback: VoidFunction
-  ) {
-    signUp(emailAndPassword, {
-      onSuccess: (userCredential) => {
-        setUser(userCredential.user)
-        callback()
-        console.log(userCredential)
-      },
-      onError: (error) => {
-        console.error("Error signing in: ", error)
-        return error
-      },
-    })
-  }
-
-  const { mutate: googleMutate } = useSignInWithGoogle()
-  function googleSignIn(callback: VoidFunction) {
-    googleMutate(undefined, {
-      onSuccess: (userCredential) => {
-        setUser(userCredential.user)
-        callback()
-        console.log("here")
-        console.log(userCredential)
-      },
-      onError: (error) => {
-        console.error("Error signing in: ", error)
-        return error
-      },
-    })
-  }
-
-  async function signOutAll(callback: VoidFunction) {
-    try {
-      await signOut(auth)
-      setUser(null)
-      callback()
-    } catch (error) {
-      console.error("Error signing out: ", error)
-    }
-  }
-
-  let value = {
-    user,
-    signOutAll,
-    googleSignIn,
-    emailPasswordSignIn,
-    emailPasswordError,
-    signUpWithEmailPassword,
-  }
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+type AuthContextProviderProps = {
+  children: ReactNode
 }
 
-export function useAuthContext() {
-  return React.useContext(AuthContext)
+export const AuthProvider: FC<AuthContextProviderProps> = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user)
+      setLoading(false)
+    })
+
+    return unsubscribe
+  }, [])
+
+  return (
+    <AuthContext.Provider value={{ currentUser, loading }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  )
+}
+
+export const useAuth = () => {
+  const context = useContext(AuthContext)
+  if (context === undefined) {
+    throw new Error("useAuth must be used within a AuthProvider")
+  }
+  return context
 }

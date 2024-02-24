@@ -1,36 +1,25 @@
 import { useNavigate } from "react-router-dom"
-import { useAuthContext } from "../../context/AuthContext"
+import { signOut } from "../../services/firebase/firebase-auth"
 import CustomForm from "./SubComponents/CustomForm/CustomForm"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
 
 export default function UserPage({ className }: UserPageProps) {
-  let auth = useAuthContext()
   let navigate = useNavigate()
 
-  // Determine the title and button visibility based on the action
-  const title = !auth.user
-    ? "Create an account to use the features of this app"
-    : "Edit profile"
-  const showLogoutButton = !auth.user ? false : true
+  function handleLogOut() {
+    signOut().then(() => navigate("/"))
+  }
 
   return (
     <div className={`${className} ${style.profile}`}>
       <div className={style.topContainer}>
-        <h4 className={`${style.title} ${!auth.user ? style.maxWidth100 : ""}`}>
-          {title}
-        </h4>
-        {showLogoutButton && (
-          <button
-            className={style.outBtn}
-            onClick={() => {
-              auth.signOutAll(() => navigate("/"))
-            }}
-          >
-            Log out
-          </button>
-        )}
+        <h4 className={style.title}>Edit profile</h4>
+
+        <button className={style.outBtn} onClick={() => handleLogOut()}>
+          Log out
+        </button>
       </div>
       <CustomForm />
     </div>

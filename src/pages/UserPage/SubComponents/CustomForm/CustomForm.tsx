@@ -1,20 +1,15 @@
 import { useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
 import selectAvatarIcon from "../../../../assets/images/selectAvatarIcon.svg"
-import { useAuthContext } from "../../../../context/AuthContext"
+import { useUser } from "../../../../context/UserContext"
 import style from "./CustomForm.module.scss"
 
 type CustomFormProps = {}
 
 export default function CustomForm({}: CustomFormProps) {
-  let auth = useAuthContext()
-  let navigate = useNavigate()
-  let location = useLocation()
-  let from = location.state?.from?.pathname || "/"
-
+  let { user } = useUser()
   // State for the image source
-  const [imageSrc, setImageSrc] = useState(guestIcon)
+  const [imageSrc, setImageSrc] = useState(user?.photoUrl || guestIcon)
 
   // Handle image change
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,8 +26,8 @@ export default function CustomForm({}: CustomFormProps) {
     let password = formData.get("password") as string
     let confirmPassword = formData.get("confirmPassword") as string
     let avatar = imageSrc
-    auth.signUpWithEmailPassword({ email, password }, () =>
-      navigate(from, { replace: true })
+    console.log(
+      `Email: ${email}, Password: ${password}, Confirm Password: ${confirmPassword}, Avatar: ${avatar}`
     )
   }
   return (
@@ -87,7 +82,7 @@ export default function CustomForm({}: CustomFormProps) {
           />
         </div>
         <button className={style.submitBtn} type="submit">
-          {!auth.user?.name ? "Create Profile" : "Update Profile"}
+          Update Profile
         </button>
       </div>
     </form>
