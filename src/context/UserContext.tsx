@@ -9,7 +9,6 @@ interface User {
   uid: string
   email: string | null
   name: string | null
-  photoUrl: string | null
   watchlistTitles: string[]
   watchlists: {
     title: string
@@ -22,6 +21,7 @@ interface User {
 
 interface UserContextProps {
   user: User | null
+  setUser: React.Dispatch<React.SetStateAction<User | null>>
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined)
@@ -39,15 +39,11 @@ export const UserProvider: FC<UserContextProviderProps> = ({ children }) => {
         const userDoc = await getDoc(docRef)
         if (userDoc.exists()) {
           const userData = userDoc.data() as User
-          // check if user has email, name, photoUrl. If not, update user data
           if (!userData.email) {
             userData.email = user.email
           }
           if (!userData.name) {
             userData.name = user.displayName
-          }
-          if (!userData.photoUrl) {
-            userData.photoUrl = user.photoURL
           }
           setUser(userData)
         } else {
@@ -55,7 +51,6 @@ export const UserProvider: FC<UserContextProviderProps> = ({ children }) => {
             uid: user.uid,
             email: user.email,
             name: user.displayName,
-            photoUrl: user.photoURL,
           })
         }
       } else {
@@ -67,7 +62,9 @@ export const UserProvider: FC<UserContextProviderProps> = ({ children }) => {
   }, [])
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 

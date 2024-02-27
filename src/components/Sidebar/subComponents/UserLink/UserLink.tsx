@@ -16,8 +16,7 @@ export default function UserLink({
 }: SidebarLinkProps) {
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
-  let { user } = useUser()
-  // console.log(user)
+  const { user } = useUser()
 
   return (
     <NavLink
@@ -29,11 +28,7 @@ export default function UserLink({
       onClick={() => toggleSidebarIfMobile?.()}
       {...rest}
     >
-      <img
-        className={style.img}
-        src={user?.photoUrl || guestIcon}
-        alt="guest icon"
-      />
+      <img className={style.img} src={guestIcon} alt="guest icon" />
       <p className={style.text}>{user?.name || "Guest"}</p>
       <FiMoreHorizontal className={style.btnIcon} color="#e1e1e1" size={32} />
     </NavLink>

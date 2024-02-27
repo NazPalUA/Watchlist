@@ -3,10 +3,10 @@ import { doc, setDoc } from "firebase/firestore"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useLocation, useNavigate } from "react-router-dom"
 import * as yup from "yup"
+import InputGroup from "../../../../../components/InputGroup/InputGroup"
 import { signUpWithEmail } from "../../../../../services/firebase/firebase-auth"
 import { db } from "../../../../../services/firebase/firebase-config"
 import { UserDataType } from "../../../SignUpWithEmailPage"
-import InputGroup from "../InputGroup/InputGroup"
 import style from "./SignUpWithEmailForm.module.scss"
 
 type SignUpWithEmailFormProps = {}
@@ -48,7 +48,6 @@ export default function SignUpWithEmailForm({}: SignUpWithEmailFormProps) {
         setDoc(docRef, {
           email: userData.email,
           name: userData.name,
-          photoUrl: null,
           uid: credentials.user.uid,
         })
       })

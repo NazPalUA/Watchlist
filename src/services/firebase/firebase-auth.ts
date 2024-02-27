@@ -12,7 +12,6 @@ type SignUpData = {
   name: string
   email: string
   password: string
-  photo?: string
 }
 
 export const auth = getAuth(app)

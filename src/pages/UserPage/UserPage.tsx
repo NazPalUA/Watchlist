@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { signOut } from "../../services/firebase/firebase-auth"
-import CustomForm from "./SubComponents/CustomForm/CustomForm"
+import EditUserForm from "./SubComponents/EditUserForm/EditUserForm"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
@@ -16,12 +16,11 @@ export default function UserPage({ className }: UserPageProps) {
     <div className={`${className} ${style.profile}`}>
       <div className={style.topContainer}>
         <h4 className={style.title}>Edit profile</h4>
-
         <button className={style.outBtn} onClick={() => handleLogOut()}>
           Log out
         </button>
       </div>
-      <CustomForm />
+      <EditUserForm />
     </div>
   )
 }
