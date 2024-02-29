@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useWatchlistsContext } from "../../../../context/WatchlistsContext"
+import { useWatchlist } from "../../../../context/WatchlistsContext"
 import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }
@@ -7,7 +7,7 @@ type EditWatchlistHeaderProps = { watchlistId: string }
 export default function EditWatchlistHeader({
   watchlistId,
 }: EditWatchlistHeaderProps) {
-  const { deleteWatchlist } = useWatchlistsContext()
+  const { deleteWatchlist } = useWatchlist()
   const navigate = useNavigate()
 
   // Delete the current watchlist and navigate back to the home page

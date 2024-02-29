@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useWatchlistsContext } from "../../../../context/WatchlistsContext"
+import { Watchlist, useWatchlist } from "../../../../context/WatchlistsContext"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import WatchlistMovies from "../WatchlistMovies/WatchlistMovies"
 import styles from "./EditWatchlistForm.module.scss"
@@ -15,20 +15,30 @@ type EditWatchlistFormProps = { watchlistId: string }
 export default function EditWatchlistForm({
   watchlistId,
 }: EditWatchlistFormProps) {
-  const { getWatchlistData, editWatchlist, getMovieIds } =
-    useWatchlistsContext()
+  const {
+    getWatchlistData,
+    editWatchlist,
+    getMovieIds,
+    deleteMoviesFromWatchlist,
+  } = useWatchlist()
+
+  const [movieIds, setMovieIds] = useState<string[]>([])
+  const [toDeleteMovieIds, setToDeleteMovieIds] = useState<string[]>([])
+  const [watchlistData, setWatchlistData] = useState<Watchlist>()
 
   // Get the navigation function from react-router-dom
   const navigate = useNavigate()
 
   // Get the copy of current movieIds and their data using the custom hook
-  const [movieIds, setMovieIds] = useState(getMovieIds(watchlistId) || [])
+  getMovieIds(watchlistId).then((ids) => setMovieIds(ids))
   const { data: moviesData } = useMoviesDetails(movieIds)
+
+  getWatchlistData(watchlistId).then((data) => setWatchlistData(data))
 
   // Get the current watchlist's name and description as initial values for the form
   const [formData, setFormData] = useState<FormData>({
-    name: getWatchlistData(watchlistId)?.name,
-    description: getWatchlistData(watchlistId)?.description,
+    name: watchlistData?.name,
+    description: watchlistData?.description,
   })
 
   // Handle changes to the form inputs
@@ -47,7 +57,16 @@ export default function EditWatchlistForm({
     event.preventDefault()
     if (formData.name && watchlistId) {
       // Save the performed changes to the watchlist's name, description and movieIds
-      editWatchlist(formData.name, formData.description, movieIds, watchlistId)
+      editWatchlist({
+        name: formData.name,
+        description: formData.description || "",
+        watchlistId: watchlistId,
+      })
+
+      deleteMoviesFromWatchlist({
+        movieIds: toDeleteMovieIds,
+        watchlistId: watchlistId,
+      })
       // Navigate to the watchlist page
       navigate(`/watchlist-page/${watchlistId}`)
     }
@@ -57,7 +76,9 @@ export default function EditWatchlistForm({
   function delateMovieId(e: React.MouseEvent, movieId: string) {
     e.preventDefault()
     if (watchlistId) {
-      setMovieIds((prevMovieIds) => prevMovieIds.filter((id) => id !== movieId))
+      setToDeleteMovieIds((prevMovieIds) =>
+        prevMovieIds.filter((id) => id !== movieId)
+      )
     }
   }
 

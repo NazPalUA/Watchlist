@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useModalContext } from "../../context/ModalContext"
-import { useWatchlistsContext } from "../../context/WatchlistsContext"
+import { WatchlistsData, useWatchlist } from "../../context/WatchlistsContext"
 import styles from "./AddToWatchlistModal.module.scss"
 import CustomSelect from "./SubComponents/CustomSelect/CustomSelect"
 
@@ -13,12 +13,22 @@ type OptionType = {
 type SelectedOptionType = OptionType | null
 
 export default function AddToWatchlistModal() {
-  const { watchlistsArr, addMovieToWatchlist } = useWatchlistsContext()
+  const [watchlistsArr, setWatchlistsArr] = useState<WatchlistsData>([])
+  const { addMovieToWatchlist, getWatchlistsData } = useWatchlist()
   const { isModalActive, setIsModalActive, movieId } = useModalContext()
   const { addToHistory } = useHistoryContext()
 
   const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
   const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const watchlistsData = await getWatchlistsData()
+      setWatchlistsArr(watchlistsData)
+    }
+
+    fetchData()
+  }, [])
 
   // Effect to reset selected option when modal is closed
   useEffect(() => {
@@ -44,7 +54,10 @@ export default function AddToWatchlistModal() {
 
   // Handler for clicking save button
   function handleSave() {
-    addMovieToWatchlist(selectedIds.movie, selectedIds.watchlist)
+    addMovieToWatchlist({
+      movieId: selectedIds.movie,
+      watchlistId: selectedIds.watchlist,
+    })
     setIsModalActive(false)
     addToHistory(movieId)
   }

@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useWatchlistsContext } from "../../context/WatchlistsContext"
+import { Watchlist, useWatchlist } from "../../context/WatchlistsContext"
 import { useMoviesDetails } from "../../services/tmdb"
-import getUniqueIds from "../../utils/getUniqueIds"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"
@@ -14,20 +14,30 @@ type WatchlistPagePropTypes = {
 
 function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
-  const { isExist, getMovieIds, getWatchlistData } = useWatchlistsContext()
-  const exist = isExist(watchlistId)
-  const allMovieIds = getMovieIds(watchlistId)
-  const movieIds = allMovieIds ? getUniqueIds(allMovieIds) : []
-  const { data, isError, error, isLoading } = useMoviesDetails(movieIds)
+  if (!watchlistId) return null
 
-  const watchlistData = getWatchlistData(watchlistId)
-  const { name: watchlistName, description: watchlistDescription } =
-    watchlistData || {}
+  const [movieIds, setMovieIds] = useState<string[]>([])
+  const [watchlistData, setWatchlistData] = useState<Watchlist>()
+
+  const { getMovieIds, getWatchlistData } = useWatchlist()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const watchlistData = await getWatchlistData(watchlistId)
+      setWatchlistData(watchlistData)
+
+      const movieIds = await getMovieIds(watchlistId)
+      setMovieIds(movieIds)
+    }
+
+    fetchData()
+  }, [watchlistId])
+
+  const { data, isError, error, isLoading } = useMoviesDetails(movieIds)
 
   if (isLoading) return <CustomLoader />
 
-  if (!watchlistId || !exist)
-    return <ErrorMessage>Watchlist not found!</ErrorMessage>
+  if (!watchlistId) return <ErrorMessage>Watchlist not found!</ErrorMessage>
 
   if (isError || !data)
     return (
@@ -40,8 +50,8 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
     <div className={`watchlist-page ${className}`}>
       <WatchlistDetails
         moviesData={data}
-        name={watchlistName ?? ""}
-        description={watchlistDescription ?? ""}
+        name={watchlistData?.name ?? ""}
+        description={watchlistData?.description ?? ""}
       />
       <Movies moviesData={data} />
     </div>

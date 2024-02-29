@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useWatchlistsContext } from "../../context/WatchlistsContext"
+import { useWatchlist } from "../../context/WatchlistsContext"
 import "./CreateWatchlistPage.scss"
 
 type CreateWatchlistPageTypes = {
@@ -13,13 +13,12 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
   // Use the useNavigate hook from react-router to navigate to another page
   const navigate = useNavigate()
 
-  // Use the useContext hook to get the value of the state from WatchlistsContext
-  const { createWatchlist } = useWatchlistsContext()
-
   const [watchlistData, setWatchlistData] = useState({
     name: "",
     description: "",
   })
+
+  const { createWatchlist } = useWatchlist()
 
   // Function to handle changes in the form
   function handleChange(
@@ -40,7 +39,10 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
     const watchlistId = nanoid()
 
     // Call the createWatchlist function from WatchlistsContext to add a new watchlist
-    createWatchlist(watchlistData.name, watchlistData.description, watchlistId)
+    createWatchlist({
+      name: watchlistData.name,
+      description: watchlistData.description,
+    })
 
     // Navigate to the page with the new watchlist using useNavigate
     navigate(`/watchlist-page/${watchlistId}`)
@@ -60,6 +62,7 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
           placeholder=""
           onChange={handleChange}
           name="name"
+          required
           value={watchlistData.name}
         />
         <label className="create-watchlist-page__label" htmlFor="description">

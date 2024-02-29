@@ -1,21 +1,26 @@
-import { useWatchlistsContext } from "../../../context/WatchlistsContext"
+import { useState } from "react"
+import {
+  useWatchlist,
+  WatchlistsData,
+} from "../../../context/WatchlistsContext"
 import SidebarLink from "./SidebarLink"
 
 export default function WatchlistsList() {
-    // Get watchlistsArr from WatchlistsContext
-    const {watchlistsArr} = useWatchlistsContext() 
-    
-    const watchListsArrHTML = watchlistsArr.map(watchlist => (
-        <li className="sidebar__watchlist-item" key={watchlist.id}>
-            <SidebarLink to={`/watchlist-page/${watchlist.id}`} className="sidebar__watchlist-link">
-                {watchlist.name}
-            </SidebarLink>
-        </li>
-    ))
+  const [watchlistsData, setWatchlistsData] = useState<WatchlistsData>([])
 
-    return (
-        <ul className="sidebar__watchlists">
-            {watchListsArrHTML}
-        </ul>
-    )            
+  const { getWatchlistsData } = useWatchlist()
+  getWatchlistsData().then((data) => setWatchlistsData(data))
+
+  const watchListsArrHTML = watchlistsData.map((watchlist) => (
+    <li className="sidebar__watchlist-item" key={watchlist.id}>
+      <SidebarLink
+        to={`/watchlist-page/${watchlist.id}`}
+        className="sidebar__watchlist-link"
+      >
+        {watchlist.name}
+      </SidebarLink>
+    </li>
+  ))
+
+  return <ul className="sidebar__watchlists">{watchListsArrHTML}</ul>
 }

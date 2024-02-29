@@ -1,163 +1,219 @@
-import { useState, useEffect, createContext, ReactNode, FC, useContext } from "react"
-import useLocalStorage from "../hooks/useLocalStorage"
+// WatchlistContext.tsx
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore"
+import { FC, ReactNode, createContext, useContext } from "react"
+import { db } from "../services/firebase/firebase-config"
+import { useUser } from "./UserContext"
 
-type WatchlistType = {
-    id: string,
-    name: string,
-    description: string,
-    movieIds: string[]
+type TMDBMovieID = string
+
+type Movie = {
+  addedAt: Date
+  TMDBMovieID: TMDBMovieID
 }
 
-type WatchlistsContextType = {
-    watchlistsArr: WatchlistType[],
-    isExist: (watchlistId: string | undefined) => boolean,
-    getWatchlistData: (watchlistId: string | undefined) => WatchlistType | undefined,
-    getMovieIds: (watchlistId: string | undefined) => string[] | undefined,
-    createWatchlist: (name: string, description: string, id: string) => void,
-    editWatchlist: (name: string, description: string | undefined, movieIds: string[], watchlistId: string) => void,
-    deleteWatchlist: (watchlistId: string | undefined) => void,
-    addMovieToWatchlist: (movieId: string, watchlistId: string) => void,
-    deleteMovieFromWatchlist: (movieId: string, watchlistId: string) => void
+type Name = string
+type Description = string
+
+export type Watchlist = {
+  name: Name
+  description: Description
+  createdAt: Date
 }
 
-const WatchlistsContext = createContext<WatchlistsContextType | null>(null)
+type CreateWatchlist = {
+  name: Name
+  description: Description
+}
+
+export type WatchlistsData = (Watchlist & { id: string })[]
+
+type EditWatchlist = CreateWatchlist & {
+  watchlistId: string
+}
+
+type ManageMovieInWatchlist = {
+  movieId: TMDBMovieID
+  watchlistId: string
+}
+
+export type DeleteMoviesFromWatchlist = {
+  movieIds: TMDBMovieID[]
+  watchlistId: string
+}
+
+type WatchlistContextProps = {
+  createWatchlist: (data: CreateWatchlist) => Promise<void>
+  editWatchlist: (data: EditWatchlist) => Promise<void>
+  deleteWatchlist: (watchlistId: string) => Promise<void>
+  addMovieToWatchlist: (data: ManageMovieInWatchlist) => Promise<void>
+  deleteMovieFromWatchlist: (data: ManageMovieInWatchlist) => Promise<void>
+  deleteMoviesFromWatchlist: (data: DeleteMoviesFromWatchlist) => Promise<void>
+  getWatchlistData: (watchlistId: string) => Promise<Watchlist>
+  getWatchlistsData: () => Promise<WatchlistsData>
+  getMovieIds: (watchlistId: string) => Promise<string[]>
+}
+
+const WatchlistContext = createContext<WatchlistContextProps | null>(null)
 
 type WatchlistsContextProviderProps = {
-    children: ReactNode
+  children: ReactNode
 }
 
-const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({children}) => {
-    // Initialize state for the watchlists array using local storage, or default values if none exist
-    const {storedValue, setStoredValue} = useLocalStorage("watchlistsArr", [
-        {
-            id: "1",
-            name: "Watchlist name",
-            description: "Description of my new watchlist",
-            movieIds: ["505642", "436270", "774752"]
-        },
-        {
-            id: "2",
-            name: "Some other watchlist",
-            description: "Description of my new watchlist",
-            movieIds: ["632856", "668461", "928344", "505642", "436270", "774752"]
-        }
-    ])
-    // Set the watchlists array state using the local storage value or the default value
-    const [watchlistsArr, setWatchlistsArr] = useState<WatchlistType[]>(storedValue)
+export const WatchlistsContextProvider: FC<WatchlistsContextProviderProps> = ({
+  children,
+}) => {
+  const { user } = useUser()
+  const userId = user?.uid
+  const watchlistsCollection = collection(db, `users/${userId}/watchlists`)
 
-    // Update the local storage value whenever the watchlists array state changes
-    useEffect(() => {setStoredValue(watchlistsArr)},[watchlistsArr])
-
-    function isExist(watchlistId: string | undefined) {
-        return watchlistsArr.some(watchlist => watchlist.id === watchlistId)
+  const createWatchlist = async ({ name, description }: CreateWatchlist) => {
+    try {
+      const watchlistRef = await addDoc(watchlistsCollection, {
+        name,
+        description,
+        createdAt: new Date(),
+      })
+      console.log("Watchlist document written with ID: ", watchlistRef.id)
+    } catch (e) {
+      console.error("Error adding watchlist document: ", e)
     }
+  }
 
-    // Find a watchlist in the array by ID
-    function getWatchlistData(watchlistId: string | undefined) {
-        if (!watchlistId) return
-        return watchlistsArr.find(watchlist => watchlist.id === watchlistId)
+  const editWatchlist = async ({
+    name,
+    description,
+    watchlistId,
+  }: EditWatchlist) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    try {
+      await updateDoc(watchlistRef, { name, description })
+    } catch (e) {
+      console.error("Error updating watchlist document: ", e)
     }
+  }
 
-    // Get an array of movie IDs for a specific watchlist
-    function getMovieIds(watchlistId: string | undefined) {
-        if(!watchlistId) return []
-        return watchlistsArr.find(watchlist => watchlist.id === watchlistId)?.movieIds
+  const deleteWatchlist = async (watchlistId: string) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    try {
+      deleteDoc(watchlistRef)
+    } catch (e) {
+      console.error("Error deleting watchlist document: ", e)
     }
+  }
 
-    // Create a new watchlist object and add it to the array
-    function createWatchlist(name: string, description: string, id: string) {
-        setWatchlistsArr(prevWatchlistsArr => {
-            return [
-                ...prevWatchlistsArr,
-                {
-                    id: id,
-                    name: name,
-                    description: description,
-                    movieIds: []
-                }
-            ]
-        })
+  const addMovieToWatchlist = async ({
+    movieId,
+    watchlistId,
+  }: ManageMovieInWatchlist) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    const moviesCollection = collection(watchlistRef, "movies")
+    try {
+      const movieRef = await addDoc(moviesCollection, {
+        addedAt: new Date(),
+        TMDBMovieID: movieId,
+      })
+      console.log("Movie document written with ID: ", movieRef.id)
+    } catch (e) {
+      console.error("Error adding movie document: ", e)
     }
+  }
 
-    // Edit an existing watchlist in the array
-    function editWatchlist(name: string, description: string | undefined, movieIds: string[], watchlistId: string) {
-        setWatchlistsArr(prevWatchlistsArr => {
-            return prevWatchlistsArr.map(watchlist => {
-                if(watchlistId !== watchlist.id) return watchlist
-                else return {...watchlist, 
-                    name: name,
-                    description: description || "",
-                    movieIds: movieIds
-                }
-            })
-        })
+  const deleteMovieFromWatchlist = async ({
+    movieId,
+    watchlistId,
+  }: ManageMovieInWatchlist) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    const movieRef = doc(watchlistRef, `movies/${movieId}`)
+    try {
+      deleteDoc(movieRef)
+    } catch (e) {
+      console.error("Error deleting movie document: ", e)
     }
-    
-    // Delete a watchlist from the array by ID
-    function deleteWatchlist(watchlistId: string | undefined) {
-        if(!watchlistId) return undefined
-        setWatchlistsArr(prevWatchlistsArr => {
-            return prevWatchlistsArr.filter(watchlist => {
-                return watchlist.id !== watchlistId
-            })
-        })
+  }
+
+  const deleteMoviesFromWatchlist = async ({
+    movieIds,
+    watchlistId,
+  }: DeleteMoviesFromWatchlist) => {
+    movieIds.forEach((TMDBId) => {
+      deleteMovieFromWatchlist({ movieId: TMDBId, watchlistId })
+    })
+  }
+
+  const getWatchlistData = async (watchlistId: string) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    try {
+      const watchlistSnapshot = await getDoc(watchlistRef)
+      if (watchlistSnapshot.exists()) {
+        return watchlistSnapshot.data() as Watchlist
+      } else {
+        console.error("No such document!")
+        return {} as Watchlist
+      }
+    } catch (e) {
+      console.error("Error getting watchlist document: ", e)
+      return {} as Watchlist
     }
+  }
 
-
-    // Add a movie ID to a specific watchlist's movieIds array
-    function addMovieToWatchlist(movieId: string, watchlistId: string) {
-        setWatchlistsArr(prevWatchlistsArr => prevWatchlistsArr.map(watchlist => {
-                if (watchlistId !== watchlist.id) return watchlist
-                else {
-                    if (watchlist.movieIds.includes(String(movieId))) return watchlist
-                    
-                    return {...watchlist, 
-                        movieIds: [...watchlist.movieIds, movieId],
-                    }
-                }
-                
-            })
-        )
+  const getWatchlistsData = async () => {
+    try {
+      const watchlistsSnapshot = await getDocs(watchlistsCollection)
+      return watchlistsSnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      })) as WatchlistsData
+    } catch (e) {
+      console.error("Error getting user's watchlist documents: ", e)
+      return [] as WatchlistsData
     }
+  }
 
-    // Remove a movie ID from a specific watchlist's
-    function deleteMovieFromWatchlist(movieId: string, watchlistId: string) {
-        setWatchlistsArr(prevWatchlistsArr => {
-            return prevWatchlistsArr.map(watchlist => {
-                if(watchlistId !== watchlist.id) return watchlist
-                else return {
-                    ...watchlist,
-                    movieIds: watchlist.movieIds.filter(id => {
-                        return id !== movieId
-                    })
-                }
-            })
-        })
+  const getMovieIds = async (watchlistId: string) => {
+    const watchlistRef = doc(watchlistsCollection, watchlistId)
+    const moviesCollection = collection(watchlistRef, "movies")
+    try {
+      const moviesSnapshot = await getDocs(moviesCollection)
+      return moviesSnapshot.docs.map(
+        (doc) => doc.data().TMDBMovieID
+      ) as string[]
+    } catch (e) {
+      console.error("Error getting movie documents: ", e)
+      return []
     }
+  }
 
-    return (
-        <WatchlistsContext.Provider value={{
-            watchlistsArr,
-            isExist,
-            getWatchlistData,
-            getMovieIds,
-            createWatchlist,
-            editWatchlist,
-            deleteWatchlist,
-            addMovieToWatchlist,
-            deleteMovieFromWatchlist,
-        }}>
-            {children}
-        </WatchlistsContext.Provider>
-    )
+  return (
+    <WatchlistContext.Provider
+      value={{
+        createWatchlist,
+        editWatchlist,
+        deleteWatchlist,
+        addMovieToWatchlist,
+        deleteMovieFromWatchlist,
+        deleteMoviesFromWatchlist,
+        getWatchlistData,
+        getWatchlistsData,
+        getMovieIds,
+      }}
+    >
+      {children}
+    </WatchlistContext.Provider>
+  )
 }
 
-export const useWatchlistsContext = () => {
-    const context = useContext(WatchlistsContext);
-    if (!context) {
-        throw new Error("useWatchlistsContext must be used within a WatchlistsContextProvider");
-    }
-    return context;
+export const useWatchlist = (): WatchlistContextProps => {
+  const context = useContext(WatchlistContext)
+  if (context === null) {
+    throw new Error("useWatchlist must be used within a WatchlistProvider")
+  }
+  return context
 }
-
-export {WatchlistsContextProvider }
