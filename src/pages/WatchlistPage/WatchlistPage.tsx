@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { Watchlist, useWatchlist } from "../../context/WatchlistsContext"
+import { useUser } from "../../context/UserContext"
+import {
+  useGetMoviesQuery,
+  useGetWatchlistDataQuery,
+} from "../../services/firebase/firestore/queries"
 import { useMoviesDetails } from "../../services/tmdb"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
@@ -16,30 +19,27 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
   if (!watchlistId) return null
 
-  const [movieIds, setMovieIds] = useState<string[]>([])
-  const [watchlistData, setWatchlistData] = useState<Watchlist>()
+  const { user } = useUser()
+  const userId = user?.uid
+  if (!userId) return <div>Not logged in</div>
 
-  const { getMovieIds, getWatchlistData } = useWatchlist()
+  const { data: userMovies } = useGetMoviesQuery(userId, watchlistId)
+  const movieIds = userMovies?.map((movie) => movie.id) || []
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const watchlistData = await getWatchlistData(watchlistId)
-      setWatchlistData(watchlistData)
+  const { data: watchlistData } = useGetWatchlistDataQuery(userId, watchlistId)
 
-      const movieIds = await getMovieIds(watchlistId)
-      setMovieIds(movieIds)
-    }
-
-    fetchData()
-  }, [watchlistId])
-
-  const { data, isError, error, isLoading } = useMoviesDetails(movieIds)
+  const {
+    data: moviesData,
+    isError,
+    error,
+    isLoading,
+  } = useMoviesDetails(movieIds)
 
   if (isLoading) return <CustomLoader />
 
   if (!watchlistId) return <ErrorMessage>Watchlist not found!</ErrorMessage>
 
-  if (isError || !data)
+  if (isError || !moviesData)
     return (
       <ErrorMessage error={error}>
         Something went wrong! Please try again later.
@@ -49,11 +49,11 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
   return (
     <div className={`watchlist-page ${className}`}>
       <WatchlistDetails
-        moviesData={data}
+        moviesData={moviesData}
         name={watchlistData?.name ?? ""}
         description={watchlistData?.description ?? ""}
       />
-      <Movies moviesData={data} />
+      <Movies moviesData={moviesData} />
     </div>
   )
 }

@@ -1,6 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Watchlist, useWatchlist } from "../../../../context/WatchlistsContext"
+import { useUser } from "../../../../context/UserContext"
+import {
+  useEditWatchlistMutation,
+  useRemoveMoviesFromWatchlistMutation,
+} from "../../../../services/firebase/firestore/mutations"
+import {
+  useGetMoviesQuery,
+  useGetWatchlistDataQuery,
+} from "../../../../services/firebase/firestore/queries"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import WatchlistMovies from "../WatchlistMovies/WatchlistMovies"
 import styles from "./EditWatchlistForm.module.scss"
@@ -15,25 +23,28 @@ type EditWatchlistFormProps = { watchlistId: string }
 export default function EditWatchlistForm({
   watchlistId,
 }: EditWatchlistFormProps) {
-  const {
-    getWatchlistData,
-    editWatchlist,
-    getMovieIds,
-    deleteMoviesFromWatchlist,
-  } = useWatchlist()
+  const { user } = useUser()
+  const userId = user?.uid
+  if (!userId) return <div>Not logged in</div>
 
-  const [movieIds, setMovieIds] = useState<string[]>([])
+  const { data: userMovies } = useGetMoviesQuery(userId, watchlistId)
+  const movieIds = userMovies?.map((movie) => movie.id) || []
+  const { data: watchlistData } = useGetWatchlistDataQuery(userId, watchlistId)
+
+  const { mutate: editWatchlist } = useEditWatchlistMutation(
+    userId,
+    watchlistId
+  )
+  const { mutate: deleteMoviesFromWatchlist } =
+    useRemoveMoviesFromWatchlistMutation(userId, watchlistId)
+
   const [toDeleteMovieIds, setToDeleteMovieIds] = useState<string[]>([])
-  const [watchlistData, setWatchlistData] = useState<Watchlist>()
 
   // Get the navigation function from react-router-dom
   const navigate = useNavigate()
 
   // Get the copy of current movieIds and their data using the custom hook
-  getMovieIds(watchlistId).then((ids) => setMovieIds(ids))
   const { data: moviesData } = useMoviesDetails(movieIds)
-
-  getWatchlistData(watchlistId).then((data) => setWatchlistData(data))
 
   // Get the current watchlist's name and description as initial values for the form
   const [formData, setFormData] = useState<FormData>({
@@ -60,13 +71,9 @@ export default function EditWatchlistForm({
       editWatchlist({
         name: formData.name,
         description: formData.description || "",
-        watchlistId: watchlistId,
       })
 
-      deleteMoviesFromWatchlist({
-        movieIds: toDeleteMovieIds,
-        watchlistId: watchlistId,
-      })
+      deleteMoviesFromWatchlist(toDeleteMovieIds)
       // Navigate to the watchlist page
       navigate(`/watchlist-page/${watchlistId}`)
     }

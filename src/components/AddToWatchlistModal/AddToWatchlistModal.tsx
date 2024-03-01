@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useModalContext } from "../../context/ModalContext"
-import { WatchlistsData, useWatchlist } from "../../context/WatchlistsContext"
+import { useUser } from "../../context/UserContext"
+import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestore/mutations"
+import { useGetWatchlistsDataQuery } from "../../services/firebase/firestore/queries"
 import styles from "./AddToWatchlistModal.module.scss"
 import CustomSelect from "./SubComponents/CustomSelect/CustomSelect"
 
@@ -13,22 +15,21 @@ type OptionType = {
 type SelectedOptionType = OptionType | null
 
 export default function AddToWatchlistModal() {
-  const [watchlistsArr, setWatchlistsArr] = useState<WatchlistsData>([])
-  const { addMovieToWatchlist, getWatchlistsData } = useWatchlist()
   const { isModalActive, setIsModalActive, movieId } = useModalContext()
   const { addToHistory } = useHistoryContext()
 
   const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
   const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const watchlistsData = await getWatchlistsData()
-      setWatchlistsArr(watchlistsData)
-    }
+  const { user } = useUser()
+  const userId = user?.uid
+  if (!userId) return <div>Not logged in</div>
 
-    fetchData()
-  }, [])
+  const { data: watchlistsData } = useGetWatchlistsDataQuery(userId)
+  const { mutate: addMovieToWatchlist } = useAddMovieToWatchlistMutation(
+    userId,
+    selectedIds.watchlist
+  )
 
   // Effect to reset selected option when modal is closed
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function AddToWatchlistModal() {
   }, [isModalActive])
 
   // Create array of options for Select
-  const optionsArr = watchlistsArr.map((watchlist) => ({
+  const optionsArr = watchlistsData?.map((watchlist) => ({
     value: watchlist.id,
     label: watchlist.name,
   }))
@@ -54,10 +55,7 @@ export default function AddToWatchlistModal() {
 
   // Handler for clicking save button
   function handleSave() {
-    addMovieToWatchlist({
-      movieId: selectedIds.movie,
-      watchlistId: selectedIds.watchlist,
-    })
+    addMovieToWatchlist(selectedIds.movie)
     setIsModalActive(false)
     addToHistory(movieId)
   }

@@ -1,7 +1,8 @@
 import { nanoid } from "nanoid"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useWatchlist } from "../../context/WatchlistsContext"
+import { useUser } from "../../context/UserContext"
+import { useCreateWatchlistMutation } from "../../services/firebase/firestore/mutations"
 import "./CreateWatchlistPage.scss"
 
 type CreateWatchlistPageTypes = {
@@ -13,19 +14,24 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
   // Use the useNavigate hook from react-router to navigate to another page
   const navigate = useNavigate()
 
-  const [watchlistData, setWatchlistData] = useState({
+  // Form state to store the name and description of the new watchlist
+  const [formData, setFormData] = useState({
     name: "",
     description: "",
   })
 
-  const { createWatchlist } = useWatchlist()
+  const { user } = useUser()
+  const userId = user?.uid
+  if (!userId) return <div>Not logged in</div>
+
+  const { mutate: createWatchlist } = useCreateWatchlistMutation(userId)
 
   // Function to handle changes in the form
   function handleChange(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = event.target
-    setWatchlistData((prevWatchlistData) => ({
+    setFormData((prevWatchlistData) => ({
       ...prevWatchlistData,
       [name]: value,
     }))
@@ -38,11 +44,8 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
     // Generate a unique identifier for the new watchlist
     const watchlistId = nanoid()
 
-    // Call the createWatchlist function from WatchlistsContext to add a new watchlist
-    createWatchlist({
-      name: watchlistData.name,
-      description: watchlistData.description,
-    })
+    // Call the createWatchlist function to add a new watchlist
+    createWatchlist(formData)
 
     // Navigate to the page with the new watchlist using useNavigate
     navigate(`/watchlist-page/${watchlistId}`)
@@ -63,7 +66,7 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
           onChange={handleChange}
           name="name"
           required
-          value={watchlistData.name}
+          value={formData.name}
         />
         <label className="create-watchlist-page__label" htmlFor="description">
           Description
@@ -74,7 +77,7 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
           placeholder=""
           onChange={handleChange}
           name="description"
-          value={watchlistData.description}
+          value={formData.description}
         />
         <button className="create-watchlist-page__btn">Create watchlist</button>
       </form>

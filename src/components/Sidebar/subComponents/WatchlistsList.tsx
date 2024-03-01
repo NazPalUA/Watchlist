@@ -1,17 +1,15 @@
-import { useState } from "react"
-import {
-  useWatchlist,
-  WatchlistsData,
-} from "../../../context/WatchlistsContext"
+import { useUser } from "../../../context/UserContext"
+import { useGetWatchlistsDataQuery } from "../../../services/firebase/firestore/queries"
 import SidebarLink from "./SidebarLink"
 
 export default function WatchlistsList() {
-  const [watchlistsData, setWatchlistsData] = useState<WatchlistsData>([])
+  const { user } = useUser()
+  const userId = user?.uid
+  if (!userId) return <div>Not logged in</div>
 
-  const { getWatchlistsData } = useWatchlist()
-  getWatchlistsData().then((data) => setWatchlistsData(data))
+  const { data: watchlistsData } = useGetWatchlistsDataQuery(userId)
 
-  const watchListsArrHTML = watchlistsData.map((watchlist) => (
+  const watchListsArrHTML = watchlistsData?.map((watchlist) => (
     <li className="sidebar__watchlist-item" key={watchlist.id}>
       <SidebarLink
         to={`/watchlist-page/${watchlist.id}`}

@@ -10,7 +10,7 @@ type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
-  let { user } = useUser()
+  const { user } = useUser()
 
   return (
     <div className={`sidebar ${className}`}>
