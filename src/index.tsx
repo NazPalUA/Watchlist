@@ -9,7 +9,6 @@ import { HistoryContextProvider } from "./context/HistoryContext"
 import { ModalContextProvider } from "./context/ModalContext"
 import { SidebarContextProvider } from "./context/SidebarContext"
 import { UserProvider } from "./context/UserContext"
-import { WatchlistsContextProvider } from "./context/WatchlistsContext"
 import "./index.scss"
 
 const queryClient = new QueryClient()
@@ -20,16 +19,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
       <UserProvider>
         <AuthProvider>
           <ModalContextProvider>
-            <WatchlistsContextProvider>
-              <HistoryContextProvider>
-                <SidebarContextProvider>
-                  <BrowserRouter>
-                    <App />
-                    <ReactQueryDevtools initialIsOpen={true} />
-                  </BrowserRouter>
-                </SidebarContextProvider>
-              </HistoryContextProvider>
-            </WatchlistsContextProvider>
+            <HistoryContextProvider>
+              <SidebarContextProvider>
+                <BrowserRouter>
+                  <App />
+                  <ReactQueryDevtools initialIsOpen={true} />
+                </BrowserRouter>
+              </SidebarContextProvider>
+            </HistoryContextProvider>
           </ModalContextProvider>
         </AuthProvider>
       </UserProvider>
