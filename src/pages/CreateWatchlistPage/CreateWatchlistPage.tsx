@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../../context/UserContext"
@@ -41,14 +40,13 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    // Generate a unique identifier for the new watchlist
-    const watchlistId = nanoid()
-
     // Call the createWatchlist function to add a new watchlist
     createWatchlist(formData)
 
     // Navigate to the page with the new watchlist using useNavigate
-    navigate(`/watchlist-page/${watchlistId}`)
+    navigate(
+      `/watchlist-page/${formData.name.toLowerCase().replace(/ /g, "-")}`
+    )
   }
 
   return (
