@@ -5,8 +5,6 @@ import SidebarLink from "./SidebarLink"
 export default function WatchlistsList() {
   const { data: watchlistsData, error, isError } = useGetWatchlistsDataQuery()
 
-  console.log(isError)
-
   if (isError) {
     console.error("Error fetching watchlists data:", error)
     return (
