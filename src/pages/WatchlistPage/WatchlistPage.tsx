@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useUser } from "../../context/UserContext"
 import {
   useGetMoviesQuery,
   useGetWatchlistDataQuery,
@@ -19,14 +18,10 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
   if (!watchlistId) return null
 
-  const { user } = useUser()
-  const userId = user?.uid
-  if (!userId) return <div>Not logged in</div>
-
-  const { data: userMovies } = useGetMoviesQuery(userId, watchlistId)
+  const { data: userMovies } = useGetMoviesQuery(watchlistId)
   const movieIds = userMovies?.map((movie) => movie.id) || []
 
-  const { data: watchlistData } = useGetWatchlistDataQuery(userId, watchlistId)
+  const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
 
   const {
     data: moviesData,

@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useUser } from "../../context/UserContext"
 import { useCreateWatchlistMutation } from "../../services/firebase/firestore/mutations"
 import "./CreateWatchlistPage.scss"
 
@@ -19,11 +18,7 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
     description: "",
   })
 
-  const { user } = useUser()
-  const userId = user?.uid
-  if (!userId) return <div>Not logged in</div>
-
-  const { mutate: createWatchlist } = useCreateWatchlistMutation(userId)
+  const { mutate: createWatchlist } = useCreateWatchlistMutation()
 
   // Function to handle changes in the form
   function handleChange(

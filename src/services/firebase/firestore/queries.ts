@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import { useAuth } from "../../../context/AuthContext"
 import {
   getMovieData,
   getMoviesData,
@@ -6,37 +7,40 @@ import {
   getWatchlistsData,
 } from "./endPoints"
 
-export const useGetWatchlistsDataQuery = (userId: string) => {
+export const useGetWatchlistsDataQuery = () => {
+  const { currentUser } = useAuth()
   return useQuery({
-    queryKey: [userId, "watchlists"],
-    queryFn: () => getWatchlistsData(userId),
+    queryKey: [currentUser?.uid, "watchlists"],
+    queryFn: () =>
+      currentUser ? getWatchlistsData(currentUser.uid) : undefined,
   })
 }
 
-export const useGetWatchlistDataQuery = (
-  userId: string,
-  watchlistId: string
-) => {
+export const useGetWatchlistDataQuery = (watchlistId: string) => {
+  const { currentUser } = useAuth()
   return useQuery({
-    queryKey: [userId, "watchlists", watchlistId],
-    queryFn: () => getWatchlistData(userId, watchlistId),
+    queryKey: [currentUser?.uid, "watchlists", watchlistId],
+    queryFn: () =>
+      currentUser ? getWatchlistData(currentUser.uid, watchlistId) : undefined,
   })
 }
 
-export const useGetMoviesQuery = (userId: string, watchlistId: string) => {
+export const useGetMoviesQuery = (watchlistId: string) => {
+  const { currentUser } = useAuth()
   return useQuery({
-    queryKey: [userId, "watchlists", watchlistId, "movies"],
-    queryFn: () => getMoviesData(userId, watchlistId),
+    queryKey: [currentUser?.uid, "watchlists", watchlistId, "movies"],
+    queryFn: () =>
+      currentUser ? getMoviesData(currentUser.uid, watchlistId) : undefined,
   })
 }
 
-export const useGetMovieQuery = (
-  userId: string,
-  watchlistId: string,
-  movieId: string
-) => {
+export const useGetMovieQuery = (watchlistId: string, movieId: string) => {
+  const { currentUser } = useAuth()
   return useQuery({
-    queryKey: [userId, "watchlists", watchlistId, "movies", movieId],
-    queryFn: () => getMovieData(userId, watchlistId, movieId),
+    queryKey: [currentUser?.uid, "watchlists", watchlistId, "movies", movieId],
+    queryFn: () =>
+      currentUser
+        ? getMovieData(currentUser.uid, watchlistId, movieId)
+        : undefined,
   })
 }

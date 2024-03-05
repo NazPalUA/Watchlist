@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { signOut } from "../../services/firebase/firebase-auth"
+import { useAuth } from "../../context/AuthContext"
 import EditUserForm from "./SubComponents/EditUserForm/EditUserForm"
 import style from "./UserPage.module.scss"
 
@@ -7,9 +7,10 @@ type UserPageProps = { className?: string }
 
 export default function UserPage({ className }: UserPageProps) {
   let navigate = useNavigate()
+  const { logout } = useAuth()
 
   function handleLogOut() {
-    signOut().then(() => navigate("/"))
+    logout().then(() => navigate("/"))
   }
 
   return (

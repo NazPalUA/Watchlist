@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useModalContext } from "../../context/ModalContext"
-import { useUser } from "../../context/UserContext"
 import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestore/mutations"
 import { useGetWatchlistsDataQuery } from "../../services/firebase/firestore/queries"
 import styles from "./AddToWatchlistModal.module.scss"
@@ -21,13 +20,8 @@ export default function AddToWatchlistModal() {
   const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
   const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })
 
-  const { user } = useUser()
-  const userId = user?.uid
-  if (!userId) return <div>Not logged in</div>
-
-  const { data: watchlistsData } = useGetWatchlistsDataQuery(userId)
+  const { data: watchlistsData } = useGetWatchlistsDataQuery()
   const { mutate: addMovieToWatchlist } = useAddMovieToWatchlistMutation(
-    userId,
     selectedIds.watchlist
   )
 

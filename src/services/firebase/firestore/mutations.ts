@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useAuth } from "../../../context/AuthContext"
 import {
   addMovieToWatchlist,
   createWatchlist,
@@ -8,90 +9,98 @@ import {
 } from "./endPoints"
 import { ManageWatchlistData } from "./types"
 
-export const useCreateWatchlistMutation = (userId: string) => {
+export const useCreateWatchlistMutation = () => {
+  const { currentUser } = useAuth()
   const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
     mutationFn: (WatchlistData: ManageWatchlistData) =>
-      createWatchlist(userId, WatchlistData),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [userId, "watchlists"] })
-    },
-  })
-}
-
-export const useEditWatchlistMutation = (
-  userId: string,
-  watchlistId: string
-) => {
-  const queryClient = useQueryClient()
-  return useMutation({
-    mutationFn: (WatchlistData: ManageWatchlistData) =>
-      editWatchlist(userId, watchlistId, WatchlistData),
+      createWatchlist(currentUser.uid, WatchlistData),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [userId, "watchlists", watchlistId],
+        queryKey: [currentUser.uid, "watchlists"],
       })
     },
   })
 }
 
-export const useDeleteWatchlistMutation = (userId: string) => {
+export const useEditWatchlistMutation = (watchlistId: string) => {
+  const { currentUser } = useAuth()
   const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
-    mutationFn: (watchlistId: string) => deleteWatchlist(userId, watchlistId),
+    mutationFn: (WatchlistData: ManageWatchlistData) =>
+      editWatchlist(currentUser.uid, watchlistId, WatchlistData),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [userId, "watchlists"] })
+      queryClient.invalidateQueries({
+        queryKey: [currentUser.uid, "watchlists", watchlistId],
+      })
     },
   })
 }
 
-export const useAddMovieToWatchlistMutation = (
-  userId: string,
-  watchlistId: string
-) => {
+export const useDeleteWatchlistMutation = () => {
+  const { currentUser } = useAuth()
   const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
-    mutationFn: (movieId: string) =>
-      addMovieToWatchlist(userId, watchlistId, movieId),
+    mutationFn: (watchlistId: string) =>
+      deleteWatchlist(currentUser.uid, watchlistId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [userId, "watchlists", watchlistId, "movies"],
+        queryKey: [currentUser.uid, "watchlists"],
+      })
+    },
+  })
+}
+
+export const useAddMovieToWatchlistMutation = (watchlistId: string) => {
+  const { currentUser } = useAuth()
+  const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
+  return useMutation({
+    mutationFn: (movieId: string) =>
+      addMovieToWatchlist(currentUser.uid, watchlistId, movieId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
       })
     },
   })
 }
 
 export const useRemoveMovieFromWatchlistMutation = (
-  userId: string,
   watchlistId: string,
   movieId: string
 ) => {
+  const { currentUser } = useAuth()
   const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
-    mutationFn: () => removeMovieFromWatchlist(userId, watchlistId, movieId),
+    mutationFn: () =>
+      removeMovieFromWatchlist(currentUser.uid, watchlistId, movieId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [userId, "watchlists", watchlistId, "movies"],
+        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
       })
     },
   })
 }
 
-export const useRemoveMoviesFromWatchlistMutation = (
-  userId: string,
-  watchlistId: string
-) => {
+export const useRemoveMoviesFromWatchlistMutation = (watchlistId: string) => {
+  const { currentUser } = useAuth()
   const queryClient = useQueryClient()
+  if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
     mutationFn: (movieIds: string[]) => {
       const promises = movieIds.map((movieId) =>
-        removeMovieFromWatchlist(userId, watchlistId, movieId)
+        removeMovieFromWatchlist(currentUser.uid, watchlistId, movieId)
       )
       return Promise.all(promises)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [userId, "watchlists", watchlistId, "movies"],
+        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
       })
     },
   })

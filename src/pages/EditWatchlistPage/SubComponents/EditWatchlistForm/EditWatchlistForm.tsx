@@ -1,6 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useUser } from "../../../../context/UserContext"
 import {
   useEditWatchlistMutation,
   useRemoveMoviesFromWatchlistMutation,
@@ -23,20 +22,13 @@ type EditWatchlistFormProps = { watchlistId: string }
 export default function EditWatchlistForm({
   watchlistId,
 }: EditWatchlistFormProps) {
-  const { user } = useUser()
-  const userId = user?.uid
-  if (!userId) return <div>Not logged in</div>
-
-  const { data: userMovies } = useGetMoviesQuery(userId, watchlistId)
+  const { data: userMovies } = useGetMoviesQuery(watchlistId)
   const movieIds = userMovies?.map((movie) => movie.id) || []
-  const { data: watchlistData } = useGetWatchlistDataQuery(userId, watchlistId)
+  const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
 
-  const { mutate: editWatchlist } = useEditWatchlistMutation(
-    userId,
-    watchlistId
-  )
+  const { mutate: editWatchlist } = useEditWatchlistMutation(watchlistId)
   const { mutate: deleteMoviesFromWatchlist } =
-    useRemoveMoviesFromWatchlistMutation(userId, watchlistId)
+    useRemoveMoviesFromWatchlistMutation(watchlistId)
 
   const [toDeleteMovieIds, setToDeleteMovieIds] = useState<string[]>([])
 

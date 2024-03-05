@@ -8,11 +8,13 @@ import {
   useEffect,
   useState,
 } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 import { auth } from "../services/firebase/firebase-auth"
 
 interface AuthContextProps {
   currentUser: firebase.User | null
   loading: boolean
+  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined)
@@ -22,20 +24,38 @@ type AuthContextProviderProps = {
 }
 
 export const AuthProvider: FC<AuthContextProviderProps> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null)
+  const { storedValue, setStoredValue } = useLocalStorage<firebase.User | null>(
+    "user",
+    null
+  )
+  const [currentUser, setCurrentUser] = useState<firebase.User | null>(
+    storedValue
+  )
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user)
+      setStoredValue(user)
       setLoading(false)
     })
 
     return unsubscribe
   }, [])
 
+  async function logout() {
+    try {
+      auth.signOut()
+    } catch (error) {
+      console.error("Error signing out", error)
+    } finally {
+      setCurrentUser(null)
+      setStoredValue(null)
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ currentUser, loading }}>
+    <AuthContext.Provider value={{ currentUser, loading, logout }}>
       {!loading && children}
     </AuthContext.Provider>
   )

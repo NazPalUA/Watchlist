@@ -1,13 +1,20 @@
-import { useUser } from "../../../context/UserContext"
 import { useGetWatchlistsDataQuery } from "../../../services/firebase/firestore/queries"
+import ErrorMessage from "../../ErrorMessage/ErrorMessage"
 import SidebarLink from "./SidebarLink"
 
 export default function WatchlistsList() {
-  const { user } = useUser()
-  const userId = user?.uid
-  if (!userId) return <div>Not logged in</div>
+  const { data: watchlistsData, error, isError } = useGetWatchlistsDataQuery()
 
-  const { data: watchlistsData } = useGetWatchlistsDataQuery(userId)
+  console.log(isError)
+
+  if (isError) {
+    console.error("Error fetching watchlists data:", error)
+    return (
+      <ErrorMessage error={error}>
+        Something went wrong! Please try again later.
+      </ErrorMessage>
+    )
+  }
 
   const watchListsArrHTML = watchlistsData?.map((watchlist) => (
     <li className="sidebar__watchlist-item" key={watchlist.id}>
