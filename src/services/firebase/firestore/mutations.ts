@@ -18,7 +18,7 @@ export const useCreateWatchlistMutation = () => {
       createWatchlist(currentUser.uid, WatchlistData),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists"],
+        queryKey: ["watchlists"],
       })
     },
   })
@@ -33,7 +33,7 @@ export const useEditWatchlistMutation = (watchlistId: string) => {
       editWatchlist(currentUser.uid, watchlistId, WatchlistData),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists", watchlistId],
+        queryKey: ["watchlists", watchlistId],
       })
     },
   })
@@ -48,7 +48,7 @@ export const useDeleteWatchlistMutation = () => {
       deleteWatchlist(currentUser.uid, watchlistId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists"],
+        queryKey: ["watchlists"],
       })
     },
   })
@@ -63,7 +63,7 @@ export const useAddMovieToWatchlistMutation = (watchlistId: string) => {
       addMovieToWatchlist(currentUser.uid, watchlistId, movieId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
+        queryKey: ["watchlists", watchlistId],
       })
     },
   })
@@ -81,7 +81,7 @@ export const useRemoveMovieFromWatchlistMutation = (
       removeMovieFromWatchlist(currentUser.uid, watchlistId, movieId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
+        queryKey: ["watchlists", watchlistId],
       })
     },
   })
@@ -100,7 +100,7 @@ export const useRemoveMoviesFromWatchlistMutation = (watchlistId: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [currentUser.uid, "watchlists", watchlistId, "movies"],
+        queryKey: ["watchlists", watchlistId],
       })
     },
   })
