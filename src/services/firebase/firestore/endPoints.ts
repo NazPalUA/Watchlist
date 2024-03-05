@@ -8,19 +8,13 @@ import {
   updateDoc,
 } from "firebase/firestore"
 import { db } from "../firebase-config"
-import { ManageWatchlistData, Movie, Watchlist } from "./types"
+import { ManageWatchlistData, Watchlist } from "./types"
 
 const watchlistsCollection = (userId: string) =>
   collection(db, `users/${userId}/watchlists`)
 
 const watchlistRef = (userId: string, watchlistId: string) =>
   doc(db, `users/${userId}/watchlists/${watchlistId}`)
-
-const moviesCollection = (userId: string, watchlistId: string) =>
-  collection(db, `users/${userId}/watchlists/${watchlistId}/movies`)
-
-const movieRef = (userId: string, watchlistId: string, movieId: string) =>
-  doc(db, `users/${userId}/watchlists/${watchlistId}/movies/${movieId}`)
 
 // QUERIES:
 export const getWatchlistsData = async (userId: string) => {
@@ -39,28 +33,6 @@ export const getWatchlistData = async (userId: string, watchlistId: string) => {
   })
 }
 
-export const getMoviesData = async (userId: string, watchlistId: string) => {
-  return getDocs(moviesCollection(userId, watchlistId)).then(
-    (moviesSnapshot) => {
-      return moviesSnapshot.docs.map((doc) => doc.data()) as Movie[]
-    }
-  )
-}
-
-export const getMovieData = async (
-  userId: string,
-  watchlistId: string,
-  movieId: string
-) => {
-  return getDoc(movieRef(userId, watchlistId, movieId)).then((doc) => {
-    if (doc.exists()) {
-      return doc.data() as Movie
-    } else {
-      return null
-    }
-  })
-}
-
 // MUTATIONS:
 export const createWatchlist = async (
   userId: string,
@@ -72,6 +44,7 @@ export const createWatchlist = async (
     description,
     createdAt: new Date(),
     id: watchlistId,
+    movies: [],
   })
 }
 
@@ -95,9 +68,15 @@ export const addMovieToWatchlist = async (
   watchlistId: string,
   movieId: string
 ) => {
-  return setDoc(movieRef(userId, watchlistId, movieId), {
-    createdAt: new Date(),
-    id: movieId,
+  const watchlistSnapshot = await getDoc(watchlistRef(userId, watchlistId))
+  const watchlistData = watchlistSnapshot.data() as Watchlist
+  const updatedMovies = [
+    ...watchlistData.movies.filter((movie) => movie.id !== movieId),
+    { createdAt: new Date(), id: movieId },
+  ]
+
+  return updateDoc(watchlistRef(userId, watchlistId), {
+    movies: updatedMovies,
   })
 }
 
@@ -106,5 +85,13 @@ export const removeMovieFromWatchlist = async (
   watchlistId: string,
   movieId: string
 ) => {
-  deleteDoc(movieRef(userId, watchlistId, movieId))
+  const watchlistSnapshot = await getDoc(watchlistRef(userId, watchlistId))
+  const watchlistData = watchlistSnapshot.data() as Watchlist
+  const updatedMovies = watchlistData.movies.filter(
+    (movie) => movie.id !== movieId
+  )
+
+  return updateDoc(watchlistRef(userId, watchlistId), {
+    movies: updatedMovies,
+  })
 }

@@ -1,10 +1,7 @@
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import {
-  useGetMoviesQuery,
-  useGetWatchlistDataQuery,
-} from "../../services/firebase/firestore/queries"
+import { useGetWatchlistDataQuery } from "../../services/firebase/firestore/queries"
 import { useMoviesDetails } from "../../services/tmdb"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
@@ -18,10 +15,9 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
   if (!watchlistId) return null
 
-  const { data: userMovies } = useGetMoviesQuery(watchlistId)
-  const movieIds = userMovies?.map((movie) => movie.id) || []
-
   const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
+  const userMovies = watchlistData?.movies
+  const movieIds = userMovies?.map((movie) => movie.id) || []
 
   const {
     data: moviesData,

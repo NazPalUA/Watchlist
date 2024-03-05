@@ -4,10 +4,7 @@ import {
   useEditWatchlistMutation,
   useRemoveMoviesFromWatchlistMutation,
 } from "../../../../services/firebase/firestore/mutations"
-import {
-  useGetMoviesQuery,
-  useGetWatchlistDataQuery,
-} from "../../../../services/firebase/firestore/queries"
+import { useGetWatchlistDataQuery } from "../../../../services/firebase/firestore/queries"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import WatchlistMovies from "../WatchlistMovies/WatchlistMovies"
 import styles from "./EditWatchlistForm.module.scss"
@@ -22,9 +19,9 @@ type EditWatchlistFormProps = { watchlistId: string }
 export default function EditWatchlistForm({
   watchlistId,
 }: EditWatchlistFormProps) {
-  const { data: userMovies } = useGetMoviesQuery(watchlistId)
-  const movieIds = userMovies?.map((movie) => movie.id) || []
   const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
+  const userMovies = watchlistData?.movies
+  const movieIds = userMovies?.map((movie) => movie.id) || []
 
   const { mutate: editWatchlist } = useEditWatchlistMutation(watchlistId)
   const { mutate: deleteMoviesFromWatchlist } =

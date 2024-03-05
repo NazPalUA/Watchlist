@@ -8,6 +8,7 @@ export type Watchlist = {
   description: string
   createdAt: Date
   id: string
+  movies: Movie[]
 }
 
 export type ManageWatchlistData = {
