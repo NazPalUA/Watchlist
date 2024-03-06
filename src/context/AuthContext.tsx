@@ -1,4 +1,5 @@
 // AuthContext.tsx
+import { useQueryClient } from "@tanstack/react-query"
 import firebase from "firebase/auth"
 import {
   FC,
@@ -33,10 +34,22 @@ export const AuthProvider: FC<AuthContextProviderProps> = ({ children }) => {
   )
   const [loading, setLoading] = useState(true)
 
+  const queryClient = useQueryClient()
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user)
-      setStoredValue(user)
+      if (user) {
+        setCurrentUser(user)
+        setStoredValue(user)
+        console.log("Logged in as: ", user.email)
+      } else {
+        setCurrentUser(null)
+        setStoredValue(null)
+        // clear cache
+        queryClient.clear()
+
+        console.log("Logged out")
+      }
       setLoading(false)
     })
 
