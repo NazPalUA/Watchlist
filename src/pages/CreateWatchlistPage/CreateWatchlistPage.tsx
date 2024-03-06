@@ -36,12 +36,11 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
     event.preventDefault()
 
     // Call the createWatchlist function to add a new watchlist
-    createWatchlist(formData)
-
-    // Navigate to the page with the new watchlist using useNavigate
-    navigate(
-      `/watchlist-page/${formData.name.toLowerCase().replace(/ /g, "-")}`
-    )
+    createWatchlist(formData, {
+      onSuccess: (data) => {
+        navigate(`/watchlist-page/${data?.id}`)
+      },
+    })
   }
 
   return (
