@@ -7,6 +7,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore"
+import { nanoid } from "nanoid"
 import { db } from "../firebase-config"
 import { ManageWatchlistData, Watchlist } from "./types"
 
@@ -38,14 +39,17 @@ export const createWatchlist = async (
   userId: string,
   { name, description }: ManageWatchlistData
 ) => {
-  const watchlistId = name.toLowerCase().replace(/ /g, "-")
-  return setDoc(watchlistRef(userId, watchlistId), {
+  const watchlistId = nanoid()
+  const newWatchlist = {
     name,
     description,
     createdAt: new Date(),
     id: watchlistId,
     movies: [],
-  })
+  }
+  return setDoc(watchlistRef(userId, watchlistId), newWatchlist).then(
+    () => newWatchlist
+  )
 }
 
 export const editWatchlist = async (
