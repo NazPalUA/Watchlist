@@ -6,7 +6,7 @@ import HomePage from "../pages/HomePage/HomePage"
 import LogInPage from "../pages/LogInPage/LogInPage"
 import MoviePage from "../pages/MoviePage/MoviePage"
 import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
-import SignUpWithEmailPage from "../pages/SignUpWithEmailPage/SignUpWithEmailPage"
+import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
 import Layout from "./Layout/Layout"
@@ -22,10 +22,7 @@ export default function AppRoutes() {
 
         <Route path="login" element={<LogInPage className="app__page" />} />
 
-        <Route
-          path="signup"
-          element={<SignUpWithEmailPage className="app__page" />}
-        />
+        <Route path="signup" element={<SignUpPage className="app__page" />} />
 
         <Route
           path="search"

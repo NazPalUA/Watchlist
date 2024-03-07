@@ -6,7 +6,7 @@ import * as yup from "yup"
 import InputGroup from "../../../../../components/InputGroup/InputGroup"
 import { signUpWithEmail } from "../../../../../services/firebase/firebase-auth"
 import { db } from "../../../../../services/firebase/firebase-config"
-import { UserDataType } from "../../../SignUpWithEmailPage"
+import { UserDataType } from "../../../SignUpPage"
 import style from "./SignUpWithEmailForm.module.scss"
 
 type SignUpWithEmailFormProps = {}

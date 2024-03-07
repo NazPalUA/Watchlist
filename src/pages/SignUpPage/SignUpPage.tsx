@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
-import style from "./SignUpWithEmailPage.module.scss"
+import GoogleSignIn from "../LogInPage/SubComponents/GoogleSignIn/GoogleSignIn"
+import style from "./SignUpPage.module.scss"
 import SignUpWithEmailForm from "./SubComponents/SignUpWithEmailForm/SignUpWithEmailForm/SignUpWithEmailForm"
 
-type SignUpWithEmailPageProps = { className?: string }
+type SignUpPageProps = { className?: string }
 
 export type UserDataType = {
   name: string
@@ -10,9 +11,7 @@ export type UserDataType = {
   password: string
 }
 
-export default function SignUpWithEmailPage({
-  className,
-}: SignUpWithEmailPageProps) {
+export default function SignUpPage({ className }: SignUpPageProps) {
   return (
     <div className={`${className} ${style.profile}`}>
       <h4 className={`${style.title}`}>
@@ -20,11 +19,13 @@ export default function SignUpWithEmailPage({
       </h4>
       <SignUpWithEmailForm />
       <p className={style.linkWrapper}>
-        <span>or </span>
+        <span>Already have an account?</span>
         <Link className={style.link} to="/login">
-          Log in an account
+          Log in
         </Link>
       </p>
+      <p style={{ textAlign: "center" }}>or</p>
+      <GoogleSignIn />
     </div>
   )
 }
