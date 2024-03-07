@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth"
-import { app } from "./firebase-config"
+import { app } from "../firebase-config"
 
 type SignUpData = {
   name: string

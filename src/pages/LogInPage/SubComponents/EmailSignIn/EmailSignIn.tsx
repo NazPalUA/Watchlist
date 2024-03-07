@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { signInWithEmail } from "../../../../services/firebase/firebase-auth"
+import { signInWithEmail } from "../../../../services/firebase/auth/firebase-auth"
 import style from "./EmailSignIn.module.scss"
 
 type EmailSignInProps = {}

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect } from "react"
-import { auth } from "../firebase-auth"
+import { auth } from "../auth/firebase-auth"
 import { getWatchlistData, getWatchlistsData } from "./endPoints"
 
 export const useGetWatchlistsDataQuery = () => {
