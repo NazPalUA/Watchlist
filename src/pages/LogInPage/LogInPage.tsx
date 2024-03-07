@@ -14,15 +14,15 @@ export default function LogInPage({ className }: LogInPageProps) {
         Please log in or create an account to use the features of this app
       </h4>
 
-      <GoogleSignIn />
       <EmailSignIn />
-
       <p className={style.linkWrapper}>
-        <span>or </span>
+        <span>Don't have an account? </span>
         <Link className={style.link} to="/signup">
-          Create an account
+          Sign up
         </Link>
       </p>
+      <p style={{ textAlign: "center" }}>or</p>
+      <GoogleSignIn />
     </div>
   )
 }
