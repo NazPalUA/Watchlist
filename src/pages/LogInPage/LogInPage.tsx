@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
+import AuthWithSocialMedia from "../../components/AuthWithSocialMedia/AuthWithSocialMedia"
 import style from "./LogInPage.module.scss"
 import EmailSignIn from "./SubComponents/EmailSignIn/EmailSignIn"
-import GoogleSignIn from "./SubComponents/GoogleSignIn/GoogleSignIn"
 
 type LogInPageProps = { className?: string }
 
@@ -22,7 +22,9 @@ export default function LogInPage({ className }: LogInPageProps) {
         </Link>
       </p>
       <p style={{ textAlign: "center" }}>or</p>
-      <GoogleSignIn />
+      <AuthWithSocialMedia provider="google" />
+      <AuthWithSocialMedia provider="facebook" />
+      <AuthWithSocialMedia provider="github" />
     </div>
   )
 }
