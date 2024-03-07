@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import GoogleSignIn from "../LogInPage/SubComponents/GoogleSignIn/GoogleSignIn"
+import AuthWithSocialMedia from "../../components/AuthWithSocialMedia/AuthWithSocialMedia"
 import style from "./SignUpPage.module.scss"
 import SignUpWithEmailForm from "./SubComponents/SignUpWithEmailForm/SignUpWithEmailForm/SignUpWithEmailForm"
 
@@ -25,7 +25,9 @@ export default function SignUpPage({ className }: SignUpPageProps) {
         </Link>
       </p>
       <p style={{ textAlign: "center" }}>or</p>
-      <GoogleSignIn />
+      <AuthWithSocialMedia provider="google" />
+      <AuthWithSocialMedia provider="facebook" />
+      <AuthWithSocialMedia provider="github" />
     </div>
   )
 }
