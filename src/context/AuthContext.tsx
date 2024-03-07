@@ -42,13 +42,6 @@ export const AuthProvider: FC<AuthContextProviderProps> = ({ children }) => {
         setCurrentUser(user)
         setStoredValue(user)
         console.log("Logged in as: ", user.email)
-      } else {
-        setCurrentUser(null)
-        setStoredValue(null)
-        // clear cache
-        queryClient.clear()
-
-        console.log("Logged out")
       }
       setLoading(false)
     })
@@ -64,6 +57,8 @@ export const AuthProvider: FC<AuthContextProviderProps> = ({ children }) => {
     } finally {
       setCurrentUser(null)
       setStoredValue(null)
+      queryClient.clear()
+      console.log("Logged out")
     }
   }
 
