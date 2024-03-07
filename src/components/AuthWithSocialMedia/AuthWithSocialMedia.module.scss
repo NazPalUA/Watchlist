@@ -1,8 +1,6 @@
 @use "../../../src/variables.scss" as v;
 
-.googleButton,
-.facebookButton,
-.githubButton {
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
