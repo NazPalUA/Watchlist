@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth"
 import { app } from "../firebase-config"
+import { SocialMediaProvider } from "./types"
 
 type SignUpData = {
   name: string
@@ -24,22 +25,21 @@ export async function signInWithEmail(email: string, password: string) {
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
-export async function signInWithGoogle() {
-  return await signInWithPopup(auth, googleAuthProvider)
-}
-
-export async function signInWithFacebook() {
-  return await signInWithPopup(auth, facebookAuthProvider)
-}
-
-export async function signInWithGithub() {
-  return await signInWithPopup(auth, githubAuthProvider)
-}
-
 export async function signUpWithEmail({ email, password }: SignUpData) {
   return await createUserWithEmailAndPassword(auth, email, password)
 }
 
 export async function signOut() {
   return await auth.signOut()
+}
+
+export function signInWithProvider(provider: SocialMediaProvider) {
+  switch (provider) {
+    case "google":
+      return signInWithPopup(auth, googleAuthProvider)
+    case "facebook":
+      return signInWithPopup(auth, facebookAuthProvider)
+    case "github":
+      return signInWithPopup(auth, githubAuthProvider)
+  }
 }
