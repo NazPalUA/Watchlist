@@ -1,5 +1,6 @@
 import {
   FacebookAuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -17,6 +18,7 @@ type SignUpData = {
 export const auth = getAuth(app)
 export const googleAuthProvider = new GoogleAuthProvider()
 export const facebookAuthProvider = new FacebookAuthProvider()
+export const githubAuthProvider = new GithubAuthProvider()
 
 export async function signInWithEmail(email: string, password: string) {
   return await signInWithEmailAndPassword(auth, email, password)
@@ -28,6 +30,10 @@ export async function signInWithGoogle() {
 
 export async function signInWithFacebook() {
   return await signInWithPopup(auth, facebookAuthProvider)
+}
+
+export async function signInWithGithub() {
+  return await signInWithPopup(auth, githubAuthProvider)
 }
 
 export async function signUpWithEmail({ email, password }: SignUpData) {
