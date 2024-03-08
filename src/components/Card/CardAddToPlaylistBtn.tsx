@@ -1,3 +1,4 @@
+import { useAuth } from "../../context/AuthContext"
 import { useModalContext } from "../../context/ModalContext"
 
 export type CardAddToPlaylistBtnProps =
@@ -10,6 +11,9 @@ export default function CardAddToPlaylistBtn({
   movieId,
   ...rest
 }: CardAddToPlaylistBtnProps) {
+  const { currentUser } = useAuth()
+  if (!currentUser) return null
+
   const { setIsModalActive, setMovieId } = useModalContext()
 
   return (
