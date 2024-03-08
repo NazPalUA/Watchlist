@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react"
-import { createPortal } from "react-dom"
+import PopUp from "../PopUp/PopUp"
 import styles from "./ErrorMessage.module.scss"
 
 type ErrorMessageProps = {
@@ -14,33 +14,23 @@ export default function ErrorMessage({
   isPopup = false,
 }: ErrorMessageProps) {
   const [showError, setShowError] = useState(true)
-  const mountElement = document.getElementById("overlays")
 
-  function hidePopup() {
-    setShowError(false)
-  }
-
-  function Error() {
-    return (
-      <div className={styles.error}>
-        <p className={styles.customMessage}>{children}</p>
-        {error && <p className={styles.apiMessage}>{error?.message}.</p>}
-      </div>
-    )
-  }
+  const Error = () => (
+    <div className={styles.error}>
+      <p className={styles.customMessage}>{children}</p>
+      {error && <p className={styles.apiMessage}>{error?.message}.</p>}
+    </div>
+  )
 
   if (!showError) return null
 
   return isPopup ? (
-    createPortal(
-      <div className={`${styles.container} ${showError ? styles.active : ""}`}>
-        <div className={`${styles.modal} ${showError ? styles.active : ""}`}>
-          <Error />
-          <button onClick={() => hidePopup()}>ok</button>
-        </div>
-      </div>,
-      mountElement!
-    )
+    <PopUp isShowing={showError}>
+      <Error />
+      <button className={styles.closeBtn} onClick={() => setShowError(false)}>
+        ok
+      </button>
+    </PopUp>
   ) : (
     <Error />
   )
