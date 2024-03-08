@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import AddToWatchlistModal from "./components/AddToWatchlistModal/AddToWatchlistModal"
 import AppRoutes from "./components/AppRoutes"
+import { useAuth } from "./context/AuthContext"
 
 function App() {
   // Handle the link click to scroll to top
@@ -15,9 +16,11 @@ function App() {
     handleLinkClick()
   }, [pathname, handleLinkClick])
 
+  const { currentUser } = useAuth()
+
   return (
     <>
-      <AddToWatchlistModal />
+      {currentUser && <AddToWatchlistModal />}
       <AppRoutes />
     </>
   )
