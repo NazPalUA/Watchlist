@@ -3,6 +3,7 @@ import { useHistoryContext } from "../../context/HistoryContext"
 import { useModalContext } from "../../context/ModalContext"
 import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestore/mutations"
 import { useGetWatchlistsDataQuery } from "../../services/firebase/firestore/queries"
+import PopUp from "../PopUp/PopUp"
 import styles from "./AddToWatchlistModal.module.scss"
 import CustomSelect from "./SubComponents/CustomSelect/CustomSelect"
 
@@ -55,36 +56,29 @@ export default function AddToWatchlistModal() {
   }
 
   return (
-    <div
-      className={`${styles.container} ${isModalActive ? styles.active : ""}`}
-      onClick={() => setIsModalActive(false)}
+    <PopUp
+      isShowing={isModalActive}
+      closeOnEmptyClick={true}
+      setIsShowing={setIsModalActive}
     >
-      <div
-        className={`${styles.modal} ${isModalActive ? styles.active : ""}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <p className={styles.header}>Select Watchlist</p>
-        <CustomSelect
-          value={selectedOption}
-          options={optionsArr}
-          onChange={handleChange}
-        />
-        <div className={styles.btnContainer}>
-          <button
-            className={styles.btn}
-            onClick={() => setIsModalActive(false)}
-          >
-            Cancel
-          </button>
-          <button
-            className={styles.btn}
-            onClick={() => handleSave()}
-            disabled={!selectedOption}
-          >
-            Save
-          </button>
-        </div>
+      <p className={styles.header}>Select Watchlist</p>
+      <CustomSelect
+        value={selectedOption}
+        options={optionsArr}
+        onChange={handleChange}
+      />
+      <div className={styles.btnContainer}>
+        <button className={styles.btn} onClick={() => setIsModalActive(false)}>
+          Cancel
+        </button>
+        <button
+          className={styles.btn}
+          onClick={() => handleSave()}
+          disabled={!selectedOption}
+        >
+          Save
+        </button>
       </div>
-    </div>
+    </PopUp>
   )
 }
