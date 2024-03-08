@@ -1,10 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { signInWithEmail } from "../../../../services/firebase/auth/firebase-auth"
-import style from "./EmailSignIn.module.scss"
+import AuthWithEmailButton from "../../UI/AuthWithEmailButton/AuthWithEmailButton"
+import style from "./EmailLogIn.module.scss"
 
-type EmailSignInProps = {}
+type EmailLogInProps = {}
 
-export default function EmailSignIn({}: EmailSignInProps) {
+export default function EmailLogIn({}: EmailLogInProps) {
   let navigate = useNavigate()
   let location = useLocation()
 
@@ -47,9 +48,7 @@ export default function EmailSignIn({}: EmailSignInProps) {
         />
       </div>
 
-      <button className={style.submitBtn} type="submit">
-        Log In
-      </button>
+      <AuthWithEmailButton type="submit">Log In</AuthWithEmailButton>
     </form>
   )
 }

@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom"
-import AuthWithSocialMedia from "../../components/AuthWithSocialMedia/AuthWithSocialMedia"
+import UserAuth from "../../components/UserAuth"
 import style from "./SignUpPage.module.scss"
-import SignUpWithEmailForm from "./SubComponents/SignUpWithEmailForm/SignUpWithEmailForm/SignUpWithEmailForm"
 
 type SignUpPageProps = { className?: string }
 
@@ -17,17 +15,7 @@ export default function SignUpPage({ className }: SignUpPageProps) {
       <h4 className={`${style.title}`}>
         Create an account to use the features of this app
       </h4>
-      <SignUpWithEmailForm />
-      <p className={style.linkWrapper}>
-        <span>Already have an account?</span>
-        <Link className={style.link} to="/login">
-          Log in
-        </Link>
-      </p>
-      <p style={{ textAlign: "center" }}>or</p>
-      <AuthWithSocialMedia provider="google" />
-      <AuthWithSocialMedia provider="facebook" />
-      <AuthWithSocialMedia provider="github" />
+      <UserAuth type="signup" />
     </div>
   )
 }

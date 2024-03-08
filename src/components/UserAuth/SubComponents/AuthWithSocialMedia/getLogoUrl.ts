@@ -1,4 +1,4 @@
-import { SocialMediaProvider } from "../../../services/firebase/auth/types"
+import { SocialMediaProvider } from "../../../../services/firebase/auth/types"
 
 export default function getLogoUrl(provider: SocialMediaProvider) {
   switch (provider) {

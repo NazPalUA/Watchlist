@@ -3,13 +3,14 @@ import { doc, setDoc } from "firebase/firestore"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useLocation, useNavigate } from "react-router-dom"
 import * as yup from "yup"
-import InputGroup from "../../../../../components/InputGroup/InputGroup"
-import { signUpWithEmail } from "../../../../../services/firebase/auth/firebase-auth"
-import { db } from "../../../../../services/firebase/firebase-config"
-import { UserDataType } from "../../../SignUpPage"
-import style from "./SignUpWithEmailForm.module.scss"
+import { UserDataType } from "../../../../pages/SignUpPage/SignUpPage"
+import { signUpWithEmail } from "../../../../services/firebase/auth/firebase-auth"
+import { db } from "../../../../services/firebase/firebase-config"
+import AuthWithEmailButton from "../../UI/AuthWithEmailButton/AuthWithEmailButton"
+import InputGroup from "../InputGroup/InputGroup"
+import style from "./EmailSignUp.module.scss"
 
-type SignUpWithEmailFormProps = {}
+type EmailSignUpProps = {}
 
 export type InputsType = UserDataType & {
   confirmPassword: string
@@ -27,7 +28,7 @@ const schema = yup
   })
   .required()
 
-export default function SignUpWithEmailForm({}: SignUpWithEmailFormProps) {
+export default function EmailSignUp({}: EmailSignUpProps) {
   const {
     register,
     handleSubmit,
@@ -85,9 +86,7 @@ export default function SignUpWithEmailForm({}: SignUpWithEmailFormProps) {
         error={errors.confirmPassword}
       />
 
-      <button className={style.submitBtn} type="submit">
-        Submit
-      </button>
+      <AuthWithEmailButton type="submit">Submit</AuthWithEmailButton>
     </form>
   )
 }

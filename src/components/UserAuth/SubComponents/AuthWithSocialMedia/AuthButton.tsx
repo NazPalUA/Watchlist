@@ -1,16 +1,14 @@
-import { useAuthWithSocialMediaMutation } from "../../services/firebase/auth/mutations"
-import { SocialMediaProvider } from "../../services/firebase/auth/types"
-import ErrorMessage from "../ErrorMessage/ErrorMessage"
-import style from "./AuthWithSocialMedia.module.scss"
-import getLogoUrl from "./utils/getLogoUrl"
+import { useAuthWithSocialMediaMutation } from "../../../../services/firebase/auth/mutations"
+import { SocialMediaProvider } from "../../../../services/firebase/auth/types"
+import ErrorMessage from "../../../ErrorMessage/ErrorMessage"
+import style from "./AuthButton.module.scss"
+import getLogoUrl from "./getLogoUrl"
 
-type AuthWithSocialMediaProps = {
+type AuthButtonProps = {
   provider: SocialMediaProvider
 }
 
-export default function AuthWithSocialMedia({
-  provider,
-}: AuthWithSocialMediaProps) {
+export default function AuthButton({ provider }: AuthButtonProps) {
   const {
     mutate: authWithSocialMedia,
     isError,
