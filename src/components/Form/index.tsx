@@ -3,14 +3,17 @@ import Form, { FormProps } from "./Form"
 import SubmitButton, { SubmitButtonProps } from "./SubmitButton"
 
 // Define the type for the compound component
-type CompoundForm = React.FC<FormProps> & {
+type CompoundForm<T> = React.FC<FormProps<T>> & {
   Field: React.FC<FieldProps>
   SubmitButton: React.FC<SubmitButtonProps>
 }
 
-// Extend the Menu component with the sub-components
-const ExtendedForm = Form as CompoundForm
-ExtendedForm.Field = Field
-ExtendedForm.SubmitButton = SubmitButton
+// Extend the Form component with the sub-components
+const ExtendedForm = <T,>() => {
+  const FormComponent = Form as CompoundForm<T>
+  FormComponent.Field = Field
+  FormComponent.SubmitButton = SubmitButton
+  return FormComponent
+}
 
 export default ExtendedForm
