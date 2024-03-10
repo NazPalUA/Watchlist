@@ -1,0 +1,15 @@
+@use "../../../../variables.scss" as v;
+
+.input {
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 5px;
+  background-color: inherit;
+  font-size: var(--fs-big);
+
+  // Placeholder styles
+  &::placeholder {
+    font-size: var(--fs-small);
+  }
+}

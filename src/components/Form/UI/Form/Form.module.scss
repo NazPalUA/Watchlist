@@ -1,0 +1,7 @@
+@use "../../../../variables.scss" as v;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  color: v.$clr-font-light;
+}

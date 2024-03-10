@@ -1,0 +1,15 @@
+@use "../../../../variables.scss" as v;
+
+.textarea {
+  width: 100%;
+  padding: 0.5em 1em;
+  margin-bottom: 1.5em;
+  border-radius: 6px;
+  border: 1px solid v.$clr-font-light;
+  background-color: unset;
+
+  font-size: var(--fs-extra-big);
+
+  height: 7em;
+  resize: none;
+}
