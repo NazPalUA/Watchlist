@@ -1,5 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { FieldValues, FormProvider, useForm } from "react-hook-form"
+import {
+  DefaultValues,
+  FieldValues,
+  FormProvider,
+  useForm,
+} from "react-hook-form"
 import { ZodType } from "zod"
 import { Form as FormUI } from "./UI/Form/Form"
 
@@ -8,6 +13,7 @@ export type FormProps<T> = {
   schema: ZodType<T>
   onSubmit: (data: T) => Promise<void> | void
   style?: React.CSSProperties
+  defaultValues?: DefaultValues<T>
 }
 
 export function Form<T extends FieldValues>({
@@ -15,9 +21,11 @@ export function Form<T extends FieldValues>({
   schema,
   onSubmit,
   style,
+  defaultValues,
 }: FormProps<T>) {
   const methods = useForm<T>({
     resolver: zodResolver(schema),
+    defaultValues: defaultValues,
   })
 
   const { handleSubmit, reset } = methods
