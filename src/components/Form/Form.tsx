@@ -7,12 +7,14 @@ export type FormProps<T> = {
   children: React.ReactNode
   schema: ZodType<T>
   onSubmit: (data: T) => Promise<void> | void
+  style?: React.CSSProperties
 }
 
 export function Form<T extends FieldValues>({
   children,
   schema,
   onSubmit,
+  style,
 }: FormProps<T>) {
   const methods = useForm<T>({
     resolver: zodResolver(schema),
@@ -27,7 +29,9 @@ export function Form<T extends FieldValues>({
 
   return (
     <FormProvider {...methods}>
-      <FormUI onSubmit={handleSubmit(onSubmitForm)}>{children}</FormUI>
+      <FormUI onSubmit={handleSubmit(onSubmitForm)} style={style}>
+        {children}
+      </FormUI>
     </FormProvider>
   )
 }
