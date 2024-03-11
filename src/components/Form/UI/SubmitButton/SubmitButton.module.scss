@@ -1,6 +1,5 @@
 @use "../../../../variables.scss" as v;
 .btn {
-  width: 100%;
   padding: 0.8em 3em;
   margin: 0;
   border: none;
@@ -10,8 +9,4 @@
   font-weight: v.$fw-bold;
   color: v.$clr-font-black;
   background-color: v.$clr-accent;
-
-  @media (min-width: v.$bp-mobile) {
-    width: unset;
-  }
 }
