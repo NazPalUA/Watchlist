@@ -1,32 +1,5 @@
 @use "../../../../variables.scss" as v;
 
-.form > * {
-  display: block;
-}
-
-.label {
-  font-size: var(--fs-big);
-  font-weight: v.$fw-bold;
-  margin-bottom: 0.3em;
-}
-
-.title,
-.description {
-  font-size: var(--fs-extra-big);
-
-  width: 100%;
-  padding: 0.5em 1em;
-  border: 1px solid v.$clr-font-light;
-  border-radius: 6px;
-  margin-bottom: 1.5em;
-  background-color: unset;
-}
-
-.description {
-  resize: none;
-  height: 7em;
-}
-
 .btnsContainer {
   display: flex;
   gap: 1em;
@@ -42,12 +15,12 @@
   font-size: var(--fs-big);
   font-weight: v.$fw-bold;
   color: v.$clr-font-black;
-
-  width: 48%;
-  padding: 1em 2em;
+  padding: 0.8em 3em;
   background: v.$clr-accent;
   border: none;
   border-radius: 6px;
+  margin: 0;
+  cursor: pointer;
 
   @media (min-width: v.$bp-mobile) {
     width: unset;

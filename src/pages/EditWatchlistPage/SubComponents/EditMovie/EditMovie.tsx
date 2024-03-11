@@ -1,13 +1,23 @@
 import posterNotFound from "../../../../assets/images/poster_not_found.png"
+import { useRemoveMovieFromWatchlistMutation } from "../../../../services/firebase/firestore/mutations"
 import { Movie, MovieDetails } from "../../../../services/tmdb"
 import styles from "./EditMovie.module.scss"
 
 type EditMovieProps = {
   movie: Movie | MovieDetails
-  delateMovieId: (e: React.MouseEvent, movieId: string) => void
+  watchlistId: string
 }
 
-export default function EditMovie({ movie, delateMovieId }: EditMovieProps) {
+export default function EditMovie({ movie, watchlistId }: EditMovieProps) {
+  const { mutate: deleteMovieFromWatchlist } =
+    useRemoveMovieFromWatchlistMutation(watchlistId, movie.id.toString())
+
+  function delateMovie(event: React.MouseEvent) {
+    event.preventDefault()
+    deleteMovieFromWatchlist()
+    console.log("Delete movie: ", movie.title)
+  }
+
   return (
     <li className={styles.item} key={movie.id}>
       <img
@@ -25,10 +35,7 @@ export default function EditMovie({ movie, delateMovieId }: EditMovieProps) {
           ({movie.release_date.toString().slice(0, 4)})
         </span>
       </p>
-      <button
-        className={styles.removeBtn}
-        onClick={(e) => delateMovieId(e, movie.id.toString())}
-      >
+      <button className={styles.removeBtn} onClick={(e) => delateMovie(e)}>
         Remove
       </button>
     </li>
