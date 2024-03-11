@@ -27,9 +27,13 @@ export default function EditUserForm({}: EditUserFormProps) {
 
   const Form = getForm<TUserSchema>()
   return (
-    <Form onSubmit={handleSubmit} schema={userSchema}>
+    <Form
+      onSubmit={handleSubmit}
+      schema={userSchema}
+      defaultValues={{ name: user?.name || undefined }}
+    >
       <Form.Field name="name">Name</Form.Field>
-      <Form.SubmitButton>Log In</Form.SubmitButton>
+      <Form.SubmitButton>Save</Form.SubmitButton>
     </Form>
   )
 }
