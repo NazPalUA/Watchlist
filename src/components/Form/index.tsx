@@ -1,6 +1,6 @@
-import Field, { FieldProps } from "./Field"
-import Form, { FormProps } from "./Form"
-import SubmitButton, { SubmitButtonProps } from "./SubmitButton"
+import { Field, FieldProps } from "./Field"
+import { Form, FormProps } from "./Form"
+import { SubmitButton, SubmitButtonProps } from "./SubmitButton"
 
 // Define the type for the compound component
 type CompoundForm<T> = React.FC<FormProps<T>> & {
@@ -9,11 +9,11 @@ type CompoundForm<T> = React.FC<FormProps<T>> & {
 }
 
 // Extend the Form component with the sub-components
-const ExtendedForm = <T,>() => {
+const getForm = <T,>() => {
   const FormComponent = Form as CompoundForm<T>
   FormComponent.Field = Field
   FormComponent.SubmitButton = SubmitButton
   return FormComponent
 }
 
-export default ExtendedForm
+export { getForm }

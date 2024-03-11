@@ -11,13 +11,11 @@ export type FieldProps = {
   children: React.ReactNode
 }
 
-export default function Field({ type = "text", children, name }: FieldProps) {
+export function Field({ type = "text", children, name }: FieldProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext()
-
-  console.log(errors)
 
   return (
     <FieldUI>
@@ -28,7 +26,12 @@ export default function Field({ type = "text", children, name }: FieldProps) {
         <Input type={type} {...register(name)} />
       )}
       {errors[name] && (
-        <ErrorMessage>{errors[name]?.message?.toString()}</ErrorMessage>
+        <ErrorMessage
+          customMessageStyle={{ margin: 0, marginTop: "0.2rem" }}
+          wrapperStyle={{ margin: 0 }}
+        >
+          {errors[name]?.message?.toString()}
+        </ErrorMessage>
       )}
     </FieldUI>
   )

@@ -3,7 +3,7 @@ import { SubmitButton as SubmitButtonUI } from "./UI/SubmitButton/SubmitButton"
 
 export type SubmitButtonProps = { children: React.ReactNode }
 
-export default function SubmitButton({ children }: SubmitButtonProps) {
+export function SubmitButton({ children }: SubmitButtonProps) {
   const {
     formState: { isSubmitting },
   } = useFormContext()

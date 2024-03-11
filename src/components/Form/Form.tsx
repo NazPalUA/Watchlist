@@ -9,7 +9,7 @@ export type FormProps<T> = {
   onSubmit: (data: T) => Promise<void> | void
 }
 
-export default function Form<T extends FieldValues>({
+export function Form<T extends FieldValues>({
   children,
   schema,
   onSubmit,
