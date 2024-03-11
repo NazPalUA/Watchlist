@@ -32,6 +32,7 @@ export default function EditWatchlistForm({
       onSubmit={handleSubmit}
       schema={watchlistSchema}
       style={{ maxWidth: "unset" }}
+      defaultValues={watchlistData || undefined}
     >
       <Form.Field name="name">Name</Form.Field>
       <Form.Field name="description" type="textarea">
