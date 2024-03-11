@@ -1,6 +1,6 @@
 import AuthWithSocialMedia from "./SubComponents/AuthWithSocialMedia/AuthWithSocialMedia"
-import EmailLogIn from "./SubComponents/EmailLogIn/EmailLogIn"
-import EmailSignUp from "./SubComponents/EmailSignUp/EmailSignUp"
+import EmailLogIn from "./SubComponents/EmailLogIn"
+import EmailSignUp from "./SubComponents/EmailSignUp"
 import RedirectLink from "./SubComponents/RedirectLink/RedirectLink"
 import style from "./UserAuth.module.scss"
 
