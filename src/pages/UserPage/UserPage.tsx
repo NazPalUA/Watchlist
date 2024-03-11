@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
-import EditUserForm from "./SubComponents/EditUserForm/EditUserForm"
+import EditUserForm from "./SubComponents/EditUserForm"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
