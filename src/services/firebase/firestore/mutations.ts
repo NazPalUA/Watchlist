@@ -35,6 +35,9 @@ export const useEditWatchlistMutation = (watchlistId: string) => {
       queryClient.invalidateQueries({
         queryKey: ["watchlists", watchlistId],
       })
+      queryClient.invalidateQueries({
+        queryKey: ["watchlists"],
+      })
     },
   })
 }
