@@ -30,8 +30,12 @@ export default function WatchlistDetails({
           />
         </Link>
       </div>
-      <h5 className="watchlist-page__about-title">About this watchlist</h5>
-      <p className="watchlist-page__about">{description}</p>
+      {description !== "" && (
+        <>
+          <h5 className="watchlist-page__about-title">About this watchlist</h5>
+          <p className="watchlist-page__about">{description}</p>
+        </>
+      )}
       <ul className="watchlist-page__boxes-container">
         <li className="watchlist-page__box">
           <strong className="watchlist-page__box-name">ITEMS ON LIST</strong>
