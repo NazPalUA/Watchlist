@@ -18,6 +18,9 @@ type SignUpData = {
 
 export const auth = getAuth(app)
 export const googleAuthProvider = new GoogleAuthProvider()
+googleAuthProvider.setCustomParameters({
+  prompt: "select_account",
+})
 export const facebookAuthProvider = new FacebookAuthProvider()
 export const githubAuthProvider = new GithubAuthProvider()
 
