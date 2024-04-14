@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useAuth } from "../../../context/AuthContext"
+import { useGetUserQuery } from "../auth/queries"
 import {
   addMovieToWatchlist,
   createWatchlist,
@@ -10,7 +10,7 @@ import {
 import { ManageWatchlistData } from "./types"
 
 export const useCreateWatchlistMutation = () => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
@@ -25,7 +25,7 @@ export const useCreateWatchlistMutation = () => {
 }
 
 export const useEditWatchlistMutation = (watchlistId: string) => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
@@ -43,7 +43,7 @@ export const useEditWatchlistMutation = (watchlistId: string) => {
 }
 
 export const useDeleteWatchlistMutation = () => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
@@ -58,7 +58,7 @@ export const useDeleteWatchlistMutation = () => {
 }
 
 export const useAddMovieToWatchlistMutation = (watchlistId: string) => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
@@ -76,7 +76,7 @@ export const useRemoveMovieFromWatchlistMutation = (
   watchlistId: string,
   movieId: string
 ) => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({
@@ -91,7 +91,7 @@ export const useRemoveMovieFromWatchlistMutation = (
 }
 
 export const useRemoveMoviesFromWatchlistMutation = (watchlistId: string) => {
-  const { currentUser } = useAuth()
+  const { data: currentUser } = useGetUserQuery()
   const queryClient = useQueryClient()
   if (!currentUser) throw new Error("User is not signed in")
   return useMutation({

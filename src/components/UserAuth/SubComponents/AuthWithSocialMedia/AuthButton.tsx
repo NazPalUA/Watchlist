@@ -1,4 +1,4 @@
-import { useAuthWithSocialMediaMutation } from "../../../../services/firebase/auth/mutations"
+import { useSignInWithProviderMutation } from "../../../../services/firebase/auth/mutations"
 import { SocialMediaProvider } from "../../../../services/firebase/auth/types"
 import ErrorMessage from "../../../ErrorMessage/ErrorMessage"
 import style from "./AuthButton.module.scss"
@@ -13,7 +13,7 @@ export default function AuthButton({ provider }: AuthButtonProps) {
     mutate: authWithSocialMedia,
     isError,
     error,
-  } = useAuthWithSocialMediaMutation(provider)
+  } = useSignInWithProviderMutation()
 
   const buttonText = `Continue with ${
     provider.charAt(0).toUpperCase() + provider.slice(1)
@@ -23,7 +23,10 @@ export default function AuthButton({ provider }: AuthButtonProps) {
 
   return (
     <>
-      <button className={style.button} onClick={() => authWithSocialMedia()}>
+      <button
+        className={style.button}
+        onClick={() => authWithSocialMedia(provider)}
+      >
         <img src={logoUrl} alt={`${provider} logo`} />
         <span>{buttonText}</span>
       </button>

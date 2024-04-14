@@ -1,23 +1,17 @@
-import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+import { useLogoutMutation } from "../../services/firebase/auth/mutations"
 import EditUserForm from "./SubComponents/EditUserForm"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
 
 export default function UserPage({ className }: UserPageProps) {
-  let navigate = useNavigate()
-  const { logout } = useAuth()
-
-  function handleLogOut() {
-    logout().then(() => navigate("/"))
-  }
+  const { mutate: logout } = useLogoutMutation()
 
   return (
     <div className={`${className} ${style.profile}`}>
       <div className={style.topContainer}>
         <h4 className={style.title}>Edit profile</h4>
-        <button className={style.outBtn} onClick={() => handleLogOut()}>
+        <button className={style.outBtn} onClick={() => logout()}>
           Log out
         </button>
       </div>

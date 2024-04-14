@@ -1,20 +1,15 @@
-import { useLocation, useNavigate } from "react-router-dom"
-import { signInWithEmail } from "../../../services/firebase/auth/firebase-auth"
+import { useAuthWithEmailAndPasswordMutation } from "../../../services/firebase/auth/mutations"
 import { TLogInSchema, logInSchema } from "../../../types/form-login"
 import { getForm } from "../../Form"
 
 type EmailLogInProps = {}
 
 export default function EmailLogIn({}: EmailLogInProps) {
-  let navigate = useNavigate()
-  let location = useLocation()
-  let from = location.state?.from?.pathname || "/"
+  const { mutate: authenticate } = useAuthWithEmailAndPasswordMutation()
 
-  const handleSubmit = (data: TLogInSchema) => {
-    signInWithEmail(data.email, data.password).then(() => {
-      navigate(from, { replace: true })
-    })
-  }
+  const handleSubmit = (data: TLogInSchema) =>
+    authenticate({ email: data.email, password: data.password, type: "signIn" })
+
   const Form = getForm<TLogInSchema>()
   return (
     <Form onSubmit={handleSubmit} schema={logInSchema}>

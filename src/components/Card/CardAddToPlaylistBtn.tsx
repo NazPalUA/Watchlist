@@ -1,5 +1,5 @@
-import { useAuth } from "../../context/AuthContext"
 import { useModalContext } from "../../context/ModalContext"
+import { useGetUserQuery } from "../../services/firebase/auth/queries"
 
 export type CardAddToPlaylistBtnProps =
   React.ComponentPropsWithoutRef<"button"> & {
@@ -11,10 +11,9 @@ export default function CardAddToPlaylistBtn({
   movieId,
   ...rest
 }: CardAddToPlaylistBtnProps) {
-  const { currentUser } = useAuth()
-  if (!currentUser) return null
-
   const { setIsModalActive, setMovieId } = useModalContext()
+  const { data: currentUser } = useGetUserQuery()
+  if (!currentUser) return null
 
   return (
     <button

@@ -1,21 +1,50 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useNavigate } from "react-router-dom"
 import { useNavigateBack } from "../../../hooks/useNavigateBack"
-import { signInWithProvider } from "./firebase-auth"
-import { SocialMediaProvider } from "./types"
+import {
+  authWithEmailAndPassword,
+  signInWithProvider,
+  signOut,
+} from "./endPoints"
 
-export function useAuthWithSocialMediaMutation(provider: SocialMediaProvider) {
+export const useSignInWithProviderMutation = () => {
   const navigateBack = useNavigateBack()
-
-  async function signIn() {
-    return await signInWithProvider(provider)
-  }
-
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: () => signIn(),
+    mutationFn: signInWithProvider,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["auth"] })
+      queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      })
       navigateBack()
+    },
+  })
+}
+
+export const useAuthWithEmailAndPasswordMutation = () => {
+  const navigateBack = useNavigateBack()
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: authWithEmailAndPassword,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      })
+      navigateBack()
+    },
+  })
+}
+
+export const useLogoutMutation = () => {
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: signOut,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      })
+      navigate("/")
     },
   })
 }

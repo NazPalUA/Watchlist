@@ -1,6 +1,5 @@
 import { doc, setDoc } from "firebase/firestore"
-import { useLocation, useNavigate } from "react-router-dom"
-import { signUpWithEmail } from "../../../services/firebase/auth/firebase-auth"
+import { useAuthWithEmailAndPasswordMutation } from "../../../services/firebase/auth/mutations"
 import { db } from "../../../services/firebase/firebase-config"
 import { TSignUpSchema, signUpSchema } from "../../../types/form-signup"
 import { getForm } from "../../Form"
@@ -8,24 +7,24 @@ import { getForm } from "../../Form"
 type EmailSignUpProps = {}
 
 export default function EmailSignUp({}: EmailSignUpProps) {
-  let navigate = useNavigate()
-  let location = useLocation()
-  let from = location.state?.from?.pathname || "/"
+  const { mutate: authenticate } = useAuthWithEmailAndPasswordMutation()
 
   const handleSubmit = (data: TSignUpSchema) => {
     const { confirmPassword, ...userData } = data // remove confirmPassword from the data
-    signUpWithEmail(userData)
-      .then((credentials) => {
-        const docRef = doc(db, "users", credentials.user.uid)
-        setDoc(docRef, {
-          email: userData.email,
-          name: userData.name,
-          uid: credentials.user.uid,
-        })
-      })
-      .then(() => {
-        navigate(from, { replace: true })
-      })
+
+    authenticate(
+      { email: userData.email, password: userData.password, type: "signUp" },
+      {
+        onSuccess(data) {
+          const docRef = doc(db, "users", data.uid)
+          setDoc(docRef, {
+            email: userData.email,
+            name: userData.name,
+            uid: data.uid,
+          })
+        },
+      }
+    )
   }
 
   const Form = getForm<TSignUpSchema>()
