@@ -10,7 +10,7 @@ import {
   useState,
 } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { auth } from "../services/firebase/auth/firebase-auth"
+import { auth } from "../services/firebase/firebase-config"
 
 interface AuthContextProps {
   currentUser: firebase.User | null

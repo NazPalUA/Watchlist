@@ -2,8 +2,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { onAuthStateChanged } from "firebase/auth"
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import React, { FC, ReactNode, createContext, useEffect, useState } from "react"
-import { auth } from "../services/firebase/auth/firebase-auth"
-import { db } from "../services/firebase/firebase-config"
+
+import { auth, db } from "../services/firebase/firebase-config"
 
 type User = {
   uid: string

@@ -3,11 +3,10 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth"
-import { app } from "../firebase-config"
+import { auth } from "../firebase-config"
 import { SocialMediaProvider } from "./types"
 
 type SignUpData = {
@@ -16,7 +15,6 @@ type SignUpData = {
   password: string
 }
 
-export const auth = getAuth(app)
 export const googleAuthProvider = new GoogleAuthProvider()
 googleAuthProvider.setCustomParameters({
   prompt: "select_account",
