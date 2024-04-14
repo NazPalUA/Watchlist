@@ -1,9 +1,9 @@
 import { Navigate, useLocation } from "react-router-dom"
-import { useUser } from "../context/UserContext"
+import { useGetUserQuery } from "../services/firebase/auth/queries"
 
 export default function RequireAuth({ children }: { children: JSX.Element }) {
-  let location = useLocation()
-  let { user } = useUser()
+  const location = useLocation()
+  const { data: user } = useGetUserQuery()
 
   if (!user) {
     // Redirect them to the /login page, but save the current location they were

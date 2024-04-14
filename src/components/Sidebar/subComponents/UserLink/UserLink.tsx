@@ -1,7 +1,7 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { NavLink, NavLinkProps } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
-import { useUser } from "../../../../context/UserContext"
+import { useGetUserQuery } from "../../../../services/firebase/auth/queries"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
 
@@ -16,7 +16,7 @@ export default function UserLink({
 }: SidebarLinkProps) {
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
-  const { user } = useUser()
+  const { data: user } = useGetUserQuery()
 
   return (
     <NavLink
@@ -29,7 +29,7 @@ export default function UserLink({
       {...rest}
     >
       <img className={style.img} src={guestIcon} alt="guest icon" />
-      <p className={style.text}>{user?.name || "Guest"}</p>
+      <p className={style.text}>{user?.displayName || "Guest"}</p>
       <FiMoreHorizontal className={style.btnIcon} color="#e1e1e1" size={32} />
     </NavLink>
   )

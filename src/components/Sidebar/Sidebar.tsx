@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useUser } from "../../context/UserContext"
+import { useGetUserQuery } from "../../services/firebase/auth/queries"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
@@ -10,7 +10,7 @@ type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
-  const { user } = useUser()
+  const { data: user } = useGetUserQuery()
 
   return (
     <div className={`sidebar ${className}`}>
