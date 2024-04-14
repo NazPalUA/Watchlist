@@ -1,12 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigateBack } from "../../../hooks/useNavigateBack"
 import { signInWithProvider } from "./firebase-auth"
 import { SocialMediaProvider } from "./types"
 
 export function useAuthWithSocialMediaMutation(provider: SocialMediaProvider) {
-  let navigate = useNavigate()
-  let location = useLocation()
-  let from = location.state?.from?.pathname || "/"
+  const navigateBack = useNavigateBack()
 
   async function signIn() {
     return await signInWithProvider(provider)
@@ -17,7 +15,7 @@ export function useAuthWithSocialMediaMutation(provider: SocialMediaProvider) {
     mutationFn: () => signIn(),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["auth"] })
-      navigate(from, { replace: true })
+      navigateBack()
     },
   })
 }
