@@ -15,7 +15,6 @@ export default function EditMovie({ movie, watchlistId }: EditMovieProps) {
   function delateMovie(event: React.MouseEvent) {
     event.preventDefault()
     deleteMovieFromWatchlist()
-    console.log("Delete movie: ", movie.title)
   }
 
   return (

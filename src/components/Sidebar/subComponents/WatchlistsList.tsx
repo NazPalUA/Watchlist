@@ -6,7 +6,6 @@ export default function WatchlistsList() {
   const { data: watchlistsData, error, isError } = useGetWatchlistsDataQuery()
 
   if (isError) {
-    console.error("Error fetching watchlists data:", error)
     return (
       <ErrorMessage error={error}>
         Something went wrong! Please try again later.

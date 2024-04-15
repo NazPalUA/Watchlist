@@ -55,8 +55,6 @@ export const useUpdateDisplayNameMutation = () => {
   return useMutation({
     mutationFn: updateDisplayName,
     onSuccess: () => {
-      console.log("Display name updated")
-
       queryClient.invalidateQueries({
         queryKey: ["currentUser"],
       })
