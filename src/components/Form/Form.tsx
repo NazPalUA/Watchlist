@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useEffect } from "react"
 import {
   DefaultValues,
   FieldValues,
@@ -30,9 +31,12 @@ export function Form<T extends FieldValues>({
 
   const { handleSubmit, reset } = methods
 
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
+
   const onSubmitForm = async (data: T) => {
     await onSubmit(data)
-    reset()
   }
 
   return (
