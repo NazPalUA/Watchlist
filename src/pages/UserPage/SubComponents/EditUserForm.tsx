@@ -1,7 +1,6 @@
-import { doc, updateDoc } from "firebase/firestore"
 import { getForm } from "../../../components/Form"
+import { useUpdateDisplayNameMutation } from "../../../services/firebase/auth/mutations"
 import { useGetUserQuery } from "../../../services/firebase/auth/queries"
-import { db } from "../../../services/firebase/firebase-config"
 import { TUserSchema, userSchema } from "../../../types/form-user"
 
 type EditUserFormProps = {}
@@ -9,20 +8,11 @@ type EditUserFormProps = {}
 export default function EditUserForm({}: EditUserFormProps) {
   const { data: user } = useGetUserQuery()
 
+  const { mutate: updateUserName, isPending } = useUpdateDisplayNameMutation()
+
   // Handle form submission
   const handleSubmit = async (data: TUserSchema) => {
-    if (user?.uid) {
-      try {
-        const docRef = doc(db, "users", user.uid)
-        await updateDoc(docRef, {
-          name: data.name,
-        })
-      } catch (error) {
-        console.error("Error updating document: ", error)
-      }
-    } else {
-      console.error("No user found")
-    }
+    updateUserName(data.name)
   }
 
   const Form = getForm<TUserSchema>()
@@ -30,10 +20,12 @@ export default function EditUserForm({}: EditUserFormProps) {
     <Form
       onSubmit={handleSubmit}
       schema={userSchema}
-      defaultValues={{ name: user?.displayName || undefined }}
+      defaultValues={{
+        name: isPending ? undefined : user?.displayName || undefined,
+      }}
     >
       <Form.Field name="name">Name</Form.Field>
-      <Form.SubmitButton>Save</Form.SubmitButton>
+      <Form.SubmitButton isSubmitting={isPending}>Save</Form.SubmitButton>
     </Form>
   )
 }
