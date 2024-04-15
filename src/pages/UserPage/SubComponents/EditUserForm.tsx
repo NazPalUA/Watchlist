@@ -16,16 +16,17 @@ export default function EditUserForm({}: EditUserFormProps) {
   }
 
   const Form = getForm<TUserSchema>()
-  return (
-    <Form
-      onSubmit={handleSubmit}
-      schema={userSchema}
-      defaultValues={{
-        name: isPending ? undefined : user?.displayName || undefined,
-      }}
-    >
-      <Form.Field name="name">Name</Form.Field>
-      <Form.SubmitButton isSubmitting={isPending}>Save</Form.SubmitButton>
-    </Form>
-  )
+  if (user)
+    return (
+      <Form
+        onSubmit={handleSubmit}
+        schema={userSchema}
+        defaultValues={{
+          name: isPending || !user.displayName ? undefined : user.displayName,
+        }}
+      >
+        <Form.Field name="name">Name</Form.Field>
+        <Form.SubmitButton isSubmitting={isPending}>Save</Form.SubmitButton>
+      </Form>
+    )
 }
