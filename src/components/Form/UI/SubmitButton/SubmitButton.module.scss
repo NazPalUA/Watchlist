@@ -15,9 +15,14 @@
     padding: 0.6em 4em;
   }
 
+  &:hover {
+    opacity: 0.9;
+  }
+
   &:disabled {
     background: v.$clr-accent-disabled;
     color: v.$clr-font-black-disabled;
     cursor: default;
+    opacity: 1;
   }
 }
