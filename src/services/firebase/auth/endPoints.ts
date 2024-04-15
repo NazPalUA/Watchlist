@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut as signOutFirebase,
+  updateProfile,
   User,
   UserCredential,
 } from "firebase/auth"
@@ -91,6 +92,20 @@ export const signOut = async (): Promise<void> => {
     await signOutFirebase(auth)
   } catch (error) {
     console.error("Failed to sign out", error)
+    throw error
+  }
+}
+
+export const updateDisplayName = async (displayName: string): Promise<void> => {
+  const user = auth.currentUser
+  try {
+    if (user) {
+      await updateProfile(user, { displayName })
+    } else {
+      throw new Error("No user found")
+    }
+  } catch (error) {
+    console.error("Failed to update display name", error)
     throw error
   }
 }
