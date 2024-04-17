@@ -31,7 +31,6 @@ export type Watchlist = {
   name: string
   description: string
   createdAt: Date
-  id: string
   movies: WatchlistMovie[]
 }
 
