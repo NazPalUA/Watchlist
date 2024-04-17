@@ -5,7 +5,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore"
-import { UserData, Watchlist } from "../../../../types/firestore"
+import { Watchlist } from "../../../../types/firestore"
 import { TWatchlistSchema } from "../../../../types/form-watchlist"
 import {
   getUserDocRef,
@@ -36,14 +36,20 @@ export const addUserData = async (
 
 export const editUserData = async (
   userId: string,
-  { name, photoURL }: UserData
+  { name, photoURL }: { name?: string; photoURL?: string }
 ) => {
+  const update: { [key: string]: any } = { lastModifiedAt: serverTimestamp() }
+
+  if (name !== undefined) {
+    update.name = name
+  }
+
+  if (photoURL !== undefined) {
+    update.photoURL = photoURL
+  }
+
   try {
-    await updateDoc(getUserDocRef(userId), {
-      name,
-      photoURL,
-      lastModifiedAt: serverTimestamp(),
-    })
+    await updateDoc(getUserDocRef(userId), update)
   } catch (error) {
     console.error("Error editing user data: ", error)
     throw error
