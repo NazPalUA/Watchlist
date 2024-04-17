@@ -22,12 +22,12 @@
  *             - tmdbId: string
  */
 
-type WatchlistMovie = {
+export type WatchlistMovie = {
   addedAt: Date
   tmdbId: string
 }
 
-type Watchlist = {
+export type Watchlist = {
   name: string
   description: string
   createdAt: Date
@@ -35,11 +35,11 @@ type Watchlist = {
   movies: WatchlistMovie[]
 }
 
-type WatchedMovie = {
+export type WatchedMovie = {
   tmdbId: string
 }
 
-type User = {
+export type User = {
   name: string
   photoURL?: string
   watchlists: Watchlist[]
