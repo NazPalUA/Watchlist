@@ -27,6 +27,8 @@ import { FieldValue } from "firebase/firestore"
 export type UserData = {
   name: string
   photoURL?: string
+  createdAt: FieldValue | Date
+  lastModifiedAt: FieldValue | Date
 }
 export type WatchlistMovie = {
   addedAt: FieldValue | Date
