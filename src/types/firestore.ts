@@ -39,7 +39,7 @@ export type WatchedMovie = {
   tmdbId: string
 }
 
-export type User = {
+export type UserData = {
   name: string
   photoURL?: string
   watchlists: Watchlist[]
