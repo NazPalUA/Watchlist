@@ -22,15 +22,17 @@
  *             - tmdbId: string
  */
 
+import { FieldValue } from "firebase/firestore"
+
 export type WatchlistMovie = {
-  addedAt: Date
+  addedAt: FieldValue | Date
   tmdbId: string
 }
 
 export type Watchlist = {
   name: string
   description: string
-  createdAt: Date
+  createdAt: FieldValue | Date
   id: string
   movies: WatchlistMovie[]
 }
