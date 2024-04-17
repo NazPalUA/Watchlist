@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useGetWatchlistDataQuery } from "../../services/firebase/firestore/queries"
+import { useGetWatchlistDataQuery } from "../../services/firebase/firestoreObsolete/queries"
 import { useMoviesDetails } from "../../services/tmdb"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"

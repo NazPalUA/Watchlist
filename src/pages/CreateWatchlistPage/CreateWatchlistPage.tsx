@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { getForm } from "../../components/Form"
-import { useCreateWatchlistMutation } from "../../services/firebase/firestore/mutations"
+import { useCreateWatchlistMutation } from "../../services/firebase/firestoreObsolete/mutations"
 import { TWatchlistSchema, watchlistSchema } from "../../types/form-watchlist"
 import "./CreateWatchlistPage.scss"
 

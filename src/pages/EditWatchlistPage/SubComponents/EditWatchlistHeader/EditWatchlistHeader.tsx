@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useDeleteWatchlistMutation } from "../../../../services/firebase/firestore/mutations"
+import { useDeleteWatchlistMutation } from "../../../../services/firebase/firestoreObsolete/mutations"
 import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }

@@ -1,4 +1,4 @@
-import { useGetWatchlistDataQuery } from "../../../../services/firebase/firestore/queries"
+import { useGetWatchlistDataQuery } from "../../../../services/firebase/firestoreObsolete/queries"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import EditMovie from "../EditMovie/EditMovie"
 import styles from "./WatchlistMovies.module.scss"

@@ -1,4 +1,4 @@
-import { useGetWatchlistsDataQuery } from "../../../services/firebase/firestore/queries"
+import { useGetWatchlistsDataQuery } from "../../../services/firebase/firestoreObsolete/queries"
 import ErrorMessage from "../../ErrorMessage/ErrorMessage"
 import SidebarLink from "./SidebarLink"
 
