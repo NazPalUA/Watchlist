@@ -42,9 +42,7 @@ export const useLogoutMutation = () => {
   return useMutation({
     mutationFn: signOut,
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["currentUser"],
-      })
+      queryClient.setQueryData(["currentUser"], null)
       navigate("/")
     },
   })
