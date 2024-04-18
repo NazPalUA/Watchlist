@@ -1,4 +1,4 @@
-import { useGetWatchlistDataQuery } from "../../../../services/firebase/firestoreObsolete/queries"
+import { useGetWatchlistMoviesQuery } from "../../../../services/firebase/firestore/queries/queries"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import EditMovie from "../EditMovie/EditMovie"
 import styles from "./WatchlistMovies.module.scss"
@@ -8,9 +8,8 @@ type WatchlistMoviesProps = {
 }
 
 export default function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
-  const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
-  const userMovies = watchlistData?.movies
-  const movieIds = userMovies?.map((movie) => movie.id) || []
+  const { data: userMovies } = useGetWatchlistMoviesQuery(watchlistId)
+  const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
 
   // Get the copy of current movieIds and their data using the custom hook
   const { data: moviesData } = useMoviesDetails(movieIds)

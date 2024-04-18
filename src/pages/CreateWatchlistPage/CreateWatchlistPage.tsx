@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { getForm } from "../../components/Form"
-import { useCreateWatchlistMutation } from "../../services/firebase/firestoreObsolete/mutations"
+import { useCreateWatchlistMutation } from "../../services/firebase/firestore/mutations/mutations"
 import { TWatchlistSchema, watchlistSchema } from "../../types/form-watchlist"
 import "./CreateWatchlistPage.scss"
 
@@ -19,8 +19,8 @@ const CreateWatchlistPage: React.FC<CreateWatchlistPageTypes> = ({
   function handleSubmit(data: TWatchlistSchema) {
     // Call the createWatchlist function to add a new watchlist
     createWatchlist(data, {
-      onSuccess: (data) => {
-        navigate(`/watchlist-page/${data?.id}`)
+      onSuccess: (watchlistId) => {
+        navigate(`/watchlist-page/${watchlistId}`)
       },
     })
   }

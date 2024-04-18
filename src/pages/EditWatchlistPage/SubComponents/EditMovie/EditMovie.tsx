@@ -1,5 +1,5 @@
 import posterNotFound from "../../../../assets/images/poster_not_found.png"
-import { useRemoveMovieFromWatchlistMutation } from "../../../../services/firebase/firestoreObsolete/mutations"
+import { useRemoveMovieFromWatchlistMutation } from "../../../../services/firebase/firestore/mutations/mutations"
 import { Movie, MovieDetails } from "../../../../services/tmdb"
 import styles from "./EditMovie.module.scss"
 

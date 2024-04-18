@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useHistoryContext } from "../../context/HistoryContext"
 import { useModalContext } from "../../context/ModalContext"
-import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestoreObsolete/mutations"
-import { useGetWatchlistsDataQuery } from "../../services/firebase/firestoreObsolete/queries"
+import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestore/mutations/mutations"
+import { useGetWatchlistsQuery } from "../../services/firebase/firestore/queries/queries"
 import PopUp from "../PopUp/PopUp"
 import styles from "./AddToWatchlistModal.module.scss"
 import CustomSelect from "./SubComponents/CustomSelect/CustomSelect"
@@ -21,7 +21,7 @@ export default function AddToWatchlistModal() {
   const [selectedOption, setSelectedOption] = useState<SelectedOptionType>(null)
   const [selectedIds, setSelectedIds] = useState({ watchlist: "", movie: "" })
 
-  const { data: watchlistsData } = useGetWatchlistsDataQuery()
+  const { data: watchlistsData } = useGetWatchlistsQuery()
   const { mutate: addMovieToWatchlist } = useAddMovieToWatchlistMutation(
     selectedIds.watchlist
   )

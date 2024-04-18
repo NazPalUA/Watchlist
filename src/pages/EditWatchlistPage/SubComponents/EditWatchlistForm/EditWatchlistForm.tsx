@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { getForm } from "../../../../components/Form"
-import { useEditWatchlistMutation } from "../../../../services/firebase/firestoreObsolete/mutations"
-import { useGetWatchlistDataQuery } from "../../../../services/firebase/firestoreObsolete/queries"
+import { useEditWatchlistMutation } from "../../../../services/firebase/firestore/mutations/mutations"
+import { useGetSingleWatchlistQuery } from "../../../../services/firebase/firestore/queries/queries"
 import {
   TWatchlistSchema,
   watchlistSchema,
@@ -13,7 +13,7 @@ type EditWatchlistFormProps = { watchlistId: string }
 export default function EditWatchlistForm({
   watchlistId,
 }: EditWatchlistFormProps) {
-  const { data: watchlistData } = useGetWatchlistDataQuery(watchlistId)
+  const { data: watchlistData } = useGetSingleWatchlistQuery(watchlistId)
 
   const { mutate: editWatchlist } = useEditWatchlistMutation(watchlistId)
 

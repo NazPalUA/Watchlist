@@ -1,9 +1,9 @@
-import { useGetWatchlistsDataQuery } from "../../../services/firebase/firestoreObsolete/queries"
+import { useGetWatchlistsQuery } from "../../../services/firebase/firestore/queries/queries"
 import ErrorMessage from "../../ErrorMessage/ErrorMessage"
 import SidebarLink from "./SidebarLink"
 
 export default function WatchlistsList() {
-  const { data: watchlistsData, error, isError } = useGetWatchlistsDataQuery()
+  const { data: watchlistsData, error, isError } = useGetWatchlistsQuery()
 
   if (isError) {
     return (
