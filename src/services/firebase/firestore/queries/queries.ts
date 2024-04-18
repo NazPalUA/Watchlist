@@ -42,6 +42,8 @@ export const useGetSingleWatchlistQuery = (watchlistId: string) => {
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
+  const { data: watchlists } = useGetWatchlistsQuery()
+
   return useQuery({
     queryKey: ["watchlists", watchlistId],
     queryFn: () => {
@@ -50,7 +52,6 @@ export const useGetSingleWatchlistQuery = (watchlistId: string) => {
     },
     enabled: !!currentUser,
     initialData: () => {
-      const { data: watchlists } = useGetWatchlistsQuery()
       const watchlist = watchlists?.find((w) => w.id === watchlistId)
       return watchlist
     },
@@ -75,6 +76,7 @@ export const useGetSingleWatchedMovieQuery = (movieId: string) => {
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
+  const { data: watchedMovies } = useGetWatchedMoviesQuery()
   return useQuery({
     queryKey: ["watchedMovies", movieId],
     queryFn: () => {
@@ -83,7 +85,6 @@ export const useGetSingleWatchedMovieQuery = (movieId: string) => {
     },
     enabled: !!currentUser,
     initialData: () => {
-      const { data: watchedMovies } = useGetWatchedMoviesQuery()
       const watchedMovie = watchedMovies?.find((w) => w.tmdbId === movieId)
       return watchedMovie
     },
@@ -111,6 +112,7 @@ export const useGetSingleWatchlistMovieQuery = (
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
+  const { data: watchlistMovies } = useGetWatchlistMoviesQuery(watchlistId)
   return useQuery({
     queryKey: ["watchlistMovies", watchlistId, movieId],
     queryFn: () => {
@@ -119,7 +121,6 @@ export const useGetSingleWatchlistMovieQuery = (
     },
     enabled: !!currentUser,
     initialData: () => {
-      const { data: watchlistMovies } = useGetWatchlistMoviesQuery(watchlistId)
       const watchlistMovie = watchlistMovies?.find((w) => w.tmdbId === movieId)
       return watchlistMovie
     },
