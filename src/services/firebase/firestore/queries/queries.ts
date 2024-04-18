@@ -24,7 +24,7 @@ export const useGetUserDataQuery = () => {
   })
 }
 
-export const useGetSingleWatchlistsQuery = () => {
+export const useGetWatchlistsQuery = () => {
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
@@ -38,7 +38,7 @@ export const useGetSingleWatchlistsQuery = () => {
   })
 }
 
-export const useGetWatchlistQuery = (watchlistId: string) => {
+export const useGetSingleWatchlistQuery = (watchlistId: string) => {
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
@@ -50,7 +50,7 @@ export const useGetWatchlistQuery = (watchlistId: string) => {
     },
     enabled: !!currentUser,
     initialData: () => {
-      const { data: watchlists } = useGetSingleWatchlistsQuery()
+      const { data: watchlists } = useGetWatchlistsQuery()
       const watchlist = watchlists?.find((w) => w.id === watchlistId)
       return watchlist
     },
