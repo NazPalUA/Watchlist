@@ -22,12 +22,16 @@ export const addUserData = async (
   { name, photoURL }: { name: string; photoURL?: string }
 ) => {
   try {
-    await setDoc(getUserDocRef(userId), {
-      name,
-      photoURL,
-      createdAt: serverTimestamp(),
-      lastModifiedAt: serverTimestamp(),
-    })
+    await setDoc(
+      getUserDocRef(userId),
+      {
+        name,
+        photoURL,
+        createdAt: serverTimestamp(),
+        lastModifiedAt: serverTimestamp(),
+      },
+      { merge: true }
+    )
   } catch (error) {
     console.error("Error adding user data: ", error)
     throw error
