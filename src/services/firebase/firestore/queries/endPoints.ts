@@ -36,7 +36,10 @@ export const getUserData = async (userId: string) => {
 
 export const getWatchlists = async (userId: string) => {
   const watchlistsSnapshot = await getDocs(getWatchlistsCollectionRef(userId))
-  return watchlistsSnapshot.docs.map((doc) => doc.data()) as Watchlist[]
+  return watchlistsSnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  })) as Watchlist[]
 }
 
 export const getSingleWatchlist = async (
