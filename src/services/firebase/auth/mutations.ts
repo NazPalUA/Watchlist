@@ -6,7 +6,6 @@ import {
   authWithEmailAndPassword,
   signInWithProvider,
   signOut,
-  updateDisplayName,
 } from "./endPoints"
 
 export const useSignInWithProviderMutation = () => {
@@ -21,8 +20,8 @@ export const useSignInWithProviderMutation = () => {
         queryKey: ["currentUser"],
       })
       addDataToStore({
-        name: data.displayName || "",
-        photoURL: data.photoURL || "",
+        userId: data.uid,
+        data: { name: data.displayName || "", photoURL: data.photoURL || "" },
       })
       navigateBack()
     },
@@ -40,8 +39,8 @@ export const useAuthWithEmailAndPasswordMutation = () => {
         queryKey: ["currentUser"],
       })
       addDataToStore({
-        name: data.displayName || "",
-        photoURL: data.photoURL || "",
+        userId: data.uid,
+        data: { name: data.displayName || "", photoURL: data.photoURL || "" },
       })
       navigateBack()
     },
@@ -56,18 +55,6 @@ export const useLogoutMutation = () => {
     onSuccess: () => {
       queryClient.setQueryData(["currentUser"], null)
       navigate("/")
-    },
-  })
-}
-
-export const useUpdateDisplayNameMutation = () => {
-  const queryClient = useQueryClient()
-  return useMutation({
-    mutationFn: updateDisplayName,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["currentUser"],
-      })
     },
   })
 }
