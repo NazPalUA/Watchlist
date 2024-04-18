@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
 import { useNavigateBack } from "../../../hooks/useNavigateBack"
+import { useAddUserData } from "../firestore/mutations/mutations"
 import {
   authWithEmailAndPassword,
   signInWithProvider,
@@ -11,11 +12,17 @@ import {
 export const useSignInWithProviderMutation = () => {
   const navigateBack = useNavigateBack()
   const queryClient = useQueryClient()
+
+  const { mutate: addDataToStore } = useAddUserData()
   return useMutation({
     mutationFn: signInWithProvider,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ["currentUser"],
+      })
+      addDataToStore({
+        name: data.displayName || "",
+        photoURL: data.photoURL || "",
       })
       navigateBack()
     },
@@ -25,11 +32,16 @@ export const useSignInWithProviderMutation = () => {
 export const useAuthWithEmailAndPasswordMutation = () => {
   const navigateBack = useNavigateBack()
   const queryClient = useQueryClient()
+  const { mutate: addDataToStore } = useAddUserData()
   return useMutation({
     mutationFn: authWithEmailAndPassword,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ["currentUser"],
+      })
+      addDataToStore({
+        name: data.displayName || "",
+        photoURL: data.photoURL || "",
       })
       navigateBack()
     },
