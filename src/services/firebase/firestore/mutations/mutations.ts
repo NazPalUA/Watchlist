@@ -19,7 +19,13 @@ export const useAddUserData = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ name, photoURL }: UserData) => {
+    mutationFn: ({
+      name,
+      photoURL,
+    }: {
+      name: string
+      photoURL: string | undefined
+    }) => {
       if (!userId) throw new Error("User ID is required")
       return addUserData(userId, { name, photoURL })
     },
