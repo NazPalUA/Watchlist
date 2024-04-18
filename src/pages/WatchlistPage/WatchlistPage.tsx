@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useWatchlistsContext } from "../../context/WatchlistsContext"
+import {
+  useGetSingleWatchlistQuery,
+  useGetWatchlistMoviesQuery,
+} from "../../services/firebase/firestore/queries/queries"
 import { useMoviesDetails } from "../../services/tmdb"
-import getUniqueIds from "../../utils/getUniqueIds"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"
@@ -14,22 +16,24 @@ type WatchlistPagePropTypes = {
 
 function WatchlistPage({ className }: WatchlistPagePropTypes) {
   const { watchlistId } = useParams()
-  const { isExist, getMovieIds, getWatchlistData } = useWatchlistsContext()
-  const exist = isExist(watchlistId)
-  const allMovieIds = getMovieIds(watchlistId)
-  const movieIds = allMovieIds ? getUniqueIds(allMovieIds) : []
-  const { data, isError, error, isLoading } = useMoviesDetails(movieIds)
+  if (!watchlistId) return null
 
-  const watchlistData = getWatchlistData(watchlistId)
-  const { name: watchlistName, description: watchlistDescription } =
-    watchlistData || {}
+  const { data: watchlistData } = useGetSingleWatchlistQuery(watchlistId)
+  const { data: userMovies } = useGetWatchlistMoviesQuery(watchlistId)
+  const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
+
+  const {
+    data: moviesData,
+    isError,
+    error,
+    isLoading,
+  } = useMoviesDetails(movieIds)
 
   if (isLoading) return <CustomLoader />
 
-  if (!watchlistId || !exist)
-    return <ErrorMessage>Watchlist not found!</ErrorMessage>
+  if (!watchlistId) return <ErrorMessage>Watchlist not found!</ErrorMessage>
 
-  if (isError || !data)
+  if (isError || !moviesData)
     return (
       <ErrorMessage error={error}>
         Something went wrong! Please try again later.
@@ -39,11 +43,11 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
   return (
     <div className={`watchlist-page ${className}`}>
       <WatchlistDetails
-        moviesData={data}
-        name={watchlistName ?? ""}
-        description={watchlistDescription ?? ""}
+        moviesData={moviesData}
+        name={watchlistData?.name ?? ""}
+        description={watchlistData?.description ?? ""}
       />
-      <Movies moviesData={data} />
+      <Movies moviesData={moviesData} />
     </div>
   )
 }

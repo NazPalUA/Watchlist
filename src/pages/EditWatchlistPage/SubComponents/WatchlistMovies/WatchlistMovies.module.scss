@@ -1,15 +1,15 @@
 @use "../../../../variables.scss" as v;
 
+.container {
+  margin-top: 2em;
+}
 .title {
-  font-size: var(--fs-big);
-  font-weight: v.$fw-bold;
-
-  margin-bottom: 0.3em;
+  font-size: var(--fs-h4);
+  margin: 0 0 0.3em;
 }
 
 .list {
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-bottom: 2.5em;
 }

@@ -16,3 +16,15 @@
   font-size: var(--fs-middle);
   color: v.$clr-font-dark;
 }
+
+.closeBtn {
+  color: v.$clr-dark;
+  font-size: var(--fs-big);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  &:hover {
+    background-color: v.$clr-semi-light;
+  }
+}

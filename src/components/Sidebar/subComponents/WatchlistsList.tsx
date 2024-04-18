@@ -1,21 +1,28 @@
-import { useWatchlistsContext } from "../../../context/WatchlistsContext"
+import { useGetWatchlistsQuery } from "../../../services/firebase/firestore/queries/queries"
+import ErrorMessage from "../../ErrorMessage/ErrorMessage"
 import SidebarLink from "./SidebarLink"
 
 export default function WatchlistsList() {
-    // Get watchlistsArr from WatchlistsContext
-    const {watchlistsArr} = useWatchlistsContext() 
-    
-    const watchListsArrHTML = watchlistsArr.map(watchlist => (
-        <li className="sidebar__watchlist-item" key={watchlist.id}>
-            <SidebarLink to={`/watchlist-page/${watchlist.id}`} className="sidebar__watchlist-link">
-                {watchlist.name}
-            </SidebarLink>
-        </li>
-    ))
+  const { data: watchlistsData, error, isError } = useGetWatchlistsQuery()
 
+  if (isError) {
     return (
-        <ul className="sidebar__watchlists">
-            {watchListsArrHTML}
-        </ul>
-    )            
+      <ErrorMessage error={error}>
+        Something went wrong! Please try again later.
+      </ErrorMessage>
+    )
+  }
+
+  const watchListsArrHTML = watchlistsData?.map((watchlist) => (
+    <li className="sidebar__watchlist-item" key={watchlist.id}>
+      <SidebarLink
+        to={`/watchlist-page/${watchlist.id}`}
+        className="sidebar__watchlist-link"
+      >
+        {watchlist.name}
+      </SidebarLink>
+    </li>
+  ))
+
+  return <ul className="sidebar__watchlists">{watchListsArrHTML}</ul>
 }

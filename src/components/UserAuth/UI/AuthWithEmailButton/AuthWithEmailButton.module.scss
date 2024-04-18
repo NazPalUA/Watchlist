@@ -1,0 +1,17 @@
+@use "../../../../variables.scss" as v;
+.btn {
+  width: 100%;
+  padding: 0.8em 3em;
+  margin: 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: var(--fs-big);
+  font-weight: v.$fw-bold;
+  color: v.$clr-font-black;
+  background-color: v.$clr-accent;
+
+  @media (min-width: v.$bp-mobile) {
+    width: unset;
+  }
+}

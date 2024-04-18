@@ -7,26 +7,23 @@ import App from "./App"
 import { HistoryContextProvider } from "./context/HistoryContext"
 import { ModalContextProvider } from "./context/ModalContext"
 import { SidebarContextProvider } from "./context/SidebarContext"
-import { WatchlistsContextProvider } from "./context/WatchlistsContext"
 import "./index.scss"
 
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
   <React.StrictMode>
-    <ModalContextProvider>
-      <WatchlistsContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <ModalContextProvider>
         <HistoryContextProvider>
           <SidebarContextProvider>
             <BrowserRouter>
-              <QueryClientProvider client={queryClient}>
-                <App />
-                <ReactQueryDevtools initialIsOpen={true} />
-              </QueryClientProvider>
+              <App />
+              <ReactQueryDevtools initialIsOpen={true} />
             </BrowserRouter>
           </SidebarContextProvider>
         </HistoryContextProvider>
-      </WatchlistsContextProvider>
-    </ModalContextProvider>
+      </ModalContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 )

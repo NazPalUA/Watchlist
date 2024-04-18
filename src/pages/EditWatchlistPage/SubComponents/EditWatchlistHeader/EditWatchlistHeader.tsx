@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useWatchlistsContext } from "../../../../context/WatchlistsContext"
+import { useDeleteWatchlistMutation } from "../../../../services/firebase/firestore/mutations/mutations"
 import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }
@@ -7,8 +7,9 @@ type EditWatchlistHeaderProps = { watchlistId: string }
 export default function EditWatchlistHeader({
   watchlistId,
 }: EditWatchlistHeaderProps) {
-  const { deleteWatchlist } = useWatchlistsContext()
   const navigate = useNavigate()
+
+  const { mutate: deleteWatchlist } = useDeleteWatchlistMutation()
 
   // Delete the current watchlist and navigate back to the home page
   function deleteCurrentWatchlist() {
