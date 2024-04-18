@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { TWatchlistSchema } from "../../../../types/form-watchlist"
 import { useGetUserQuery } from "../../auth/queries"
-import { UserData } from "./../../../../types/firestore"
 import {
   addMovieToWatchlist,
   addUserData,
@@ -14,7 +13,7 @@ import {
 
 type InputUserData = {
   name: string
-  photoURL: string | undefined
+  photoURL?: string
 }
 type AddUserData = {
   userId: string
@@ -43,9 +42,9 @@ export const useEditUserData = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (userData: UserData) => {
+    mutationFn: ({ name, photoURL }: InputUserData) => {
       if (!userId) throw new Error("User ID is required")
-      return editUserData(userId, userData)
+      return editUserData(userId, { name, photoURL })
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
