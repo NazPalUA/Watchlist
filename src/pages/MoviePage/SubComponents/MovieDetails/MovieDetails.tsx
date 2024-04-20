@@ -1,4 +1,5 @@
 import posterNotFound from "../../../../../src/assets/images/poster_not_found.png"
+import { Button } from "../../../../components/ui/Button/Button"
 import { useModalContext } from "../../../../context/ModalContext"
 import { MovieDetails as MovieDetailsType } from "../../../../services/tmdb"
 import styles from "./MovieDetails.module.scss"
@@ -44,8 +45,7 @@ export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
               {Math.round(movieData.vote_average * 10)}
             </div>
           </div>
-          <button
-            className={styles.movie__btn}
+          <Button
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
@@ -54,7 +54,7 @@ export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
             }}
           >
             Add to Watchlist
-          </button>
+          </Button>
         </div>
       </div>
     </div>
