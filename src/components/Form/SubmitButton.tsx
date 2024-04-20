@@ -1,4 +1,4 @@
-import { SubmitButton as SubmitButtonUI } from "./UI/SubmitButton/SubmitButton"
+import { Button } from "../ui/Button/Button"
 
 export type SubmitButtonProps = {
   children: React.ReactNode
@@ -7,8 +7,8 @@ export type SubmitButtonProps = {
 
 export function SubmitButton({ children, isSubmitting }: SubmitButtonProps) {
   return (
-    <SubmitButtonUI type="submit" disabled={isSubmitting}>
+    <Button size="l" type="submit" disabled={isSubmitting}>
       {isSubmitting ? "Submitting..." : children}
-    </SubmitButtonUI>
+    </Button>
   )
 }
