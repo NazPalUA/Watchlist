@@ -77,23 +77,10 @@
     }
   }
 
-  &__create-btn {
+  &__create-link {
     display: block;
-    width: 100%;
-    padding: 0.7em 2em;
-    border-radius: 6px;
     margin-bottom: 1.25em;
-    background: v.$clr-accent;
-
-    font-weight: v.$fw-bold;
-    color: v.$clr-font-black;
-    text-align: center;
     white-space: nowrap;
-
-    &:hover {
-      opacity: 0.9;
-      border-color: v.$clr-accent;
-    }
   }
 
   &__watchlists-header {

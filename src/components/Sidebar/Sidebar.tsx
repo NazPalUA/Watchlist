@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
+import { Button } from "../ui/Button/Button"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
@@ -35,8 +36,8 @@ function Sidebar({ className }: SidebarPropTypes) {
           </SidebarLink>
         </nav>
 
-        <SidebarLink to="/create_watchlist" className="sidebar__create-btn">
-          + Create watchlist
+        <SidebarLink to="/create_watchlist" className="sidebar__create-link">
+          <Button width="full">+ Create watchlist</Button>
         </SidebarLink>
       </div>
 
