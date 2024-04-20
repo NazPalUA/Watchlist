@@ -7,7 +7,6 @@ import App from "./App"
 import { HistoryContextProvider } from "./context/HistoryContext"
 import { ModalContextProvider } from "./context/ModalContext"
 import { SidebarContextProvider } from "./context/SidebarContext"
-import "./index.scss"
 
 const queryClient = new QueryClient()
 
