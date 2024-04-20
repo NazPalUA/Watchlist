@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
+import { Button } from "../ui/Button/Button"
 import "./SearchBox.scss"
 
 type SearchBoxPropTypes = {
@@ -47,9 +48,7 @@ function SearchBox({ className }: SearchBoxPropTypes) {
         onKeyDown={handleKeyDown}
         value={inputText}
       />
-      <button className="search-box__button" onClick={handleClick}>
-        search
-      </button>
+      <Button onClick={handleClick}>search</Button>
     </div>
   )
 }
