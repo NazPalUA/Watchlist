@@ -1,5 +1,5 @@
 import posterNotFound from "../../../../../src/assets/images/poster_not_found.png"
-import { Button } from "../../../../components/ui/Button/Button"
+import { Button } from "../../../../components/Button/Button"
 import { useModalContext } from "../../../../context/ModalContext"
 import { MovieDetails as MovieDetailsType } from "../../../../services/tmdb"
 import styles from "./MovieDetails.module.scss"

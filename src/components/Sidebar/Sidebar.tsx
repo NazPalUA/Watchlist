@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
-import { Button } from "../ui/Button/Button"
+import { Button } from "../Button/Button"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
