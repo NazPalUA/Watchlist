@@ -6,7 +6,7 @@ type BurgerPropTypes = {
   toggle: () => void
 }
 
-export function Burger({ isOpen, toggle }: BurgerPropTypes) {
+export const Burger = ({ isOpen, toggle }: BurgerPropTypes) => {
   const burgerClasses = classNames(styles.burger, { [styles.open]: isOpen })
 
   return (

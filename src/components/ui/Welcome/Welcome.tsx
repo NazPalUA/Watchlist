@@ -6,7 +6,7 @@ type WelcomePropTypes = {
   className?: string
 }
 
-export function Welcome({ className }: WelcomePropTypes) {
+export const Welcome = ({ className }: WelcomePropTypes) => {
   return (
     <div className={`${styles.box} ${className}`}>
       <h1 className={styles.title}>
