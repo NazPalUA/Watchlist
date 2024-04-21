@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
-import { Button } from "../Button/Button"
+import { Button } from "../UI/Button/Button"
 import "./SearchBox.scss"
 
 type SearchBoxPropTypes = {
