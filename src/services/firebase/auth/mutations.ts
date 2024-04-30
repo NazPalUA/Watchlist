@@ -53,8 +53,12 @@ export const useLogoutMutation = () => {
   return useMutation({
     mutationFn: signOut,
     onSuccess: () => {
-      queryClient.setQueryData(["currentUser"], null)
       navigate("/")
+    },
+    onSettled: () => {
+      queryClient.setQueryData(["currentUser"], null)
+      queryClient.setQueryData(["userData"], null)
+      queryClient.clear()
     },
   })
 }
