@@ -27,6 +27,8 @@ export const addUserData = async (
     const docSnap = await getDoc(docRef)
 
     if (!docSnap.exists()) {
+      console.log("Adding user data")
+
       await setDoc(
         docRef,
         {
