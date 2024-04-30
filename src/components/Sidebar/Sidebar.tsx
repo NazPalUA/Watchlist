@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
 import CustomLoader from "../CustomLoader"
 import { Button } from "../UI/Button/Button"
@@ -50,9 +49,9 @@ function Sidebar({ className }: SidebarPropTypes) {
           <WatchlistsList />
         ) : (
           <p>
-            <Link className="sidebar__login-link" to="/login">
+            <SidebarLink className="sidebar__login-link" to="/login">
               Log in
-            </Link>{" "}
+            </SidebarLink>{" "}
             <span> to see your watchlists</span>
           </p>
         )}
