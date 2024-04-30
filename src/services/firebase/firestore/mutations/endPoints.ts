@@ -25,11 +25,10 @@ export const addUserData = async (
   try {
     const docRef = getUserDocRef(userId)
     const docSnap = await getDoc(docRef)
-    if (docSnap.exists()) {
-      return
-    } else {
+
+    if (!docSnap.exists()) {
       await setDoc(
-        getUserDocRef(userId),
+        docRef,
         {
           name,
           photoURL,
