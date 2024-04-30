@@ -18,8 +18,6 @@ export default function UserLink({
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
   const { data: userData, isPending } = useGetUserDataQuery()
-  console.log(isPending)
-  console.log(userData)
 
   return isPending ? (
     <CustomLoader />
