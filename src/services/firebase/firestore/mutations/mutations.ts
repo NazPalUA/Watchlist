@@ -47,9 +47,9 @@ export const useEditUserData = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ name, photoURL }: InputUserData) => {
+    mutationFn: ({ name }: { name: string }) => {
       if (!userId) throw new Error("User ID is required")
-      return editUserData(userId, { name, photoURL })
+      return editUserData(userId, { name })
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
