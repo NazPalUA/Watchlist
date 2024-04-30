@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
+import CustomLoader from "../CustomLoader"
 import { Button } from "../UI/Button/Button"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
@@ -11,7 +12,7 @@ type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
-  const { data: user } = useGetUserQuery()
+  const { data: user, isLoading } = useGetUserQuery()
 
   return (
     <div className={`sidebar ${className}`}>
@@ -43,7 +44,9 @@ function Sidebar({ className }: SidebarPropTypes) {
 
       <div className="sidebar__bottom">
         <p className="sidebar__watchlists-header">My Lists</p>
-        {user ? (
+        {isLoading ? (
+          <CustomLoader />
+        ) : user ? (
           <WatchlistsList />
         ) : (
           <p>
