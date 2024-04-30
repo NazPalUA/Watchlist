@@ -21,7 +21,11 @@ export const useSignInWithProviderMutation = () => {
       })
       addDataToStore({
         userId: data.uid,
-        data: { name: data.displayName || "", photoURL: data.photoURL || "" },
+        data: {
+          name: data.displayName || "",
+          email: data.email || "",
+          photoURL: data.photoURL || "",
+        },
       })
       navigateBack()
     },
@@ -40,7 +44,11 @@ export const useAuthWithEmailAndPasswordMutation = () => {
       })
       addDataToStore({
         userId: data.uid,
-        data: { name: data.displayName || "", photoURL: data.photoURL || "" },
+        data: {
+          name: data.displayName || "",
+          email: data.email || "",
+          photoURL: data.photoURL || "",
+        },
       })
       navigateBack()
     },

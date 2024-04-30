@@ -20,7 +20,7 @@ import {
 
 export const addUserData = async (
   userId: string,
-  { name, photoURL }: { name: string; photoURL?: string }
+  { name, email, photoURL }: { name: string; email: string; photoURL?: string }
 ) => {
   try {
     const docRef = getUserDocRef(userId)
@@ -33,6 +33,7 @@ export const addUserData = async (
         {
           name,
           photoURL,
+          email,
           createdAt: serverTimestamp(),
           lastModifiedAt: serverTimestamp(),
         },

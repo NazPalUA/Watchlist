@@ -13,6 +13,7 @@ import {
 
 type InputUserData = {
   name: string
+  email: string
   photoURL?: string
 }
 type AddUserData = {
@@ -25,7 +26,11 @@ export const useAddUserData = () => {
   return useMutation({
     mutationFn: ({ userId, data }: AddUserData) => {
       if (!userId) throw new Error("User ID is required")
-      return addUserData(userId, { name: data.name, photoURL: data.photoURL })
+      return addUserData(userId, {
+        name: data.name,
+        photoURL: data.photoURL,
+        email: data.email,
+      })
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
