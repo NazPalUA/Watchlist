@@ -1,4 +1,4 @@
-@use './variables' as v;
+@use "./variables" as v;
 
 * {
   box-sizing: border-box;
@@ -31,7 +31,6 @@ a {
   text-decoration: inherit;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -39,7 +38,6 @@ body {
   min-width: v.$min-width;
   min-height: 100vh;
 }
-
 
 button {
   font-family: inherit;
@@ -51,11 +49,9 @@ button {
 }
 
 button:hover {
-
 }
 button:focus,
 button:focus-visible {
-  
 }
 
 // @media (prefers-color-scheme: light) {
@@ -68,7 +64,7 @@ button:focus-visible {
 .card-grid {
   padding: 0;
   margin: 0;
-  
+
   width: 100%;
 
   display: grid;
@@ -76,12 +72,12 @@ button:focus-visible {
   gap: 15px;
 
   @media (min-width: v.$bp-laptops) {
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 20px;
   }
 
   @media (min-width: v.$bp-large) {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 30px;
   }
 }
