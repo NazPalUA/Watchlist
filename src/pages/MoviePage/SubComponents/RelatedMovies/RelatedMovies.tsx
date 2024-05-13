@@ -1,5 +1,5 @@
-import CustomLoader from "../../../../components/CustomLoader"
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage"
+import Loader from "../../../../components/Loader"
 import MoviesList from "../../../../components/MoviesList/MoviesList"
 import { useRelatedMovies } from "../../../../services/tmdb"
 import style from "./RelatedMovies.module.scss"
@@ -27,7 +27,7 @@ export default function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
   return (
     <>
       <h5 className={style.title}>Related Movies</h5>
-      {isRelatedMoviesLoading ? <CustomLoader /> : Return}
+      {isRelatedMoviesLoading ? <Loader /> : Return}
     </>
   )
 }

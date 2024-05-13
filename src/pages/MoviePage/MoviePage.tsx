@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useHistoryContext } from "../../app/context/HistoryContext"
-import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import Loader from "../../components/Loader"
 import { useMovieDetails } from "../../services/tmdb"
 
 import Cast from "./SubComponents/Cast/Cast"
@@ -29,7 +29,7 @@ export default function MoviePage({ className }: MoviePagePropTypes) {
     error: movieDataError,
   } = useMovieDetails(movieId)
 
-  if (isMovieDataLoading) return <CustomLoader />
+  if (isMovieDataLoading) return <Loader />
   else if (isMovieDataError || !movieData)
     return (
       <ErrorMessage error={movieDataError}>

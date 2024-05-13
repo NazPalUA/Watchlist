@@ -1,6 +1,6 @@
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
 import { Button } from "../../shared/UI/Button/Button"
-import CustomLoader from "../CustomLoader"
+import Loader from "../Loader"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
@@ -44,7 +44,7 @@ function Sidebar({ className }: SidebarPropTypes) {
       <div className="sidebar__bottom">
         <p className="sidebar__watchlists-header">My Lists</p>
         {isLoading ? (
-          <CustomLoader />
+          <Loader />
         ) : user ? (
           <WatchlistsList />
         ) : (

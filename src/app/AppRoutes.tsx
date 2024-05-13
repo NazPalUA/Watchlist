@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import Layout from "../components/Layout/Layout"
 import CreateWatchlistPage from "../pages/CreateWatchlistPage/CreateWatchlistPage"
 import EditWatchlistPage from "../pages/EditWatchlistPage/EditWatchlistPage"
 import HistoryPage from "../pages/HistoryPage/HistoryPage"
@@ -10,6 +9,7 @@ import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
+import Layout from "./Layout/Layout"
 import RequireAuth from "./RequireAuth"
 
 export default function AppRoutes() {

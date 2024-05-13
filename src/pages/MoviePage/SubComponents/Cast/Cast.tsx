@@ -1,5 +1,5 @@
-import CustomLoader from "../../../../components/CustomLoader"
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage"
+import Loader from "../../../../components/Loader"
 import { useMovieCredits } from "../../../../services/tmdb"
 import styles from "./Cast.module.scss"
 import CastList from "./CastList"
@@ -30,7 +30,7 @@ export default function Cast({ movieId }: CastPropTypes) {
   return (
     <>
       <h5 className={styles.title}>Cast</h5>
-      {isMovieCreditsLoading ? <CustomLoader /> : Return}
+      {isMovieCreditsLoading ? <Loader /> : Return}
     </>
   )
 }

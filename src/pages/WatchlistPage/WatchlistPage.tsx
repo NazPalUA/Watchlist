@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import Loader from "../../components/Loader"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
@@ -29,7 +29,7 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
     isLoading,
   } = useMoviesDetails(movieIds)
 
-  if (isLoading) return <CustomLoader />
+  if (isLoading) return <Loader />
 
   if (!watchlistId) return <ErrorMessage>Watchlist not found!</ErrorMessage>
 

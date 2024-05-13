@@ -1,6 +1,6 @@
 import { useHistoryContext } from "../../app/context/HistoryContext"
-import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import Loader from "../../components/Loader"
 import MoviesList from "../../components/MoviesList/MoviesList"
 import { useMoviesDetails } from "../../services/tmdb"
 import getUniqueIds from "../../shared/utils/getUniqueIds"
@@ -20,7 +20,7 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
     isLoading,
   } = useMoviesDetails(uniqueHistoryIds)
 
-  if (isLoading) return <CustomLoader />
+  if (isLoading) return <Loader />
 
   if (isError)
     return (

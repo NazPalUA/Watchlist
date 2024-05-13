@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { ThreeDots } from "react-loader-spinner"
 
-type CustomLoaderProps = { timeDelay?: number }
+type LoaderProps = { timeDelay?: number }
 
-export default function CustomLoader({ timeDelay = 0 }: CustomLoaderProps) {
+export default function Loader({ timeDelay = 0 }: LoaderProps) {
   const isTimeDelay = Boolean(timeDelay)
   const [showLoader, setShowLoader] = useState(!isTimeDelay)
 

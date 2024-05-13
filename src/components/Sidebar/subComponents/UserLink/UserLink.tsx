@@ -3,7 +3,7 @@ import { NavLink, NavLinkProps } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
 import { useGetUserQuery } from "../../../../services/firebase/auth/queries"
 import { useGetUserDataQuery } from "../../../../services/firebase/firestore/queries/queries"
-import CustomLoader from "../../../CustomLoader"
+import Loader from "../../../Loader"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
 
@@ -21,7 +21,7 @@ export default function UserLink({
   const { data: userData, isLoading: userDataLoading } = useGetUserDataQuery()
 
   return awaitingAuth || userDataLoading ? (
-    <CustomLoader />
+    <Loader />
   ) : (
     <NavLink
       className={({ isActive }) =>
