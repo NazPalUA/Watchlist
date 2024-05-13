@@ -3,7 +3,7 @@ import CustomLoader from "../../../components/CustomLoader"
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
 import MoviesList from "../../../components/MoviesList/MoviesList"
 import { useInfinitePopularMovies } from "../../../services/tmdb"
-import getUniqueMoviesData from "../../../utils/getUniqueMoviesData"
+import getUniqueMoviesData from "../../../shared/utils/getUniqueMoviesData"
 import styles from "../HomePage.module.scss"
 import EndMessage from "./EndMessage"
 

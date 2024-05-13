@@ -1,7 +1,7 @@
 import posterNotFound from "../../../../../src/assets/images/poster_not_found.png"
-import { Button } from "../../../../components/UI/Button/Button"
-import { useModalContext } from "../../../../context/ModalContext"
+import { useModalContext } from "../../../../app/context/ModalContext"
 import { MovieDetails as MovieDetailsType } from "../../../../services/tmdb"
+import { Button } from "../../../../shared/UI/Button/Button"
 import styles from "./MovieDetails.module.scss"
 
 type MovieDetailsPropTypes = {

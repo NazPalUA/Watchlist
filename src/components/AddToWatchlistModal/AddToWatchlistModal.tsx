@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useHistoryContext } from "../../context/HistoryContext"
-import { useModalContext } from "../../context/ModalContext"
+import { useHistoryContext } from "../../app/context/HistoryContext"
+import { useModalContext } from "../../app/context/ModalContext"
 import { useAddMovieToWatchlistMutation } from "../../services/firebase/firestore/mutations/mutations"
 import { useGetWatchlistsQuery } from "../../services/firebase/firestore/queries/queries"
 import PopUp from "../PopUp/PopUp"

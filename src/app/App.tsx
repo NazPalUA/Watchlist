@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import "./assets/styles/global.scss"
-import AddToWatchlistModal from "./components/AddToWatchlistModal/AddToWatchlistModal"
-import AppRoutes from "./components/AppRoutes"
-import { useGetUserQuery } from "./services/firebase/auth/queries"
+import AddToWatchlistModal from "../components/AddToWatchlistModal/AddToWatchlistModal"
+import { useGetUserQuery } from "../services/firebase/auth/queries"
+import AppRoutes from "./AppRoutes"
+import "./styles/global.scss"
 
 function App() {
   // Handle the link click to scroll to top

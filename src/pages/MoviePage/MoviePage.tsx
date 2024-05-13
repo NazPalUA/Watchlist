@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { useHistoryContext } from "../../app/context/HistoryContext"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useHistoryContext } from "../../context/HistoryContext"
 import { useMovieDetails } from "../../services/tmdb"
 
 import Cast from "./SubComponents/Cast/Cast"

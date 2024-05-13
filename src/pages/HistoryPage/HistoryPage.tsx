@@ -1,9 +1,9 @@
+import { useHistoryContext } from "../../app/context/HistoryContext"
 import CustomLoader from "../../components/CustomLoader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import MoviesList from "../../components/MoviesList/MoviesList"
-import { useHistoryContext } from "../../context/HistoryContext"
 import { useMoviesDetails } from "../../services/tmdb"
-import getUniqueIds from "../../utils/getUniqueIds"
+import getUniqueIds from "../../shared/utils/getUniqueIds"
 import "./HistoryPage.scss"
 
 type HistoryPagePropTypes = {

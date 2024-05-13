@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { useSidebarContext } from "../../context/SidebarContext"
+import { useSidebarContext } from "../../app/context/SidebarContext"
 import MobileHeader from "../MobileHeader/MobileHeader"
 import Sidebar from "../Sidebar/Sidebar"
 import "./Layout.scss"

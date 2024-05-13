@@ -1,4 +1,4 @@
-import { Movie, MovieDetails, Recommendation } from "../services/tmdb/types"
+import { Movie, MovieDetails, Recommendation } from "../../services/tmdb/types"
 
 export default function getUniqueMoviesData(
   moviesData: (Movie | MovieDetails | Recommendation)[]

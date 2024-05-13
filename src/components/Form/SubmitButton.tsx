@@ -1,4 +1,4 @@
-import { Button } from "../UI/Button/Button"
+import { Button } from "../../shared/UI/Button/Button"
 
 export type SubmitButtonProps = {
   children: React.ReactNode

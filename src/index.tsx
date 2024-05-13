@@ -3,10 +3,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
-import App from "./App"
-import { HistoryContextProvider } from "./context/HistoryContext"
-import { ModalContextProvider } from "./context/ModalContext"
-import { SidebarContextProvider } from "./context/SidebarContext"
+import App from "./app/App"
+import { HistoryContextProvider } from "./app/context/HistoryContext"
+import { ModalContextProvider } from "./app/context/ModalContext"
+import { SidebarContextProvider } from "./app/context/SidebarContext"
 
 const queryClient = new QueryClient()
 

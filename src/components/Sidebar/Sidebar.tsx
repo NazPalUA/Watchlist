@@ -1,6 +1,6 @@
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
+import { Button } from "../../shared/UI/Button/Button"
 import CustomLoader from "../CustomLoader"
-import { Button } from "../UI/Button/Button"
 import "./Sidebar.scss"
 import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"

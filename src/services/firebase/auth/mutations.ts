@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
-import { useNavigateBack } from "../../../hooks/useNavigateBack"
+import { useNavigateBack } from "../../../shared/hooks/useNavigateBack"
 import { useAddUserData } from "../firestore/mutations/mutations"
 import {
   authWithEmailAndPassword,

@@ -1,4 +1,4 @@
-import { useModalContext } from "../../context/ModalContext"
+import { useModalContext } from "../../app/context/ModalContext"
 import { useGetUserQuery } from "../../services/firebase/auth/queries"
 
 export type CardAddToPlaylistBtnProps =

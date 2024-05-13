@@ -1,5 +1,5 @@
-import { useSidebarContext } from "../../../context/SidebarContext"
-import useWindowSize from "../../../hooks/useWindowSize"
+import { useSidebarContext } from "../../../app/context/SidebarContext"
+import useWindowSize from "../../../shared/hooks/useWindowSize"
 
 export default function useManageSidebarBasedOnWindowSize() {
   const { toggleSidebar } = useSidebarContext()

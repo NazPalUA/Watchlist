@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Movie, MovieDetails, Recommendation } from "../../services/tmdb/types"
-import formatRating from "../../utils/formatRating"
-import formatYear from "../../utils/formatYear"
+import formatRating from "../../shared/utils/formatRating"
+import formatYear from "../../shared/utils/formatYear"
 import Card from "../Card"
 import styles from "./MoviesList.module.scss"
 
