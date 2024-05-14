@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import editIcon from "../../../assets/images/edit_icon.svg"
 import { MovieDetails } from "../../../services/tmdb"
 import getAverageVote from "../utils/getAverageVote"
 import getUnwatchedRuntime from "../utils/getUnwatchedRuntime"
+import editIcon from "/images/edit_icon.svg"
 
 type PropTypes = {
   name: string

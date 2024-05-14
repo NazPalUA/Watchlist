@@ -1,7 +1,7 @@
-import posterNotFound from "../../../../assets/images/poster_not_found.png"
 import { useRemoveMovieFromWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
 import { Movie, MovieDetails } from "../../../../services/tmdb"
 import styles from "./EditMovie.module.scss"
+import posterNotFound from "/images/poster_not_found.png"
 
 type EditMovieProps = {
   movie: Movie | MovieDetails

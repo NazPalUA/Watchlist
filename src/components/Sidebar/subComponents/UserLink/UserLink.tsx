@@ -1,11 +1,11 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { NavLink, NavLinkProps } from "react-router-dom"
-import guestIcon from "../../../../assets/images/guest_icon.svg"
 import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
 import { useGetUserDataQuery } from "../../../../entities/user/api/queries/hooks"
 import Loader from "../../../Loader"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
+import guestIcon from "/images/guest_icon.svg"
 
 type SidebarLinkProps = Omit<NavLinkProps, "ref"> & {
   className?: string

@@ -66,14 +66,14 @@
   &__navigation-link_home {
     margin-bottom: 1.25em;
     &:before {
-      background-image: url(../../assets/images/home_icon.svg);
+      background-image: url(/images/home_icon.svg);
     }
   }
 
   &__navigation-link_history {
     margin-bottom: 2em;
     &:before {
-      background-image: url(../../assets/images/history_icon.svg);
+      background-image: url(/images/history_icon.svg);
     }
   }
 
@@ -159,7 +159,7 @@
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url(../../assets/images/watchlist_icon.svg);
+      background-image: url(/images/watchlist_icon.svg);
     }
 
     &:hover {

@@ -1,7 +1,7 @@
-import awfulIcon from "../../assets/images/awful_icon.svg"
-import confusedIcon from "../../assets/images/confused_icon.png"
-import greatIcon from "../../assets/images/great_icon.svg"
-import normalIcon from "../../assets/images/normal_icon.svg"
+import awfulIcon from "/images/awful_icon.svg"
+import confusedIcon from "/images/confused_icon.png"
+import greatIcon from "/images/great_icon.svg"
+import normalIcon from "/images/normal_icon.svg"
 
 export type CardRatingProps = {
   children: number
