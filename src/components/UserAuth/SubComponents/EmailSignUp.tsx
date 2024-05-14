@@ -1,6 +1,6 @@
 import { doc, setDoc } from "firebase/firestore"
 import { useAuthWithEmailAndPasswordMutation } from "../../../services/firebase/auth/mutations"
-import { db } from "../../../services/firebase/firebase-config"
+import { db } from "../../../shared/API/firebase-config"
 import { TSignUpSchema, signUpSchema } from "../../../types/form-signup"
 import { getForm } from "../../Form"
 

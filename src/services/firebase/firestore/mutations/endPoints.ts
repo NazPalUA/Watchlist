@@ -6,15 +6,15 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore"
+import {
+  userDocRef,
+  watchedMovieDocRef,
+  watchlistDocRef,
+  watchlistMovieDocRef,
+  watchlistsCollectionRef,
+} from "../../../../shared/API/firestore/storeReferences"
 import { Watchlist } from "../../../../types/firestore"
 import { TWatchlistSchema } from "../../../../types/form-watchlist"
-import {
-  getUserDocRef,
-  getWatchedMovieDocRef,
-  getWatchlistDocRef,
-  getWatchlistMovieDocRef,
-  getWatchlistsCollectionRef,
-} from "../storeReferences"
 
 // MUTATIONS:
 
@@ -23,7 +23,7 @@ export const addUserData = async (
   { name, email, photoURL }: { name: string; email: string; photoURL?: string }
 ) => {
   try {
-    const docRef = getUserDocRef(userId)
+    const docRef = userDocRef(userId)
     const docSnap = await getDoc(docRef)
 
     if (!docSnap.exists()) {
@@ -60,7 +60,7 @@ export const editUserData = async (
   }
 
   try {
-    await updateDoc(getUserDocRef(userId), update)
+    await updateDoc(userDocRef(userId), update)
   } catch (error) {
     console.error("Error editing user data: ", error)
     throw error
@@ -79,10 +79,7 @@ export const createWatchlist = async (
     lastModifiedAt: serverTimestamp(),
   }
   try {
-    const docRef = await addDoc(
-      getWatchlistsCollectionRef(userId),
-      newWatchlist
-    )
+    const docRef = await addDoc(watchlistsCollectionRef(userId), newWatchlist)
     return docRef.id
   } catch (error) {
     console.error("Error creating watchlist: ", error)
@@ -96,7 +93,7 @@ export const editWatchlist = async (
   { name, description }: TWatchlistSchema
 ) => {
   try {
-    return await updateDoc(getWatchlistDocRef(userId, watchlistId), {
+    return await updateDoc(watchlistDocRef(userId, watchlistId), {
       name,
       description,
       lastModifiedAt: serverTimestamp(),
@@ -110,7 +107,7 @@ export const editWatchlist = async (
 // TODO: Implement deleting all Subcollections (Movies) when deleting a Watchlist
 export const deleteWatchlist = async (userId: string, watchlistId: string) => {
   try {
-    await deleteDoc(getWatchlistDocRef(userId, watchlistId))
+    await deleteDoc(watchlistDocRef(userId, watchlistId))
   } catch (error) {
     console.error("Error deleting watchlist: ", error)
     throw error
@@ -127,10 +124,7 @@ export const addMovieToWatchlist = async (
     tmdbId: movieId,
   }
   try {
-    await setDoc(
-      getWatchlistMovieDocRef(userId, watchlistId, movieId),
-      newMovie
-    )
+    await setDoc(watchlistMovieDocRef(userId, watchlistId, movieId), newMovie)
   } catch (error) {
     console.error("Error adding movie to watchlist: ", error)
     throw error
@@ -143,7 +137,7 @@ export const removeMovieFromWatchlist = async (
   movieId: string
 ) => {
   try {
-    await deleteDoc(getWatchlistMovieDocRef(userId, watchlistId, movieId))
+    await deleteDoc(watchlistMovieDocRef(userId, watchlistId, movieId))
   } catch (error) {
     console.error("Error removing movie from watchlist: ", error)
     throw error
@@ -152,7 +146,7 @@ export const removeMovieFromWatchlist = async (
 
 export const addToWatched = async (userId: string, movieId: string) => {
   try {
-    await setDoc(getWatchedMovieDocRef(userId, movieId), {
+    await setDoc(watchedMovieDocRef(userId, movieId), {
       tmdbId: movieId,
     })
   } catch (error) {
@@ -163,7 +157,7 @@ export const addToWatched = async (userId: string, movieId: string) => {
 
 export const removeFromWatched = async (userId: string, movieId: string) => {
   try {
-    await deleteDoc(getWatchedMovieDocRef(userId, movieId))
+    await deleteDoc(watchedMovieDocRef(userId, movieId))
   } catch (error) {
     console.error("Error removing movie from watched: ", error)
     throw error

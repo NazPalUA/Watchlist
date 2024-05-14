@@ -11,8 +11,8 @@ import {
   User,
   UserCredential,
 } from "firebase/auth"
+import { auth } from "../../../shared/API/firebase-config"
 import { SocialMediaProvider } from "../../../types/authentication"
-import { auth } from "../firebase-config"
 
 // QUERIES:
 export const getCurrentUser = (): Promise<User | null> =>

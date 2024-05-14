@@ -1,41 +1,23 @@
+import { getDocs } from "firebase/firestore"
+import { getDocData } from "../../../../shared/API/firestore/getDocData"
 import {
-  DocumentData,
-  DocumentReference,
-  getDoc,
-  getDocs,
-} from "firebase/firestore"
+  watchedMovieDocRef,
+  watchedMoviesCollectionRef,
+  watchlistDocRef,
+  watchlistMovieDocRef,
+  watchlistsCollectionRef,
+  watchlistsMoviesCollectionRef,
+} from "../../../../shared/API/firestore/storeReferences"
 import {
-  UserData,
   WatchedMovie,
   Watchlist,
   WatchlistMovie,
 } from "../../../../types/firestore"
-import {
-  getUserDocRef,
-  getWatchedMovieDocRef,
-  getWatchedMoviesCollectionRef,
-  getWatchlistDocRef,
-  getWatchlistMovieDocRef,
-  getWatchlistsCollectionRef,
-  getWatchlistsMoviesCollectionRef,
-} from "../storeReferences"
-
-const getData = async (docRef: DocumentReference<DocumentData>) => {
-  const doc = await getDoc(docRef)
-  if (doc.exists()) {
-    return doc.data()
-  } else {
-    throw new Error("Document does not exist")
-  }
-}
 
 // QUERIES:
-export const getUserData = async (userId: string) => {
-  return getData(getUserDocRef(userId)) as Promise<UserData>
-}
 
 export const getWatchlists = async (userId: string) => {
-  const watchlistsSnapshot = await getDocs(getWatchlistsCollectionRef(userId))
+  const watchlistsSnapshot = await getDocs(watchlistsCollectionRef(userId))
   return watchlistsSnapshot.docs.map((doc) => ({
     ...doc.data(),
     id: doc.id,
@@ -46,12 +28,12 @@ export const getSingleWatchlist = async (
   userId: string,
   watchlistId: string
 ) => {
-  return getData(getWatchlistDocRef(userId, watchlistId)) as Promise<Watchlist>
+  return getDocData(watchlistDocRef(userId, watchlistId)) as Promise<Watchlist>
 }
 
 export const getWatchedMovies = async (userId: string) => {
   const watchedMoviesSnapshot = await getDocs(
-    getWatchedMoviesCollectionRef(userId)
+    watchedMoviesCollectionRef(userId)
   )
   return watchedMoviesSnapshot.docs.map((doc) => doc.data()) as WatchedMovie[]
 }
@@ -60,8 +42,8 @@ export const getSingleWatchedMovie = async (
   userId: string,
   movieId: string
 ) => {
-  return getData(
-    getWatchedMovieDocRef(userId, movieId)
+  return getDocData(
+    watchedMovieDocRef(userId, movieId)
   ) as Promise<WatchedMovie>
 }
 
@@ -70,7 +52,7 @@ export const getWatchlistMovies = async (
   watchlistId: string
 ) => {
   const watchlistMoviesSnapshot = await getDocs(
-    getWatchlistsMoviesCollectionRef(userId, watchlistId)
+    watchlistsMoviesCollectionRef(userId, watchlistId)
   )
   return watchlistMoviesSnapshot.docs.map((doc) =>
     doc.data()
@@ -82,7 +64,7 @@ export const getSingleWatchlistMovie = async (
   watchlistId: string,
   movieId: string
 ) => {
-  return getData(
-    getWatchlistMovieDocRef(userId, watchlistId, movieId)
+  return getDocData(
+    watchlistMovieDocRef(userId, watchlistId, movieId)
   ) as Promise<WatchlistMovie>
 }

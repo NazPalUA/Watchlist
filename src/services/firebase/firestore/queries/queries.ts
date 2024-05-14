@@ -4,25 +4,10 @@ import {
   getSingleWatchedMovie,
   getSingleWatchlist,
   getSingleWatchlistMovie,
-  getUserData,
   getWatchedMovies,
   getWatchlistMovies,
   getWatchlists,
 } from "./endPoints"
-
-export const useGetUserDataQuery = () => {
-  const { data: currentUser } = useGetUserQuery()
-  const userId = currentUser?.uid
-
-  return useQuery({
-    queryKey: ["userData"],
-    queryFn: () => {
-      if (!userId) throw new Error("User ID is required")
-      return getUserData(userId)
-    },
-    enabled: !!currentUser,
-  })
-}
 
 export const useGetWatchlistsQuery = () => {
   const { data: currentUser } = useGetUserQuery()

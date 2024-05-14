@@ -1,8 +1,8 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { NavLink, NavLinkProps } from "react-router-dom"
 import guestIcon from "../../../../assets/images/guest_icon.svg"
+import { useGetUserDataQuery } from "../../../../entities/user/api/queries/hooks"
 import { useGetUserQuery } from "../../../../services/firebase/auth/queries"
-import { useGetUserDataQuery } from "../../../../services/firebase/firestore/queries/queries"
 import Loader from "../../../Loader"
 import useManageSidebarBasedOnWindowSize from "../../hooks/useManageSidebarBasedOnWindowSize"
 import style from "./UserLink.module.scss"
@@ -17,8 +17,10 @@ export default function UserLink({
   ...rest
 }: SidebarLinkProps) {
   const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
-  const { isLoading: awaitingAuth } = useGetUserQuery()
-  const { data: userData, isLoading: userDataLoading } = useGetUserDataQuery()
+  const { isLoading: awaitingAuth, data: currentUser } = useGetUserQuery()
+  const userId = currentUser?.uid
+  const { data: userData, isLoading: userDataLoading } =
+    useGetUserDataQuery(userId)
 
   return awaitingAuth || userDataLoading ? (
     <Loader />
