@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { useHistoryContext } from "../../app/context/HistoryContext"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import Loader from "../../components/Loader"
-import { useMovieDetails } from "../../services/tmdb"
+import { useMovieDetails } from "../../shared/API/tmdb"
 
 import Cast from "./SubComponents/Cast/Cast"
 import MovieDetails from "./SubComponents/MovieDetails/MovieDetails"

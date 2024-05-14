@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Card from "../../../components/Card"
-import { MovieDetails } from "../../../services/tmdb"
+import { MovieDetails } from "../../../shared/API/tmdb"
 import formatRating from "../../../shared/utils/formatRating"
 import formatYear from "../../../shared/utils/formatYear"
 

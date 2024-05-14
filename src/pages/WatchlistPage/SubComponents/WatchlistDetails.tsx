@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { MovieDetails } from "../../../services/tmdb"
+import { MovieDetails } from "../../../shared/API/tmdb"
 import getAverageVote from "../utils/getAverageVote"
 import getUnwatchedRuntime from "../utils/getUnwatchedRuntime"
 import editIcon from "/images/edit_icon.svg"

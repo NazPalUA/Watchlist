@@ -1,4 +1,4 @@
-import { MovieDetails } from "../../../services/tmdb"
+import { MovieDetails } from "../../../shared/API/tmdb"
 
 export default function getAverageVote(movies: MovieDetails[]) {
   if (!movies) {

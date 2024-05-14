@@ -5,7 +5,7 @@ import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
-import { useMoviesDetails } from "../../services/tmdb"
+import { useMoviesDetails } from "../../shared/API/tmdb"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"

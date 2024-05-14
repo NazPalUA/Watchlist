@@ -2,7 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage"
 import Loader from "../../../components/Loader"
 import MoviesList from "../../../components/MoviesList/MoviesList"
-import { useInfiniteSearchMovie } from "../../../services/tmdb"
+import { useInfiniteSearchMovie } from "../../../shared/API/tmdb"
 import getUniqueMoviesData from "../../../shared/utils/getUniqueMoviesData"
 import EndMessage from "./EndMessage"
 

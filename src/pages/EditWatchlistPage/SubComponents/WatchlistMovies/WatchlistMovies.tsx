@@ -1,5 +1,5 @@
 import { useGetWatchlistMoviesQuery } from "../../../../entities/watchlist/api/queries/hooks"
-import { useMoviesDetails } from "../../../../services/tmdb"
+import { useMoviesDetails } from "../../../../shared/API/tmdb"
 import EditMovie from "../EditMovie/EditMovie"
 import styles from "./WatchlistMovies.module.scss"
 

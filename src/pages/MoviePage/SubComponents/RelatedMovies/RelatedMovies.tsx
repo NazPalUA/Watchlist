@@ -1,7 +1,7 @@
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage"
 import Loader from "../../../../components/Loader"
 import MoviesList from "../../../../components/MoviesList/MoviesList"
-import { useRelatedMovies } from "../../../../services/tmdb"
+import { useRelatedMovies } from "../../../../shared/API/tmdb"
 import style from "./RelatedMovies.module.scss"
 
 type RelatedMoviesListPropTypes = {
