@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom"
-import { useGetUserQuery } from "../services/firebase/auth/queries"
+import { useGetUserQuery } from "../entities/session/api/queries/hooks"
 
 export default function RequireAuth({ children }: { children: JSX.Element }) {
   const location = useLocation()

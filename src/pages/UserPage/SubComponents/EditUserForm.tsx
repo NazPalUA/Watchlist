@@ -1,6 +1,6 @@
 import { getForm } from "../../../components/Form"
+import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
-import { useGetUserQuery } from "../../../services/firebase/auth/queries"
 import { useEditUserData } from "../../../services/firebase/firestore/mutations/mutations"
 import { TUserSchema, userSchema } from "../../../types/form-user"
 

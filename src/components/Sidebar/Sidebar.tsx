@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "../../services/firebase/auth/queries"
+import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 import { Button } from "../../shared/UI/Button/Button"
 import Loader from "../Loader"
 import "./Sidebar.scss"

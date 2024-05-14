@@ -1,12 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
-import { useNavigateBack } from "../../../shared/hooks/useNavigateBack"
-import { useAddUserData } from "../firestore/mutations/mutations"
+import { useAddUserData } from "../../../../services/firebase/firestore/mutations/mutations"
+import { useNavigateBack } from "../../../../shared/hooks/useNavigateBack"
+import { queryKeys } from "../queryKeys"
 import {
   authWithEmailAndPassword,
   signInWithProvider,
   signOut,
-} from "./endPoints"
+} from "./requests"
+
+const { CURRENT_USER } = queryKeys
 
 export const useSignInWithProviderMutation = () => {
   const navigateBack = useNavigateBack()
@@ -17,7 +20,7 @@ export const useSignInWithProviderMutation = () => {
     mutationFn: signInWithProvider,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["currentUser"],
+        queryKey: CURRENT_USER,
       })
       addDataToStore({
         userId: data.uid,
@@ -40,7 +43,7 @@ export const useAuthWithEmailAndPasswordMutation = () => {
     mutationFn: authWithEmailAndPassword,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["currentUser"],
+        queryKey: CURRENT_USER,
       })
       addDataToStore({
         userId: data.uid,
@@ -64,8 +67,6 @@ export const useLogoutMutation = () => {
       navigate("/")
     },
     onSettled: () => {
-      queryClient.setQueryData(["currentUser"], null)
-      queryClient.setQueryData(["userData"], null)
       queryClient.clear()
     },
   })

@@ -1,4 +1,4 @@
-import { useSignInWithProviderMutation } from "../../../../services/firebase/auth/mutations"
+import { useSignInWithProviderMutation } from "../../../../entities/session/api/mutations/hooks"
 import { SocialMediaProvider } from "../../../../types/authentication"
 import ErrorMessage from "../../../ErrorMessage/ErrorMessage"
 import style from "./AuthButton.module.scss"

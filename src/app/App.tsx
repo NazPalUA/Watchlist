@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import AddToWatchlistModal from "../components/AddToWatchlistModal/AddToWatchlistModal"
-import { useGetUserQuery } from "../services/firebase/auth/queries"
+import { useGetUserQuery } from "../entities/session/api/queries/hooks"
 import AppRoutes from "./AppRoutes"
 import "./styles/global.scss"
 

@@ -1,4 +1,4 @@
-import { useLogoutMutation } from "../../services/firebase/auth/mutations"
+import { useLogoutMutation } from "../../entities/session/api/mutations/hooks"
 import EditUserForm from "./SubComponents/EditUserForm"
 import style from "./UserPage.module.scss"
 

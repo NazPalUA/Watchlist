@@ -1,5 +1,5 @@
 import { useModalContext } from "../../app/context/ModalContext"
-import { useGetUserQuery } from "../../services/firebase/auth/queries"
+import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 
 export type CardAddToPlaylistBtnProps =
   React.ComponentPropsWithoutRef<"button"> & {

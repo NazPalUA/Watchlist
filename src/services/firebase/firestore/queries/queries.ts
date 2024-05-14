@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../auth/queries"
+import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
 import {
   getSingleWatchedMovie,
   getSingleWatchlist,

@@ -3,7 +3,6 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut as signOutFirebase,
@@ -11,22 +10,8 @@ import {
   User,
   UserCredential,
 } from "firebase/auth"
-import { auth } from "../../../shared/API/firebase-config"
-import { SocialMediaProvider } from "../../../types/authentication"
-
-// QUERIES:
-export const getCurrentUser = (): Promise<User | null> =>
-  new Promise((resolve, reject) => {
-    try {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        resolve(user)
-        unsubscribe()
-      })
-    } catch (error) {
-      console.error("Failed to get current user", error)
-      reject(error)
-    }
-  })
+import { auth } from "../../../../shared/API/firebase-config"
+import { SocialMediaProvider } from "../../../../types/authentication"
 
 // MUTATIONS:
 export async function signInWithProvider(
@@ -75,10 +60,15 @@ export async function authWithEmailAndPassword({
 }: AuthData): Promise<User> {
   let result: UserCredential
   try {
-    if (type === "signUp") {
-      result = await createUserWithEmailAndPassword(auth, email, password)
-    } else {
-      result = await signInWithEmailAndPassword(auth, email, password)
+    switch (type) {
+      case "signUp":
+        result = await createUserWithEmailAndPassword(auth, email, password)
+        break
+      case "signIn":
+        result = await signInWithEmailAndPassword(auth, email, password)
+        break
+      default:
+        throw new Error(`Unknown authentication type: ${type}`)
     }
     return result.user
   } catch (error) {

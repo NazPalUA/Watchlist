@@ -1,4 +1,4 @@
-import { useAuthWithEmailAndPasswordMutation } from "../../../services/firebase/auth/mutations"
+import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session/api/mutations/hooks"
 import { TLogInSchema, logInSchema } from "../../../types/form-login"
 import { getForm } from "../../Form"
 

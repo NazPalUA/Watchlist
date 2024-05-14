@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
 import { TWatchlistSchema } from "../../../../types/form-watchlist"
-import { useGetUserQuery } from "../../auth/queries"
 import {
   addMovieToWatchlist,
   addUserData,
