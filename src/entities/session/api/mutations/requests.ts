@@ -11,7 +11,7 @@ import {
   UserCredential,
 } from "firebase/auth"
 import { auth } from "../../../../shared/API/firebase-config"
-import { SocialMediaProvider } from "../../../../types/authentication"
+import { SocialMediaProvider } from "../../model/types"
 
 // MUTATIONS:
 export async function signInWithProvider(
