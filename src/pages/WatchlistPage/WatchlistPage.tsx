@@ -4,7 +4,7 @@ import Loader from "../../components/Loader"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
-} from "../../services/firebase/firestore/queries/queries"
+} from "../../entities/watchlist/api/queries/hooks"
 import { useMoviesDetails } from "../../services/tmdb"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"

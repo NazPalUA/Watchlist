@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
+import { useGetUserQuery } from "../../../session/api/queries/hooks"
+import { queryKeys } from "../queryKeys"
 import {
   getSingleWatchedMovie,
   getSingleWatchlist,
@@ -7,14 +8,23 @@ import {
   getWatchedMovies,
   getWatchlistMovies,
   getWatchlists,
-} from "./endPoints"
+} from "./requests"
+
+const {
+  ALL_WATCHLISTS,
+  WATCHLIST,
+  ALL_WATCHED_MOVIES,
+  WATCHED_MOVIE,
+  ALL_WATCHLIST_MOVIES,
+  WATCHLIST_MOVIE,
+} = queryKeys
 
 export const useGetWatchlistsQuery = () => {
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
 
   return useQuery({
-    queryKey: ["watchlists"],
+    queryKey: ALL_WATCHLISTS,
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getWatchlists(userId)
@@ -30,7 +40,7 @@ export const useGetSingleWatchlistQuery = (watchlistId: string) => {
   const { data: watchlists } = useGetWatchlistsQuery()
 
   return useQuery({
-    queryKey: ["watchlists", watchlistId],
+    queryKey: WATCHLIST(watchlistId),
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getSingleWatchlist(userId, watchlistId)
@@ -48,7 +58,7 @@ export const useGetWatchedMoviesQuery = () => {
   const userId = currentUser?.uid
 
   return useQuery({
-    queryKey: ["watchedMovies"],
+    queryKey: ALL_WATCHED_MOVIES,
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getWatchedMovies(userId)
@@ -63,7 +73,7 @@ export const useGetSingleWatchedMovieQuery = (movieId: string) => {
 
   const { data: watchedMovies } = useGetWatchedMoviesQuery()
   return useQuery({
-    queryKey: ["watchedMovies", movieId],
+    queryKey: WATCHED_MOVIE(movieId),
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getSingleWatchedMovie(userId, movieId)
@@ -81,7 +91,7 @@ export const useGetWatchlistMoviesQuery = (watchlistId: string) => {
   const userId = currentUser?.uid
 
   return useQuery({
-    queryKey: ["watchlistMovies", watchlistId],
+    queryKey: ALL_WATCHLIST_MOVIES(watchlistId),
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getWatchlistMovies(userId, watchlistId)
@@ -99,7 +109,7 @@ export const useGetSingleWatchlistMovieQuery = (
 
   const { data: watchlistMovies } = useGetWatchlistMoviesQuery(watchlistId)
   return useQuery({
-    queryKey: ["watchlistMovies", watchlistId, movieId],
+    queryKey: WATCHLIST_MOVIE(watchlistId, movieId),
     queryFn: () => {
       if (!userId) throw new Error("User ID is required")
       return getSingleWatchlistMovie(userId, watchlistId, movieId)

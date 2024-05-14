@@ -1,4 +1,4 @@
-import { useGetWatchlistsQuery } from "../../../services/firebase/firestore/queries/queries"
+import { useGetWatchlistsQuery } from "../../../entities/watchlist/api/queries/hooks"
 import ErrorMessage from "../../ErrorMessage/ErrorMessage"
 import SidebarLink from "./SidebarLink"
 

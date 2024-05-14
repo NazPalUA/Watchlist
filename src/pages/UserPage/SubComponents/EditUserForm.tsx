@@ -1,7 +1,8 @@
 import { getForm } from "../../../components/Form"
 import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
+import { useEditUserData } from "../../../entities/user/api/mutations/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
-import { useEditUserData } from "../../../services/firebase/firestore/mutations/mutations"
+
 import { TUserSchema, userSchema } from "../../../types/form-user"
 
 type EditUserFormProps = {}
@@ -16,7 +17,8 @@ export default function EditUserForm({}: EditUserFormProps) {
 
   // Handle form submission
   const handleSubmit = async (data: TUserSchema) => {
-    updateUserName({ name: data.name })
+    if (!userId) throw new Error("User ID is required")
+    updateUserName({ userId, data })
   }
 
   const Form = getForm<TUserSchema>()

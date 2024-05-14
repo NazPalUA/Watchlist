@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { getForm } from "../../../../components/Form"
-import { useEditWatchlistMutation } from "../../../../services/firebase/firestore/mutations/mutations"
-import { useGetSingleWatchlistQuery } from "../../../../services/firebase/firestore/queries/queries"
+import { useEditWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
+import { useGetSingleWatchlistQuery } from "../../../../entities/watchlist/api/queries/hooks"
 import {
   TWatchlistSchema,
   watchlistSchema,

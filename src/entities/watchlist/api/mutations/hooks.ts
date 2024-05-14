@@ -1,63 +1,17 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
 import { TWatchlistSchema } from "../../../../types/form-watchlist"
+import { useGetUserQuery } from "../../../session/api/queries/hooks"
+import { queryKeys } from "../queryKeys"
 import {
   addMovieToWatchlist,
-  addUserData,
   createWatchlist,
   deleteWatchlist,
-  editUserData,
   editWatchlist,
   removeMovieFromWatchlist,
-} from "./endPoints"
+} from "./requests"
 
-type InputUserData = {
-  name: string
-  email: string
-  photoURL?: string
-}
-type AddUserData = {
-  userId: string
-  data: InputUserData
-}
-export const useAddUserData = () => {
-  const queryClient = useQueryClient()
-
-  return useMutation({
-    mutationFn: ({ userId, data }: AddUserData) => {
-      if (!userId) throw new Error("User ID is required")
-      return addUserData(userId, {
-        name: data.name,
-        photoURL: data.photoURL,
-        email: data.email,
-      })
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["userData"],
-      })
-    },
-  })
-}
-
-export const useEditUserData = () => {
-  const { data: currentUser } = useGetUserQuery()
-  const userId = currentUser?.uid
-
-  const queryClient = useQueryClient()
-
-  return useMutation({
-    mutationFn: ({ name }: { name: string }) => {
-      if (!userId) throw new Error("User ID is required")
-      return editUserData(userId, { name })
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["userData"],
-      })
-    },
-  })
-}
+const { ALL_WATCHLISTS, WATCHLIST, ALL_WATCHED_MOVIES, ALL_WATCHLIST_MOVIES } =
+  queryKeys
 
 export const useCreateWatchlistMutation = () => {
   const { data: currentUser } = useGetUserQuery()
@@ -72,7 +26,7 @@ export const useCreateWatchlistMutation = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchlists"],
+        queryKey: ALL_WATCHLISTS,
       })
     },
   })
@@ -90,10 +44,10 @@ export const useEditWatchlistMutation = (watchlistId: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchlists", watchlistId],
+        queryKey: WATCHLIST(watchlistId),
       })
       queryClient.invalidateQueries({
-        queryKey: ["watchlists"],
+        queryKey: ALL_WATCHLISTS,
       })
     },
   })
@@ -111,7 +65,7 @@ export const useDeleteWatchlistMutation = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchlists"],
+        queryKey: ALL_WATCHLISTS,
       })
     },
   })
@@ -129,7 +83,7 @@ export const useAddMovieToWatchlistMutation = (watchlistId: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchlistMovies", watchlistId],
+        queryKey: ALL_WATCHLIST_MOVIES(watchlistId),
       })
     },
   })
@@ -150,7 +104,7 @@ export const useRemoveMovieFromWatchlistMutation = (
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchlistMovies", watchlistId],
+        queryKey: ALL_WATCHLIST_MOVIES(watchlistId),
       })
     },
   })
@@ -168,7 +122,7 @@ export const useAddToWatchedMutation = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchedMovies"],
+        queryKey: ALL_WATCHED_MOVIES,
       })
     },
   })
@@ -186,7 +140,7 @@ export const useRemoveFromWatchedMutation = (movieId: string) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["watchedMovies"],
+        queryKey: ALL_WATCHED_MOVIES,
       })
     },
   })

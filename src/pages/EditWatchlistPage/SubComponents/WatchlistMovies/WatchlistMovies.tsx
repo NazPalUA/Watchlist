@@ -1,4 +1,4 @@
-import { useGetWatchlistMoviesQuery } from "../../../../services/firebase/firestore/queries/queries"
+import { useGetWatchlistMoviesQuery } from "../../../../entities/watchlist/api/queries/hooks"
 import { useMoviesDetails } from "../../../../services/tmdb"
 import EditMovie from "../EditMovie/EditMovie"
 import styles from "./WatchlistMovies.module.scss"
