@@ -1,5 +1,5 @@
-import { useModalContext } from "../../app/context/ModalContext"
 import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
+import { useModalContext } from "../../shared/context/ModalContext"
 
 export type CardAddToPlaylistBtnProps =
   React.ComponentPropsWithoutRef<"button"> & {

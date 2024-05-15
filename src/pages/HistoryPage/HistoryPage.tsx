@@ -1,8 +1,8 @@
-import { useHistoryContext } from "../../app/context/HistoryContext"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import Loader from "../../components/Loader"
 import MoviesList from "../../components/MoviesList/MoviesList"
 import { useMoviesDetails } from "../../shared/API/tmdb"
+import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/utils/getUniqueIds"
 import "./HistoryPage.scss"
 
