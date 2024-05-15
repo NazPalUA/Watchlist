@@ -1,5 +1,5 @@
 import SearchBox from "../../components/SearchBox/SearchBox"
-import Welcome from "../../shared/UI/Welcome"
+import Welcome from "../../widgets/Welcome"
 import styles from "./HomePage.module.scss"
 import PopularMovies from "./SubComponents/PopularMovies"
 
