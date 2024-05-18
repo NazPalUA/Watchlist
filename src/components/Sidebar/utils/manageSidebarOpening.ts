@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useSidebarContext } from "../../../shared/context/SidebarContext"
+import { useSidebarContext } from "../../../entities/sidebar/SidebarContext"
 import useManageSidebarBasedOnWindowSize from "../hooks/useManageSidebarBasedOnWindowSize"
 
 export default function manageSidebarOpening() {

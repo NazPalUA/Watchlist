@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
+import { useSidebarContext } from "../../entities/sidebar/SidebarContext"
 import Burger from "../../shared/UI/Burger"
-import { useSidebarContext } from "../../shared/context/SidebarContext"
 import "./MobileHeader.scss"
 
 type MobileHeaderPropTypes = {
