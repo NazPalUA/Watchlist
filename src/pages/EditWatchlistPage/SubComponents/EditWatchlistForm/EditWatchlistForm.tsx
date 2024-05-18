@@ -5,7 +5,7 @@ import { useGetSingleWatchlistQuery } from "../../../../entities/watchlist/api/q
 import {
   TWatchlistSchema,
   watchlistSchema,
-} from "../../../../types/form-watchlist"
+} from "../../../../shared/types/form-watchlist"
 import styles from "./EditWatchlistForm.module.scss"
 
 type EditWatchlistFormProps = { watchlistId: string }

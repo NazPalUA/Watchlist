@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { getForm } from "../../components/Form"
 import { useCreateWatchlistMutation } from "../../entities/watchlist/api/mutations/hooks"
-import { TWatchlistSchema, watchlistSchema } from "../../types/form-watchlist"
+import {
+  TWatchlistSchema,
+  watchlistSchema,
+} from "../../shared/types/form-watchlist"
 import "./CreateWatchlistPage.scss"
 
 type CreateWatchlistPageTypes = {

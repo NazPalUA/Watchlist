@@ -3,7 +3,7 @@ import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import { useEditUserData } from "../../../entities/user/api/mutations/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
 
-import { TUserSchema, userSchema } from "../../../types/form-user"
+import { TUserSchema, userSchema } from "../../../shared/types/form-user"
 
 type EditUserFormProps = {}
 
