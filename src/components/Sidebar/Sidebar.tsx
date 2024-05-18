@@ -1,8 +1,8 @@
 import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
-import { Button } from "../../shared/UI/Button/Button"
+import SidebarLink from "../../entities/sidebar/ui/SidebarLink"
+import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
 import Loader from "../Loader"
 import "./Sidebar.scss"
-import SidebarLink from "./subComponents/SidebarLink"
 import UserLink from "./subComponents/UserLink/UserLink"
 import WatchlistsList from "./subComponents/WatchlistsList"
 import manageSidebarOpening from "./utils/manageSidebarOpening"
@@ -36,9 +36,7 @@ function Sidebar({ className }: SidebarPropTypes) {
           </SidebarLink>
         </nav>
 
-        <SidebarLink to="/create_watchlist" className="sidebar__create-link">
-          <Button width="full">+ Create watchlist</Button>
-        </SidebarLink>
+        <CreateWatchlistNavButton className="sidebar__create-link" />
       </div>
 
       <div className="sidebar__bottom">
