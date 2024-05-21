@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import EditWatchlistForm from "./SubComponents/EditWatchlistForm/EditWatchlistForm"
+import EditWatchlistForm from "../../features/EditWatchlist/ui/EditWatchlistForm/EditWatchlistForm"
+import ErrorMessage from "../../shared/UI/ErrorMessage/ErrorMessage"
 import EditWatchlistHeader from "./SubComponents/EditWatchlistHeader/EditWatchlistHeader"
 import WatchlistMovies from "./SubComponents/WatchlistMovies/WatchlistMovies"
 

@@ -1,6 +1,6 @@
 import { useGetWatchlistMoviesQuery } from "../../../../entities/watchlist/api/queries/hooks"
+import EditMovie from "../../../../features/EditWatchlist/ui/EditMovie/EditMovie"
 import { useMoviesDetails } from "../../../../shared/API/tmdb"
-import EditMovie from "../EditMovie/EditMovie"
 import styles from "./WatchlistMovies.module.scss"
 
 type WatchlistMoviesProps = {

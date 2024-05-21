@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom"
-import SearchBox from "../../components/SearchBox/SearchBox"
+import SearchBox from "../../features/SearchMovie/ui/SearchBox/SearchBox"
 import styles from "./SearchResultsPage.module.scss"
 import SearchResultsInfiniteScroll from "./SubComponents/SearchResultsInfiniteScroll"
 

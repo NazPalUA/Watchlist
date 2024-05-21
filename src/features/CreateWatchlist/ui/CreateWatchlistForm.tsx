@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { getForm } from "../../../components/Form"
 import { useCreateWatchlistMutation } from "../../../entities/watchlist/api/mutations/hooks"
+import { getForm } from "../../../shared/UI/Form"
 import {
   TWatchlistSchema,
   watchlistSchema,

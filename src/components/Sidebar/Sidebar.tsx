@@ -1,7 +1,7 @@
 import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 import SidebarLink from "../../entities/sidebar/ui/SidebarLink"
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
-import Loader from "../Loader"
+import Loader from "../../shared/UI/Loader"
 import "./Sidebar.scss"
 import UserLink from "./subComponents/UserLink/UserLink"
 import WatchlistsList from "./subComponents/WatchlistsList"

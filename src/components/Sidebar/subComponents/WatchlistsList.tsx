@@ -1,6 +1,6 @@
 import SidebarLink from "../../../entities/sidebar/ui/SidebarLink"
 import { useGetWatchlistsQuery } from "../../../entities/watchlist/api/queries/hooks"
-import ErrorMessage from "../../ErrorMessage/ErrorMessage"
+import ErrorMessage from "../../../shared/UI/ErrorMessage/ErrorMessage"
 
 export default function WatchlistsList() {
   const { data: watchlistsData, error, isError } = useGetWatchlistsQuery()

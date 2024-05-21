@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import Loader from "../../components/Loader"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
 import { useMoviesDetails } from "../../shared/API/tmdb"
+import ErrorMessage from "../../shared/UI/ErrorMessage/ErrorMessage"
+import Loader from "../../shared/UI/Loader"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"

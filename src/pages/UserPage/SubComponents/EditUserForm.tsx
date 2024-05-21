@@ -1,7 +1,7 @@
-import { getForm } from "../../../components/Form"
 import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import { useEditUserData } from "../../../entities/user/api/mutations/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
+import { getForm } from "../../../shared/UI/Form"
 
 import { TUserSchema, userSchema } from "../../../shared/types/form-user"
 
