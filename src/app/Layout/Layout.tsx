@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
-import MobileHeader from "../../components/MobileHeader/MobileHeader"
-import Sidebar from "../../components/Sidebar/Sidebar"
 import { useSidebarContext } from "../../entities/sidebar/SidebarContext"
+import MobileHeader from "../../widgets/MobileHeader/MobileHeader"
+import Sidebar from "../../widgets/Sidebar/Sidebar"
 import "./Layout.scss"
 
 export default function Layout() {

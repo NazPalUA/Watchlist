@@ -1,9 +1,9 @@
-import MoviesList from "../../components/MoviesList/MoviesList"
 import { useMoviesDetails } from "../../shared/API/tmdb"
 import ErrorMessage from "../../shared/UI/ErrorMessage/ErrorMessage"
 import Loader from "../../shared/UI/Loader"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/utils/getUniqueIds"
+import MoviesList from "../../widgets/MoviesList/MoviesList"
 import "./HistoryPage.scss"
 
 type HistoryPagePropTypes = {

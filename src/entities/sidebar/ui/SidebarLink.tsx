@@ -1,5 +1,5 @@
 import { NavLink, NavLinkProps } from "react-router-dom"
-import useManageSidebarBasedOnWindowSize from "../../../components/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
+import useManageSidebarBasedOnWindowSize from "../../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
 
 type SidebarLinkProps = Omit<NavLinkProps, "ref"> & {
   children: React.ReactNode

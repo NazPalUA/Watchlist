@@ -1,9 +1,9 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import MoviesList from "../../../components/MoviesList/MoviesList"
 import { useInfinitePopularMovies } from "../../../shared/API/tmdb"
 import ErrorMessage from "../../../shared/UI/ErrorMessage/ErrorMessage"
 import Loader from "../../../shared/UI/Loader"
 import getUniqueMoviesData from "../../../shared/utils/getUniqueMoviesData"
+import MoviesList from "../../../widgets/MoviesList/MoviesList"
 import styles from "../HomePage.module.scss"
 import EndMessage from "./EndMessage"
 

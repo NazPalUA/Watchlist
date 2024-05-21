@@ -1,4 +1,4 @@
-import UserAuth from "../../components/UserAuth"
+import UserAuth from "../../features/Authenticate"
 import style from "./LogInPage.module.scss"
 
 type LogInPageProps = { className?: string }

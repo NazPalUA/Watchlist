@@ -1,8 +1,8 @@
-import AuthWithSocialMedia from "./SubComponents/AuthWithSocialMedia/AuthWithSocialMedia"
-import EmailLogIn from "./SubComponents/EmailLogIn"
-import EmailSignUp from "./SubComponents/EmailSignUp"
-import RedirectLink from "./SubComponents/RedirectLink/RedirectLink"
 import style from "./UserAuth.module.scss"
+import AuthWithSocialMedia from "./ui/AuthWithSocialMedia/AuthWithSocialMedia"
+import EmailLogIn from "./ui/EmailLogIn"
+import EmailSignUp from "./ui/EmailSignUp"
+import RedirectLink from "./ui/RedirectLink/RedirectLink"
 
 export type UserAuthProps = { type: "login" | "signup" }
 
