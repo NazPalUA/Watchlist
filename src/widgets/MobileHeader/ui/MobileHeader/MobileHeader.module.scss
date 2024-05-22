@@ -1,6 +1,6 @@
-@use "../../app/styles/variables" as v;
+@use "../../../../app/styles/variables.scss" as v;
 
-.mobile-header {
+.header {
   display: none;
 
   width: 100%;
