@@ -1,11 +1,20 @@
-import { Outlet } from "react-router-dom"
+import { useEffect } from "react"
+import { Outlet, useLocation } from "react-router-dom"
 import { useSidebarContext } from "../../entities/sidebar/SidebarContext"
 import MobileHeader from "../../widgets/MobileHeader/MobileHeader"
 import Sidebar from "../../widgets/Sidebar/Sidebar"
+import useManageSidebarBasedOnWindowSize from "../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
 import "./Layout.scss"
 
 export default function Layout() {
   const { getSidebarStateClass } = useSidebarContext()
+
+  const location = useLocation()
+  const { closeSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
+
+  useEffect(() => {
+    closeSidebarIfMobile()
+  }, [location.pathname])
 
   return (
     <div className={`app app--${getSidebarStateClass()}`}>
