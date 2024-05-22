@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
-import { useSidebarContext } from "../../entities/sidebar/SidebarContext"
-import { MobileHeader } from "../../widgets/MobileHeader"
-import Sidebar from "../../widgets/Sidebar/Sidebar"
-import useManageSidebarBasedOnWindowSize from "../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
+import { useSidebarContext } from "../../../shared/context/SidebarContext"
+import { MobileHeader } from "../../../widgets/MobileHeader"
+import Sidebar from "../../../widgets/Sidebar/Sidebar"
+import useManageSidebarBasedOnWindowSize from "../../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
 import "./Layout.scss"
 
-export default function Layout() {
+export function Layout() {
   const { getSidebarStateClass } = useSidebarContext()
 
   const location = useLocation()

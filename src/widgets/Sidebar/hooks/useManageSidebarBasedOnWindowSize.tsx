@@ -1,4 +1,4 @@
-import { useSidebarContext } from "../../../entities/sidebar/SidebarContext"
+import { useSidebarContext } from "../../../shared/context/SidebarContext"
 import useWindowSize from "../../../shared/hooks/useWindowSize"
 
 export default function useManageSidebarBasedOnWindowSize() {

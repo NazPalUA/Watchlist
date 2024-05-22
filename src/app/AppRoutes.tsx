@@ -9,7 +9,7 @@ import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
-import Layout from "./Layout/Layout"
+import { Layout } from "./Layout"
 import RequireAuth from "./RequireAuth"
 
 export default function AppRoutes() {
