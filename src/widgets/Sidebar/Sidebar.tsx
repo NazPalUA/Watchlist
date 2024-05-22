@@ -2,9 +2,9 @@ import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 import SidebarLink from "../../entities/sidebar/ui/SidebarLink"
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
 import Loader from "../../shared/UI/Loader"
+import WatchlistsList from "../WatchlistsList/ui/WatchlistsList"
 import "./Sidebar.scss"
 import UserLink from "./ui/UserLink/UserLink"
-import WatchlistsList from "./ui/WatchlistsList"
 import manageSidebarOpening from "./utils/manageSidebarOpening"
 
 type SidebarPropTypes = { className?: string }

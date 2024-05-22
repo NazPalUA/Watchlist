@@ -1,5 +1,5 @@
 import { NavLink, NavLinkProps } from "react-router-dom"
-import useManageSidebarBasedOnWindowSize from "../../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
+// import useManageSidebarBasedOnWindowSize from "../../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
 
 type SidebarLinkProps = Omit<NavLinkProps, "ref"> & {
   children: React.ReactNode
@@ -11,14 +11,14 @@ export default function SidebarLink({
   className = "",
   ...rest
 }: SidebarLinkProps) {
-  const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
+  // const { toggleSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
   return (
     <NavLink
       className={({ isActive }) =>
         `${isActive ? `${className} active` : className}`.trim()
       }
-      onClick={() => toggleSidebarIfMobile?.()}
+      // onClick={() => toggleSidebarIfMobile?.()}
       {...rest}
     >
       {children}
