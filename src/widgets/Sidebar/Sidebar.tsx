@@ -1,17 +1,15 @@
-import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
 import Logo from "../../shared/UI/Logo/Logo"
 import { NavBar } from "../NavBar"
+import { UserLink } from "../UserLink"
 import { MyWatchlists } from "../WatchlistsList"
 import "./Sidebar.scss"
-import UserLink from "./ui/UserLink/UserLink"
 import manageSidebarOpening from "./utils/manageSidebarOpening"
 
 type SidebarPropTypes = { className?: string }
 
 function Sidebar({ className }: SidebarPropTypes) {
   manageSidebarOpening()
-  const { data: user } = useGetUserQuery()
 
   return (
     <div className={`sidebar ${className}`}>
@@ -21,7 +19,7 @@ function Sidebar({ className }: SidebarPropTypes) {
         <CreateWatchlistNavButton className="sidebar__create-link" />
       </div>
       <MyWatchlists />
-      <UserLink to={!user ? "/login" : "/user"} />
+      <UserLink />
     </div>
   )
 }
