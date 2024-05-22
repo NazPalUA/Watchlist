@@ -1,19 +1,20 @@
 import { NavLink, NavLinkProps } from "react-router-dom"
+import style from "./NavLinkWithActiveClass.module.scss"
 
-type SidebarLinkProps = Omit<NavLinkProps, "ref"> & {
+type NavLinkWithActiveClassProps = Omit<NavLinkProps, "ref"> & {
   children: React.ReactNode
   className?: string
 }
 
-export default function SidebarLink({
+export function NavLinkWithActiveClass({
   children,
   className = "",
   ...rest
-}: SidebarLinkProps) {
+}: NavLinkWithActiveClassProps) {
   return (
     <NavLink
       className={({ isActive }) =>
-        `${isActive ? `${className} active` : className}`.trim()
+        `${className}${isActive ? ` ${style.active}` : ""}`.trim()
       }
       {...rest}
     >

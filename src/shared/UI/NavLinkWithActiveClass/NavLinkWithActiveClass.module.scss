@@ -1,0 +1,5 @@
+@use "../../../app/styles/variables" as v;
+
+.active {
+  color: v.$clr-accent;
+}

@@ -1,6 +1,6 @@
-import SidebarLink from "../../../entities/sidebar/ui/SidebarLink"
 import { useGetWatchlistsQuery } from "../../../entities/watchlist/api/queries/hooks"
 import ErrorMessage from "../../../shared/UI/ErrorMessage/ErrorMessage"
+import { NavLinkWithActiveClass } from "../../../shared/UI/NavLinkWithActiveClass"
 
 export default function WatchlistsList() {
   const { data: watchlistsData, error, isError } = useGetWatchlistsQuery()
@@ -15,12 +15,12 @@ export default function WatchlistsList() {
 
   const watchListsArrHTML = watchlistsData?.map((watchlist) => (
     <li className="sidebar__watchlist-item" key={watchlist.id}>
-      <SidebarLink
+      <NavLinkWithActiveClass
         to={`/watchlist-page/${watchlist.id}`}
         className="sidebar__watchlist-link"
       >
         {watchlist.name}
-      </SidebarLink>
+      </NavLinkWithActiveClass>
     </li>
   ))
 

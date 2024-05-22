@@ -1,7 +1,7 @@
 import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
-import SidebarLink from "../../entities/sidebar/ui/SidebarLink"
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
 import Loader from "../../shared/UI/Loader"
+import { NavLinkWithActiveClass } from "../../shared/UI/NavLinkWithActiveClass"
 import WatchlistsList from "../WatchlistsList/ui/WatchlistsList"
 import "./Sidebar.scss"
 import UserLink from "./ui/UserLink/UserLink"
@@ -16,24 +16,24 @@ function Sidebar({ className }: SidebarPropTypes) {
   return (
     <div className={`sidebar ${className}`}>
       <div className="sidebar__top">
-        <SidebarLink to="/" className="sidebar__logo-link">
+        <NavLinkWithActiveClass to="/" className="sidebar__logo-link">
           <h1 className="sidebar__logo">Watchlists</h1>
-        </SidebarLink>
+        </NavLinkWithActiveClass>
 
         <nav className="sidebar__navigation">
-          <SidebarLink
+          <NavLinkWithActiveClass
             to="/"
             className="sidebar__navigation-link sidebar__navigation-link_home"
           >
             Home
-          </SidebarLink>
+          </NavLinkWithActiveClass>
 
-          <SidebarLink
+          <NavLinkWithActiveClass
             to="/history"
             className="sidebar__navigation-link sidebar__navigation-link_history"
           >
             History
-          </SidebarLink>
+          </NavLinkWithActiveClass>
         </nav>
 
         <CreateWatchlistNavButton className="sidebar__create-link" />
@@ -47,9 +47,9 @@ function Sidebar({ className }: SidebarPropTypes) {
           <WatchlistsList />
         ) : (
           <p>
-            <SidebarLink className="sidebar__login-link" to="/login">
+            <NavLinkWithActiveClass className="sidebar__login-link" to="/login">
               Log in
-            </SidebarLink>{" "}
+            </NavLinkWithActiveClass>{" "}
             <span> to see your watchlists</span>
           </p>
         )}
