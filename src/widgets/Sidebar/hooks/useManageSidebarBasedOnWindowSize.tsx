@@ -2,7 +2,7 @@ import { useSidebarContext } from "../../../entities/sidebar/SidebarContext"
 import useWindowSize from "../../../shared/hooks/useWindowSize"
 
 export default function useManageSidebarBasedOnWindowSize() {
-  const { toggleSidebar } = useSidebarContext()
+  const { toggleSidebar, closeSidebar } = useSidebarContext()
   const size = useWindowSize()
 
   // Check if the device is a phone
@@ -15,6 +15,10 @@ export default function useManageSidebarBasedOnWindowSize() {
     isPhone ? toggleSidebar() : null
   }
 
+  function closeSidebarIfMobile() {
+    isPhone ? closeSidebar() : null
+  }
+
   // Return a function that toggles the sidebar if on a phone
-  return { isPhone, isLaptop, toggleSidebarIfMobile }
+  return { isPhone, isLaptop, toggleSidebarIfMobile, closeSidebarIfMobile }
 }
