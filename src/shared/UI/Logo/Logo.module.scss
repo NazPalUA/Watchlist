@@ -1,0 +1,18 @@
+@use "../../../app/styles/variables" as v;
+
+.logo {
+  margin: 0;
+
+  font-family: v.$ff-logo;
+  font-size: var(--fs-h1);
+  font-weight: v.$fw-logo;
+  color: v.$clr-accent;
+}
+
+.hideIfMobile {
+  display: none;
+
+  @media (min-width: v.$bp-laptops) {
+    display: block;
+  }
+}

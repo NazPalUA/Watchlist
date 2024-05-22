@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
 import { useSidebarContext } from "../../entities/sidebar/SidebarContext"
 import Burger from "../../shared/UI/Burger"
+import Logo from "../../shared/UI/Logo/Logo"
 import "./MobileHeader.scss"
 
 type MobileHeaderPropTypes = {
@@ -12,9 +12,7 @@ function MobileHeader({ className }: MobileHeaderPropTypes) {
 
   return (
     <nav className={`mobile-header ${className}`}>
-      <Link to="/" className="mobile-header__logo-link">
-        <h1 className="mobile-header__logo">Watchlists</h1>
-      </Link>
+      <Logo />
       <Burger isOpen={isSidebarOpen} toggle={toggleSidebar} />
     </nav>
   )

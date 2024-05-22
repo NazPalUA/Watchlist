@@ -1,6 +1,6 @@
 import { useGetUserQuery } from "../../entities/session/api/queries/hooks"
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
-import { NavLinkWithActiveClass } from "../../shared/UI/NavLinkWithActiveClass"
+import Logo from "../../shared/UI/Logo/Logo"
 import { NavBar } from "../NavBar"
 import { MyWatchlists } from "../WatchlistsList"
 import "./Sidebar.scss"
@@ -15,10 +15,8 @@ function Sidebar({ className }: SidebarPropTypes) {
 
   return (
     <div className={`sidebar ${className}`}>
-      <div>
-        <NavLinkWithActiveClass to="/" className="sidebar__logo-link">
-          <h1 className="sidebar__logo">Watchlists</h1>
-        </NavLinkWithActiveClass>
+      <div className="top-section">
+        <Logo hideIfMobile={true} />
         <NavBar />
         <CreateWatchlistNavButton className="sidebar__create-link" />
       </div>

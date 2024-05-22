@@ -4,27 +4,14 @@
   display: flex;
   flex-direction: column;
 
-  &__logo-link {
-    display: none;
-
-    @media (min-width: v.$bp-laptops) {
-      display: block;
-    }
-  }
-
-  &__logo {
-    margin-top: 0;
-    margin-bottom: 1em;
-
-    font-family: v.$ff-logo;
-    font-size: var(--fs-h1);
-    font-weight: v.$fw-logo;
-    color: v.$clr-accent;
-  }
-
   &__create-link {
     display: block;
-    margin-bottom: 1.25em;
     white-space: nowrap;
+  }
+}
+
+.top-section {
+  & > * {
+    margin-bottom: 1.25rem;
   }
 }
