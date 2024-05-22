@@ -1,1 +1,1 @@
-export { WatchlistsList } from "./ui/WatchlistsList"
+export { MyWatchlists } from "./ui/MyWatchlists/MyWatchlists"
