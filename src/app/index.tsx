@@ -1,28 +1,12 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter } from "react-router-dom"
-import { HistoryContextProvider } from "../shared/context/HistoryContext"
-import { ModalContextProvider } from "../shared/context/ModalContext"
-import { SidebarContextProvider } from "../shared/context/SidebarContext"
-import App from "./App"
+import { queryClient } from "../shared/API/query-client"
+import "./global.scss"
+import { Providers } from "./providers"
+import { router } from "./router"
 
-const queryClient = new QueryClient()
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ModalContextProvider>
-        <HistoryContextProvider>
-          <SidebarContextProvider>
-            <BrowserRouter>
-              <App />
-              <ReactQueryDevtools initialIsOpen={true} />
-            </BrowserRouter>
-          </SidebarContextProvider>
-        </HistoryContextProvider>
-      </ModalContextProvider>
-    </QueryClientProvider>
+    <Providers router={router} client={queryClient} />
   </React.StrictMode>
 )
