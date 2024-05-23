@@ -16,34 +16,28 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage className="app__page" />} />
+        <Route index element={<HomePage />} />
 
-        <Route path="user" element={<UserPage className="app__page" />} />
+        <Route path="user" element={<UserPage />} />
 
-        <Route path="login" element={<LogInPage className="app__page" />} />
+        <Route path="login" element={<LogInPage />} />
 
-        <Route path="signup" element={<SignUpPage className="app__page" />} />
+        <Route path="signup" element={<SignUpPage />} />
 
-        <Route
-          path="search"
-          element={<SearchResultsPage className="app__page" />}
-        />
+        <Route path="search" element={<SearchResultsPage />} />
 
         <Route path="movie-page">
           <Route index element={<Navigate to="/" />} />
-          <Route
-            path=":movieId"
-            element={<MoviePage className="app__page" />}
-          />
+          <Route path=":movieId" element={<MoviePage />} />
         </Route>
 
-        <Route path="history" element={<HistoryPage className="app__page" />} />
+        <Route path="history" element={<HistoryPage />} />
 
         <Route
           path="create_watchlist"
           element={
             <RequireAuth>
-              <CreateWatchlistPage className="app__page" />
+              <CreateWatchlistPage />
             </RequireAuth>
           }
         />
@@ -54,14 +48,11 @@ export default function AppRoutes() {
             path=":watchlistId"
             element={
               <RequireAuth>
-                <WatchlistPage className="app__page" />
+                <WatchlistPage />
               </RequireAuth>
             }
           />
-          <Route
-            path=":watchlistId/edit"
-            element={<EditWatchlistPage className="app__page" />}
-          />
+          <Route path=":watchlistId/edit" element={<EditWatchlistPage />} />
         </Route>
 
         <Route path="*" element={<h1>Page not found!</h1>} />
