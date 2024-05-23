@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react"
+import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
 import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import AddToWatchlistModal from "../../../features/AddMovieToWatchlist/ui/AddToWatchlistModal/AddToWatchlistModal"
@@ -12,23 +12,14 @@ export function Layout() {
   const { getSidebarStateClass } = useSidebarContext()
 
   const { data: currentUser } = useGetUserQuery()
-  const location = useLocation()
+  const { pathname } = useLocation()
   const { closeSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
   useEffect(() => {
     closeSidebarIfMobile()
-  }, [location.pathname])
-
-  // Handle the link click to scroll to top
-  const handleLinkClick = useCallback(() => {
     window.scrollTo(0, 0)
-  }, [])
+  }, [pathname])
 
-  // Get the current location and scroll to top when location changes
-  const { pathname } = useLocation()
-  useEffect(() => {
-    handleLinkClick()
-  }, [pathname, handleLinkClick])
   return (
     <>
       {currentUser && <AddToWatchlistModal />}
