@@ -1,4 +1,4 @@
-@use "../../../app/styles/variables.scss" as vars;
+@use "/src/shared/styles/variables.scss" as v;
 
 .btn {
   display: block;
@@ -9,10 +9,10 @@
   text-align: center;
 
   font-size: var(--fs-big);
-  font-weight: vars.$fw-bold;
-  color: vars.$clr-font-black;
+  font-weight: v.$fw-bold;
+  color: v.$clr-font-black;
 
-  background: vars.$clr-accent;
+  background: v.$clr-accent;
 
   // Size modifiers
   &--size-m {
@@ -21,7 +21,7 @@
 
   &--size-l {
     padding: 0.8em 3em;
-    @media (min-width: vars.$bp-mobile) {
+    @media (min-width: v.$bp-mobile) {
       padding: 0.6em 4em;
     }
   }
@@ -44,8 +44,8 @@
   }
 
   &:disabled {
-    background: vars.$clr-accent-disabled;
-    color: vars.$clr-font-black-disabled;
+    background: v.$clr-accent-disabled;
+    color: v.$clr-font-black-disabled;
     cursor: default;
     opacity: 1;
   }
