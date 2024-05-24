@@ -9,13 +9,13 @@ import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
-import { Layout } from "./Layout"
-import RequireAuth from "./RequireAuth"
+import { App } from "./Layout"
+import RequireAuth from "./Layout/ui/RequireAuth"
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Layout />,
+    element: <App />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "user", element: <UserPage /> },

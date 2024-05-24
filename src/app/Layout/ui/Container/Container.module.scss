@@ -1,0 +1,14 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.container {
+  width: 92%;
+  margin: 0 auto;
+
+  @media (min-width: v.$bp-tablets) {
+    width: 94%;
+  }
+
+  @media (min-width: v.$bp-large) {
+    width: 96%;
+  }
+}

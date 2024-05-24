@@ -1,3 +1,4 @@
+import Container from "../../../../app/Layout/ui/Container/Container"
 import { useSidebarContext } from "../../../../shared/context/SidebarContext"
 import Logo from "../../../../shared/UI/Logo/Logo"
 import { Burger } from "../Burger/Burger"
@@ -7,9 +8,13 @@ export function MobileHeader() {
   const { toggleSidebar, isSidebarOpen } = useSidebarContext()
 
   return (
-    <nav className={styles.header}>
-      <Logo />
-      <Burger isOpen={isSidebarOpen} toggle={toggleSidebar} />
-    </nav>
+    <header className={styles.header}>
+      <Container>
+        <nav className={styles.navbar}>
+          <Logo />
+          <Burger isOpen={isSidebarOpen} toggle={toggleSidebar} />
+        </nav>
+      </Container>
+    </header>
   )
 }

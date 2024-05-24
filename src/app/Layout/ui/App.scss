@@ -12,33 +12,12 @@ $sidebar-timing-function: ease;
   width: 100%;
   margin: 0 auto;
 
-  &__header {
-    z-index: 6;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: v.$clr-font-black;
-  }
-
   &__main {
     min-height: calc(100vh - var(--header-height));
     background-color: rgb(v.$clr-light, 0.13);
 
     @media (min-width: v.$bp-laptops) {
       min-height: 100vh;
-    }
-  }
-
-  &__container {
-    width: 92%;
-    margin: 0 auto;
-
-    @media (min-width: v.$bp-tablets) {
-      width: 94%;
-    }
-
-    @media (min-width: v.$bp-large) {
-      width: 96%;
     }
   }
 
@@ -65,9 +44,6 @@ $sidebar-timing-function: ease;
     @media (min-width: v.$bp-large) {
       grid-template: 1fr / minmax(min-content, 25%) auto;
     }
-  }
-
-  &__main-section {
   }
 
   &__main-section_sidebar {
@@ -161,8 +137,5 @@ $sidebar-timing-function: ease;
 
     @media (min-width: v.$bp-large) {
     }
-  }
-
-  &__page {
   }
 }

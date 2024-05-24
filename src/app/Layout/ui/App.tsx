@@ -6,9 +6,10 @@ import { useSidebarContext } from "../../../shared/context/SidebarContext"
 import { MobileHeader } from "../../../widgets/MobileHeader"
 import Sidebar from "../../../widgets/Sidebar/Sidebar"
 import useManageSidebarBasedOnWindowSize from "../../../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
-import "./Layout.scss"
+import "./App.scss"
+import Container from "./Container/Container"
 
-export function Layout() {
+export function App() {
   const { getSidebarStateClass } = useSidebarContext()
 
   const { data: currentUser } = useGetUserQuery()
@@ -24,23 +25,16 @@ export function Layout() {
     <>
       {currentUser && <AddToWatchlistModal />}
       <div className={`app app--${getSidebarStateClass()}`}>
-        <header className="app__header">
-          <div className="app__container">
-            <MobileHeader />
-          </div>
-        </header>
+        <MobileHeader />
         <main className="app__main">
-          <div className="app__container app__main-wrapper" id="container">
-            <section
-              className="app__main-section app__main-section_sidebar"
-              id="sidebar"
-            >
+          <Container className="app__main-wrapper">
+            <aside className="app__main-section_sidebar" id="sidebar">
               <Sidebar className="app__sidebar" />
-            </section>
-            <section className="app__main-section app__main-section_page">
+            </aside>
+            <section className="app__main-section_page">
               <Outlet />
             </section>
-          </div>
+          </Container>
         </main>
       </div>
     </>

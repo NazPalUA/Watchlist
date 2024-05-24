@@ -1,14 +1,24 @@
 @use "/src/shared/styles/variables.scss" as v;
 
 .header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 6;
+
+  background-color: v.$clr-font-black;
   display: none;
 
+  @media (max-width: v.$bp-laptops) {
+    display: block;
+  }
+}
+
+.navbar {
   width: 100%;
   height: var(--header-height);
 
-  @media (max-width: v.$bp-laptops) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
