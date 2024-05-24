@@ -1,0 +1,120 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+$margin: 2.5%;
+$transition-duration: 0.3s; // Define a consistent transition duration
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  width: calc(100% - #{$margin} * 2);
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: v.$clr-font-black;
+  display: none;
+
+  @media (max-width: v.$bp-laptops) {
+    display: block;
+  }
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  transition: margin-left $transition-duration ease,
+    width $transition-duration ease;
+
+  @media (max-width: v.$bp-tablets) {
+    flex-direction: column;
+
+    & > .sidebar {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: transform $transition-duration ease,
+        height $transition-duration ease;
+    }
+
+    &.sidebarOpen > .sidebar {
+      height: 100%;
+      transform: translateX(0);
+    }
+
+    & > .content {
+      width: 100%;
+      height: 100%;
+      transition: transform $transition-duration ease;
+    }
+
+    &.sidebarOpen > .content {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
+    & > .sidebar {
+      width: 25%;
+      transform: translateX(-100%);
+      transition: transform $transition-duration ease;
+    }
+
+    &.sidebarOpen > .sidebar {
+      transform: translateX(0);
+    }
+
+    &.sidebarClosed > .sidebar {
+      transform: translateX(-100%);
+    }
+
+    & > .content {
+      transition: transform $transition-duration ease,
+        width $transition-duration ease, margin-left $transition-duration ease;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    &.sidebarOpen > .content {
+      width: 75%;
+      margin-left: $margin;
+    }
+
+    &.sidebarClosed > .content {
+      width: calc(100% - #{$margin} * 2);
+      margin-left: $margin;
+    }
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    & > .sidebar {
+      width: 25%;
+      transform: translateX(0);
+    }
+
+    & > .content {
+      width: 75%;
+      margin-left: $margin;
+      transition: margin-left $transition-duration ease,
+        width $transition-duration ease;
+    }
+  }
+}
+
+.sidebar {
+  background-color: v.$clr-dark;
+  height: 100%;
+  overflow: hidden;
+  transition: transform $transition-duration ease;
+}
+
+.content {
+  background-color: rgb(v.$clr-light, 0.13);
+  height: 100%;
+  overflow-y: auto;
+  transition: transform $transition-duration ease,
+    margin-left $transition-duration ease, width $transition-duration ease;
+}
