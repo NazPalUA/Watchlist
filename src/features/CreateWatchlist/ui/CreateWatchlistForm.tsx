@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { useCreateWatchlistMutation } from "../../../entities/watchlist/api/mutations/hooks"
-import { getForm } from "../../../shared/UI/Form"
 import {
   TWatchlistSchema,
   watchlistSchema,
 } from "../../../shared/types/form-watchlist"
+import { getForm } from "../../../shared/ui/Form"
 
 type CreateWatchlistFormProps = {}
 

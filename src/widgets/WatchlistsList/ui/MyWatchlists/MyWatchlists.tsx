@@ -1,5 +1,5 @@
 import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
-import Loader from "../../../../shared/UI/Loader"
+import Loader from "../../../../shared/ui/Loader"
 import { List } from "../List/List"
 import { NoAuth } from "../NoAuth/NoAuth"
 import styles from "./MyWatchlists.module.scss"

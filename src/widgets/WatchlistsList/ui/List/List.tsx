@@ -1,7 +1,7 @@
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist/api/queries/hooks"
-import ErrorMessage from "../../../../shared/UI/ErrorMessage/ErrorMessage"
-import Loader from "../../../../shared/UI/Loader"
-import { NavLinkWithActiveClass } from "../../../../shared/UI/NavLinkWithActiveClass"
+import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage"
+import Loader from "../../../../shared/ui/Loader"
+import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./List.module.scss"
 
 export function List() {

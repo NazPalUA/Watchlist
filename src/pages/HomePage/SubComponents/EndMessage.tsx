@@ -1,4 +1,4 @@
-import Loader from "../../../shared/UI/Loader"
+import Loader from "../../../shared/ui/Loader"
 
 type EndMessageProps = {
   isError: boolean | null

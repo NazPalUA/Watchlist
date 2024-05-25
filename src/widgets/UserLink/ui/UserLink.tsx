@@ -1,8 +1,8 @@
 import { FiMoreHorizontal } from "react-icons/fi"
 import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
-import Loader from "../../../shared/UI/Loader"
-import { NavLinkWithActiveClass } from "../../../shared/UI/NavLinkWithActiveClass"
+import Loader from "../../../shared/ui/Loader"
+import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 import style from "./UserLink.module.scss"
 import guestIcon from "/images/guest_icon.svg"
 

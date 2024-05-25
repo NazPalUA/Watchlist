@@ -4,8 +4,8 @@ import {
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
 import { useMoviesDetails } from "../../shared/API/tmdb"
-import ErrorMessage from "../../shared/UI/ErrorMessage/ErrorMessage"
-import Loader from "../../shared/UI/Loader"
+import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
 import Movies from "./SubComponents/Movies"
 import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"

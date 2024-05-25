@@ -12,6 +12,20 @@ $sidebar-timing-function: ease;
   width: 100%;
   margin: 0 auto;
 
+  &__header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 6;
+
+    background-color: v.$clr-font-black;
+    display: none;
+
+    @media (max-width: v.$bp-laptops) {
+      display: block;
+    }
+  }
+
   &__main {
     min-height: calc(100vh - var(--header-height));
     background-color: rgb(v.$clr-light, 0.13);

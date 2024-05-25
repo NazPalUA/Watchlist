@@ -1,5 +1,5 @@
 import { MovieCredits } from "../../../../shared/API/tmdb"
-import Card from "../../../../shared/UI/Card"
+import Card from "../../../../shared/ui/Card"
 import styles from "./Cast.module.scss"
 
 type CastListPropTypes = {

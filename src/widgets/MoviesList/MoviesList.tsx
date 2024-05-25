@@ -4,7 +4,7 @@ import {
   MovieDetails,
   Recommendation,
 } from "../../shared/API/tmdb/types"
-import Card from "../../shared/UI/Card"
+import Card from "../../shared/ui/Card"
 import formatRating from "../../shared/utils/formatRating"
 import formatYear from "../../shared/utils/formatYear"
 import styles from "./MoviesList.module.scss"

@@ -1,4 +1,4 @@
-import { NavLinkWithActiveClass } from "../../../shared/UI/NavLinkWithActiveClass"
+import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./NavBar.module.scss"
 
 type NavBarProps = React.ComponentPropsWithoutRef<"nav">

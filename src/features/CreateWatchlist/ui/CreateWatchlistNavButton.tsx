@@ -1,5 +1,5 @@
-import { Button } from "../../../shared/UI/Button/Button"
-import { NavLinkWithActiveClass } from "../../../shared/UI/NavLinkWithActiveClass"
+import { Button } from "../../../shared/ui/Button/Button"
+import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 
 type CreateWatchlistNavButtonProps = { className?: string }
 

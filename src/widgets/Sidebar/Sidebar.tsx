@@ -1,5 +1,5 @@
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
-import Logo from "../../shared/UI/Logo/Logo"
+import Logo from "../../shared/ui/Logo/Logo"
 import { NavBar } from "../NavBar"
 import { UserLink } from "../UserLink"
 import { MyWatchlists } from "../WatchlistsList"
