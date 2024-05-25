@@ -6,6 +6,7 @@
   align-items: center;
 
   padding: 0.625em 0.75em;
+  margin-bottom: 0.4em;
   border-radius: 6px;
 
   @media (min-width: v.$bp-tablets) {
@@ -32,9 +33,14 @@
 }
 
 .link_home {
-  margin-bottom: 1.25em;
   &:before {
     background-image: url(/images/home_icon.svg);
+  }
+}
+
+.link_watchlists {
+  &:before {
+    background-image: url(/images/watchlist_icon.svg);
   }
 }
 

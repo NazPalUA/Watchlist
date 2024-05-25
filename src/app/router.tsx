@@ -9,6 +9,7 @@ import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
+import Watchlists from "../pages/Watchlists"
 import { App } from "./Layout"
 import RequireAuth from "./Layout/ui/RequireAuth"
 
@@ -41,7 +42,14 @@ const routes: RouteObject[] = [
       {
         path: "watchlists",
         children: [
-          { index: true, element: <Navigate to="/" /> },
+          {
+            index: true,
+            element: (
+              <RequireAuth>
+                <Watchlists />
+              </RequireAuth>
+            ),
+          },
           {
             path: ":watchlistId",
             element: (

@@ -14,6 +14,13 @@ export function NavBar({ ...rest }: NavBarProps) {
       </NavLinkWithActiveClass>
 
       <NavLinkWithActiveClass
+        to="/watchlists"
+        className={`${styles.link} ${styles.link_watchlists}`}
+      >
+        Watchlists
+      </NavLinkWithActiveClass>
+
+      <NavLinkWithActiveClass
         to="/history"
         className={`${styles.link} ${styles.link_history}`}
       >
