@@ -39,7 +39,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: "watchlist-page",
+        path: "watchlists",
         children: [
           { index: true, element: <Navigate to="/" /> },
           {

@@ -15,7 +15,7 @@ export function List() {
   const watchListsArrHTML = watchlistsData?.map((watchlist) => (
     <li className={styles.item} key={watchlist.id}>
       <NavLinkWithActiveClass
-        to={`/watchlist-page/${watchlist.id}`}
+        to={`/watchlists/${watchlist.id}`}
         className={styles.link}
       >
         {watchlist.name}

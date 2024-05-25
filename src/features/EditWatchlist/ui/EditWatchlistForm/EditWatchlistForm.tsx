@@ -23,7 +23,7 @@ export default function EditWatchlistForm({
   function handleSubmit(data: TWatchlistSchema) {
     editWatchlist(data)
     // Navigate to the watchlist page
-    navigate(`/watchlist-page/${watchlistId}`)
+    navigate(`/watchlists/${watchlistId}`)
   }
 
   const Form = getForm<TWatchlistSchema>()
@@ -40,7 +40,7 @@ export default function EditWatchlistForm({
       </Form.Field>
       <div className={styles.btnsContainer}>
         <Link
-          to={`/watchlist-page/${watchlistId}`}
+          to={`/watchlists/${watchlistId}`}
           className={`${styles.btn} ${styles.btn_dark}`}
         >
           Back

@@ -19,7 +19,7 @@ export function CreateWatchlistForm({}: CreateWatchlistFormProps) {
     // Call the createWatchlist function to add a new watchlist
     createWatchlist(data, {
       onSuccess: (watchlistId) => {
-        navigate(`/watchlist-page/${watchlistId}`)
+        navigate(`/watchlists/${watchlistId}`)
       },
     })
   }
