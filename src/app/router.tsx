@@ -11,7 +11,7 @@ import UserPage from "../pages/UserPage/UserPage"
 import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
 import Watchlists from "../pages/Watchlists"
 import { App } from "./App"
-import RequireAuth from "./Layout/ui/RequireAuth"
+import RequireAuth from "./ui/RequireAuth"
 
 const routes: RouteObject[] = [
   {

@@ -7,7 +7,7 @@ import { FooterNavbar } from "../widgets/FooterNavbar/ui/FooterNavbar"
 import { HeaderNavbar } from "../widgets/HeaderNavbar"
 import Sidebar from "../widgets/Sidebar/Sidebar"
 import useManageSidebarBasedOnWindowSize from "../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
-import { Layout } from "./Layout/ui/Layout/Layout"
+import { Layout } from "./ui/Layout"
 
 export function App() {
   const { isSidebarOpen } = useSidebarContext()
