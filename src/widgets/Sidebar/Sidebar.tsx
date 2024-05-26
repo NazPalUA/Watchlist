@@ -1,25 +1,21 @@
 import CreateWatchlistNavButton from "../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
-import Logo from "../../shared/ui/Logo/Logo"
+import { useSidebarContext } from "../../shared/context/SidebarContext"
+import { Burger } from "../HeaderNavbar/ui/Burger/Burger"
 import { NavBar } from "../NavBar"
-import { UserLink } from "../UserLink"
 import { MyWatchlists } from "../WatchlistsList"
-import "./Sidebar.scss"
-import manageSidebarOpening from "./utils/manageSidebarOpening"
+import styles from "./Sidebar.module.scss"
 
-type SidebarPropTypes = { className?: string }
-
-function Sidebar({ className }: SidebarPropTypes) {
-  manageSidebarOpening()
+function Sidebar() {
+  const { toggleSidebar, isSidebarOpen } = useSidebarContext()
 
   return (
-    <div className={`sidebar ${className}`}>
-      <div className="top-section">
-        <Logo hideIfMobile={true} />
+    <div className={styles.sidebar}>
+      <div className={styles.topSection}>
+        <Burger isOpen={isSidebarOpen} toggle={toggleSidebar} />
         <NavBar />
-        <CreateWatchlistNavButton className="sidebar__create-link" />
+        <CreateWatchlistNavButton />
       </div>
       <MyWatchlists />
-      <UserLink />
     </div>
   )
 }

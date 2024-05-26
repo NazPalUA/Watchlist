@@ -1,0 +1,28 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 2em 4vw;
+  background-color: v.$clr-dark;
+
+  @media (min-width: v.$bp-tablets) {
+    padding: 2em 3vw;
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    position: static;
+    width: 100%;
+  }
+
+  @media (min-width: v.$bp-large) {
+    padding: 2em 2vw;
+  }
+}
+.topSection {
+  & > * {
+    margin-bottom: 1.25rem;
+  }
+}

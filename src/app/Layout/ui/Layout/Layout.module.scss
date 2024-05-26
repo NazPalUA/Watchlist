@@ -1,0 +1,114 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+$sidebar-width: 300px;
+
+.app {
+  max-width: v.$max-width;
+  min-width: v.$min-width;
+  width: 100%;
+  margin: 0 auto;
+}
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 6;
+  height: var(--header-height);
+
+  background-color: v.$clr-font-black;
+}
+
+.main {
+  min-height: calc(100vh - var(--header-height));
+  background-color: rgb(v.$clr-light, 0.13);
+
+  @media (min-width: v.$bp-laptops) {
+    min-height: 100vh;
+  }
+}
+
+.container_main {
+  @media (min-width: v.$bp-tablets) {
+    display: grid;
+    grid-template: 1fr / 0 auto;
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    grid-template: 1fr / min-content auto;
+  }
+
+  @media (min-width: v.$bp-large) {
+    grid-template: 1fr / minmax(min-content, 25%) auto;
+  }
+
+  .app.extendedSidebar > & {
+    @media (min-width: v.$bp-tablets) {
+      grid-template: 1fr / calc($sidebar-width) auto;
+    }
+  }
+}
+
+.sidebar {
+  background-color: v.$clr-dark;
+
+  position: absolute;
+  width: $sidebar-width;
+  height: calc(100vh - var(--header-height));
+  top: var(--header-height);
+  left: 0;
+  transform: translateX(-100%);
+
+  @media (min-width: v.$bp-tablets) {
+    background-color: inherit;
+
+    position: sticky;
+    width: 100%;
+
+    transform: translateX(0);
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .app.extendedSidebar > & {
+    transform: translateX(0);
+  }
+}
+
+.page {
+  padding: 2em 0;
+
+  .app.extendedSidebar > & {
+    position: fixed;
+    top: var(--header-height);
+    left: 4vw;
+    width: 92vw;
+    z-index: -1;
+
+    @media (min-width: v.$bp-tablets) {
+      position: static;
+      z-index: 1;
+      width: 100%;
+    }
+
+    @media (min-width: v.$bp-large) {
+    }
+  }
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 6;
+  height: var(--header-height);
+
+  background-color: v.$clr-font-black;
+
+  @media (min-width: v.$bp-tablets) {
+    display: none;
+  }
+}

@@ -3,6 +3,7 @@
 .container {
   width: 92%;
   margin: 0 auto;
+  height: 100%;
 
   @media (min-width: v.$bp-tablets) {
     width: 94%;

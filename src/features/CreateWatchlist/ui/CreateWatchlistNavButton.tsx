@@ -1,13 +1,10 @@
 import { Button } from "../../../shared/ui/Button/Button"
 import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
+import styles from "./CreateWatchlistNavButton.module.scss"
 
-type CreateWatchlistNavButtonProps = { className?: string }
-
-export default function CreateWatchlistNavButton({
-  className,
-}: CreateWatchlistNavButtonProps) {
+export default function CreateWatchlistNavButton() {
   return (
-    <NavLinkWithActiveClass to="/create_watchlist" className={className || ""}>
+    <NavLinkWithActiveClass to="/create_watchlist" className={styles.link}>
       <Button width="full">+ Create watchlist</Button>
     </NavLinkWithActiveClass>
   )
