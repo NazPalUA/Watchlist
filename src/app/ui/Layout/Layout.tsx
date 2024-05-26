@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import Container from "../Container/Container"
 import styles from "./Layout.module.scss"
 
 interface LayoutProps {
@@ -17,18 +16,12 @@ export function Layout(props: LayoutProps) {
 
   return (
     <div className={appClassName}>
-      <header className={styles.header}>
-        <Container>{props.header}</Container>
-      </header>
+      <header className={styles.header}>{props.header}</header>
       <main className={styles.main}>
-        <Container className={styles.container_main}>
-          <aside className={styles.sidebar}>{props.sidebar}</aside>
-          <section className={styles.page}>{props.page}</section>
-        </Container>
+        <aside className={styles.sidebar}>{props.sidebar}</aside>
+        <section className={styles.page}>{props.page}</section>
       </main>
-      <footer className={styles.footer}>
-        <Container>{props.footer}</Container>
-      </footer>
+      <footer className={styles.footer}>{props.footer}</footer>
     </div>
   )
 }

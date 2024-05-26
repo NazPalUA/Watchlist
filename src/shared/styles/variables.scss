@@ -45,6 +45,7 @@ $min-width: 320px;
   --fs-small: 0.6rem; //9.6px
 
   --header-height: 4.5rem; //72px
+  --footer-height: 4.5rem; //72px
 
   @media (min-width: $bp-mobile) {
     --fs-h1: 2.5rem; //40px
@@ -60,5 +61,6 @@ $min-width: 320px;
     --fs-small: 0.625rem; //10px
 
     --header-height: 5rem; //80px
+    --footer-height: 5rem; //80px
   }
 }

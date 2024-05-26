@@ -2,16 +2,32 @@
 
 $sidebar-width: 300px;
 
+// Define a mixin for the common styles
+@mixin container-styles {
+  width: 100%;
+  margin: 0 0;
+  padding: 0 2%;
+  height: 100%;
+
+  @media (min-width: v.$bp-tablets) {
+    padding: 0 3%;
+  }
+
+  @media (min-width: v.$bp-large) {
+    padding: 0 4%;
+  }
+}
+
 .app {
   max-width: v.$max-width;
   min-width: v.$min-width;
-  width: 100%;
   margin: 0 auto;
 }
+
 .header {
+  @include container-styles;
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 6;
   height: var(--header-height);
 
@@ -19,67 +35,74 @@ $sidebar-width: 300px;
 }
 
 .main {
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   background-color: rgb(v.$clr-light, 0.13);
 
-  @media (min-width: v.$bp-laptops) {
-    min-height: 100vh;
-  }
-}
-
-.container_main {
   @media (min-width: v.$bp-tablets) {
-    display: grid;
-    grid-template: 1fr / 0 auto;
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: v.$bp-tablets) {
+    flex-direction: row;
   }
 
   @media (min-width: v.$bp-laptops) {
-    grid-template: 1fr / min-content auto;
+    flex-direction: row;
+    .sidebar {
+      flex: 0 1 min-content; // Sidebar takes up as little space as necessary
+    }
+    .main {
+      flex: 1; // Main content takes up the remaining space
+    }
   }
 
   @media (min-width: v.$bp-large) {
-    grid-template: 1fr / minmax(min-content, 25%) auto;
-  }
-
-  .app.extendedSidebar > & {
-    @media (min-width: v.$bp-tablets) {
-      grid-template: 1fr / calc($sidebar-width) auto;
+    .sidebar {
+      flex: 0 1 25%; // Sidebar can grow up to 25% of the container's width
+    }
+    .main {
+      flex: 1; // Main content takes up the remaining space
     }
   }
 }
 
 .sidebar {
+  display: none;
   background-color: v.$clr-dark;
+  order: 1;
 
-  position: absolute;
-  width: $sidebar-width;
+  position: sticky;
+  width: 100%;
   height: calc(100vh - var(--header-height));
   top: var(--header-height);
   left: 0;
-  transform: translateX(-100%);
 
   @media (min-width: v.$bp-tablets) {
-    background-color: inherit;
-
-    position: sticky;
-    width: 100%;
-
-    transform: translateX(0);
+    display: block;
+    order: 0;
   }
 
-  @media (min-width: v.$bp-laptops) {
-    position: sticky;
-    top: 0;
-    height: 100vh;
+  padding: 0 2%;
+
+  @media (min-width: v.$bp-tablets) {
+    padding: 0 3%;
   }
 
-  .app.extendedSidebar > & {
-    transform: translateX(0);
+  @media (min-width: v.$bp-large) {
+    padding: 0 4%;
   }
 }
 
 .page {
+  order: 1;
   padding: 2em 0;
+
+  @media (min-width: v.$bp-tablets) {
+    order: 0;
+  }
 
   .app.extendedSidebar > & {
     position: fixed;
@@ -100,11 +123,11 @@ $sidebar-width: 300px;
 }
 
 .footer {
+  @include container-styles;
   position: sticky;
   bottom: 0;
-  width: 100%;
   z-index: 6;
-  height: var(--header-height);
+  height: var(--footer-height);
 
   background-color: v.$clr-font-black;
 
