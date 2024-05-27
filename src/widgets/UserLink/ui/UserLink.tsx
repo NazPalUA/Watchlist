@@ -1,4 +1,3 @@
-import { FiMoreHorizontal } from "react-icons/fi"
 import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
 import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
 import Loader from "../../../shared/ui/Loader"
@@ -21,7 +20,6 @@ export function UserLink() {
     >
       <img className={style.img} src={guestIcon} alt="guest icon" />
       <p className={style.text}>{userData?.name || "Guest"}</p>
-      <FiMoreHorizontal className={style.btnIcon} color="#e1e1e1" size={32} />
     </NavLinkWithActiveClass>
   )
 }
