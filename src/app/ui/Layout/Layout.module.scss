@@ -1,133 +1,82 @@
 @use "/src/shared/styles/variables.scss" as v;
 
-$sidebar-width: 300px;
-
-// Define a mixin for the common styles
-@mixin container-styles {
-  width: 100%;
-  margin: 0 0;
-  padding: 0 2%;
-  height: 100%;
-
-  @media (min-width: v.$bp-tablets) {
-    padding: 0 3%;
-  }
-
-  @media (min-width: v.$bp-large) {
-    padding: 0 4%;
-  }
-}
-
 .app {
   max-width: v.$max-width;
   min-width: v.$min-width;
-  margin: 0 auto;
 }
 
 .header {
-  @include container-styles;
   position: sticky;
   top: 0;
-  z-index: 6;
+
   height: var(--header-height);
+  padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
 
   background-color: v.$clr-font-black;
 }
 
 .main {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  background-color: rgb(v.$clr-light, 0.13);
-
-  @media (min-width: v.$bp-tablets) {
-    min-height: calc(100vh - var(--header-height));
-  }
-
   display: flex;
   flex-direction: column;
 
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+  background-color: rgb(v.$clr-light, 0.13);
+
   @media (min-width: v.$bp-tablets) {
     flex-direction: row;
+    min-height: calc(100vh - var(--header-height));
   }
 
   @media (min-width: v.$bp-laptops) {
-    flex-direction: row;
-    .sidebar {
-      flex: 0 1 min-content; // Sidebar takes up as little space as necessary
-    }
-    .main {
-      flex: 1; // Main content takes up the remaining space
-    }
-  }
-
-  @media (min-width: v.$bp-large) {
-    .sidebar {
-      flex: 0 1 25%; // Sidebar can grow up to 25% of the container's width
-    }
-    .main {
-      flex: 1; // Main content takes up the remaining space
-    }
+    flex: 1;
   }
 }
 
 .sidebar {
   display: none;
-  background-color: v.$clr-dark;
   order: 1;
 
   position: sticky;
-  width: 100%;
-  height: calc(100vh - var(--header-height));
   top: var(--header-height);
   left: 0;
+
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  padding: var(--vertical-padding) var(--horizontal-padding);
+
+  background-color: v.$clr-dark;
 
   @media (min-width: v.$bp-tablets) {
     display: block;
     order: 0;
   }
 
-  padding: 0 2%;
-
-  @media (min-width: v.$bp-tablets) {
-    padding: 0 3%;
+  @media (min-width: v.$bp-laptops) {
+    flex: 0 1 min-content;
   }
 
   @media (min-width: v.$bp-large) {
-    padding: 0 4%;
+    flex: 0 1 25%;
   }
 }
 
 .page {
+  width: 100%;
   order: 1;
-  padding: 2em 0;
+  padding: var(--vertical-padding) var(--horizontal-padding);
 
   @media (min-width: v.$bp-tablets) {
     order: 0;
   }
-
-  .app.extendedSidebar > & {
-    position: fixed;
-    top: var(--header-height);
-    left: 4vw;
-    width: 92vw;
-    z-index: -1;
-
-    @media (min-width: v.$bp-tablets) {
-      position: static;
-      z-index: 1;
-      width: 100%;
-    }
-
-    @media (min-width: v.$bp-large) {
-    }
-  }
 }
 
 .footer {
-  @include container-styles;
   position: sticky;
   bottom: 0;
-  z-index: 6;
+
   height: var(--footer-height);
+  padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
 
   background-color: v.$clr-font-black;
 
