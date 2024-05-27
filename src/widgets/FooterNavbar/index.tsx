@@ -1,1 +1,1 @@
-export { HeaderNavbar } from "./ui/HeaderNavbar/HeaderNavbar"
+export { FooterNavbar } from "./ui/FooterNavbar"
