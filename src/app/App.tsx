@@ -6,7 +6,6 @@ import { useSidebarContext } from "../shared/context/SidebarContext"
 import { FooterNavbar } from "../widgets/FooterNavbar/ui/FooterNavbar"
 import { HeaderNavbar } from "../widgets/HeaderNavbar"
 import Sidebar from "../widgets/Sidebar/Sidebar"
-import useManageSidebarBasedOnWindowSize from "../widgets/Sidebar/hooks/useManageSidebarBasedOnWindowSize"
 import { Layout } from "./ui/Layout"
 
 export function App() {
@@ -14,10 +13,8 @@ export function App() {
 
   const { data: currentUser } = useGetUserQuery()
   const { pathname } = useLocation()
-  const { closeSidebarIfMobile } = useManageSidebarBasedOnWindowSize()
 
   useEffect(() => {
-    closeSidebarIfMobile()
     window.scrollTo(0, 0)
   }, [pathname])
 
