@@ -3,6 +3,8 @@
 .app {
   max-width: v.$max-width;
   min-width: v.$min-width;
+
+  margin: 0 auto;
 }
 
 .header {
