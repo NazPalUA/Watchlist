@@ -10,6 +10,7 @@
 .header {
   position: sticky;
   top: 0;
+  z-index: 1;
 
   height: var(--header-height);
   padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
@@ -52,14 +53,14 @@
   @media (min-width: v.$bp-tablets) {
     display: block;
     order: 0;
-  }
-
-  @media (min-width: v.$bp-laptops) {
     flex: 0 1 min-content;
   }
 
-  @media (min-width: v.$bp-large) {
+  @media (min-width: v.$bp-laptops) {
     flex: 0 1 25%;
+  }
+
+  @media (min-width: v.$bp-large) {
   }
 }
 
@@ -76,6 +77,7 @@
 .footer {
   position: sticky;
   bottom: 0;
+  z-index: 1;
 
   height: var(--footer-height);
   padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
