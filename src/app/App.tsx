@@ -5,8 +5,8 @@ import AddToWatchlistModal from "../features/AddMovieToWatchlist/ui/AddToWatchli
 import { useSidebarContext } from "../shared/context/SidebarContext"
 import { FooterNavbar } from "../widgets/FooterNavbar/ui/FooterNavbar"
 import { HeaderNavbar } from "../widgets/HeaderNavbar"
-import Sidebar from "../widgets/Sidebar/Sidebar"
 import { Layout } from "./ui/Layout"
+import Sidebar from "./ui/Sidebar/Sidebar"
 
 export function App() {
   const { isSidebarOpen } = useSidebarContext()
