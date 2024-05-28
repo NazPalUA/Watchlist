@@ -1,5 +1,5 @@
-import Logo from "../../../../shared/ui/Logo/Logo"
 import { UserLink } from "../../../UserLink"
+import Logo from "../Logo/Logo"
 import styles from "./HeaderNavbar.module.scss"
 
 export function HeaderNavbar() {

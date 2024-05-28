@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react"
-import useLocalStorage from "../hooks/useLocalStorage"
+import useLocalStorage from "../lib/hooks/useLocalStorage"
 
 type HistoryContextType = {
   historyIds: string[]

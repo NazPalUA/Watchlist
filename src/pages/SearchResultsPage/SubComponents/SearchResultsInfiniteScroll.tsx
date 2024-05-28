@@ -1,8 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useInfiniteSearchMovie } from "../../../shared/API/tmdb"
-import ErrorMessage from "../../../shared/ui/ErrorMessage/ErrorMessage"
+import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
+import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
-import getUniqueMoviesData from "../../../shared/utils/getUniqueMoviesData"
 import MoviesList from "../../../widgets/MoviesList/MoviesList"
 import EndMessage from "./EndMessage"
 

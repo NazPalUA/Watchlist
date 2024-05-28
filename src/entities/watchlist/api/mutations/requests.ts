@@ -13,7 +13,7 @@ import {
   watchlistMovieDocRef,
   watchlistsCollectionRef,
 } from "../../../../shared/API/firestore/storeReferences"
-import { TWatchlistSchema } from "../../../../shared/types/form-watchlist"
+import { TWatchlistSchema } from "../../model/form-watchlist"
 import { Watchlist } from "../../model/types"
 
 // MUTATIONS:

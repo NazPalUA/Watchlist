@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { MovieDetails } from "../../../shared/API/tmdb"
+import formatRating from "../../../shared/lib/utils/formatRating"
+import formatYear from "../../../shared/lib/utils/formatYear"
 import Card from "../../../shared/ui/Card"
-import formatRating from "../../../shared/utils/formatRating"
-import formatYear from "../../../shared/utils/formatYear"
 
 type MoviesPropTypes = { moviesData: MovieDetails[] }
 

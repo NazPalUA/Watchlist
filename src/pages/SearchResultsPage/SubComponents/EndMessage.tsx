@@ -1,4 +1,4 @@
-import ErrorMessage from "../../../shared/ui/ErrorMessage/ErrorMessage"
+import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
 
 type EndMessageProps = {

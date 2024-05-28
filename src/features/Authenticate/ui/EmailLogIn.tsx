@@ -1,6 +1,6 @@
 import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session/api/mutations/hooks"
-import { TLogInSchema, logInSchema } from "../../../shared/types/form-login"
 import { getForm } from "../../../shared/ui/Form"
+import { TLogInSchema, logInSchema } from "../model/form-login"
 
 type EmailLogInProps = {}
 

@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form"
-import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import { ErrorMessage } from "../ErrorMessage"
 import { Field as FieldUI } from "./ui/Field/Field"
 import { Input } from "./ui/Input/Input"
 import { Label } from "./ui/Label/Label"

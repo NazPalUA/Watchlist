@@ -1,8 +1,8 @@
 import { useMoviesDetails } from "../../shared/API/tmdb"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
-import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage"
+import getUniqueIds from "../../shared/lib/utils/getUniqueIds"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
-import getUniqueIds from "../../shared/utils/getUniqueIds"
 import MoviesList from "../../widgets/MoviesList/MoviesList"
 import "./HistoryPage.scss"
 

@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
-import getUniqueMoviesData from "../../utils/getUniqueMoviesData"
+import getUniqueMoviesData from "../../lib/utils/getUniqueMoviesData"
 import {
   getMovieCredits,
   getMovieDetails,

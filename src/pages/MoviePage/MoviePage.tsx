@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useMovieDetails } from "../../shared/API/tmdb"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
-import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 
 import Cast from "./SubComponents/Cast/Cast"

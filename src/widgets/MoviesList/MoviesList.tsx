@@ -4,9 +4,9 @@ import {
   MovieDetails,
   Recommendation,
 } from "../../shared/API/tmdb/types"
+import formatRating from "../../shared/lib/utils/formatRating"
+import formatYear from "../../shared/lib/utils/formatYear"
 import Card from "../../shared/ui/Card"
-import formatRating from "../../shared/utils/formatRating"
-import formatYear from "../../shared/utils/formatYear"
 import styles from "./MoviesList.module.scss"
 
 type MoviesListProps = {

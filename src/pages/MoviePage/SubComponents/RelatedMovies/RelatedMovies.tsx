@@ -1,5 +1,5 @@
 import { useRelatedMovies } from "../../../../shared/API/tmdb"
-import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage"
+import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
 import MoviesList from "../../../../widgets/MoviesList/MoviesList"
 import style from "./RelatedMovies.module.scss"

@@ -1,5 +1,5 @@
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist/api/queries/hooks"
-import ErrorMessage from "../../../../shared/ui/ErrorMessage/ErrorMessage"
+import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
 import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./List.module.scss"

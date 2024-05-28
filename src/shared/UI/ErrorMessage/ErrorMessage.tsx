@@ -11,7 +11,7 @@ type ErrorMessageProps = {
   apiMessageStyle?: React.CSSProperties
 }
 
-export default function ErrorMessage({
+export function ErrorMessage({
   error,
   children,
   isPopup = false,
