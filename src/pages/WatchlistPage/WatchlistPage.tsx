@@ -3,11 +3,11 @@ import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
+import WatchlistDetails from "../../entities/watchlist/ui/WatchlistDetails/WatchlistDetails"
 import { useMoviesDetails } from "../../shared/API/tmdb"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import Movies from "./SubComponents/Movies"
-import WatchlistDetails from "./SubComponents/WatchlistDetails"
 import "./WatchlistPage.scss"
 
 type WatchlistPagePropTypes = {
