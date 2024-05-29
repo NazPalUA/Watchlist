@@ -3,7 +3,7 @@ import { useInfiniteSearchMovie } from "../../../shared/API/tmdb"
 import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
-import MoviesList from "../../../widgets/MoviesList/MoviesList"
+import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import EndMessage from "./EndMessage"
 
 type SearchResultsInfiniteScrollProps = { searchText: string }

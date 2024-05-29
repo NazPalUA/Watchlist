@@ -3,7 +3,7 @@ import { useInfinitePopularMovies } from "../../../shared/API/tmdb"
 import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
-import MoviesList from "../../../widgets/MoviesList/MoviesList"
+import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import styles from "../HomePage.module.scss"
 import EndMessage from "./EndMessage"
 

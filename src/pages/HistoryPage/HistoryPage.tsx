@@ -3,7 +3,7 @@ import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/lib/utils/getUniqueIds"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
-import MoviesList from "../../widgets/MoviesList/MoviesList"
+import MoviesList from "../../shared/ui/MoviesList/MoviesList"
 import "./HistoryPage.scss"
 
 type HistoryPagePropTypes = {
