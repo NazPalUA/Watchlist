@@ -1,7 +1,7 @@
 import SearchBox from "../../features/SearchMovie/ui/SearchBox/SearchBox"
+import PopularMovies from "../../widgets/PopularMovies/PopularMovies"
 import Welcome from "../../widgets/Welcome"
 import styles from "./HomePage.module.scss"
-import PopularMovies from "./SubComponents/PopularMovies"
 
 type HomePagePropTypes = {
   className?: string

@@ -1,11 +1,11 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfinitePopularMovies } from "../../../shared/API/tmdb"
-import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
-import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
-import Loader from "../../../shared/ui/Loader"
-import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
-import styles from "../HomePage.module.scss"
-import EndMessage from "./EndMessage"
+import EndMessage from "../../pages/HomePage/SubComponents/EndMessage"
+import { useInfinitePopularMovies } from "../../shared/API/tmdb"
+import getUniqueMoviesData from "../../shared/lib/utils/getUniqueMoviesData"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
+import MoviesList from "../../shared/ui/MoviesList/MoviesList"
+import styles from "./PopularMovies.module.scss"
 
 export default function PopularMovies() {
   const { data, isError, error, isFetching, fetchNextPage, hasNextPage } =
