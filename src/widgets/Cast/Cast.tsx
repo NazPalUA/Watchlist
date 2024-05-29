@@ -1,6 +1,6 @@
-import { useMovieCredits } from "../../../../shared/API/tmdb"
-import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
-import Loader from "../../../../shared/ui/Loader"
+import { useMovieCredits } from "../../shared/API/tmdb"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
 import styles from "./Cast.module.scss"
 import CastList from "./CastList"
 

@@ -1,7 +1,7 @@
-import { useRelatedMovies } from "../../../../shared/API/tmdb"
-import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
-import Loader from "../../../../shared/ui/Loader"
-import MoviesList from "../../../../shared/ui/MoviesList/MoviesList"
+import { useRelatedMovies } from "../../shared/API/tmdb"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
+import MoviesList from "../../shared/ui/MoviesList/MoviesList"
 import style from "./RelatedMovies.module.scss"
 
 type RelatedMoviesListPropTypes = {

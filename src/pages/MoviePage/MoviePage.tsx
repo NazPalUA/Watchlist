@@ -5,9 +5,9 @@ import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 
-import Cast from "./SubComponents/Cast/Cast"
-import MovieDetails from "./SubComponents/MovieDetails/MovieDetails"
-import RelatedMovies from "./SubComponents/RelatedMovies/RelatedMovies"
+import Cast from "../../widgets/Cast/Cast"
+import MovieDetails from "../../widgets/MovieDetails/MovieDetails"
+import RelatedMovies from "../../widgets/RelatedMovies/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string
