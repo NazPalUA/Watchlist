@@ -1,5 +1,6 @@
 import { MovieCredits } from "../../../../shared/API/tmdb"
 import Card from "../../../../shared/ui/Card"
+import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
 import styles from "./Cast.module.scss"
 
 type CastListPropTypes = {
@@ -25,5 +26,5 @@ export default function CastList({ movieCredits }: CastListPropTypes) {
     )
   })
 
-  return <ul className="card-grid">{castListArray}</ul>
+  return <CardsGridContainer>{castListArray}</CardsGridContainer>
 }

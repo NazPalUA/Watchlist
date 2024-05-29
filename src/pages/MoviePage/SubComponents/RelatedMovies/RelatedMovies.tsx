@@ -21,7 +21,7 @@ export default function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
         Error Loading related movies! Please try again later.
       </ErrorMessage>
     ) : (
-      <MoviesList moviesData={relatedMovies} className="card-grid" />
+      <MoviesList moviesData={relatedMovies} />
     )
 
   return (

@@ -3,6 +3,7 @@ import type { MovieDetails } from "../../../../shared/API/tmdb"
 import formatRating from "../../../../shared/lib/utils/formatRating"
 import formatYear from "../../../../shared/lib/utils/formatYear"
 import Card from "../../../../shared/ui/Card"
+import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
 import styles from "./WatchListMovies.module.scss"
 
 type WatchListMoviesPropTypes = { moviesData: MovieDetails[] }
@@ -32,5 +33,5 @@ export default function WatchListMovies({
     )
   })
 
-  return <ul className="card-grid">{watchListMoviesHTML}</ul>
+  return <CardsGridContainer>{watchListMoviesHTML}</CardsGridContainer>
 }

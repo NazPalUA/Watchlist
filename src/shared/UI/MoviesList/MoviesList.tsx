@@ -3,6 +3,7 @@ import { Movie, MovieDetails, Recommendation } from "../../API/tmdb/types"
 import formatRating from "../../lib/utils/formatRating"
 import formatYear from "../../lib/utils/formatYear"
 import Card from "../Card"
+import { CardsGridContainer } from "../CardsGridContainer"
 import styles from "./MoviesList.module.scss"
 
 type MoviesListProps = {
@@ -33,5 +34,9 @@ export default function MoviesList({ moviesData, className }: MoviesListProps) {
     )
   })
 
-  return <ul className={`${className} card-grid`}>{moviesListHTML}</ul>
+  return (
+    <CardsGridContainer className={className}>
+      {moviesListHTML}
+    </CardsGridContainer>
+  )
 }
