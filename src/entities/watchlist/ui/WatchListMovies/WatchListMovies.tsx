@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom"
-import { MovieDetails } from "../../../shared/API/tmdb"
-import formatRating from "../../../shared/lib/utils/formatRating"
-import formatYear from "../../../shared/lib/utils/formatYear"
-import Card from "../../../shared/ui/Card"
+import type { MovieDetails } from "../../../../shared/API/tmdb"
+import formatRating from "../../../../shared/lib/utils/formatRating"
+import formatYear from "../../../../shared/lib/utils/formatYear"
+import Card from "../../../../shared/ui/Card"
+import styles from "./WatchListMovies.module.scss"
 
-type MoviesPropTypes = { moviesData: MovieDetails[] }
+type WatchListMoviesPropTypes = { moviesData: MovieDetails[] }
 
-export default function Movies({ moviesData }: MoviesPropTypes) {
+export default function WatchListMovies({
+  moviesData,
+}: WatchListMoviesPropTypes) {
   // Generate HTML for each movie in the watchlist
   const watchListMoviesHTML = moviesData.map((movie) => {
     return (
-      <li className="watchlist-page__movie-item" key={movie.id}>
-        <Link to={`/movie-page/${movie.id}`} className="watchlist-page__link">
-          <Card className="watchlist-page__movie-card" variant="movie">
+      <li className={styles.movie} key={movie.id}>
+        <Link to={`/movie-page/${movie.id}`}>
+          <Card variant="movie">
             <Card.Image variant="movie-poster">
               {movie.poster_path
                 ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
@@ -29,9 +32,5 @@ export default function Movies({ moviesData }: MoviesPropTypes) {
     )
   })
 
-  return (
-    <ul className="watchlist-page__movie-list card-grid">
-      {watchListMoviesHTML}
-    </ul>
-  )
+  return <ul className="card-grid">{watchListMoviesHTML}</ul>
 }
