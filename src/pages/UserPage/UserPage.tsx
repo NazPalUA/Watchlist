@@ -1,5 +1,5 @@
 import { useLogoutMutation } from "../../entities/session/api/mutations/hooks"
-import EditUserForm from "./SubComponents/EditUserForm"
+import { UserSettingsForm } from "../../widgets/UserSettings"
 import style from "./UserPage.module.scss"
 
 type UserPageProps = { className?: string }
@@ -15,7 +15,7 @@ export default function UserPage({ className }: UserPageProps) {
           Log out
         </button>
       </div>
-      <EditUserForm />
+      <UserSettingsForm />
     </div>
   )
 }

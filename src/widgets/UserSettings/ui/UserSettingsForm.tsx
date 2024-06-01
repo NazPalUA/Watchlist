@@ -5,9 +5,9 @@ import { getForm } from "../../../shared/ui/Form"
 
 import { TUserSchema, userSchema } from "../../../entities/user/model/form-user"
 
-type EditUserFormProps = {}
+type UserSettingsFormProps = {}
 
-export default function EditUserForm({}: EditUserFormProps) {
+export function UserSettingsForm({}: UserSettingsFormProps) {
   const { data: user } = useGetUserQuery()
   const { data: currentUser } = useGetUserQuery()
   const userId = currentUser?.uid
