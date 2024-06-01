@@ -1,4 +1,4 @@
-import { useMoviesDetails } from "../../shared/API/tmdb"
+import { useMoviesDetails } from "../../shared/api/tmdb"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/lib/utils/getUniqueIds"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"

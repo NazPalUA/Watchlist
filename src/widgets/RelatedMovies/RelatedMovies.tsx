@@ -1,4 +1,4 @@
-import { useRelatedMovies } from "../../shared/API/tmdb"
+import { useRelatedMovies } from "../../shared/api/tmdb"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import MoviesList from "../../shared/ui/MoviesList/MoviesList"

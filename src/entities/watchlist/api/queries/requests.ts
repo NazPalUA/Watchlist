@@ -1,5 +1,5 @@
 import { getDocs } from "firebase/firestore"
-import { getDocData } from "../../../../shared/API/firestore/getDocData"
+import { getDocData } from "../../../../shared/api/firestore/getDocData"
 import {
   watchedMovieDocRef,
   watchedMoviesCollectionRef,
@@ -7,7 +7,7 @@ import {
   watchlistMovieDocRef,
   watchlistsCollectionRef,
   watchlistsMoviesCollectionRef,
-} from "../../../../shared/API/firestore/storeReferences"
+} from "../../../../shared/api/firestore/storeReferences"
 import { WatchedMovie, Watchlist, WatchlistMovie } from "../../model/types"
 
 // QUERIES:

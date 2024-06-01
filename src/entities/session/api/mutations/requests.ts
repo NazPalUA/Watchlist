@@ -10,7 +10,7 @@ import {
   User,
   UserCredential,
 } from "firebase/auth"
-import { auth } from "../../../../shared/API/firebase-config"
+import { auth } from "../../../../shared/api/firebase-config"
 import { SocialMediaProvider } from "../../model/types"
 
 // MUTATIONS:

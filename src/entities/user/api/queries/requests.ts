@@ -1,5 +1,5 @@
-import { getDocData } from "../../../../shared/API/firestore/getDocData"
-import { userDocRef } from "../../../../shared/API/firestore/storeReferences"
+import { getDocData } from "../../../../shared/api/firestore/getDocData"
+import { userDocRef } from "../../../../shared/api/firestore/storeReferences"
 import { User } from "../../model/types"
 
 export const getUserData = async (userId: string) => {

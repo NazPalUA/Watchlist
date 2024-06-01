@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import type { MovieDetails } from "../../../../shared/API/tmdb"
+import type { MovieDetails } from "../../../../shared/api/tmdb"
 import formatRating from "../../../../shared/lib/utils/formatRating"
 import formatYear from "../../../../shared/lib/utils/formatYear"
 import Card from "../../../../shared/ui/Card"

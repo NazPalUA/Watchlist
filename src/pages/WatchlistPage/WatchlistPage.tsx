@@ -5,7 +5,7 @@ import {
 } from "../../entities/watchlist/api/queries/hooks"
 import WatchListMovies from "../../entities/watchlist/ui/WatchListMovies/WatchListMovies"
 import WatchlistDetails from "../../entities/watchlist/ui/WatchlistDetails/WatchlistDetails"
-import { useMoviesDetails } from "../../shared/API/tmdb"
+import { useMoviesDetails } from "../../shared/api/tmdb"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import "./WatchlistPage.scss"

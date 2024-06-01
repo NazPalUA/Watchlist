@@ -12,7 +12,7 @@ import {
   watchlistDocRef,
   watchlistMovieDocRef,
   watchlistsCollectionRef,
-} from "../../../../shared/API/firestore/storeReferences"
+} from "../../../../shared/api/firestore/storeReferences"
 import { TWatchlistSchema } from "../../model/form-watchlist"
 import { Watchlist } from "../../model/types"
 

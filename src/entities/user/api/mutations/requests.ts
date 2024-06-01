@@ -1,5 +1,5 @@
 import { serverTimestamp, setDoc, updateDoc } from "firebase/firestore"
-import { userDocRef } from "../../../../shared/API/firestore/storeReferences"
+import { userDocRef } from "../../../../shared/api/firestore/storeReferences"
 import { AddUserData, EditUserData } from "../../model/types"
 
 export const addUserData = async (userId: string, data: AddUserData) => {
