@@ -1,5 +1,5 @@
 import SearchBox from "../../features/SearchMovie/ui/SearchBox/SearchBox"
-import PopularMovies from "../../widgets/PopularMovies/PopularMovies"
+import { PopularMovies } from "../../widgets/PopularMovies"
 import Welcome from "../../widgets/Welcome"
 import styles from "./HomePage.module.scss"
 
