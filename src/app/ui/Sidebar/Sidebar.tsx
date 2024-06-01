@@ -1,4 +1,4 @@
-import CreateWatchlistNavButton from "../../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
+import { CreateWatchlistNavButton } from "../../../features/CreateWatchlist"
 import { NavBar } from "../../../widgets/NavBar"
 import { MyWatchlists } from "../../../widgets/WatchlistsList"
 import styles from "./Sidebar.module.scss"

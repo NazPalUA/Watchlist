@@ -1,4 +1,4 @@
-import CreateWatchlistNavButton from "../../../features/CreateWatchlist/ui/CreateWatchlistNavButton"
+import { CreateWatchlistNavButton } from "../../../features/CreateWatchlist"
 import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./FooterNavbar.module.scss"
 

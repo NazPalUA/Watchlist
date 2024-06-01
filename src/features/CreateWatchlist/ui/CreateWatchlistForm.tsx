@@ -5,6 +5,7 @@ import {
   watchlistSchema,
 } from "../../../entities/watchlist/model/form-watchlist"
 import { getForm } from "../../../shared/ui/Form"
+import FormTitle from "./FormTitle/FormTitle"
 
 type CreateWatchlistFormProps = {}
 
@@ -25,16 +26,19 @@ export function CreateWatchlistForm({}: CreateWatchlistFormProps) {
   }
   const Form = getForm<TWatchlistSchema>()
   return (
-    <Form
-      onSubmit={handleSubmit}
-      schema={watchlistSchema}
-      style={{ maxWidth: "unset" }}
-    >
-      <Form.Field name="name">Name</Form.Field>
-      <Form.Field name="description" type="textarea">
-        Description
-      </Form.Field>
-      <Form.SubmitButton>Create watchlist</Form.SubmitButton>
-    </Form>
+    <>
+      <FormTitle />
+      <Form
+        onSubmit={handleSubmit}
+        schema={watchlistSchema}
+        style={{ maxWidth: "unset" }}
+      >
+        <Form.Field name="name">Name</Form.Field>
+        <Form.Field name="description" type="textarea">
+          Description
+        </Form.Field>
+        <Form.SubmitButton>Create watchlist</Form.SubmitButton>
+      </Form>
+    </>
   )
 }
