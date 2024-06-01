@@ -6,11 +6,9 @@ import Loader from "../../../shared/ui/Loader"
 import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import EndMessage from "./EndMessage"
 
-type SearchResultsInfiniteScrollProps = { searchText: string }
+type SearchResultsProps = { searchText: string }
 
-export default function SearchResultsInfiniteScroll({
-  searchText,
-}: SearchResultsInfiniteScrollProps) {
+export function SearchResults({ searchText }: SearchResultsProps) {
   const { data, isError, error, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteSearchMovie(searchText)
 
