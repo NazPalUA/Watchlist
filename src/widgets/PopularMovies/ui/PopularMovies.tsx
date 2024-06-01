@@ -1,10 +1,11 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useInfinitePopularMovies } from "../../../shared/API/tmdb"
 import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
-import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
+
 import Loader from "../../../shared/ui/Loader"
 import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import EndMessage from "./EndMessage"
+import ErrorMessage from "./ErrorMessage"
 import styles from "./PopularMovies.module.scss"
 
 export function PopularMovies() {
@@ -18,9 +19,7 @@ export function PopularMovies() {
     <>
       <h4 className={styles.title}>Popular movies right now</h4>
       {isError ? (
-        <ErrorMessage error={error}>
-          Error loading movies. Please try again later.
-        </ErrorMessage>
+        <ErrorMessage error={error} />
       ) : (
         <InfiniteScroll
           dataLength={uniqueMovies.length}
