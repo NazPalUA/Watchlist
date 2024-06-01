@@ -4,9 +4,7 @@ import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }
 
-export default function EditWatchlistHeader({
-  watchlistId,
-}: EditWatchlistHeaderProps) {
+export function EditWatchlistHeader({ watchlistId }: EditWatchlistHeaderProps) {
   const navigate = useNavigate()
 
   const { mutate: deleteWatchlist } = useDeleteWatchlistMutation()

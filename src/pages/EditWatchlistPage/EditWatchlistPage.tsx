@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom"
-import EditWatchlistForm from "../../features/EditWatchlist/ui/EditWatchlistForm/EditWatchlistForm"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
-import EditWatchlistHeader from "./SubComponents/EditWatchlistHeader/EditWatchlistHeader"
-import WatchlistMovies from "./SubComponents/WatchlistMovies/WatchlistMovies"
+import {
+  EditWatchlistForm,
+  EditWatchlistHeader,
+  WatchlistMovies,
+} from "../../widgets/EditWatchlist"
 
 type EditWatchlistPagePropTypes = {
   className?: string

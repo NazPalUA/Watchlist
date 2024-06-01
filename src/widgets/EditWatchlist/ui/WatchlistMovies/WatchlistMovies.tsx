@@ -7,7 +7,7 @@ type WatchlistMoviesProps = {
   watchlistId: string
 }
 
-export default function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
+export function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
   const { data: userMovies } = useGetWatchlistMoviesQuery(watchlistId)
   const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
 

@@ -10,9 +10,7 @@ import styles from "./EditWatchlistForm.module.scss"
 
 type EditWatchlistFormProps = { watchlistId: string }
 
-export default function EditWatchlistForm({
-  watchlistId,
-}: EditWatchlistFormProps) {
+export function EditWatchlistForm({ watchlistId }: EditWatchlistFormProps) {
   const { data: watchlistData } = useGetSingleWatchlistQuery(watchlistId)
 
   const { mutate: editWatchlist } = useEditWatchlistMutation(watchlistId)
