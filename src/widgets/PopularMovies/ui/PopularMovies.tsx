@@ -28,11 +28,7 @@ export function PopularMovies() {
           hasMore={hasNextPage}
           loader={<Loader />}
           endMessage={
-            <EndMessage
-              isError={isError}
-              length={uniqueMovies.length}
-              isFetching={isFetching}
-            />
+            <EndMessage length={uniqueMovies.length} isFetching={isFetching} />
           }
         >
           <MoviesList moviesData={uniqueMovies} />
