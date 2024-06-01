@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
-import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import {
   EditWatchlistForm,
   EditWatchlistHeader,
   WatchlistMovies,
-} from "../../widgets/EditWatchlist"
+} from "../../features/EditWatchlist"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 
 type EditWatchlistPagePropTypes = {
   className?: string
