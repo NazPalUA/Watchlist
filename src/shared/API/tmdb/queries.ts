@@ -1,4 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
+import { getUniqueMovies } from "../../lib/utils/getUniqueMovies"
 import {
   getMovieCredits,
   getMovieDetails,
@@ -8,8 +9,7 @@ import {
   getPopularMovies,
   searchMovies,
   searchPeople,
-} from "./api"
-import { getUniqueMoviesData } from "./lib/getUniqueMoviesData"
+} from "./requests"
 
 export const useMovieDetails = (movieId: string) =>
   useQuery({
@@ -118,9 +118,7 @@ export const useRelatedMovies = (movieId: string, length: number) =>
         movieId,
         recommendedPage
       )
-      let uniqueRecommendedMovies = getUniqueMoviesData(
-        recommendedMovies.results
-      )
+      let uniqueRecommendedMovies = getUniqueMovies(recommendedMovies.results)
 
       while (
         uniqueRecommendedMovies.length < length &&
@@ -131,7 +129,7 @@ export const useRelatedMovies = (movieId: string, length: number) =>
           movieId,
           recommendedPage
         )
-        uniqueRecommendedMovies = getUniqueMoviesData([
+        uniqueRecommendedMovies = getUniqueMovies([
           ...uniqueRecommendedMovies,
           ...recommendedMovies.results,
         ])
@@ -146,7 +144,7 @@ export const useRelatedMovies = (movieId: string, length: number) =>
       ) {
         popularPage++
         popularMovies = await getPopularMovies(popularPage)
-        uniqueRecommendedMovies = getUniqueMoviesData([
+        uniqueRecommendedMovies = getUniqueMovies([
           ...uniqueRecommendedMovies,
           ...popularMovies.results,
         ])

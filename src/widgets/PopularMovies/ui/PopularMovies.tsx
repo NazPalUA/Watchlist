@@ -1,6 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import {
-  getUniqueMoviesData,
+  getUniqueMovies,
   useInfinitePopularMovies,
 } from "../../../shared/api/tmdb"
 
@@ -15,7 +15,7 @@ export function PopularMovies() {
     useInfinitePopularMovies()
 
   const movies = data?.pages.map((page) => page.results).flat() || []
-  const uniqueMovies = getUniqueMoviesData(movies)
+  const uniqueMovies = getUniqueMovies(movies)
 
   return (
     <>

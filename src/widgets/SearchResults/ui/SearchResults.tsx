@@ -1,6 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import {
-  getUniqueMoviesData,
+  getUniqueMovies,
   useInfiniteSearchMovie,
 } from "../../../shared/api/tmdb"
 import Loader from "../../../shared/ui/Loader"
@@ -17,7 +17,7 @@ export function SearchResults({ searchText }: SearchResultsProps) {
   if (isError) return <ErrorMessage error={error} />
 
   const movies = data?.pages.map((page) => page.results).flat() || []
-  const uniqueMovies = getUniqueMoviesData(movies)
+  const uniqueMovies = getUniqueMovies(movies)
 
   return (
     <>
