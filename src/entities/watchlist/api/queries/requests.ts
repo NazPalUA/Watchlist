@@ -1,13 +1,13 @@
 import { getDocs } from "firebase/firestore"
-import { getDocData } from "../../../../shared/api/firestore/getDocData"
 import {
+  getDocData,
   watchedMovieDocRef,
   watchedMoviesCollectionRef,
   watchlistDocRef,
   watchlistMovieDocRef,
   watchlistsCollectionRef,
   watchlistsMoviesCollectionRef,
-} from "../../../../shared/api/firestore/storeReferences"
+} from "../../../../shared/api/firestore"
 import { WatchedMovie, Watchlist, WatchlistMovie } from "../../model/types"
 
 // QUERIES:
