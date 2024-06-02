@@ -20,27 +20,29 @@ export const getMovieRecommendations = async (
   movieId: string,
   page: number = 1
 ) =>
-  fetchTmdbApi<RecommendedMovies>(
-    `/movie/${movieId}/recommendations?page=${page}`
-  )
+  fetchTmdbApi<RecommendedMovies>(`/movie/${movieId}/recommendations`, {
+    page,
+  })
 
 export const getPersonDetails = async (personId: string) =>
   fetchTmdbApi<PersonDetails>(`/person/${personId}`)
 
 export const getMoviesWithPerson = async (personId: string, page: number = 1) =>
-  fetchTmdbApi<MoviesWithPerson>(
-    `/discover/movie?with_people=${personId}&page=${page}`
-  )
+  fetchTmdbApi<MoviesWithPerson>(`/discover/movie?with_people=${personId}`, {
+    page,
+  })
 
 export const getPopularMovies = async (page: number = 1) =>
-  fetchTmdbApi<PopularMovies>(`/movie/popular?page=${page}`)
+  fetchTmdbApi<PopularMovies>(`/movie/popular`, { page })
 
 export const searchMovies = async (query: string, page: number = 1) =>
   fetchTmdbApi<SearchMovieResults>(
-    `/search/movie?query=${encodeURIComponent(query)}&page=${page}`
+    `/search/movie?query=${encodeURIComponent(query)}`,
+    { page }
   )
 
 export const searchPeople = async (query: string, page: number = 1) =>
   fetchTmdbApi<SearchPeople>(
-    `/search/person?query=${encodeURIComponent(query)}&page=${page}`
+    `/search/person?query=${encodeURIComponent(query)}`,
+    { page }
   )

@@ -12,9 +12,12 @@ const axiosInstance = axios.create({
 })
 
 // Function to fetch data from the TMDB API:
-export const fetchTmdbApi = async <T>(endpoint: string): Promise<T> => {
+export const fetchTmdbApi = async <T>(
+  endpoint: string,
+  params: object = {}
+): Promise<T> => {
   try {
-    const response = await axiosInstance.get<T>(endpoint)
+    const response = await axiosInstance.get<T>(endpoint, { params })
     return response.data
   } catch (error) {
     console.error(`Error fetching data from TMDB API: ${error}`)
