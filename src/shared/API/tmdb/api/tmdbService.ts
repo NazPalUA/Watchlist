@@ -7,7 +7,7 @@ import {
   RecommendedMovies,
   SearchMovieResults,
   SearchPeople,
-} from "../types"
+} from "../model"
 import { fetchTmdbApi } from "./api"
 
 export const getMovieDetails = async (movieId: string) =>
