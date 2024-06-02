@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { MovieDetails } from "../../../../shared/api/tmdb"
+import type { MovieDetails } from "../../../../shared/api/tmdb"
 import getAverageVote from "../../lib/getAverageVote"
 import getUnwatchedRuntime from "../../lib/getUnwatchedRuntime"
 import styles from "./WatchlistDetails.module.scss"

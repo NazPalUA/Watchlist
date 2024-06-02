@@ -1,6 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfiniteSearchMovie } from "../../../shared/api/tmdb"
-import getUniqueMoviesData from "../../../shared/lib/utils/getUniqueMoviesData"
+import {
+  getUniqueMoviesData,
+  useInfiniteSearchMovie,
+} from "../../../shared/api/tmdb"
 import Loader from "../../../shared/ui/Loader"
 import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import EndMessage from "./EndMessage"

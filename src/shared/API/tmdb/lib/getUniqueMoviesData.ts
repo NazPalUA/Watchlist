@@ -1,6 +1,6 @@
-import { Movie, MovieDetails, Recommendation } from "../../api/tmdb/model"
+import { Movie, MovieDetails, Recommendation } from "../model"
 
-export default function getUniqueMoviesData(
+export function getUniqueMoviesData(
   moviesData: (Movie | MovieDetails | Recommendation)[]
 ) {
   const uniqueIds = new Set()
