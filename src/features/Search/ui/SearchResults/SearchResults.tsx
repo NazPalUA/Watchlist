@@ -1,10 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import {
-  getUniqueMovies,
-  useInfiniteSearchMovie,
-} from "../../../../shared/api/tmdb"
+import { getUniqueMovies } from "../../../../shared/api/tmdb"
 import Loader from "../../../../shared/ui/Loader"
 import MoviesList from "../../../../shared/ui/MoviesList/MoviesList"
+import { useInfiniteSearchMovieQuery } from "../../api/hooks"
 import EndMessage from "./EndMessage"
 import { ErrorMessage } from "./ErrorMessage"
 
@@ -12,7 +10,7 @@ type SearchResultsProps = { searchText: string }
 
 export function SearchResults({ searchText }: SearchResultsProps) {
   const { data, isError, error, fetchNextPage, hasNextPage, isLoading } =
-    useInfiniteSearchMovie(searchText)
+    useInfiniteSearchMovieQuery(searchText)
 
   if (isError) return <ErrorMessage error={error} />
 

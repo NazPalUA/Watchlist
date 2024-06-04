@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom"
+import { SearchResults } from "../../features/Search"
 import SearchBox from "../../features/Search/ui/SearchBox/SearchBox"
-import { SearchResults } from "../../features/Search/ui/SearchResults"
 import styles from "./SearchResultsPage.module.scss"
 
 type SearchResultsPagePropTypes = {

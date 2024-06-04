@@ -7,8 +7,6 @@ import {
   getMoviesWithPerson,
   getPersonDetails,
   getPopularMovies,
-  searchMovies,
-  searchPeople,
 } from "./requests"
 
 export const useMovieDetails = (movieId: string) =>
@@ -65,42 +63,6 @@ export const useInfinitePopularMovies = () =>
   useInfiniteQuery({
     queryKey: ["movies", "popular", "infinite"],
     queryFn: ({ pageParam }) => getPopularMovies(pageParam),
-    initialPageParam: 1,
-    getNextPageParam: (data) => {
-      if (data.results.length === 0 || data.page === data.total_pages)
-        return undefined
-      return data.page + 1
-    },
-  })
-
-export const useSearchMovie = (query: string, page: number = 1) =>
-  useQuery({
-    queryKey: ["movies", "search", query, page],
-    queryFn: () => searchMovies(query, page),
-  })
-
-export const useInfiniteSearchMovie = (query: string) =>
-  useInfiniteQuery({
-    queryKey: ["movies", "search", "infinite", query],
-    queryFn: ({ pageParam }) => searchMovies(query, pageParam),
-    initialPageParam: 1,
-    getNextPageParam: (data) => {
-      if (data.results.length === 0 || data.page === data.total_pages)
-        return undefined
-      return data.page + 1
-    },
-  })
-
-export const useSearchPeople = (query: string, page: number = 1) =>
-  useQuery({
-    queryKey: ["people", "search", query, page],
-    queryFn: () => searchPeople(query, page),
-  })
-
-export const useInfiniteSearchPeople = (query: string) =>
-  useInfiniteQuery({
-    queryKey: ["people", "search", "infinite", query],
-    queryFn: ({ pageParam }) => searchPeople(query, pageParam),
     initialPageParam: 1,
     getNextPageParam: (data) => {
       if (data.results.length === 0 || data.page === data.total_pages)
