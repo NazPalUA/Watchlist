@@ -1,18 +1,13 @@
-import { fetchFromTmdb } from "./lib/fetchFromTmdb"
-import {
-  MovieCredits,
-  MovieDetails,
-  MoviesWithPerson,
-  PersonDetails,
-  PopularMovies,
-  RecommendedMovies,
-} from "./model"
+import { fetchFromTmdb } from "../../../shared/api/tmdb/lib/fetchFromTmdb"
+
+import { MovieDetails } from "../model/MovieDetails"
+import { MoviesWithPerson } from "../model/MoviesWithPerson"
+
+import { PopularMovies } from "../model/PopularMovies"
+import { RecommendedMovies } from "../model/RecommendedMovies"
 
 export const getMovieDetails = (movieId: string) =>
   fetchFromTmdb<MovieDetails>(`/movie/${movieId}`)
-
-export const getMovieCredits = (movieId: string) =>
-  fetchFromTmdb<MovieCredits>(`/movie/${movieId}/credits`)
 
 export const getMovieRecommendations = (movieId: string, page: number = 1) =>
   fetchFromTmdb<RecommendedMovies>(
@@ -22,10 +17,6 @@ export const getMovieRecommendations = (movieId: string, page: number = 1) =>
     },
     true
   )
-
-export const getPersonDetails = (personId: string) =>
-  fetchFromTmdb<PersonDetails>(`/person/${personId}`)
-
 export const getMoviesWithPerson = (personId: string, page: number = 1) =>
   fetchFromTmdb<MoviesWithPerson>(
     `/discover/movie`,

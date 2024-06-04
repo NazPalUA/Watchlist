@@ -7,7 +7,7 @@ import Loader from "../../shared/ui/Loader"
 
 import Cast from "../../widgets/Cast/Cast"
 import MovieDetails from "../../widgets/MovieDetails/MovieDetails"
-import RelatedMovies from "../../widgets/RelatedMovies/RelatedMovies"
+import RelatedMovies from "../../widgets/RelatedMovies/ui/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string
