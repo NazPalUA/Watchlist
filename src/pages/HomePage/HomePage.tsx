@@ -1,6 +1,6 @@
 import { SearchBox } from "../../features/Search"
+import Welcome from "../../shared/ui/Welcome"
 import { PopularMovies } from "../../widgets/PopularMovies"
-import Welcome from "../../widgets/Welcome"
 import styles from "./HomePage.module.scss"
 
 type HomePagePropTypes = {
