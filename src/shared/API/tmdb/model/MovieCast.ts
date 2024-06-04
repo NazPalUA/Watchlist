@@ -1,12 +1,4 @@
-import { MovieCast } from "./MovieCast"
-
-export type MovieCredits = {
-  id: number
-  cast: MovieCast[]
-  crew: Crew[]
-}
-
-type Crew = {
+export type MovieCast = {
   adult: boolean
   gender: number
   id: number
@@ -15,7 +7,8 @@ type Crew = {
   original_name: string
   popularity: number
   profile_path: string
+  cast_id: number
+  character: string
   credit_id: string
-  department: string
-  job: string
+  order: number
 }

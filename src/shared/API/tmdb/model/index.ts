@@ -1,3 +1,4 @@
+export type { MovieCast } from "./MovieCast"
 export type { MovieCredits } from "./MovieCredits"
 export type { MovieDetails } from "./MovieDetails"
 export type { MoviesWithPerson } from "./MoviesWithPerson"
