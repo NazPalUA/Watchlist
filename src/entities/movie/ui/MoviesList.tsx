@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom"
-import formatRating from "../../../../shared/lib/utils/formatRating"
-import formatYear from "../../../../shared/lib/utils/formatYear"
-import Card from "../../../../shared/ui/Card"
-import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
-import { MovieCard } from "../../model/MovieCard"
-import styles from "./MoviesList.module.scss"
+import formatRating from "../../../shared/lib/utils/formatRating"
+import formatYear from "../../../shared/lib/utils/formatYear"
+import Card from "../../../shared/ui/Card"
+import { CardsGridContainer } from "../../../shared/ui/CardsGridContainer"
+import { MovieCard } from "../model/MovieCard"
 
 type MoviesListProps<T extends MovieCard> = {
   moviesData: T[]
@@ -18,7 +17,7 @@ export function MoviesList<T extends MovieCard>({
   return (
     <CardsGridContainer className={className}>
       {moviesData.map((movie) => (
-        <li className={styles.item} key={movie.id}>
+        <li style={{ listStyle: "none" }} key={movie.id}>
           <Link to={`/movie-page/${movie.id}`}>
             <Card variant="movie">
               <Card.AddToPlaylistBtn movieId={movie.id} />

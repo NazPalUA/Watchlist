@@ -1,9 +1,5 @@
 @use "/src/shared/styles/variables.scss" as v;
 
-.listItem {
-  list-style: none;
-}
-
 .title {
   font-size: var(--fs-h5);
   font-weight: v.$fw-bold;

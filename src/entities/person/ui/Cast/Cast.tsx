@@ -1,36 +1,34 @@
 import { useMovieCreditsQuery } from "../.."
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
+import CastList from "../CastList"
 import styles from "./Cast.module.scss"
-import CastList from "./CastList"
 
 type CastPropTypes = {
   movieId: string
 }
 
 export default function Cast({ movieId }: CastPropTypes) {
-  const {
-    data: movieCredits,
-    isLoading: isMovieCreditsLoading,
-    isError: isMovieCreditsError,
-    error: movieCreditsError,
-  } = useMovieCreditsQuery(movieId)
+  const { data, isLoading, isError, error } = useMovieCreditsQuery(movieId)
 
-  if (!movieCredits) return <div>Error</div>
+  let content
 
-  let Return =
-    isMovieCreditsError || !movieCredits.cast.length ? (
-      <ErrorMessage error={movieCreditsError}>
+  if (isLoading) {
+    content = <Loader />
+  } else if (isError || !data?.cast.length) {
+    content = (
+      <ErrorMessage error={error}>
         Error Loading cast! No data found.
       </ErrorMessage>
-    ) : (
-      <CastList movieCredits={movieCredits} />
     )
+  } else {
+    content = <CastList cast={data.cast} />
+  }
 
   return (
     <>
       <h5 className={styles.title}>Cast</h5>
-      {isMovieCreditsLoading ? <Loader /> : Return}
+      {content}
     </>
   )
 }
