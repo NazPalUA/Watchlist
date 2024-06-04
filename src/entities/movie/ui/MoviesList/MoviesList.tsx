@@ -13,7 +13,7 @@ type MoviesListProps<T extends MovieCard> = {
 
 export function MoviesList<T extends MovieCard>({
   moviesData,
-  className,
+  className = "",
 }: MoviesListProps<T>) {
   return (
     <CardsGridContainer className={className}>
