@@ -6,13 +6,13 @@ import {
   fetchPopularMovies,
 } from "./requests"
 
-export const useMovieDetails = (movieId: string) =>
+export const useMovieDetailsQuery = (movieId: string) =>
   useQuery({
     queryKey: ["movie", movieId],
     queryFn: () => fetchMovieDetails(movieId),
   })
 
-export const useMoviesDetails = (movieIdsArr: string[]) => {
+export const useMoviesDetailsQuery = (movieIdsArr: string[]) => {
   return useQuery({
     queryKey: ["movies", movieIdsArr],
     queryFn: async () => {
@@ -28,25 +28,28 @@ export const useMoviesDetails = (movieIdsArr: string[]) => {
   })
 }
 
-export const useMovieRecommendations = (movieId: string, page: number = 1) =>
+export const useMovieRecommendationsQuery = (
+  movieId: string,
+  page: number = 1
+) =>
   useQuery({
     queryKey: ["movies", "recommended", movieId, page],
     queryFn: () => fetchMovieRecommendations(movieId, page),
   })
 
-export const useMoviesWithPerson = (personId: string, page: number = 1) =>
+export const useMoviesWithPersonQuery = (personId: string, page: number = 1) =>
   useQuery({
     queryKey: ["movies", "with", personId, page],
     queryFn: () => fetchMoviesWithPerson(personId, page),
   })
 
-export const usePopularMovies = (page: number = 1) =>
+export const usePopularMoviesQuery = (page: number = 1) =>
   useQuery({
     queryKey: ["movies", "popular", page],
     queryFn: () => fetchPopularMovies(page),
   })
 
-export const useInfinitePopularMovies = () =>
+export const useInfinitePopularMoviesQuery = () =>
   useInfiniteQuery({
     queryKey: ["movies", "popular", "infinite"],
     queryFn: ({ pageParam }) => fetchPopularMovies(pageParam),

@@ -1,5 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfinitePopularMovies } from "../../../entities/movie"
+import { useInfinitePopularMoviesQuery } from "../../../entities/movie"
 import { getUniqueMovies } from "../../../shared/lib/utils/getUniqueMovies"
 import Loader from "../../../shared/ui/Loader"
 import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
@@ -9,7 +9,7 @@ import styles from "./PopularMovies.module.scss"
 
 export function PopularMovies() {
   const { data, isError, error, isFetching, fetchNextPage, hasNextPage } =
-    useInfinitePopularMovies()
+    useInfinitePopularMoviesQuery()
 
   const movies = data?.pages.map((page) => page.results).flat() || []
   const uniqueMovies = getUniqueMovies(movies)

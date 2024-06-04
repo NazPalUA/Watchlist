@@ -1,4 +1,4 @@
-import { useMoviesDetails } from "../../../../entities/movie"
+import { useMoviesDetailsQuery } from "../../../../entities/movie"
 import { useGetWatchlistMoviesQuery } from "../../../../entities/watchlist/api/queries/hooks"
 
 import EditMovie from "../EditMovie/EditMovie"
@@ -13,7 +13,7 @@ export function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
   const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
 
   // Get the copy of current movieIds and their data using the custom hook
-  const { data: moviesData } = useMoviesDetails(movieIds)
+  const { data: moviesData } = useMoviesDetailsQuery(movieIds)
 
   const moviesListHTML = moviesData?.map((movie) => (
     <EditMovie movie={movie} watchlistId={watchlistId} />

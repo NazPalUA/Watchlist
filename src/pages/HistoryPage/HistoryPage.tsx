@@ -1,4 +1,4 @@
-import { useMoviesDetails } from "../../entities/movie"
+import { useMoviesDetailsQuery } from "../../entities/movie"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/lib/utils/getUniqueIds"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
@@ -18,7 +18,7 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
     isError,
     error,
     isLoading,
-  } = useMoviesDetails(uniqueHistoryIds)
+  } = useMoviesDetailsQuery(uniqueHistoryIds)
 
   if (isLoading) return <Loader />
 

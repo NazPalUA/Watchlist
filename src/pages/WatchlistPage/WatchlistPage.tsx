@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useMoviesDetails } from "../../entities/movie"
+import { useMoviesDetailsQuery } from "../../entities/movie"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
@@ -27,7 +27,7 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
     isError,
     error,
     isLoading,
-  } = useMoviesDetails(movieIds)
+  } = useMoviesDetailsQuery(movieIds)
 
   if (isLoading) return <Loader />
 

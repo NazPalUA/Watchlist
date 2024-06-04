@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useMovieDetails } from "../../entities/movie"
+import { useMovieDetailsQuery } from "../../entities/movie"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
@@ -26,7 +26,7 @@ export default function MoviePage({ className }: MoviePagePropTypes) {
     isLoading: isMovieDataLoading,
     isError: isMovieDataError,
     error: movieDataError,
-  } = useMovieDetails(movieId)
+  } = useMovieDetailsQuery(movieId)
 
   if (isMovieDataLoading) return <Loader />
   else if (isMovieDataError || !movieData)
