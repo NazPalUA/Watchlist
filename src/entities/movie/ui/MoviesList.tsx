@@ -7,11 +7,13 @@ import { MovieCard } from "../model/MovieCard"
 
 type MoviesListProps<T extends MovieCard> = {
   moviesData: T[]
+  showAddToPlaylistBtn?: boolean
   className?: string
 }
 
 export function MoviesList<T extends MovieCard>({
   moviesData,
+  showAddToPlaylistBtn = true,
   className = "",
 }: MoviesListProps<T>) {
   return (
@@ -20,7 +22,9 @@ export function MoviesList<T extends MovieCard>({
         <li style={{ listStyle: "none" }} key={movie.id}>
           <Link to={`/movie-page/${movie.id}`}>
             <Card variant="movie">
-              <Card.AddToPlaylistBtn movieId={movie.id} />
+              {showAddToPlaylistBtn && (
+                <Card.AddToPlaylistBtn movieId={movie.id} />
+              )}
               <Card.Image variant="movie-poster">
                 {movie.poster_path
                   ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
