@@ -1,4 +1,4 @@
-import { useMovieCredits } from "../../entities/person"
+import { useMovieCreditsQuery } from "../../entities/person"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import styles from "./Cast.module.scss"
@@ -14,7 +14,7 @@ export default function Cast({ movieId }: CastPropTypes) {
     isLoading: isMovieCreditsLoading,
     isError: isMovieCreditsError,
     error: movieCreditsError,
-  } = useMovieCredits(movieId)
+  } = useMovieCreditsQuery(movieId)
 
   if (!movieCredits) return <div>Error</div>
 
