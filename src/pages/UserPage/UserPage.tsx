@@ -1,21 +1,11 @@
-import { useLogoutMutation } from "../../entities/session/api/mutations/hooks"
-import { UserSettingsForm } from "../../widgets/UserSettings"
-import style from "./UserPage.module.scss"
+import { UserSettings } from "../../widgets/UserSettings"
 
 type UserPageProps = { className?: string }
 
-export default function UserPage({ className }: UserPageProps) {
-  const { mutate: logout } = useLogoutMutation()
-
+export default function UserPage({ className = "" }: UserPageProps) {
   return (
-    <div className={`${className} ${style.profile}`}>
-      <div className={style.topContainer}>
-        <h4 className={style.title}>Edit profile</h4>
-        <button className={style.outBtn} onClick={() => logout()}>
-          Log out
-        </button>
-      </div>
-      <UserSettingsForm />
+    <div className={className}>
+      <UserSettings />
     </div>
   )
 }

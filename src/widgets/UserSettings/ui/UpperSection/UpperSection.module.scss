@@ -1,11 +1,5 @@
 @use "/src/shared/styles/variables.scss" as v;
 
-// Profile styles
-.profile {
-  // Add styles as needed
-}
-
-// Top container styles
 .topContainer {
   display: flex;
   justify-content: space-between;
@@ -13,7 +7,6 @@
   margin-bottom: 2rem;
 }
 
-// Title styles
 .title {
   max-width: 70%;
   margin: 0;
@@ -24,7 +17,6 @@
   max-width: 100%;
 }
 
-// Out button styles
 .outBtn {
   padding: 0 0 0.5em 0.5em;
   border: none;
@@ -35,9 +27,4 @@
   font-size: var(--fs-extra-big);
   text-decoration: underline;
   color: v.$clr-accent;
-}
-
-// Form styles
-.form {
-  // Add styles as needed
 }

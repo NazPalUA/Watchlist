@@ -1,1 +1,1 @@
-export { UserSettingsForm } from "./ui/UserSettingsForm"
+export { UserSettings } from "./ui/UserSettings"
