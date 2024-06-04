@@ -1,3 +1,12 @@
+export type { MovieCredits } from "./MovieCredits"
+export type { MovieDetails } from "./MovieDetails"
+export type { MoviesWithPerson } from "./MoviesWithPerson"
+export type { PersonDetails } from "./PersonDetails"
+export type { PopularMovies } from "./PopularMovies"
+export type { RecommendedMovies } from "./RecommendedMovies"
+export type { SearchMovieResults } from "./SearchMovieResults"
+export type { SearchPeople } from "./SearchPeople"
+
 export type Movie = {
   id: number
   poster_path: string

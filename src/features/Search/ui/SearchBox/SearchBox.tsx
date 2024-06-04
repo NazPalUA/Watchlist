@@ -7,7 +7,7 @@ type SearchBoxPropTypes = {
   className?: string
 }
 
-function SearchBox({ className }: SearchBoxPropTypes) {
+export function SearchBox({ className }: SearchBoxPropTypes) {
   const [searchParams, setSearchParams] = useSearchParams()
   const searchTextFilter = searchParams.get("text") || ""
   const navigate = useNavigate()
@@ -52,5 +52,3 @@ function SearchBox({ className }: SearchBoxPropTypes) {
     </div>
   )
 }
-
-export default SearchBox

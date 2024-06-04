@@ -1,4 +1,4 @@
-import { PersonWithMediaType } from "../../../shared/api/tmdb"
+import { PersonWithMediaType } from "."
 
 export type SearchPeople = {
   page: number

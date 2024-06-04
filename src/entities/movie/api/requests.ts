@@ -1,10 +1,10 @@
-import { fetchFromTmdb } from "../../../shared/api/tmdb/lib/fetchFromTmdb"
-
-import { MovieDetails } from "../model/MovieDetails"
-import { MoviesWithPerson } from "../model/MoviesWithPerson"
-
-import { PopularMovies } from "../model/PopularMovies"
-import { RecommendedMovies } from "../model/RecommendedMovies"
+import type {
+  MovieDetails,
+  MoviesWithPerson,
+  PopularMovies,
+  RecommendedMovies,
+} from "../../../shared/api/tmdb"
+import { fetchFromTmdb } from "../../../shared/api/tmdb"
 
 export const fetchMovieDetails = (movieId: string) =>
   fetchFromTmdb<MovieDetails>(`/movie/${movieId}`)

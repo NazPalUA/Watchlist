@@ -1,4 +1,4 @@
-import { MovieWithMediaType } from "../../../shared/api/tmdb"
+import { MovieWithMediaType } from "."
 
 export type SearchMovieResults = {
   page: number

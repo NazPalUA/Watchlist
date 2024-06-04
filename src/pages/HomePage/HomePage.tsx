@@ -1,4 +1,4 @@
-import SearchBox from "../../features/Search/ui/SearchBox/SearchBox"
+import { SearchBox } from "../../features/Search"
 import { PopularMovies } from "../../widgets/PopularMovies"
 import Welcome from "../../widgets/Welcome"
 import styles from "./HomePage.module.scss"
