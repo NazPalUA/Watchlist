@@ -6,7 +6,7 @@ import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import Cast from "../../widgets/Cast/Cast"
 import MovieDetails from "../../widgets/MovieDetails/MovieDetails"
-import RelatedMovies from "../../widgets/RelatedMovies/ui/RelatedMovies"
+import { RelatedMovies } from "../../widgets/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string

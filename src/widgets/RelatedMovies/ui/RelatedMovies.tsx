@@ -7,7 +7,7 @@ import style from "./RelatedMovies.module.scss"
 type RelatedMoviesListPropTypes = {
   movieId: string
 }
-export default function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
+export function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
   const {
     data: relatedMovies,
     isLoading: isRelatedMoviesLoading,
