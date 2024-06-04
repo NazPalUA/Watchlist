@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useMovieDetailsQuery } from "../../entities/movie"
+import MovieDetails from "../../entities/movie/ui/MovieDetails/MovieDetails"
+import Cast from "../../entities/person/ui/Cast/Cast"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
-import Cast from "../../widgets/Cast/Cast"
-import MovieDetails from "../../widgets/MovieDetails/MovieDetails"
 import { RelatedMovies } from "../../widgets/RelatedMovies"
 
 type MoviePagePropTypes = {

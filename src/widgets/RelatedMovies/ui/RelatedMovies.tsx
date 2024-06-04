@@ -1,6 +1,6 @@
+import MoviesList from "../../../entities/movie/ui/MoviesList/MoviesList"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
-import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
 import { useRelatedMoviesQuery } from "../api/useRelatedMoviesQuery"
 import style from "./RelatedMovies.module.scss"
 

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import formatRating from "../../lib/utils/formatRating"
-import formatYear from "../../lib/utils/formatYear"
-import Card from "../Card"
-import { CardsGridContainer } from "../CardsGridContainer"
+import formatRating from "../../../../shared/lib/utils/formatRating"
+import formatYear from "../../../../shared/lib/utils/formatYear"
+import Card from "../../../../shared/ui/Card"
+import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
 import styles from "./MoviesList.module.scss"
 
 type Movie = {

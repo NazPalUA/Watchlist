@@ -1,6 +1,6 @@
-import type { MovieDetails as MovieDetailsType } from "../../entities/movie"
-import { useModalContext } from "../../shared/context/ModalContext"
-import { Button } from "../../shared/ui/Button/Button"
+import type { MovieDetails as MovieDetailsType } from "../.."
+import { useModalContext } from "../../../../shared/context/ModalContext"
+import { Button } from "../../../../shared/ui/Button/Button"
 import styles from "./MovieDetails.module.scss"
 import posterNotFound from "/images/poster_not_found.png"
 

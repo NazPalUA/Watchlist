@@ -1,6 +1,6 @@
-import { MovieCredits } from "../../shared/api/tmdb"
-import Card from "../../shared/ui/Card"
-import { CardsGridContainer } from "../../shared/ui/CardsGridContainer"
+import { MovieCredits } from "../../../../shared/api/tmdb"
+import Card from "../../../../shared/ui/Card"
+import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
 import styles from "./Cast.module.scss"
 
 type CastListPropTypes = {
