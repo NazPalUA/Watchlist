@@ -6,10 +6,10 @@ import { MoviesWithPerson } from "../model/MoviesWithPerson"
 import { PopularMovies } from "../model/PopularMovies"
 import { RecommendedMovies } from "../model/RecommendedMovies"
 
-export const getMovieDetails = (movieId: string) =>
+export const fetchMovieDetails = (movieId: string) =>
   fetchFromTmdb<MovieDetails>(`/movie/${movieId}`)
 
-export const getMovieRecommendations = (movieId: string, page: number = 1) =>
+export const fetchMovieRecommendations = (movieId: string, page: number = 1) =>
   fetchFromTmdb<RecommendedMovies>(
     `/movie/${movieId}/recommendations`,
     {
@@ -17,7 +17,7 @@ export const getMovieRecommendations = (movieId: string, page: number = 1) =>
     },
     true
   )
-export const getMoviesWithPerson = (personId: string, page: number = 1) =>
+export const fetchMoviesWithPerson = (personId: string, page: number = 1) =>
   fetchFromTmdb<MoviesWithPerson>(
     `/discover/movie`,
     {
@@ -27,5 +27,5 @@ export const getMoviesWithPerson = (personId: string, page: number = 1) =>
     true
   )
 
-export const getPopularMovies = (page: number = 1) =>
+export const fetchPopularMovies = (page: number = 1) =>
   fetchFromTmdb<PopularMovies>(`/movie/popular`, { page }, true)

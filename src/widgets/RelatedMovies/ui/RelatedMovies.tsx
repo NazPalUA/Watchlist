@@ -1,7 +1,7 @@
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
 import MoviesList from "../../../shared/ui/MoviesList/MoviesList"
-import { useRelatedMovies } from "../api/useRelatedMovies"
+import { useRelatedMoviesQuery } from "../api/useRelatedMoviesQuery"
 import style from "./RelatedMovies.module.scss"
 
 type RelatedMoviesListPropTypes = {
@@ -13,7 +13,7 @@ export default function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
     isLoading: isRelatedMoviesLoading,
     isError: isRelatedMoviesError,
     error: relatedMoviesError,
-  } = useRelatedMovies(movieId, 20)
+  } = useRelatedMoviesQuery(movieId, 20)
 
   let Return =
     isRelatedMoviesError || !relatedMovies?.length ? (

@@ -1,5 +1,5 @@
 import { getUniqueMovies } from "../../../lib/utils/getUniqueMovies"
-import { tmdbApi } from "../tmdbApi"
+import { tmdbApi } from "../api/tmdbApi"
 
 // Generic function to handle API requests
 export const fetchFromTmdb = async <T>(

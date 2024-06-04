@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query"
 import {
-  getMovieRecommendations,
-  getPopularMovies,
+  fetchMovieRecommendations,
+  fetchPopularMovies,
 } from "../../../entities/movie/api/requests"
-import { getUniqueMovies } from "../../../shared/api/tmdb"
+import { getUniqueMovies } from "../../../shared/lib/utils/getUniqueMovies"
 
-export const useRelatedMovies = (movieId: string, length: number) =>
+export const useRelatedMoviesQuery = (movieId: string, length: number) =>
   useQuery({
     queryKey: ["movies", "related", movieId],
     queryFn: async () => {
       let recommendedPage = 1
-      let recommendedMovies = await getMovieRecommendations(
+      let recommendedMovies = await fetchMovieRecommendations(
         movieId,
         recommendedPage
       )
@@ -21,7 +21,7 @@ export const useRelatedMovies = (movieId: string, length: number) =>
         recommendedMovies.total_pages > recommendedPage
       ) {
         recommendedPage++
-        recommendedMovies = await getMovieRecommendations(
+        recommendedMovies = await fetchMovieRecommendations(
           movieId,
           recommendedPage
         )
@@ -32,14 +32,14 @@ export const useRelatedMovies = (movieId: string, length: number) =>
       }
 
       let popularPage = 1
-      let popularMovies = await getPopularMovies(popularPage)
+      let popularMovies = await fetchPopularMovies(popularPage)
 
       while (
         uniqueRecommendedMovies.length < length &&
         popularMovies.total_pages > popularPage
       ) {
         popularPage++
-        popularMovies = await getPopularMovies(popularPage)
+        popularMovies = await fetchPopularMovies(popularPage)
         uniqueRecommendedMovies = getUniqueMovies([
           ...uniqueRecommendedMovies,
           ...popularMovies.results,

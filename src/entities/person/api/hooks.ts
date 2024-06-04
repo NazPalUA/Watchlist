@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
-import { getMovieCredits, getPersonDetails } from "./requests"
+import { fetchMovieCredits, fetchPersonDetails } from "./requests"
 
 export const useMovieCredits = (movieId: string) =>
   useQuery({
     queryKey: ["credits", movieId],
-    queryFn: () => getMovieCredits(movieId),
+    queryFn: () => fetchMovieCredits(movieId),
   })
 
 export const usePersonDetails = (personId: string) =>
   useQuery({
     queryKey: ["person", personId],
-    queryFn: () => getPersonDetails(personId),
+    queryFn: () => fetchPersonDetails(personId),
   })

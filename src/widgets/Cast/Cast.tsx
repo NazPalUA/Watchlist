@@ -1,4 +1,4 @@
-import { useMovieCredits } from "../../shared/api/tmdb"
+import { useMovieCredits } from "../../entities/person"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import styles from "./Cast.module.scss"

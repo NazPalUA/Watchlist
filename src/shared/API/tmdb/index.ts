@@ -1,4 +1,2 @@
-export { getUniqueMovies } from "../../lib/utils/getUniqueMovies"
+export { fetchFromTmdb } from "./lib/fetchFromTmdb"
 export * from "./model"
-export * from "./queries"
-export * from "./requests"

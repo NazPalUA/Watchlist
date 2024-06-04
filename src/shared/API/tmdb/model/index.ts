@@ -1,10 +1,3 @@
-export * from "./MovieCredits"
-export * from "./MovieDetails"
-export * from "./MoviesWithPerson"
-export * from "./PersonDetails"
-export * from "./PopularMovies"
-export * from "./RecommendedMovies"
-
 export type Movie = {
   id: number
   poster_path: string
