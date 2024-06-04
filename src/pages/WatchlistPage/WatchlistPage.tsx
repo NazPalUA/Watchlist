@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom"
-import { useMoviesDetailsQuery } from "../../entities/movie"
+import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
-import WatchListMovies from "../../entities/watchlist/ui/WatchListMovies/WatchListMovies"
 import WatchlistDetails from "../../entities/watchlist/ui/WatchlistDetails/WatchlistDetails"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
@@ -47,7 +46,7 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
         name={watchlistData?.name ?? ""}
         description={watchlistData?.description ?? ""}
       />
-      <WatchListMovies moviesData={moviesData} />
+      <MoviesList moviesData={moviesData} showAddToPlaylistBtn={false} />
     </div>
   )
 }
