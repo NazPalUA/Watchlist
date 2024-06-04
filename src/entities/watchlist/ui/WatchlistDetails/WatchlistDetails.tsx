@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom"
-import { MovieDetails } from "../../../movie"
 import getAverageVote from "../../lib/getAverageVote"
 import getUnwatchedRuntime from "../../lib/getUnwatchedRuntime"
 import styles from "./WatchlistDetails.module.scss"
 import editIcon from "/images/edit_icon.svg"
 
-type PropTypes = {
-  name: string
-  description: string
-  moviesData: MovieDetails[]
+type Movie = {
+  runtime: number
+  vote_average: number
 }
 
-export default function WatchlistDetails({
+type PropTypes<T extends Movie> = {
+  name: string
+  description: string
+  moviesData: T[]
+}
+
+export default function WatchlistDetails<T extends Movie>({
   name,
   description,
   moviesData,
-}: PropTypes) {
+}: PropTypes<T>) {
   const avgScore = getAverageVote(moviesData)
   const unwatchedRuntime = getUnwatchedRuntime(moviesData)
 

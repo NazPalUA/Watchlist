@@ -1,7 +1,9 @@
-import { MovieDetails } from "../../movie"
+type Movie = {
+  runtime: number
+}
 
 // Calculate the total unwatched runtime of the movies in the watchlist
-export default function getUnwatchedRuntime(movies: MovieDetails[]) {
+export default function getUnwatchedRuntime<T extends Movie>(movies: T[]) {
   if (!movies) {
     return null
   }

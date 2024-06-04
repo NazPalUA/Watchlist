@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom"
-import { MovieDetails } from "../../../entities/movie"
-import { Recommendation } from "../../../entities/movie/model/RecommendedMovies"
-import type { Movie } from "../../api/tmdb"
 import formatRating from "../../lib/utils/formatRating"
 import formatYear from "../../lib/utils/formatYear"
 import Card from "../Card"
 import { CardsGridContainer } from "../CardsGridContainer"
 import styles from "./MoviesList.module.scss"
 
-type MoviesListProps = {
-  moviesData: (Movie | MovieDetails | Recommendation)[]
+type Movie = {
+  vote_average: number
+  poster_path?: string
+  id: string | number
+  title: string
+  release_date: string
+}
+
+type MoviesListProps<T extends Movie> = {
+  moviesData: T[]
   className?: string
 }
 
-export default function MoviesList({ moviesData, className }: MoviesListProps) {
+export default function MoviesList<T extends Movie>({
+  moviesData,
+  className,
+}: MoviesListProps<T>) {
   const moviesListHTML = moviesData.map((movie) => {
     return (
       <li className={`${styles.item}`} key={movie.id}>

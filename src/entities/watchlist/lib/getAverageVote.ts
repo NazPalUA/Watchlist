@@ -1,6 +1,8 @@
-import { MovieDetails } from "../../movie"
+type Movie = {
+  vote_average: number
+}
 
-export default function getAverageVote(movies: MovieDetails[]) {
+export default function getAverageVote<T extends Movie>(movies: T[]) {
   if (!movies) {
     return null
   }

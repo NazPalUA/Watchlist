@@ -3,14 +3,21 @@ import formatRating from "../../../../shared/lib/utils/formatRating"
 import formatYear from "../../../../shared/lib/utils/formatYear"
 import Card from "../../../../shared/ui/Card"
 import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
-import { MovieDetails } from "../../../movie"
 import styles from "./WatchListMovies.module.scss"
 
-type WatchListMoviesPropTypes = { moviesData: MovieDetails[] }
+type Movie = {
+  vote_average: number
+  poster_path?: string
+  id: string | number
+  title: string
+  release_date: string
+}
 
-export default function WatchListMovies({
+type WatchListMoviesPropTypes<T extends Movie> = { moviesData: T[] }
+
+export default function WatchListMovies<T extends Movie>({
   moviesData,
-}: WatchListMoviesPropTypes) {
+}: WatchListMoviesPropTypes<T>) {
   // Generate HTML for each movie in the watchlist
   const watchListMoviesHTML = moviesData.map((movie) => {
     return (
