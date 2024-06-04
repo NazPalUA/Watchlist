@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import formatRating from "../../../shared/lib/utils/formatRating"
-import formatYear from "../../../shared/lib/utils/formatYear"
 import Card from "../../../shared/ui/Card"
 import { CardsGridContainer } from "../../../shared/ui/CardsGridContainer"
+import formatRating from "../lib/formatRating"
+import formatYear from "../lib/formatYear"
 import { MovieCard } from "../model/MovieCard"
 
 type MoviesListProps<T extends MovieCard> = {
