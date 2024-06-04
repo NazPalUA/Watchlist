@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
-import type { Movie, MovieDetails, Recommendation } from "../../api/tmdb"
+import { MovieDetails } from "../../../entities/movie"
+import { Recommendation } from "../../../entities/movie/model/RecommendedMovies"
+import type { Movie } from "../../api/tmdb"
 import formatRating from "../../lib/utils/formatRating"
 import formatYear from "../../lib/utils/formatYear"
 import Card from "../Card"

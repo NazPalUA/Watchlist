@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import type { MovieDetails } from "../../../../shared/api/tmdb"
 import formatRating from "../../../../shared/lib/utils/formatRating"
 import formatYear from "../../../../shared/lib/utils/formatYear"
 import Card from "../../../../shared/ui/Card"
 import { CardsGridContainer } from "../../../../shared/ui/CardsGridContainer"
+import { MovieDetails } from "../../../movie"
 import styles from "./WatchListMovies.module.scss"
 
 type WatchListMoviesPropTypes = { moviesData: MovieDetails[] }

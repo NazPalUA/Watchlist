@@ -1,4 +1,4 @@
-import { MovieDetails } from "../../../shared/api/tmdb"
+import { MovieDetails } from "../../movie"
 
 // Calculate the total unwatched runtime of the movies in the watchlist
 export default function getUnwatchedRuntime(movies: MovieDetails[]) {

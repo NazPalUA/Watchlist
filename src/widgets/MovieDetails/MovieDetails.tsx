@@ -1,4 +1,4 @@
-import type { MovieDetails as MovieDetailsType } from "../../shared/api/tmdb"
+import type { MovieDetails as MovieDetailsType } from "../../entities/movie"
 import { useModalContext } from "../../shared/context/ModalContext"
 import { Button } from "../../shared/ui/Button/Button"
 import styles from "./MovieDetails.module.scss"

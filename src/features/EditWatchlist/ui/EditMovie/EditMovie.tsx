@@ -1,5 +1,6 @@
+import { MovieDetails } from "../../../../entities/movie"
 import { useRemoveMovieFromWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
-import type { Movie, MovieDetails } from "../../../../shared/api/tmdb"
+import type { Movie } from "../../../../shared/api/tmdb"
 import styles from "./EditMovie.module.scss"
 import posterNotFound from "/images/poster_not_found.png"
 
