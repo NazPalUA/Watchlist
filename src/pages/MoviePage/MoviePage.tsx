@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useMovieDetailsQuery } from "../../entities/movie"
-import MovieDetails from "../../entities/movie/ui/MovieDetails/MovieDetails"
+import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
 import Cast from "../../entities/person/ui/Cast/Cast"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"

@@ -1,6 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import { useInfinitePopularMoviesQuery } from "../../../entities/movie"
-import MoviesList from "../../../entities/movie/ui/MoviesList/MoviesList"
+import {
+  MoviesList,
+  useInfinitePopularMoviesQuery,
+} from "../../../entities/movie"
 import { getUniqueMovies } from "../../../shared/lib/utils/getUniqueMovies"
 import Loader from "../../../shared/ui/Loader"
 import EndMessage from "./EndMessage"

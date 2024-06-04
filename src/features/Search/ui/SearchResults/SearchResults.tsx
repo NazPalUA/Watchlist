@@ -1,5 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component"
-import MoviesList from "../../../../entities/movie/ui/MoviesList/MoviesList"
+import { MoviesList } from "../../../../entities/movie"
 import { getUniqueMovies } from "../../../../shared/lib/utils/getUniqueMovies"
 import Loader from "../../../../shared/ui/Loader"
 import { useInfiniteSearchMovieQuery } from "../../api/hooks"

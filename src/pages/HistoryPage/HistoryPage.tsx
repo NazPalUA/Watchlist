@@ -1,5 +1,4 @@
-import { useMoviesDetailsQuery } from "../../entities/movie"
-import MoviesList from "../../entities/movie/ui/MoviesList/MoviesList"
+import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import getUniqueIds from "../../shared/lib/utils/getUniqueIds"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"

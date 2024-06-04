@@ -1,4 +1,4 @@
-import MoviesList from "../../../entities/movie/ui/MoviesList/MoviesList"
+import { MoviesList } from "../../../entities/movie"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
 import { useRelatedMoviesQuery } from "../api/useRelatedMoviesQuery"

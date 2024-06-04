@@ -8,7 +8,7 @@ type MovieDetailsPropTypes = {
   movieData: MovieDetailsType
 }
 
-export default function MovieDetails({ movieData }: MovieDetailsPropTypes) {
+export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
   // useContext to get state and functions from context
   const { setIsModalActive, setMovieId } = useModalContext()
 
