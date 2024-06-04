@@ -1,16 +1,16 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom"
-import CreateWatchlistPage from "../pages/CreateWatchlistPage/CreateWatchlistPage"
-import EditWatchlistPage from "../pages/EditWatchlistPage/EditWatchlistPage"
-import HistoryPage from "../pages/HistoryPage/HistoryPage"
-import HomePage from "../pages/HomePage/HomePage"
-import LogInPage from "../pages/LogInPage/LogInPage"
-import MoviePage from "../pages/MoviePage/MoviePage"
-import SearchResultsPage from "../pages/SearchResultsPage/SearchResultsPage"
-import SignUpPage from "../pages/SignUpPage/SignUpPage"
-import UserPage from "../pages/UserPage/UserPage"
-import WatchlistPage from "../pages/WatchlistPage/WatchlistPage"
-import Watchlists from "../pages/Watchlists"
-import { App } from "./App"
+import CreateWatchlist from "../pages/CreateWatchlistPage"
+import EditWatchlist from "../pages/EditWatchlistPage"
+import History from "../pages/HistoryPage"
+import Home from "../pages/HomePage"
+import LogIn from "../pages/LogInPage"
+import Movie from "../pages/MoviePage"
+import SearchResults from "../pages/SearchResultsPage"
+import SignUp from "../pages/SignUpPage"
+import User from "../pages/UserPage"
+import Watchlist from "../pages/WatchlistPage"
+import Watchlists from "../pages/WatchlistsPage"
+import App from "./App"
 import RequireAuth from "./ui/RequireAuth"
 
 const routes: RouteObject[] = [
@@ -18,24 +18,24 @@ const routes: RouteObject[] = [
     path: "/",
     element: <App />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "user", element: <UserPage /> },
-      { path: "login", element: <LogInPage /> },
-      { path: "signup", element: <SignUpPage /> },
-      { path: "search", element: <SearchResultsPage /> },
+      { index: true, element: <Home /> },
+      { path: "user", element: <User /> },
+      { path: "login", element: <LogIn /> },
+      { path: "signup", element: <SignUp /> },
+      { path: "search", element: <SearchResults /> },
       {
         path: "movie-page",
         children: [
           { index: true, element: <Navigate to="/" /> },
-          { path: ":movieId", element: <MoviePage /> },
+          { path: ":movieId", element: <Movie /> },
         ],
       },
-      { path: "history", element: <HistoryPage /> },
+      { path: "history", element: <History /> },
       {
         path: "create_watchlist",
         element: (
           <RequireAuth>
-            <CreateWatchlistPage />
+            <CreateWatchlist />
           </RequireAuth>
         ),
       },
@@ -54,13 +54,13 @@ const routes: RouteObject[] = [
             path: ":watchlistId",
             element: (
               <RequireAuth>
-                <WatchlistPage />
+                <Watchlist />
               </RequireAuth>
             ),
           },
           {
             path: ":watchlistId/edit",
-            element: <EditWatchlistPage />,
+            element: <EditWatchlist />,
           },
         ],
       },

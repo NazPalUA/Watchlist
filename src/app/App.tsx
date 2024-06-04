@@ -8,7 +8,7 @@ import { HeaderNavbar } from "../widgets/HeaderNavbar"
 import { Layout } from "./ui/Layout"
 import Sidebar from "./ui/Sidebar/Sidebar"
 
-export function App() {
+export default function App() {
   const { isSidebarOpen } = useSidebarContext()
 
   const { data: currentUser } = useGetUserQuery()
