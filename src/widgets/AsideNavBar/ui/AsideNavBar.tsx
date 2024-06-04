@@ -1,9 +1,9 @@
 import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
-import styles from "./NavBar.module.scss"
+import styles from "./AsideNavBar.module.scss"
 
-type NavBarProps = React.ComponentPropsWithoutRef<"nav">
+type AsideNavBarProps = React.ComponentPropsWithoutRef<"nav">
 
-export function NavBar({ ...rest }: NavBarProps) {
+export function AsideNavBar({ ...rest }: AsideNavBarProps) {
   return (
     <nav {...rest}>
       <NavLinkWithActiveClass
