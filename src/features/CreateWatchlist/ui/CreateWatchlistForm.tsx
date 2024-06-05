@@ -3,7 +3,7 @@ import { useCreateWatchlistMutation } from "../../../entities/watchlist/api/muta
 import {
   TWatchlistSchema,
   watchlistSchema,
-} from "../../../entities/watchlist/model/form-watchlist"
+} from "../../../entities/watchlist/model/watchlistSchema"
 import { getForm } from "../../../shared/ui/Form"
 import FormTitle from "./FormTitle/FormTitle"
 
