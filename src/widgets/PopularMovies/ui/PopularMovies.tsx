@@ -3,7 +3,7 @@ import {
   MoviesList,
   useInfinitePopularMoviesQuery,
 } from "../../../entities/movie"
-import { filterUniqueById } from "../../../shared/lib/utils/filterUniqueById"
+import { filterUniqueById } from "../../../shared/lib/utils"
 import Loader from "../../../shared/ui/Loader"
 import EndMessage from "./EndMessage"
 import ErrorMessage from "./ErrorMessage"

@@ -1,4 +1,4 @@
-import { filterUniqueById } from "../../../lib/utils/filterUniqueById"
+import { filterUniqueById } from "../../../lib/utils"
 import { tmdbApi } from "../api/tmdbApi"
 
 // Generic function to handle API requests
