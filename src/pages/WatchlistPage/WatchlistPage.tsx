@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
+import { WatchlistDetails } from "../../entities/watchlist"
 import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist/api/queries/hooks"
-import WatchlistDetails from "../../entities/watchlist/ui/WatchlistDetails/WatchlistDetails"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
 import "./WatchlistPage.scss"

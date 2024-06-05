@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
-import { useEditWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
-import { useGetSingleWatchlistQuery } from "../../../../entities/watchlist/api/queries/hooks"
 import {
   TWatchlistSchema,
   watchlistSchema,
-} from "../../../../entities/watchlist/model/watchlistSchema"
+} from "../../../../entities/watchlist"
+import { useEditWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
+import { useGetSingleWatchlistQuery } from "../../../../entities/watchlist/api/queries/hooks"
 import { getForm } from "../../../../shared/ui/Form"
 import styles from "./EditWatchlistForm.module.scss"
 

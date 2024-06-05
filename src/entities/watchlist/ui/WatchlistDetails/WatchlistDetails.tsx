@@ -15,7 +15,7 @@ type PropTypes<T extends Movie> = {
   moviesData: T[]
 }
 
-export default function WatchlistDetails<T extends Movie>({
+export function WatchlistDetails<T extends Movie>({
   name,
   description,
   moviesData,
