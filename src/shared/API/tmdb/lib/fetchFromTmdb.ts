@@ -1,4 +1,4 @@
-import { getUniqueMovies } from "../../../lib/utils/getUniqueMovies"
+import { filterUniqueById } from "../../../lib/utils/filterUniqueById"
 import { tmdbApi } from "../api/tmdbApi"
 
 // Generic function to handle API requests
@@ -11,7 +11,7 @@ export const fetchFromTmdb = async <T>(
   const data = response.data
 
   if (filterUnique && Array.isArray(data)) {
-    return getUniqueMovies(data) as T
+    return filterUniqueById(data) as T
   }
 
   return data

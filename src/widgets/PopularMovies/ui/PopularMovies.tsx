@@ -3,7 +3,7 @@ import {
   MoviesList,
   useInfinitePopularMoviesQuery,
 } from "../../../entities/movie"
-import { getUniqueMovies } from "../../../shared/lib/utils/getUniqueMovies"
+import { filterUniqueById } from "../../../shared/lib/utils/filterUniqueById"
 import Loader from "../../../shared/ui/Loader"
 import EndMessage from "./EndMessage"
 import ErrorMessage from "./ErrorMessage"
@@ -14,7 +14,7 @@ export function PopularMovies() {
     useInfinitePopularMoviesQuery()
 
   const movies = data?.pages.map((page) => page.results).flat() || []
-  const uniqueMovies = getUniqueMovies(movies)
+  const uniqueMovies = filterUniqueById(movies)
 
   return (
     <>

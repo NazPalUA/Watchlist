@@ -1,6 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { MoviesList } from "../../../../entities/movie"
-import { getUniqueMovies } from "../../../../shared/lib/utils/getUniqueMovies"
+import { filterUniqueById } from "../../../../shared/lib/utils/filterUniqueById"
 import Loader from "../../../../shared/ui/Loader"
 import { useInfiniteSearchMovieQuery } from "../../api/hooks"
 import EndMessage from "./EndMessage"
@@ -15,7 +15,7 @@ export function SearchResults({ searchText }: SearchResultsProps) {
   if (isError) return <ErrorMessage error={error} />
 
   const movies = data?.pages.map((page) => page.results).flat() || []
-  const uniqueMovies = getUniqueMovies(movies)
+  const uniqueMovies = filterUniqueById(movies)
 
   return (
     <>

@@ -3,7 +3,7 @@ import {
   fetchMovieRecommendations,
   fetchPopularMovies,
 } from "../../../entities/movie/api/requests"
-import { getUniqueMovies } from "../../../shared/lib/utils/getUniqueMovies"
+import { filterUniqueById } from "../../../shared/lib/utils/filterUniqueById"
 
 export const useRelatedMoviesQuery = (movieId: string, length: number) =>
   useQuery({
@@ -14,7 +14,7 @@ export const useRelatedMoviesQuery = (movieId: string, length: number) =>
         movieId,
         recommendedPage
       )
-      let uniqueRecommendedMovies = getUniqueMovies(recommendedMovies.results)
+      let uniqueRecommendedMovies = filterUniqueById(recommendedMovies.results)
 
       while (
         uniqueRecommendedMovies.length < length &&
@@ -25,7 +25,7 @@ export const useRelatedMoviesQuery = (movieId: string, length: number) =>
           movieId,
           recommendedPage
         )
-        uniqueRecommendedMovies = getUniqueMovies([
+        uniqueRecommendedMovies = filterUniqueById([
           ...uniqueRecommendedMovies,
           ...recommendedMovies.results,
         ])
@@ -40,7 +40,7 @@ export const useRelatedMoviesQuery = (movieId: string, length: number) =>
       ) {
         popularPage++
         popularMovies = await fetchPopularMovies(popularPage)
-        uniqueRecommendedMovies = getUniqueMovies([
+        uniqueRecommendedMovies = filterUniqueById([
           ...uniqueRecommendedMovies,
           ...popularMovies.results,
         ])
