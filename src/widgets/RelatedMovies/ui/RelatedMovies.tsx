@@ -1,4 +1,5 @@
 import { MoviesList } from "../../../entities/movie"
+import { useGetUserQuery } from "../../../entities/session"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"
 import Loader from "../../../shared/ui/Loader"
 import { useRelatedMoviesQuery } from "../api/useRelatedMoviesQuery"
@@ -15,13 +16,18 @@ export function RelatedMovies({ movieId }: RelatedMoviesListPropTypes) {
     error: relatedMoviesError,
   } = useRelatedMoviesQuery(movieId, 20)
 
+  const { data: sessionData } = useGetUserQuery()
+
   let Return =
     isRelatedMoviesError || !relatedMovies?.length ? (
       <ErrorMessage error={relatedMoviesError}>
         Error Loading related movies! Please try again later.
       </ErrorMessage>
     ) : (
-      <MoviesList moviesData={relatedMovies} />
+      <MoviesList
+        moviesData={relatedMovies}
+        showAddToPlaylistBtn={sessionData ? true : false}
+      />
     )
 
   return (

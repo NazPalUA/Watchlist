@@ -1,4 +1,5 @@
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
+import { useGetUserQuery } from "../../entities/session"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { filterUniqueIds } from "../../shared/lib/utils"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
@@ -19,6 +20,8 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
     isLoading,
   } = useMoviesDetailsQuery(uniqueHistoryIds)
 
+  const { data: sessionData } = useGetUserQuery()
+
   if (isLoading) return <Loader />
 
   if (isError)
@@ -37,7 +40,10 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
           <button className="history-page__clear-btn" onClick={clearHistory}>
             Clear history
           </button>
-          <MoviesList moviesData={moviesData} />
+          <MoviesList
+            moviesData={moviesData}
+            showAddToPlaylistBtn={sessionData ? true : false}
+          />
         </>
       )}
     </div>
