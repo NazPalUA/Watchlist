@@ -1,4 +1,4 @@
-import { useGetWatchlistsQuery } from "../../../../entities/watchlist/api/queries/hooks"
+import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
 import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"

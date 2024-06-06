@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { useAddMovieToWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
-import { useGetWatchlistsQuery } from "../../../../entities/watchlist/api/queries/hooks"
+import {
+  useAddMovieToWatchlistMutation,
+  useGetWatchlistsQuery,
+} from "../../../../entities/watchlist"
 import { useHistoryContext } from "../../../../shared/context/HistoryContext"
 import { useModalContext } from "../../../../shared/context/ModalContext"
 import PopUp from "../../../../shared/ui/PopUp/PopUp"

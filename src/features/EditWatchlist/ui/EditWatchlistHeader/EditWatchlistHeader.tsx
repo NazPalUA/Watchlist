@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useDeleteWatchlistMutation } from "../../../../entities/watchlist/api/mutations/hooks"
+import { useDeleteWatchlistMutation } from "../../../../entities/watchlist"
 import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }
