@@ -3,7 +3,7 @@ import {
   fetchMovieRecommendations,
   fetchPopularMovies,
 } from "../../../entities/movie"
-import { filterUniqueById } from "../../../shared/lib/utils"
+import { filterUniqueById } from "../../../shared/lib"
 
 export const useRelatedMoviesQuery = (movieId: string, length: number) =>
   useQuery({

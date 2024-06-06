@@ -16,7 +16,7 @@ type PopUpPropsWithoutClose = {
 
 type PopUpProps = PopUpPropsWithClose | PopUpPropsWithoutClose
 
-export default function PopUp(props: PopUpProps) {
+export function PopUp(props: PopUpProps) {
   const mountElement = document.getElementById("overlays")
 
   const PopUpUI = () => (

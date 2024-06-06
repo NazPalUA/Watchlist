@@ -4,7 +4,7 @@ import {
   useInfinitePopularMoviesQuery,
 } from "../../../entities/movie"
 import { useSessionQuery } from "../../../entities/session"
-import { filterUniqueById } from "../../../shared/lib/utils"
+import { filterUniqueById } from "../../../shared/lib"
 import Loader from "../../../shared/ui/Loader"
 import EndMessage from "./EndMessage"
 import ErrorMessage from "./ErrorMessage"

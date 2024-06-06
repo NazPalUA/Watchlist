@@ -3,9 +3,8 @@ import {
   useAddMovieToWatchlistMutation,
   useGetWatchlistsQuery,
 } from "../../../../entities/watchlist"
-import { useHistoryContext } from "../../../../shared/context/HistoryContext"
-import { useModalContext } from "../../../../shared/context/ModalContext"
-import PopUp from "../../../../shared/ui/PopUp/PopUp"
+import { useHistoryContext, useModalContext } from "../../../../shared/context"
+import { PopUp } from "../../../../shared/ui/PopUp"
 import CustomSelect from "../CustomSelect/CustomSelect"
 import styles from "./AddToWatchlistModal.module.scss"
 

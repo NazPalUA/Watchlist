@@ -1,4 +1,4 @@
-import { useModalContext } from "../../../context/ModalContext"
+import { useModalContext } from "../../../context"
 import styles from "./AddBtn.module.scss"
 
 export type AddBtnProps = React.ComponentPropsWithoutRef<"button"> & {

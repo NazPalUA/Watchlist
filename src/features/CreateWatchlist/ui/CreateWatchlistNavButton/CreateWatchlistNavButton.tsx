@@ -1,4 +1,4 @@
-import { Button } from "../../../../shared/ui/Button/Button"
+import { Button } from "../../../../shared/ui/Button"
 import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./CreateWatchlistNavButton.module.scss"
 

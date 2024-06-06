@@ -1,7 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { MoviesList } from "../../../../entities/movie"
 import { useSessionQuery } from "../../../../entities/session"
-import { filterUniqueById } from "../../../../shared/lib/utils"
+import { filterUniqueById } from "../../../../shared/lib"
 import Loader from "../../../../shared/ui/Loader"
 import { useInfiniteSearchMovieQuery } from "../../api/hooks"
 import EndMessage from "./EndMessage"
