@@ -1,0 +1,8 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.image {
+  &__movie-poster,
+  &__actor-photo {
+    width: 100%;
+  }
+}

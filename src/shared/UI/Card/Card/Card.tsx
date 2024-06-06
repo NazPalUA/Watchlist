@@ -1,5 +1,5 @@
 import classnames from "classnames"
-import "./Card.scss"
+import styles from "./Card.module.scss"
 
 export type CardProps = {
   children: React.ReactNode
@@ -8,7 +8,11 @@ export type CardProps = {
 }
 
 export default function Card({ children, variant, className }: CardProps) {
-  const allClasses = classnames("card", `card--${variant}`, className)
+  const allClasses = classnames(
+    styles.card,
+    styles[`card--${variant}`],
+    className
+  )
 
   return <div className={allClasses}>{children}</div>
 }
