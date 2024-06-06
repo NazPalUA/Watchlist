@@ -1,5 +1,5 @@
-import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
-import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
+import { useGetUserQuery } from "../../../entities/session"
+import { useGetUserDataQuery } from "../../../entities/user"
 import Loader from "../../../shared/ui/Loader"
 import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 import style from "./UserLink.module.scss"

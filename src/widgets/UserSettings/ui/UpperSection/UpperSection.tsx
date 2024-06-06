@@ -1,4 +1,4 @@
-import { useLogoutMutation } from "../../../../entities/session/api/mutations/hooks"
+import { useLogoutMutation } from "../../../../entities/session"
 import style from "./UpperSection.module.scss"
 
 export function UpperSection() {

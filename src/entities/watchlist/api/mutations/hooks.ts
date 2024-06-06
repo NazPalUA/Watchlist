@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../session/api/queries/hooks"
+import { useGetUserQuery } from "../../../session"
 import { TWatchlistSchema } from "../../model/watchlistSchema"
 import { queryKeys } from "../queryKeys"
 import {

@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
+import { useGetUserQuery } from "../../../entities/session"
 import { useModalContext } from "../../context/ModalContext"
 
 export type CardAddToPlaylistBtnProps =

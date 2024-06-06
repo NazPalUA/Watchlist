@@ -8,7 +8,7 @@ type CastPropTypes = {
   movieId: string
 }
 
-export default function Cast({ movieId }: CastPropTypes) {
+export function Cast({ movieId }: CastPropTypes) {
   const { data, isLoading, isError, error } = useMovieCreditsQuery(movieId)
 
   let content

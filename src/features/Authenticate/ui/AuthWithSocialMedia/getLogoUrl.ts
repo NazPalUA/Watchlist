@@ -1,4 +1,4 @@
-import { SocialMediaProvider } from "../../../../entities/session/model/types"
+import type { SocialMediaProvider } from "../../../../entities/session"
 
 export default function getLogoUrl(provider: SocialMediaProvider) {
   switch (provider) {

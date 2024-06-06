@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import {
   fetchMovieRecommendations,
   fetchPopularMovies,
-} from "../../../entities/movie/api/requests"
+} from "../../../entities/movie"
 import { filterUniqueById } from "../../../shared/lib/utils"
 
 export const useRelatedMoviesQuery = (movieId: string, length: number) =>

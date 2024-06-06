@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../session/api/queries/hooks"
+import { useGetUserQuery } from "../../../session"
 import { queryKeys } from "../queryKeys"
 import {
   getSingleWatchedMovie,

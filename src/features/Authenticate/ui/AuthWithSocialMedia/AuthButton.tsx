@@ -1,5 +1,5 @@
-import { useSignInWithProviderMutation } from "../../../../entities/session/api/mutations/hooks"
-import { SocialMediaProvider } from "../../../../entities/session/model/types"
+import type { SocialMediaProvider } from "../../../../entities/session"
+import { useSignInWithProviderMutation } from "../../../../entities/session"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import style from "./AuthButton.module.scss"
 import getLogoUrl from "./getLogoUrl"

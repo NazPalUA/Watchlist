@@ -1,4 +1,4 @@
-import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session/api/mutations/hooks"
+import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session"
 import { getForm } from "../../../shared/ui/Form"
 import { TLogInSchema, logInSchema } from "../model/form-login"
 

@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "../../../../entities/session/api/queries/hooks"
+import { useGetUserQuery } from "../../../../entities/session"
 import Loader from "../../../../shared/ui/Loader"
 import { List } from "../List/List"
 import { NoAuth } from "../NoAuth/NoAuth"

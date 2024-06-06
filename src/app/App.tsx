@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
-import { useGetUserQuery } from "../entities/session/api/queries/hooks"
+import { useGetUserQuery } from "../entities/session"
 import AddToWatchlistModal from "../features/AddMovieToWatchlist/ui/AddToWatchlistModal/AddToWatchlistModal"
 import { useSidebarContext } from "../shared/context/SidebarContext"
 import { FooterNavbar } from "../widgets/FooterNavbar"

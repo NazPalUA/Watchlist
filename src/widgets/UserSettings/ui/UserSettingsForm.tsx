@@ -1,16 +1,14 @@
-import { useGetUserQuery } from "../../../entities/session/api/queries/hooks"
-import { useEditUserData } from "../../../entities/user/api/mutations/hooks"
-import { useGetUserDataQuery } from "../../../entities/user/api/queries/hooks"
+import { useGetUserQuery } from "../../../entities/session"
+import { useEditUserData, useGetUserDataQuery } from "../../../entities/user"
 import { getForm } from "../../../shared/ui/Form"
 
-import { TUserSchema, userSchema } from "../../../entities/user/model/form-user"
+import { TUserSchema, userSchema } from "./model/userSchema"
 
 type UserSettingsFormProps = {}
 
 export function UserSettingsForm({}: UserSettingsFormProps) {
   const { data: user } = useGetUserQuery()
-  const { data: currentUser } = useGetUserQuery()
-  const userId = currentUser?.uid
+  const userId = user?.uid
   const { data: userData } = useGetUserDataQuery(userId)
 
   const { mutate: updateUserName, isPending } = useEditUserData()
