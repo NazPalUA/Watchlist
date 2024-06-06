@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react"
-import PopUp from "../PopUp/PopUp"
+import { PopUp } from "../PopUp"
 import styles from "./ErrorMessage.module.scss"
 
 type ErrorMessageProps = {
