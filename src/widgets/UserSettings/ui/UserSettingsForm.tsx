@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "../../../entities/session"
+import { useSessionQuery } from "../../../entities/session"
 import { useEditUserData, useGetUserDataQuery } from "../../../entities/user"
 import { getForm } from "../../../shared/ui/Form"
 
@@ -7,7 +7,7 @@ import { TUserSchema, userSchema } from "./model/userSchema"
 type UserSettingsFormProps = {}
 
 export function UserSettingsForm({}: UserSettingsFormProps) {
-  const { data: user } = useGetUserQuery()
+  const { data: user } = useSessionQuery()
   const userId = user?.uid
   const { data: userData } = useGetUserDataQuery(userId)
 

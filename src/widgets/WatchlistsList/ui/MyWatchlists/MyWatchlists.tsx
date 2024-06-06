@@ -1,11 +1,11 @@
-import { useGetUserQuery } from "../../../../entities/session"
+import { useSessionQuery } from "../../../../entities/session"
 import Loader from "../../../../shared/ui/Loader"
 import { List } from "../List/List"
 import { NoAuth } from "../NoAuth/NoAuth"
 import styles from "./MyWatchlists.module.scss"
 
 export function MyWatchlists() {
-  const { data: user, isLoading } = useGetUserQuery()
+  const { data: user, isLoading } = useSessionQuery()
 
   const content = user ? <List /> : <NoAuth />
 

@@ -1,4 +1,4 @@
-import { useGetUserQuery } from "../../../entities/session"
+import { useSessionQuery } from "../../../entities/session"
 import { useGetUserDataQuery } from "../../../entities/user"
 import Loader from "../../../shared/ui/Loader"
 import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
@@ -6,7 +6,7 @@ import style from "./UserLink.module.scss"
 import guestIcon from "/images/guest_icon.svg"
 
 export function UserLink() {
-  const { isLoading: awaitingAuth, data: currentUser } = useGetUserQuery()
+  const { isLoading: awaitingAuth, data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const { data: userData, isLoading: userDataLoading } =
     useGetUserDataQuery(userId)

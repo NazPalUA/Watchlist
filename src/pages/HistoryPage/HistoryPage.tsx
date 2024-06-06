@@ -1,5 +1,5 @@
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
-import { useGetUserQuery } from "../../entities/session"
+import { useSessionQuery } from "../../entities/session"
 import { useHistoryContext } from "../../shared/context/HistoryContext"
 import { filterUniqueIds } from "../../shared/lib/utils"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
@@ -20,7 +20,7 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
     isLoading,
   } = useMoviesDetailsQuery(uniqueHistoryIds)
 
-  const { data: sessionData } = useGetUserQuery()
+  const { data: sessionData } = useSessionQuery()
 
   if (isLoading) return <Loader />
 

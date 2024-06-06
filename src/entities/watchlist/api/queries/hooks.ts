@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../session"
+import { useSessionQuery } from "../../../session"
 import { queryKeys } from "../queryKeys"
 import {
   getSingleWatchedMovie,
@@ -20,7 +20,7 @@ const {
 } = queryKeys
 
 export const useGetWatchlistsQuery = () => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   return useQuery({
@@ -34,7 +34,7 @@ export const useGetWatchlistsQuery = () => {
 }
 
 export const useGetSingleWatchlistQuery = (watchlistId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   const { data: watchlists } = useGetWatchlistsQuery()
@@ -54,7 +54,7 @@ export const useGetSingleWatchlistQuery = (watchlistId: string) => {
 }
 
 export const useGetWatchedMoviesQuery = () => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   return useQuery({
@@ -68,7 +68,7 @@ export const useGetWatchedMoviesQuery = () => {
 }
 
 export const useGetSingleWatchedMovieQuery = (movieId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   const { data: watchedMovies } = useGetWatchedMoviesQuery()
@@ -87,7 +87,7 @@ export const useGetSingleWatchedMovieQuery = (movieId: string) => {
 }
 
 export const useGetWatchlistMoviesQuery = (watchlistId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   return useQuery({
@@ -104,7 +104,7 @@ export const useGetSingleWatchlistMovieQuery = (
   watchlistId: string,
   movieId: string
 ) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   const { data: watchlistMovies } = useGetWatchlistMoviesQuery(watchlistId)

@@ -9,7 +9,7 @@ import {
   signOut,
 } from "./requests"
 
-const { CURRENT_USER } = queryKeys
+const { SESSION_USER } = queryKeys
 
 export const useSignInWithProviderMutation = () => {
   const navigateBack = useNavigateBack()
@@ -20,7 +20,7 @@ export const useSignInWithProviderMutation = () => {
     mutationFn: signInWithProvider,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: CURRENT_USER,
+        queryKey: SESSION_USER,
       })
       addDataToStore({
         userId: data.uid,
@@ -43,7 +43,7 @@ export const useAuthWithEmailAndPasswordMutation = () => {
     mutationFn: authWithEmailAndPassword,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: CURRENT_USER,
+        queryKey: SESSION_USER,
       })
       addDataToStore({
         userId: data.uid,

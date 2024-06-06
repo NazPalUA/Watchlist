@@ -3,7 +3,7 @@ import {
   MoviesList,
   useInfinitePopularMoviesQuery,
 } from "../../../entities/movie"
-import { useGetUserQuery } from "../../../entities/session"
+import { useSessionQuery } from "../../../entities/session"
 import { filterUniqueById } from "../../../shared/lib/utils"
 import Loader from "../../../shared/ui/Loader"
 import EndMessage from "./EndMessage"
@@ -14,7 +14,7 @@ export function PopularMovies() {
   const { data, isError, error, isFetching, fetchNextPage, hasNextPage } =
     useInfinitePopularMoviesQuery()
 
-  const { data: sessionData } = useGetUserQuery()
+  const { data: sessionData } = useSessionQuery()
 
   const movies = data?.pages.map((page) => page.results).flat() || []
   const uniqueMovies = filterUniqueById(movies)

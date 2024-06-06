@@ -1,6 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component"
 import { MoviesList } from "../../../../entities/movie"
-import { useGetUserQuery } from "../../../../entities/session"
+import { useSessionQuery } from "../../../../entities/session"
 import { filterUniqueById } from "../../../../shared/lib/utils"
 import Loader from "../../../../shared/ui/Loader"
 import { useInfiniteSearchMovieQuery } from "../../api/hooks"
@@ -13,7 +13,7 @@ export function SearchResults({ searchText }: SearchResultsProps) {
   const { data, isError, error, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteSearchMovieQuery(searchText)
 
-  const { data: sessionData } = useGetUserQuery()
+  const { data: sessionData } = useSessionQuery()
 
   if (isError) return <ErrorMessage error={error} />
 

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useGetUserQuery } from "../../../session"
+import { useSessionQuery } from "../../../session"
 import { TWatchlistSchema } from "../../model/watchlistSchema"
 import { queryKeys } from "../queryKeys"
 import {
@@ -14,7 +14,7 @@ const { ALL_WATCHLISTS, WATCHLIST, ALL_WATCHED_MOVIES, ALL_WATCHLIST_MOVIES } =
   queryKeys
 
 export const useCreateWatchlistMutation = () => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
 
   const queryClient = useQueryClient()
@@ -33,7 +33,7 @@ export const useCreateWatchlistMutation = () => {
 }
 
 export const useEditWatchlistMutation = (watchlistId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 
@@ -54,7 +54,7 @@ export const useEditWatchlistMutation = (watchlistId: string) => {
 }
 
 export const useDeleteWatchlistMutation = () => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 
@@ -72,7 +72,7 @@ export const useDeleteWatchlistMutation = () => {
 }
 
 export const useAddMovieToWatchlistMutation = (watchlistId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 
@@ -93,7 +93,7 @@ export const useRemoveMovieFromWatchlistMutation = (
   watchlistId: string,
   movieId: string
 ) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 
@@ -111,7 +111,7 @@ export const useRemoveMovieFromWatchlistMutation = (
 }
 
 export const useAddToWatchedMutation = () => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 
@@ -129,7 +129,7 @@ export const useAddToWatchedMutation = () => {
 }
 
 export const useRemoveFromWatchedMutation = (movieId: string) => {
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const userId = currentUser?.uid
   const queryClient = useQueryClient()
 

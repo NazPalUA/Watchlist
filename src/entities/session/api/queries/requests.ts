@@ -2,7 +2,7 @@ import { User, onAuthStateChanged } from "firebase/auth"
 import { auth } from "../../../../shared/api/firebase-config"
 
 // QUERIES:
-export const getCurrentUser = (): Promise<User | null> =>
+export const fetchSessionUser = (): Promise<User | null> =>
   new Promise((resolve, reject) => {
     try {
       const unsubscribe = onAuthStateChanged(auth, (user) => {

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
-import { useGetUserQuery } from "../entities/session"
+import { useSessionQuery } from "../entities/session"
 import AddToWatchlistModal from "../features/AddMovieToWatchlist/ui/AddToWatchlistModal/AddToWatchlistModal"
 import { useSidebarContext } from "../shared/context/SidebarContext"
 import { FooterNavbar } from "../widgets/FooterNavbar"
@@ -11,7 +11,7 @@ import Sidebar from "./ui/Sidebar/Sidebar"
 export default function App() {
   const { isSidebarOpen } = useSidebarContext()
 
-  const { data: currentUser } = useGetUserQuery()
+  const { data: currentUser } = useSessionQuery()
   const { pathname } = useLocation()
 
   useEffect(() => {
