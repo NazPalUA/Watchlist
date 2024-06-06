@@ -16,7 +16,7 @@ export function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
   const { data: moviesData } = useMoviesDetailsQuery(movieIds)
 
   const moviesListHTML = moviesData?.map((movie) => (
-    <EditMovie movie={movie} watchlistId={watchlistId} />
+    <EditMovie key={movie.id} movie={movie} watchlistId={watchlistId} />
   ))
 
   if (!moviesListHTML) {
