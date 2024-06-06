@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { UserAuthProps } from "../../UserAuth"
+import { UserAuthProps } from "../UserAuth"
 import style from "./RedirectLink.module.scss"
 
 type RedirectLinkProps = UserAuthProps

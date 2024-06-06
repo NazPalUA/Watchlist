@@ -1,3 +1,1 @@
-import { UserAuth } from "./UserAuth"
-
-export default UserAuth
+export { UserAuth } from "./ui/UserAuth"

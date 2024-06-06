@@ -1,4 +1,4 @@
-import UserAuth from "../../features/Authenticate"
+import { UserAuth } from "../../features/Authenticate"
 import style from "./SignUpPage.module.scss"
 
 type SignUpPageProps = { className?: string }
