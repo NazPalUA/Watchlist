@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
 import { useSessionQuery } from "../entities/session"
-import AddToWatchlistModal from "../features/AddMovieToWatchlist/ui/AddToWatchlistModal/AddToWatchlistModal"
+import { AddToWatchlistModal } from "../features/AddMovieToWatchlist"
 import { useSidebarContext } from "../shared/context"
 import { FooterNavbar } from "../widgets/FooterNavbar"
 import { HeaderNavbar } from "../widgets/HeaderNavbar"

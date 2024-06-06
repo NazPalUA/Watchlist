@@ -15,7 +15,7 @@ type OptionType = {
 
 type SelectedOptionType = OptionType | null
 
-export default function AddToWatchlistModal() {
+export function AddToWatchlistModal() {
   const { isModalActive, setIsModalActive, movieId } = useModalContext()
   const { addToHistory } = useHistoryContext()
 

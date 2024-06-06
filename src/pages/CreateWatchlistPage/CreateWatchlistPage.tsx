@@ -1,4 +1,4 @@
-import { CreateWatchlistForm } from "../../features/CreateWatchlist/ui/CreateWatchlistForm"
+import { CreateWatchlistForm } from "../../features/CreateWatchlist"
 
 type CreateWatchlistPageTypes = {
   className?: string
