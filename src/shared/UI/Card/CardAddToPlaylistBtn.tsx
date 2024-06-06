@@ -1,4 +1,3 @@
-import { useGetUserQuery } from "../../../entities/session"
 import { useModalContext } from "../../context/ModalContext"
 
 export type CardAddToPlaylistBtnProps =
@@ -12,8 +11,6 @@ export default function CardAddToPlaylistBtn({
   ...rest
 }: CardAddToPlaylistBtnProps) {
   const { setIsModalActive, setMovieId } = useModalContext()
-  const { data: currentUser } = useGetUserQuery()
-  if (!currentUser) return null
 
   return (
     <button
