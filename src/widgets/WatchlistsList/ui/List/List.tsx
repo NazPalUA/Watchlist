@@ -3,6 +3,7 @@ import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
 import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./List.module.scss"
+import Icon from "/images/watchlist_icon.svg"
 
 export function List() {
   const {
@@ -18,7 +19,8 @@ export function List() {
         to={`/watchlists/${watchlist.id}`}
         className={styles.link}
       >
-        {watchlist.name}
+        <img alt={watchlist.name} src={Icon} />
+        <span>{watchlist.name}</span>
       </NavLinkWithActiveClass>
     </li>
   ))
