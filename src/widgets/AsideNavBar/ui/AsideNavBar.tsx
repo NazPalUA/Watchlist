@@ -13,7 +13,7 @@ export function AsideNavBar({ ...rest }: AsideNavBarProps) {
         to="/"
         className={`${styles.link} ${styles.link_home}`}
       >
-        <img className={styles.icon} alt="Home" src={HomeIcon} />
+        <img alt="home" src={HomeIcon} />
         <span>Home</span>
       </NavLinkWithActiveClass>
 
@@ -21,7 +21,7 @@ export function AsideNavBar({ ...rest }: AsideNavBarProps) {
         to="/watchlists"
         className={`${styles.link} ${styles.link_watchlists}`}
       >
-        <img className={styles.icon} alt="Watchlists" src={WatchlistsIcon} />
+        <img alt="watchlists" src={WatchlistsIcon} />
         <span>Watchlists</span>
       </NavLinkWithActiveClass>
 
@@ -29,7 +29,7 @@ export function AsideNavBar({ ...rest }: AsideNavBarProps) {
         to="/history"
         className={`${styles.link} ${styles.link_history}`}
       >
-        <img className={styles.icon} alt="History" src={HistoryIcon} />
+        <img alt="history" src={HistoryIcon} />
         <span>History</span>
       </NavLinkWithActiveClass>
     </nav>
