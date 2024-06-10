@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
 import { useOutsideClick } from "../../lib/useOutsideClick"
-import { DropdownMenu } from "../DropdownMenu/DropdownMenu"
-import style from "./UserLink.module.scss"
+import { DropdownContent } from "../DropdownContent/DropdownContent"
+import style from "./DropdownMenu.module.scss"
 import guestIcon from "/images/guest_icon.svg"
 
-export function UserLink() {
+export function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -28,7 +28,7 @@ export function UserLink() {
         src={guestIcon}
         alt="guest icon"
       />
-      {isOpen && <DropdownMenu closeMenu={closeMenu} />}
+      {isOpen && <DropdownContent closeMenu={closeMenu} />}
     </nav>
   )
 }
