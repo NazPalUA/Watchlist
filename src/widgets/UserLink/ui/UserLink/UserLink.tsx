@@ -12,6 +12,10 @@ export function UserLink() {
     setIsOpen(!isOpen)
   }
 
+  const closeMenu = () => {
+    setIsOpen(false)
+  }
+
   useOutsideClick(dropdownRef, () => {
     setIsOpen(false)
   })
@@ -24,7 +28,7 @@ export function UserLink() {
         src={guestIcon}
         alt="guest icon"
       />
-      {isOpen && <DropdownMenu />}
+      {isOpen && <DropdownMenu closeMenu={closeMenu} />}
     </nav>
   )
 }
