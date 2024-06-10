@@ -1,1 +1,1 @@
-export { UserLink } from "./ui/UserLink"
+export { UserLink } from "./ui/UserLink/UserLink"
