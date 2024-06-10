@@ -1,7 +1,7 @@
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
+import { AsideNavLink } from "../../../../shared/ui/AsideNavLink"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
-import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./List.module.scss"
 import Icon from "/images/watchlist_icon.svg"
 
@@ -15,13 +15,12 @@ export function List() {
 
   const watchListsArrHTML = watchlistsData?.map((watchlist) => (
     <li className={styles.item} key={watchlist.id}>
-      <NavLinkWithActiveClass
+      <AsideNavLink
+        style={{ margin: 0 }}
         to={`/watchlists/${watchlist.id}`}
-        className={styles.link}
-      >
-        <img alt={watchlist.name} src={Icon} />
-        <span>{watchlist.name}</span>
-      </NavLinkWithActiveClass>
+        icon={Icon}
+        text={watchlist.name}
+      />
     </li>
   ))
 
