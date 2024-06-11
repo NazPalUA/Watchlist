@@ -12,7 +12,7 @@ export const useAddUserData = () => {
   return useMutation({
     mutationFn: ({ userId, data }: { userId: string; data: AddUserData }) =>
       addUserData(userId, data),
-    onSuccess: (data, { userId }) => {
+    onSuccess: (_, { userId }) => {
       queryClient.invalidateQueries({
         queryKey: USER(userId),
       })
@@ -27,7 +27,7 @@ export const useEditUserData = () => {
   return useMutation({
     mutationFn: ({ userId, data }: { userId: string; data: EditUserData }) =>
       editUserData(userId, data),
-    onSuccess: (data, { userId }) => {
+    onSuccess: (_, { userId }) => {
       queryClient.invalidateQueries({
         queryKey: USER(userId),
       })

@@ -1,4 +1,4 @@
-import { Movie } from "../../../shared/api/tmdb"
+import { Movie } from "."
 
 export type PopularMovies = {
   page: number
