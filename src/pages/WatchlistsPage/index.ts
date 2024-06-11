@@ -1,1 +1,1 @@
-export { default } from "./WatchlistsPage"
+export { default } from "./ui/WatchlistsPage/WatchlistsPage"

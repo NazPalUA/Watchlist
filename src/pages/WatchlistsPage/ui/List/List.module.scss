@@ -1,0 +1,18 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.container {
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  padding: 0;
+  border-radius: 6px;
+
+  list-style: none;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
