@@ -12,7 +12,7 @@ export function FooterNavbar() {
         Watchlists
       </NavLinkWithActiveClass>
 
-      <CreateWatchlistNavButton />
+      <CreateWatchlistNavButton onlyIcon />
 
       <NavLinkWithActiveClass
         to="/history"
