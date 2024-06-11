@@ -4,13 +4,17 @@ import { List } from "../List/List"
 import { NoAuth } from "../NoAuth/NoAuth"
 import styles from "./MyWatchlists.module.scss"
 
-export function MyWatchlists() {
+type MyWatchlistsProps = {
+  style?: React.CSSProperties
+}
+
+export function MyWatchlists({ style }: MyWatchlistsProps) {
   const { data: user, isLoading } = useSessionQuery()
 
   const content = user ? <List /> : <NoAuth />
 
   return (
-    <div className={styles.container}>
+    <div style={style} className={styles.container}>
       <p className={styles.header}>My Lists</p>
       {isLoading ? <Loader /> : content}
     </div>
