@@ -1,6 +1,6 @@
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
-import { ErrorMessage } from "../../../../shared/UI_ref/ErrorMessage"
-import Loader from "../../../../shared/UI_ref/Loader"
+import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
+import Loader from "../../../../shared/ui/Loader"
 import { Item } from "../Item/Item"
 import styles from "./List.module.scss"
 

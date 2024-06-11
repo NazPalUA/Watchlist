@@ -1,4 +1,4 @@
-import { AsideNavLink } from "../../../shared/UI_ref/AsideNavLink"
+import { AsideNavLink } from "../../../shared/ui/AsideNavLink"
 import HistoryIcon from "/images/history_icon.svg"
 import HomeIcon from "/images/home_icon.svg"
 import WatchlistsIcon from "/images/watchlist_icon.svg"

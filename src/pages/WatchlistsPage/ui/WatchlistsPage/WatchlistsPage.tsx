@@ -1,5 +1,5 @@
 import { useSessionQuery } from "../../../../entities/session"
-import Loader from "../../../../shared/UI_ref/Loader"
+import Loader from "../../../../shared/ui/Loader"
 
 import { NoAuth } from "../../../../widgets/WatchlistsList/ui/NoAuth/NoAuth"
 import { List } from "../List/List"

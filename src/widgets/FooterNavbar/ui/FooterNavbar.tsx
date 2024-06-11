@@ -1,5 +1,5 @@
 import { CreateWatchlistNavButton } from "../../../features/CreateWatchlist"
-import { NavLinkWithActiveClass } from "../../../shared/UI_ref/NavLinkWithActiveClass"
+import { NavLinkWithActiveClass } from "../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./FooterNavbar.module.scss"
 
 export function FooterNavbar() {

@@ -4,7 +4,7 @@ import {
   useSessionQuery,
 } from "../../../../entities/session"
 import { useGetUserDataQuery } from "../../../../entities/user"
-import Loader from "../../../../shared/UI_ref/Loader"
+import Loader from "../../../../shared/ui/Loader"
 import styles from "./DropdownContent.module.scss"
 
 type DropdownContentProps = { closeMenu: () => void }
