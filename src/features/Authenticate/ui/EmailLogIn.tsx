@@ -1,5 +1,5 @@
 import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session"
-import { getForm } from "../../../shared/UI_ref/Form"
+import { getForm } from "../../../shared/ui/Form"
 import { TLogInSchema, logInSchema } from "../model/form-login"
 
 type EmailLogInProps = {}

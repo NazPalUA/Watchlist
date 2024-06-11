@@ -1,5 +1,5 @@
-import { ErrorMessage } from "../../../../shared/UI_ref/ErrorMessage"
-import Loader from "../../../../shared/UI_ref/Loader"
+import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
+import Loader from "../../../../shared/ui/Loader"
 
 type EndMessageProps = {
   isLoading: boolean

@@ -1,5 +1,5 @@
 import { User, onAuthStateChanged } from "firebase/auth"
-import { auth } from "../../../../shared/API_ref/firebase-config"
+import { auth } from "../../../../shared/api/firebase-config"
 
 // QUERIES:
 export const fetchSessionUser = (): Promise<User | null> =>

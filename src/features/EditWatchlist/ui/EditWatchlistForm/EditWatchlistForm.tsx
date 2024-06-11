@@ -5,7 +5,7 @@ import {
   useGetSingleWatchlistQuery,
   watchlistSchema,
 } from "../../../../entities/watchlist"
-import { getForm } from "../../../../shared/UI_ref/Form"
+import { getForm } from "../../../../shared/ui/Form"
 import styles from "./EditWatchlistForm.module.scss"
 
 type EditWatchlistFormProps = { watchlistId: string }

@@ -1,4 +1,4 @@
-import Loader from "../../../shared/UI_ref/Loader"
+import Loader from "../../../shared/ui/Loader"
 
 type EndMessageProps = {
   length: number

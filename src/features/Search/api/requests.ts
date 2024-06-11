@@ -1,8 +1,5 @@
-import type {
-  SearchMovieResults,
-  SearchPeople,
-} from "../../../shared/API_ref/tmdb"
-import { fetchFromTmdb } from "../../../shared/API_ref/tmdb"
+import type { SearchMovieResults, SearchPeople } from "../../../shared/api/tmdb"
+import { fetchFromTmdb } from "../../../shared/api/tmdb"
 
 type SearchType = "movie" | "person"
 

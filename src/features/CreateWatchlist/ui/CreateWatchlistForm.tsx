@@ -4,7 +4,7 @@ import {
   useCreateWatchlistMutation,
   watchlistSchema,
 } from "../../../entities/watchlist"
-import { getForm } from "../../../shared/UI_ref/Form"
+import { getForm } from "../../../shared/ui/Form"
 import FormTitle from "./FormTitle/FormTitle"
 
 type CreateWatchlistFormProps = {}
