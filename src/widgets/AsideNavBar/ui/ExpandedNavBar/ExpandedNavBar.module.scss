@@ -1,32 +1,17 @@
 @use "/src/shared/styles/variables.scss" as v;
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-}
-
-.topSection {
-  & > * {
-    margin-bottom: 1.25rem;
-  }
-}
-
-.watchlists {
+.nav {
   display: none;
-
   @media (min-width: v.$bp-laptops) {
     display: block;
   }
-
-  &_open {
+  &_show {
     @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
       display: block;
     }
   }
 
-  &_closed {
+  &_hide {
     @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
       display: none;
     }

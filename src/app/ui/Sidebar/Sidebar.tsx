@@ -10,9 +10,13 @@ function Sidebar() {
     <div className={styles.sidebar}>
       <div className={styles.topSection}>
         <AsideNavBar />
-        <CreateWatchlistNavButton />
+        <CreateWatchlistNavButton onlyIcon={!isSidebarOpen} />
       </div>
-      <MyWatchlists style={{ display: isSidebarOpen ? "block" : "none" }} />
+      <MyWatchlists
+        className={`${styles.watchlists} ${
+          isSidebarOpen ? styles.watchlists_open : styles.watchlists_closed
+        }`}
+      />
     </div>
   )
 }

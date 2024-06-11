@@ -1,16 +1,11 @@
-import { AsideNavLink } from "../../../shared/ui/AsideNavLink"
-import HistoryIcon from "/images/history_icon.svg"
-import HomeIcon from "/images/home_icon.svg"
-import WatchlistsIcon from "/images/watchlist_icon.svg"
+import { CollapsedNavBar } from "./CollapsedNavBar/CollapsedNavBar"
+import { ExpandedNavBar } from "./ExpandedNavBar/ExpandedNavBar"
 
-type AsideNavBarProps = React.ComponentPropsWithoutRef<"nav">
-
-export function AsideNavBar({ ...rest }: AsideNavBarProps) {
+export function AsideNavBar() {
   return (
-    <nav {...rest}>
-      <AsideNavLink to="/" icon={HomeIcon} text="Home" />
-      <AsideNavLink to="/watchlists" icon={WatchlistsIcon} text="Watchlists" />
-      <AsideNavLink to="/history" icon={HistoryIcon} text="History" />
-    </nav>
+    <>
+      <ExpandedNavBar />
+      <CollapsedNavBar />
+    </>
   )
 }
