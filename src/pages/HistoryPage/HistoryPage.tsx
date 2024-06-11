@@ -1,9 +1,9 @@
-import CustomLoader from "../../components/CustomLoader"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import MoviesList from "../../components/MoviesList/MoviesList"
-import { useHistoryContext } from "../../context/HistoryContext"
-import { useMoviesDetails } from "../../services/tmdb"
-import getUniqueIds from "../../utils/getUniqueIds"
+import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
+import { useSessionQuery } from "../../entities/session"
+import { useHistoryContext } from "../../shared/context"
+import { filterUniqueIds } from "../../shared/lib"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
 import "./HistoryPage.scss"
 
 type HistoryPagePropTypes = {
@@ -12,15 +12,17 @@ type HistoryPagePropTypes = {
 
 function HistoryPage({ className }: HistoryPagePropTypes) {
   const { historyIds, clearHistory } = useHistoryContext()
-  const uniqueHistoryIds = getUniqueIds(historyIds)
+  const uniqueHistoryIds = filterUniqueIds(historyIds)
   const {
     data: moviesData,
     isError,
     error,
     isLoading,
-  } = useMoviesDetails(uniqueHistoryIds)
+  } = useMoviesDetailsQuery(uniqueHistoryIds)
 
-  if (isLoading) return <CustomLoader />
+  const { data: sessionData } = useSessionQuery()
+
+  if (isLoading) return <Loader />
 
   if (isError)
     return (
@@ -38,7 +40,10 @@ function HistoryPage({ className }: HistoryPagePropTypes) {
           <button className="history-page__clear-btn" onClick={clearHistory}>
             Clear history
           </button>
-          <MoviesList moviesData={moviesData} />
+          <MoviesList
+            moviesData={moviesData}
+            showAddToPlaylistBtn={sessionData ? true : false}
+          />
         </>
       )}
     </div>

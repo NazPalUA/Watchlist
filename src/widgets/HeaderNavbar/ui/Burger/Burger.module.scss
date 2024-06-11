@@ -1,0 +1,57 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+// Define commonly used values
+$burger-size: 0.8rem;
+$transition-duration: 0.5s;
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  // Define the size of the burger
+  font-size: $burger-size;
+  height: 3em;
+  width: 4em;
+
+  z-index: 5;
+  cursor: pointer;
+
+  // Transition properties
+  transform: rotate(0) translate(0);
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) $transition-duration;
+
+  @media (min-width: v.$bp-mobile) {
+    font-size: calc(1.25 * $burger-size); // Update the burger size for mobile
+  }
+}
+
+.bar {
+  width: 4em;
+  height: 0.5em;
+  border-radius: 0.5em;
+  background-color: #fff;
+
+  // Define the transition for each bar
+  transition: ease-out $transition-duration;
+
+  // Define the transformation for each bar when the burger is open
+  &:nth-child(1) {
+    .burger.open & {
+      transform: rotate(45deg) translate(0.75em, 1.25em);
+    }
+  }
+
+  &:nth-child(2) {
+    .burger.open & {
+      transform: scale(0.1);
+    }
+  }
+
+  &:nth-child(3) {
+    .burger.open & {
+      transform: rotate(135deg) translate(-0.5em, 1em);
+    }
+  }
+}

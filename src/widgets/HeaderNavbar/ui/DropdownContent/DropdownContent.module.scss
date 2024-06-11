@@ -1,0 +1,51 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.dropdownMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: v.$clr-semi-dark;
+  border: 1px solid v.$clr-font-light;
+  border-radius: 4px;
+
+  min-width: 160px;
+  max-width: 70vw;
+  z-index: 1;
+}
+
+.dropdownMenu > * {
+  color: v.$clr-light;
+  font-weight: v.$fw-reg;
+  font-size: var(--fs-reg);
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  margin: 0;
+
+  &:nth-child(2) {
+    margin-top: 0.25rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.name {
+  border-bottom: 1px solid v.$clr-semi-light;
+}
+
+.link {
+  &:hover {
+    background-color: v.$clr-dark;
+  }
+}
+
+.outBtn {
+  border: none;
+}

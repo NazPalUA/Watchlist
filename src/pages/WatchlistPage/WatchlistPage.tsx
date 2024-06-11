@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom"
-import CustomLoader from "../../components/CustomLoader"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import {
+  WatchlistDetails,
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
-} from "../../services/firebase/firestore/queries/queries"
-import { useMoviesDetails } from "../../services/tmdb"
-import Movies from "./SubComponents/Movies"
-import WatchlistDetails from "./SubComponents/WatchlistDetails"
+} from "../../entities/watchlist"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
 import "./WatchlistPage.scss"
 
 type WatchlistPagePropTypes = {
@@ -27,9 +26,9 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
     isError,
     error,
     isLoading,
-  } = useMoviesDetails(movieIds)
+  } = useMoviesDetailsQuery(movieIds)
 
-  if (isLoading) return <CustomLoader />
+  if (isLoading) return <Loader />
 
   if (!watchlistId) return <ErrorMessage>Watchlist not found!</ErrorMessage>
 
@@ -47,7 +46,7 @@ function WatchlistPage({ className }: WatchlistPagePropTypes) {
         name={watchlistData?.name ?? ""}
         description={watchlistData?.description ?? ""}
       />
-      <Movies moviesData={moviesData} />
+      <MoviesList moviesData={moviesData} showAddToPlaylistBtn={false} />
     </div>
   )
 }

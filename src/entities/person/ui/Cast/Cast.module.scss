@@ -1,0 +1,9 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.title {
+  font-size: var(--fs-h5);
+  font-weight: v.$fw-bold;
+  color: v.$clr-light;
+
+  margin: 2.5em 0 1em;
+}

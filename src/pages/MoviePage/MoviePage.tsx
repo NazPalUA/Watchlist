@@ -1,13 +1,11 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import CustomLoader from "../../components/CustomLoader"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { useHistoryContext } from "../../context/HistoryContext"
-import { useMovieDetails } from "../../services/tmdb"
-
-import Cast from "./SubComponents/Cast/Cast"
-import MovieDetails from "./SubComponents/MovieDetails/MovieDetails"
-import RelatedMovies from "./SubComponents/RelatedMovies/RelatedMovies"
+import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
+import { Cast } from "../../entities/person"
+import { useHistoryContext } from "../../shared/context"
+import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import Loader from "../../shared/ui/Loader"
+import { RelatedMovies } from "../../widgets/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string
@@ -27,9 +25,9 @@ export default function MoviePage({ className }: MoviePagePropTypes) {
     isLoading: isMovieDataLoading,
     isError: isMovieDataError,
     error: movieDataError,
-  } = useMovieDetails(movieId)
+  } = useMovieDetailsQuery(movieId)
 
-  if (isMovieDataLoading) return <CustomLoader />
+  if (isMovieDataLoading) return <Loader />
   else if (isMovieDataError || !movieData)
     return (
       <ErrorMessage error={movieDataError}>
