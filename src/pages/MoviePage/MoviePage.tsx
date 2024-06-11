@@ -2,9 +2,9 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
 import { Cast } from "../../entities/person"
+import { ErrorMessage } from "../../shared/UI_ref/ErrorMessage"
+import Loader from "../../shared/UI_ref/Loader"
 import { useHistoryContext } from "../../shared/context"
-import { ErrorMessage } from "../../shared/ui/ErrorMessage"
-import Loader from "../../shared/ui/Loader"
 import { RelatedMovies } from "../../widgets/RelatedMovies"
 
 type MoviePagePropTypes = {

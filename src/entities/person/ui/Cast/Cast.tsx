@@ -1,6 +1,6 @@
 import { useMovieCreditsQuery } from "../.."
-import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
-import Loader from "../../../../shared/ui/Loader"
+import { ErrorMessage } from "../../../../shared/UI_ref/ErrorMessage"
+import Loader from "../../../../shared/UI_ref/Loader"
 import CastList from "../CastList"
 import styles from "./Cast.module.scss"
 

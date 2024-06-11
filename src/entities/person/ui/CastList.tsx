@@ -1,6 +1,6 @@
-import { MovieCast } from "../../../shared/api/tmdb"
-import Card from "../../../shared/ui/Card"
-import { CardsGridContainer } from "../../../shared/ui/CardsGridContainer"
+import { MovieCast } from "../../../shared/API_ref/tmdb"
+import Card from "../../../shared/UI_ref/Card"
+import { CardsGridContainer } from "../../../shared/UI_ref/CardsGridContainer"
 
 type CastListPropTypes = {
   cast: MovieCast[]

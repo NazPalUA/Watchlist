@@ -7,7 +7,7 @@ import {
   watchlistMovieDocRef,
   watchlistsCollectionRef,
   watchlistsMoviesCollectionRef,
-} from "../../../../shared/api/firestore"
+} from "../../../../shared/API_ref/firestore"
 import { WatchedMovie, Watchlist, WatchlistMovie } from "../../model/types"
 
 // QUERIES:

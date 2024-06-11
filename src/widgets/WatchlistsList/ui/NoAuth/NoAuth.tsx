@@ -1,4 +1,4 @@
-import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
+import { NavLinkWithActiveClass } from "../../../../shared/UI_ref/NavLinkWithActiveClass"
 import styles from "./NoAuth.module.scss"
 
 export function NoAuth() {

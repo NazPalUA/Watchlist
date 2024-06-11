@@ -1,6 +1,6 @@
 import type { SocialMediaProvider } from "../../../../entities/session"
 import { useSignInWithProviderMutation } from "../../../../entities/session"
-import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
+import { ErrorMessage } from "../../../../shared/UI_ref/ErrorMessage"
 import style from "./AuthButton.module.scss"
 import getLogoUrl from "./getLogoUrl"
 

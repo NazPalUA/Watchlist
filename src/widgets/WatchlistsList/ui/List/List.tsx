@@ -1,7 +1,7 @@
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
-import { AsideNavLink } from "../../../../shared/ui/AsideNavLink"
-import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
-import Loader from "../../../../shared/ui/Loader"
+import { AsideNavLink } from "../../../../shared/UI_ref/AsideNavLink"
+import { ErrorMessage } from "../../../../shared/UI_ref/ErrorMessage"
+import Loader from "../../../../shared/UI_ref/Loader"
 import styles from "./List.module.scss"
 import Icon from "/images/watchlist_icon.svg"
 

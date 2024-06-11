@@ -2,8 +2,8 @@ import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import { useSessionQuery } from "../../entities/session"
 import { useHistoryContext } from "../../shared/context"
 import { filterUniqueIds } from "../../shared/lib"
-import { ErrorMessage } from "../../shared/ui/ErrorMessage"
-import Loader from "../../shared/ui/Loader"
+import { ErrorMessage } from "../../shared/UI_ref/ErrorMessage"
+import Loader from "../../shared/UI_ref/Loader"
 import "./HistoryPage.scss"
 
 type HistoryPagePropTypes = {

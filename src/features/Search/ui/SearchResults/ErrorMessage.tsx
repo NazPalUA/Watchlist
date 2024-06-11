@@ -1,4 +1,4 @@
-import { ErrorMessage as ErMessage } from "../../../../shared/ui/ErrorMessage"
+import { ErrorMessage as ErMessage } from "../../../../shared/UI_ref/ErrorMessage"
 
 type ErrorMessageProps = { error: Error | null }
 

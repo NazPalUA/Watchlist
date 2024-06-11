@@ -1,7 +1,7 @@
 import { CgAddR } from "react-icons/cg"
 import { Link } from "react-router-dom"
-import { Button } from "../../../../shared/ui/Button"
-import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
+import { Button } from "../../../../shared/UI_ref/Button"
+import { NavLinkWithActiveClass } from "../../../../shared/UI_ref/NavLinkWithActiveClass"
 import styles from "./CreateWatchlistNavButton.module.scss"
 
 type CreateWatchlistNavButtonProps = {

@@ -4,7 +4,7 @@ import {
   EditWatchlistHeader,
   WatchlistMovies,
 } from "../../features/EditWatchlist"
-import { ErrorMessage } from "../../shared/ui/ErrorMessage"
+import { ErrorMessage } from "../../shared/UI_ref/ErrorMessage"
 
 type EditWatchlistPagePropTypes = {
   className?: string

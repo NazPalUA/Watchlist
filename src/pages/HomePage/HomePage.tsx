@@ -1,5 +1,5 @@
 import { SearchBox } from "../../features/Search"
-import Welcome from "../../shared/ui/Welcome"
+import Welcome from "../../shared/UI_ref/Welcome"
 import { PopularMovies } from "../../widgets/PopularMovies"
 import styles from "./HomePage.module.scss"
 

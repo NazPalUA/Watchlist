@@ -1,6 +1,6 @@
-import type { MovieDetails as MovieDetailsType } from "../../../../shared/api/tmdb"
+import type { MovieDetails as MovieDetailsType } from "../../../../shared/API_ref/tmdb"
 import { useModalContext } from "../../../../shared/context"
-import { Button } from "../../../../shared/ui/Button"
+import { Button } from "../../../../shared/UI_ref/Button"
 import styles from "./MovieDetails.module.scss"
 import posterNotFound from "/images/poster_not_found.png"
 

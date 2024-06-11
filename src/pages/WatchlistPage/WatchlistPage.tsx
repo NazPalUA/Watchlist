@@ -5,8 +5,8 @@ import {
   useGetSingleWatchlistQuery,
   useGetWatchlistMoviesQuery,
 } from "../../entities/watchlist"
-import { ErrorMessage } from "../../shared/ui/ErrorMessage"
-import Loader from "../../shared/ui/Loader"
+import { ErrorMessage } from "../../shared/UI_ref/ErrorMessage"
+import Loader from "../../shared/UI_ref/Loader"
 import "./WatchlistPage.scss"
 
 type WatchlistPagePropTypes = {

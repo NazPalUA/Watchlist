@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import Card from "../../../shared/ui/Card"
-import { CardsGridContainer } from "../../../shared/ui/CardsGridContainer"
+import Card from "../../../shared/UI_ref/Card"
+import { CardsGridContainer } from "../../../shared/UI_ref/CardsGridContainer"
 import formatRating from "../lib/formatRating"
 import formatYear from "../lib/formatYear"
 import { MovieCard } from "../model/MovieCard"
