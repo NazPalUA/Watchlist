@@ -1,18 +1,12 @@
 import { Link } from "react-router-dom"
-import { useSidebarContext } from "../../../../shared/context"
 import styles from "./CollapsedNavBar.module.scss"
 import HistoryIcon from "/images/history_icon.svg"
 import HomeIcon from "/images/home_icon.svg"
 import WatchlistsIcon from "/images/watchlist_icon.svg"
 
 export function CollapsedNavBar() {
-  const { isSidebarOpen } = useSidebarContext()
   return (
-    <nav
-      className={`${styles.nav} ${
-        isSidebarOpen ? styles.nav_hide : styles.nav_show
-      } `}
-    >
+    <nav className={styles.nav}>
       <Link to="/">
         <img src={HomeIcon} alt="Hole Link Icon" />
       </Link>

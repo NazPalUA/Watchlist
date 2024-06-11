@@ -11,25 +11,13 @@ type CreateWatchlistNavButtonProps = {
 export function CreateWatchlistNavButton({
   onlyIcon = false,
 }: CreateWatchlistNavButtonProps) {
-  return (
-    <>
-      <Link
-        to="/create_watchlist"
-        className={`${styles.IconLink} ${
-          onlyIcon ? styles.IconLink_show : styles.IconLink_hide
-        }`}
-      >
-        <CgAddR className={styles.icon} />
-      </Link>
-
-      <NavLinkWithActiveClass
-        to="/create_watchlist"
-        className={`${styles.link} ${
-          onlyIcon ? styles.link_hide : styles.link_show
-        }`}
-      >
-        <Button width="full">+ Create watchlist</Button>
-      </NavLinkWithActiveClass>
-    </>
+  return onlyIcon ? (
+    <Link to="/create_watchlist">
+      <CgAddR className={styles.icon} />
+    </Link>
+  ) : (
+    <NavLinkWithActiveClass to="/create_watchlist" className={styles.link}>
+      <Button width="full">+ Create watchlist</Button>
+    </NavLinkWithActiveClass>
   )
 }

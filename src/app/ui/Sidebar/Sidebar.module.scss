@@ -7,28 +7,43 @@
   height: 100%;
 }
 
-.topSection {
+// .topSection {
+//   & > * {
+//     margin-bottom: 1.25rem;
+//   }
+// }
+
+.initiallyShown,
+.initiallyHidden {
   & > * {
     margin-bottom: 1.25rem;
   }
 }
 
-.watchlists {
+.initiallyShown {
+  display: block;
+
+  @media (min-width: v.$bp-laptops) {
+    display: none;
+  }
+}
+
+.initiallyHidden {
   display: none;
 
   @media (min-width: v.$bp-laptops) {
     display: block;
   }
+}
 
-  &_open {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: block;
-    }
+.open {
+  @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
+    display: block;
   }
+}
 
-  &_closed {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: none;
-    }
+.closed {
+  @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
+    display: none;
   }
 }

@@ -1,11 +1,10 @@
 import { CollapsedNavBar } from "./CollapsedNavBar/CollapsedNavBar"
-import { ExpandedNavBar } from "./ExpandedNavBar/ExpandedNavBar"
+import { ExpandedNavBar } from "./ExpandedNavBar"
 
-export function AsideNavBar() {
-  return (
-    <>
-      <ExpandedNavBar />
-      <CollapsedNavBar />
-    </>
-  )
+type AsideNavBarProps = {
+  type?: "expanded" | "collapsed"
+}
+
+export function AsideNavBar({ type = "expanded" }: AsideNavBarProps) {
+  return type === "expanded" ? <ExpandedNavBar /> : <CollapsedNavBar />
 }

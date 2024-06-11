@@ -3,23 +3,6 @@
 .nav {
   display: flex;
   flex-direction: column;
-  // align-items: center;
-
-  @media (min-width: v.$bp-laptops) {
-    display: none;
-  }
-
-  &_show {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: flex;
-    }
-  }
-
-  &_hide {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: none;
-    }
-  }
 }
 
 .nav > * {

@@ -1,43 +1,7 @@
 @use "/src/shared/styles/variables.scss" as v;
 
 .link {
-  display: none;
   white-space: nowrap;
-  @media (min-width: v.$bp-laptops) {
-    display: block;
-  }
-
-  &_show {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: block;
-    }
-  }
-
-  &_hide {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: none;
-    }
-  }
-}
-
-.IconLink {
-  display: block;
-
-  @media (min-width: v.$bp-laptops) {
-    display: none;
-  }
-
-  &_show {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: block;
-    }
-  }
-
-  &_hide {
-    @media (min-width: v.$bp-tablets) and (max-width: v.$bp-laptops) {
-      display: none;
-    }
-  }
 }
 
 .icon {
