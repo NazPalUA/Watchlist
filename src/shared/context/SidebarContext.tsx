@@ -8,7 +8,7 @@ export type SidebarContextType = {
 }
 
 const defaultContextValue: SidebarContextType = {
-  isSidebarOpen: false,
+  isSidebarOpen: true,
   openSidebar: () => {},
   closeSidebar: () => {},
   toggleSidebar: () => {},
