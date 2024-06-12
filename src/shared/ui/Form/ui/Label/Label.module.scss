@@ -1,8 +1,0 @@
-@use "/src/shared/styles/variables.scss" as v;
-
-.label {
-  display: block;
-  font-size: var(--fs-extra-big);
-  font-weight: v.$fw-bold;
-  margin-bottom: 0.3em;
-}
