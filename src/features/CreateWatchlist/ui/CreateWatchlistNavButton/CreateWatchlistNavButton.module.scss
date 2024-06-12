@@ -1,0 +1,14 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.link {
+  white-space: nowrap;
+}
+
+.icon {
+  color: v.$clr-accent;
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  font-size: 2rem;
+  margin: 0 auto;
+}

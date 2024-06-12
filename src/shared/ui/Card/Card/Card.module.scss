@@ -1,0 +1,15 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.card {
+  height: 100%;
+  border-radius: 4px;
+
+  &--movie {
+    position: relative;
+    background-color: v.$clr-semi-dark;
+  }
+
+  &--actor {
+    background: #1a1a1a;
+  }
+}

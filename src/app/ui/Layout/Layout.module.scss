@@ -1,0 +1,87 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.app {
+  max-width: v.$max-width;
+  min-width: v.$min-width;
+
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  height: var(--header-height);
+  padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
+
+  background-color: v.$clr-font-black;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+  background-color: rgb(v.$clr-light, 0.13);
+
+  @media (min-width: v.$bp-tablets) {
+    flex-direction: row;
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    flex: 1;
+  }
+}
+
+.sidebar {
+  display: none;
+  order: 1;
+
+  position: sticky;
+  top: var(--header-height);
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  padding: var(--vertical-padding) var(--horizontal-padding);
+
+  background-color: v.$clr-dark;
+
+  @media (min-width: v.$bp-tablets) {
+    display: block;
+    order: 0;
+    flex: 0 1 min-content;
+  }
+
+  @media (min-width: v.$bp-laptops) {
+    flex: 0 1 25%;
+  }
+}
+
+.page {
+  width: 100%;
+  order: 1;
+  padding: var(--vertical-padding) var(--horizontal-padding);
+
+  @media (min-width: v.$bp-tablets) {
+    order: 0;
+  }
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+
+  height: var(--footer-height);
+  padding: calc(var(--vertical-padding) / 2) var(--horizontal-padding);
+
+  background-color: v.$clr-font-black;
+
+  @media (min-width: v.$bp-tablets) {
+    display: none;
+  }
+}

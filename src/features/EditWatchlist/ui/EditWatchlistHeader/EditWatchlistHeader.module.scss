@@ -1,0 +1,29 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  margin-bottom: 3em;
+}
+
+.title {
+  font-size: var(--fs-h4);
+  margin: 0;
+}
+
+.btn {
+  padding: 0;
+  border: 0;
+
+  text-decoration: underline;
+  color: v.$clr-accent;
+  background-color: inherit;
+
+  &:hover {
+    text-shadow: v.$clr-accent-dark 1px 0 5px;
+  }
+}

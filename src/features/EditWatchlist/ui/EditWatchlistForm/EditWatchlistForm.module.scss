@@ -1,0 +1,33 @@
+@use "/src/shared/styles/variables.scss" as v;
+
+.btnsContainer {
+  display: flex;
+  gap: 1em;
+
+  justify-content: space-between;
+
+  @media (min-width: v.$bp-mobile) {
+    justify-content: flex-start;
+  }
+}
+
+.btn {
+  font-size: var(--fs-big);
+  font-weight: v.$fw-bold;
+  color: v.$clr-font-black;
+  padding: 0.8em 3em;
+  background: v.$clr-accent;
+  border: none;
+  border-radius: 6px;
+  margin: 0;
+  cursor: pointer;
+
+  @media (min-width: v.$bp-mobile) {
+    width: unset;
+    padding: 0.6em 4em;
+  }
+}
+
+.btn_dark {
+  background-color: v.$clr-semi-light;
+}
