@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-#root {
+body {
   width: 100%;
 }
 
@@ -47,16 +47,3 @@ button {
   background-color: inherit;
   cursor: pointer;
 }
-
-button:hover {
-}
-button:focus,
-button:focus-visible {
-}
-
-// @media (prefers-color-scheme: light) {
-//   :root {
-//     color: #213547;
-//     background-color: #ffffff;
-//   }
-// }
