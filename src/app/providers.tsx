@@ -1,5 +1,6 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { queryClient } from "../shared/api/query-client"
 import {
   HistoryContextProvider,
   ModalContextProvider,
@@ -8,12 +9,11 @@ import {
 
 type Props = {
   children: React.ReactNode
-  client: QueryClient
 }
 
-export const Providers = ({ children, client }: Props) => {
+export const Providers = ({ children }: Props) => {
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <ModalContextProvider>
         <HistoryContextProvider>
           <SidebarContextProvider>
