@@ -1,7 +1,5 @@
-import type { Router } from "@remix-run/router/dist/router"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { RouterProvider } from "react-router-dom"
 import {
   HistoryContextProvider,
   ModalContextProvider,
@@ -9,17 +7,17 @@ import {
 } from "../shared/context"
 
 type Props = {
-  router: Router
+  children: React.ReactNode
   client: QueryClient
 }
 
-export const Providers = ({ router, client }: Props) => {
+export const Providers = ({ children, client }: Props) => {
   return (
     <QueryClientProvider client={client}>
       <ModalContextProvider>
         <HistoryContextProvider>
           <SidebarContextProvider>
-            <RouterProvider router={router} />
+            {children}
             <ReactQueryDevtools initialIsOpen={true} />
           </SidebarContextProvider>
         </HistoryContextProvider>
