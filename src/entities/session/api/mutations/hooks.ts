@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/router"
-import { useNavigateBack } from "../../../../shared/lib"
 import { useAddUserData } from "../../../user"
 import { queryKeys } from "../queryKeys"
 import {
@@ -12,10 +11,11 @@ import {
 const { SESSION_USER } = queryKeys
 
 export const useSignInWithProviderMutation = () => {
-  const navigateBack = useNavigateBack()
   const queryClient = useQueryClient()
 
   const { mutate: addDataToStore } = useAddUserData()
+
+  const router = useRouter()
   return useMutation({
     mutationFn: signInWithProvider,
     onSuccess: data => {
@@ -30,13 +30,13 @@ export const useSignInWithProviderMutation = () => {
           photoURL: data.photoURL || "",
         },
       })
-      navigateBack()
+      router.back()
     },
   })
 }
 
 export const useAuthWithEmailAndPasswordMutation = () => {
-  const navigateBack = useNavigateBack()
+  const router = useRouter()
   const queryClient = useQueryClient()
   const { mutate: addDataToStore } = useAddUserData()
   return useMutation({
@@ -53,7 +53,7 @@ export const useAuthWithEmailAndPasswordMutation = () => {
           photoURL: data.photoURL || "",
         },
       })
-      navigateBack()
+      router.back()
     },
   })
 }
