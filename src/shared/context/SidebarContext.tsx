@@ -1,3 +1,5 @@
+"use client"
+
 import { FC, createContext, useCallback, useContext, useState } from "react"
 
 export type SidebarContextType = {
@@ -34,7 +36,7 @@ const SidebarContextProvider: FC<SidebarContextProviderProps> = ({
   }, [])
 
   const toggleSidebar = useCallback(() => {
-    setIsSidebarOpen((prevState) => !prevState)
+    setIsSidebarOpen(prevState => !prevState)
   }, [])
 
   return (
