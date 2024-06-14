@@ -1,5 +1,6 @@
+import { usePathname } from "next/navigation"
 import { useEffect } from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { useSessionQuery } from "../entities/session"
 import { AddToWatchlistModal } from "../features/AddMovieToWatchlist"
 import { useSidebarContext } from "../shared/context"
@@ -12,7 +13,7 @@ export default function App() {
   const { isSidebarOpen } = useSidebarContext()
 
   const { data: currentUser } = useSessionQuery()
-  const { pathname } = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     window.scrollTo(0, 0)

@@ -1,5 +1,6 @@
+import { usePathname } from "next/navigation"
 import { ChangeEvent, useState } from "react"
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { Button } from "../../../../shared/ui/Button"
 import "./SearchBox.scss"
 
@@ -11,20 +12,20 @@ export function SearchBox({ className }: SearchBoxPropTypes) {
   const [searchParams, setSearchParams] = useSearchParams()
   const searchTextFilter = searchParams.get("text") || ""
   const navigate = useNavigate()
-  const location = useLocation()
+  const pathname = usePathname()
   const [inputText, setInputText] = useState(searchTextFilter)
 
   // Handler for input change in search field
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const searchText = event.target.value
     setInputText(searchText)
-    if (location.pathname === "/search") {
+    if (pathname === "/search") {
       searchText ? setSearchParams({ text: searchText }) : setSearchParams({})
     }
   }
 
   function handleClick() {
-    if (location.pathname === "/") {
+    if (pathname === "/") {
       navigate(`/search?text=${inputText}`)
     }
   }
