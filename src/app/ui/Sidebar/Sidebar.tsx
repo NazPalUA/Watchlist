@@ -1,3 +1,5 @@
+"use client"
+
 import { CreateWatchlistNavButton } from "../../../features/CreateWatchlist"
 import { useSidebarContext } from "../../../shared/context"
 import { AsideNavBar } from "../../../widgets/AsideNavBar"
@@ -13,17 +15,6 @@ function Sidebar() {
     isSidebarOpen ? styles.open : styles.closed
   }`
   return (
-    // <div className={styles.sidebar}>
-    //   <div className={styles.topSection}>
-    //     <AsideNavBar />
-    //     <CreateWatchlistNavButton onlyIcon={!isSidebarOpen} />
-    //   </div>
-    //   <MyWatchlists
-    //     className={`${styles.watchlists} ${
-    //       isSidebarOpen ? styles.watchlists_open : styles.watchlists_closed
-    //     }`}
-    //   />
-    // </div>
     <div className={styles.sidebar}>
       <div className={initiallyShownClass}>
         <AsideNavBar type="collapsed" />
