@@ -40,7 +40,7 @@ const HistoryContextProvider: FC<HistoryContextProviderProps> = ({
     // Convert the ID to a string
     const movieId = id ? id.toString() : ""
 
-    setHistoryIds((prevIds) => {
+    setHistoryIds(prevIds => {
       // Check if the given movieId is already in the array
       if (prevIds.includes(movieId)) {
         // If it is, remove it from the array
@@ -51,7 +51,7 @@ const HistoryContextProvider: FC<HistoryContextProviderProps> = ({
       prevIds.unshift(movieId)
 
       // Return the updated array with unique elements and the latest added element at the beginning
-      return [...new Set(prevIds)]
+      return Array.from(new Set(prevIds))
     })
   }
 
