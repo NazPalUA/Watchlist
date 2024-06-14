@@ -1,3 +1,4 @@
+"use client"
 import { useLocation, useNavigate } from "react-router-dom"
 
 export function useNavigateBack() {

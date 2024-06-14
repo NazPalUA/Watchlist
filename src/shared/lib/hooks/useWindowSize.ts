@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react"
+"use client"
+
+import { useEffect, useState } from "react"
 
 interface WindowSize {
   width: number | undefined
@@ -31,7 +33,6 @@ export default function useWindowSize() {
   }, []) // Empty array ensures that effect is only run on mount
   return windowSize
 }
-
 
 // --- usage example --- //
 
