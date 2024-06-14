@@ -12,7 +12,7 @@ export function CreateWatchlistNavButton({
   onlyIcon = false,
 }: CreateWatchlistNavButtonProps) {
   return onlyIcon ? (
-    <Link to="/create_watchlist">
+    <Link href="/create_watchlist">
       <CgAddR className={styles.icon} />
     </Link>
   ) : (

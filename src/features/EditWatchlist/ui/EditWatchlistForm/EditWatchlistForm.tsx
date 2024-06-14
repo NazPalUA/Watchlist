@@ -39,7 +39,7 @@ export function EditWatchlistForm({ watchlistId }: EditWatchlistFormProps) {
       </Form.Field>
       <div className={styles.btnsContainer}>
         <Link
-          to={`/watchlists/${watchlistId}`}
+          href={`/watchlists/${watchlistId}`}
           className={`${styles.btn} ${styles.btn_dark}`}
         >
           Back

@@ -13,7 +13,7 @@ export default function RedirectLink({ type }: RedirectLinkProps) {
   return (
     <p className={style.linkWrapper}>
       <span>{message}</span>
-      <Link className={style.link} to={to}>
+      <Link className={style.link} href={to}>
         {linkText}
       </Link>
     </p>

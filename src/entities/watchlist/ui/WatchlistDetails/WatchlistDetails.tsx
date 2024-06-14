@@ -27,7 +27,7 @@ export function WatchlistDetails<T extends Movie>({
     <>
       <div className={styles.headerContainer}>
         <h2 className={styles.header}>{name}</h2>
-        <Link to={`edit`} className={styles.edit}>
+        <Link href={`edit`} className={styles.edit}>
           <img className={styles.editIcon} src={editIcon} alt="edit icon" />
         </Link>
       </div>

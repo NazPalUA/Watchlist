@@ -20,7 +20,7 @@ export function MoviesList<T extends MovieCard>({
     <CardsGridContainer className={className}>
       {moviesData.map(movie => (
         <li style={{ listStyle: "none" }} key={movie.id}>
-          <Link to={`/movie-page/${movie.id}`}>
+          <Link href={`/movie-page/${movie.id}`}>
             <Card variant="movie">
               {showAddToPlaylistBtn && (
                 <Card.AddToPlaylistBtn movieId={movie.id} />

@@ -30,7 +30,7 @@ export function DropdownContent({ closeMenu }: DropdownContentProps) {
         <>
           <Link
             onClick={closeMenu}
-            to={!currentUser ? "/login" : "/user"}
+            href={!currentUser ? "/login" : "/user"}
             className={styles.link}
           >
             Settings
@@ -43,7 +43,7 @@ export function DropdownContent({ closeMenu }: DropdownContentProps) {
           </button>
         </>
       ) : (
-        <Link onClick={closeMenu} to="/login" className={styles.link}>
+        <Link onClick={closeMenu} href="/login" className={styles.link}>
           Login
         </Link>
       )}

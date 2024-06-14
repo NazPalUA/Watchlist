@@ -11,7 +11,7 @@ type ItemProps = {
 export function Item({ className = "", data }: ItemProps) {
   return (
     <Link
-      to={`/watchlists/${data.id}`}
+      href={`/watchlists/${data.id}`}
       className={`${styles.link} ${className}`}
     >
       <img alt={data.name} src={Icon} />

@@ -7,13 +7,13 @@ import WatchlistsIcon from "/images/watchlist_icon.svg"
 export function CollapsedNavBar() {
   return (
     <nav className={styles.nav}>
-      <Link to="/">
+      <Link href="/">
         <img src={HomeIcon} alt="Hole Link Icon" />
       </Link>
-      <Link to="/watchlists">
+      <Link href="/watchlists">
         <img src={WatchlistsIcon} alt="Watchlists Link Icon" />
       </Link>
-      <Link to="/history">
+      <Link href="/history">
         <img src={HistoryIcon} alt="History Link Icon" />
       </Link>
     </nav>
