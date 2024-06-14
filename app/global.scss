@@ -23,6 +23,46 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --fs-h1: 2.25rem; //36px
+  --fs-h2: 2.125rem; //34px
+  --fs-h3: 2rem; //32px
+  --fs-h4: 1.8rem; //28.8px
+  --fs-h5: 1.125rem; //18px
+
+  --fs-extra-big: 1.125rem; //18px
+  --fs-big: 1rem; //16px
+  --fs-reg: 0.9rem; //14.4px
+  --fs-middle: 0.8rem; //12.8px
+  --fs-small: 0.6rem; //9.6px
+
+  // Layout styles
+  --header-height: 4.5rem; //72px
+  --footer-height: 4.5rem; //72px
+
+  --vertical-padding: 1.25rem; //20px
+  --horizontal-padding: 1.25rem; //20px
+
+  @media (min-width: $bp-mobile) {
+    --fs-h1: 2.5rem; //40px
+    --fs-h2: 2.375rem; //38px
+    --fs-h3: 2.25rem; //36px
+    --fs-h4: 2rem; //32px
+    --fs-h5: 1.25rem; //20px
+
+    --fs-extra-big: 1.25rem; //20px
+    --fs-big: 1.125rem; //18px
+    --fs-reg: 1rem; //16px
+    --fs-middle: 0.875rem; //14px
+    --fs-small: 0.625rem; //10px
+
+    // Layout styles
+    --header-height: 5rem; //80px
+    --footer-height: 5rem; //80px
+
+    --vertical-padding: 1.5rem; //24px
+    --horizontal-padding: 1.5rem; //24px
+  }
 }
 
 a {
