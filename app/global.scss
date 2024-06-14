@@ -43,7 +43,7 @@ body {
   --vertical-padding: 1.25rem; //20px
   --horizontal-padding: 1.25rem; //20px
 
-  @media (min-width: $bp-mobile) {
+  @media (min-width: v.$bp-mobile) {
     --fs-h1: 2.5rem; //40px
     --fs-h2: 2.375rem; //38px
     --fs-h3: 2.25rem; //36px
