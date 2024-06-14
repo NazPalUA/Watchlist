@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import Card from "../../../shared/ui/Card"
 import { CardsGridContainer } from "../../../shared/ui/CardsGridContainer"
 import formatRating from "../lib/formatRating"
@@ -18,7 +18,7 @@ export function MoviesList<T extends MovieCard>({
 }: MoviesListProps<T>) {
   return (
     <CardsGridContainer className={className}>
-      {moviesData.map((movie) => (
+      {moviesData.map(movie => (
         <li style={{ listStyle: "none" }} key={movie.id}>
           <Link to={`/movie-page/${movie.id}`}>
             <Card variant="movie">

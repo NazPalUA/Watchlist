@@ -1,4 +1,5 @@
-import { Link, useNavigate } from "react-router-dom"
+import Link from "next/link"
+import { useNavigate } from "react-router-dom"
 import {
   TWatchlistSchema,
   useEditWatchlistMutation,

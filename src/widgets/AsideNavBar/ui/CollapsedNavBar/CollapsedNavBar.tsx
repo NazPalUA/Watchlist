@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import styles from "./CollapsedNavBar.module.scss"
 import HistoryIcon from "/images/history_icon.svg"
 import HomeIcon from "/images/home_icon.svg"

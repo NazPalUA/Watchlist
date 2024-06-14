@@ -1,5 +1,5 @@
+import Link from "next/link"
 import { CgAddR } from "react-icons/cg"
-import { Link } from "react-router-dom"
 import { Button } from "../../../../shared/ui/Button"
 import { NavLinkWithActiveClass } from "../../../../shared/ui/NavLinkWithActiveClass"
 import styles from "./CreateWatchlistNavButton.module.scss"
