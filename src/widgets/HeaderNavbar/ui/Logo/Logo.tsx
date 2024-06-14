@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import styles from "./Logo.module.scss"
 
-export default function () {
+export default function Logo() {
   return (
-    <Link to="/">
+    <Link href="/">
       <h1 className={styles.logo}>Watchlists</h1>
     </Link>
   )
