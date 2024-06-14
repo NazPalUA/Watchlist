@@ -1,6 +1,14 @@
+import { Metadata } from "next"
+
 type Props = {
   params: {
     watchlistId: string
+  }
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Watchlist ${params.watchlistId}`,
   }
 }
 

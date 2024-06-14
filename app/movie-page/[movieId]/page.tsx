@@ -1,6 +1,14 @@
+import { Metadata } from "next"
+
 type Props = {
   params: {
     movieId: string
+  }
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Movie ${params.movieId}`,
   }
 }
 
