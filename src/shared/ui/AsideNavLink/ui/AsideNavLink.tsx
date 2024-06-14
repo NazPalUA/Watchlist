@@ -1,28 +1,35 @@
-import { NavLink, NavLinkProps } from "react-router-dom"
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import styles from "./AsideNavLink.module.scss"
 
-type AsideNavLinkProps = Omit<NavLinkProps, "ref"> & {
+type AsideNavLinkProps = {
   icon: string
   text: string
+  to: string
   className?: string
+  style?: React.CSSProperties
 }
 
 export function AsideNavLink({
   className = "",
   icon,
   text,
-  ...rest
+  to,
+  style,
 }: AsideNavLinkProps) {
   const mainClass = `${styles.link} ${className}`
+  const pathname = usePathname()
+  const isActive = pathname?.startsWith(to)
   return (
-    <NavLink
-      className={({ isActive }) =>
-        `${mainClass}${isActive ? ` ${styles.active}` : ""}`.trim()
-      }
-      {...rest}
+    <Link
+      className={`${mainClass}${isActive ? ` ${styles.active}` : ""}`.trim()}
+      href={to}
+      style={style || {}}
     >
       <img alt={text} src={icon} />
       <span>{text}</span>
-    </NavLink>
+    </Link>
   )
 }

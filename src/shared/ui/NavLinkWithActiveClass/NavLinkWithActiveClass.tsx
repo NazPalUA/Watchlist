@@ -1,24 +1,28 @@
-import { NavLink, NavLinkProps } from "react-router-dom"
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import style from "./NavLinkWithActiveClass.module.scss"
 
-type NavLinkWithActiveClassProps = Omit<NavLinkProps, "ref"> & {
+type NavLinkWithActiveClassProps = {
   children: React.ReactNode
   className?: string
+  to: string
 }
 
 export function NavLinkWithActiveClass({
   children,
   className = "",
-  ...rest
+  to,
 }: NavLinkWithActiveClassProps) {
+  const pathname = usePathname()
+  const isActive = pathname?.startsWith(to)
   return (
-    <NavLink
-      className={({ isActive }) =>
-        `${className}${isActive ? ` ${style.active}` : ""}`.trim()
-      }
-      {...rest}
+    <Link
+      className={`${className}${isActive ? ` ${style.active}` : ""}`.trim()}
+      href={to}
     >
       {children}
-    </NavLink>
+    </Link>
   )
 }
