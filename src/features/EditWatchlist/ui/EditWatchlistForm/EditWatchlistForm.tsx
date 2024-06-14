@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 import {
   TWatchlistSchema,
   useEditWatchlistMutation,
@@ -16,13 +16,12 @@ export function EditWatchlistForm({ watchlistId }: EditWatchlistFormProps) {
 
   const { mutate: editWatchlist } = useEditWatchlistMutation(watchlistId)
 
-  // Get the navigation function from react-router-dom
-  const navigate = useNavigate()
+  const router = useRouter()
 
   function handleSubmit(data: TWatchlistSchema) {
     editWatchlist(data)
     // Navigate to the watchlist page
-    navigate(`/watchlists/${watchlistId}`)
+    router.push(`/watchlists/${watchlistId}`)
   }
 
   const Form = getForm<TWatchlistSchema>()

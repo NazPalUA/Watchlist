@@ -1,18 +1,18 @@
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 import { useDeleteWatchlistMutation } from "../../../../entities/watchlist"
 import styles from "./EditWatchlistHeader.module.scss"
 
 type EditWatchlistHeaderProps = { watchlistId: string }
 
 export function EditWatchlistHeader({ watchlistId }: EditWatchlistHeaderProps) {
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const { mutate: deleteWatchlist } = useDeleteWatchlistMutation()
 
   // Delete the current watchlist and navigate back to the home page
   function deleteCurrentWatchlist() {
     deleteWatchlist(watchlistId)
-    navigate("/")
+    router.push("/")
   }
 
   return (

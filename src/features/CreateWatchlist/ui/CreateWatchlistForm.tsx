@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 import {
   TWatchlistSchema,
   useCreateWatchlistMutation,
@@ -10,8 +10,7 @@ import FormTitle from "./FormTitle/FormTitle"
 type CreateWatchlistFormProps = {}
 
 export function CreateWatchlistForm({}: CreateWatchlistFormProps) {
-  // Use the useNavigate hook from react-router to navigate to another page
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const { mutate: createWatchlist } = useCreateWatchlistMutation()
 
@@ -19,8 +18,8 @@ export function CreateWatchlistForm({}: CreateWatchlistFormProps) {
   function handleSubmit(data: TWatchlistSchema) {
     // Call the createWatchlist function to add a new watchlist
     createWatchlist(data, {
-      onSuccess: (watchlistId) => {
-        navigate(`/watchlists/${watchlistId}`)
+      onSuccess: watchlistId => {
+        router.push(`/watchlists/${watchlistId}`)
       },
     })
   }

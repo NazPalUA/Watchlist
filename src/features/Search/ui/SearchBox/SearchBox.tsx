@@ -1,6 +1,7 @@
 import { usePathname } from "next/navigation"
+import { useRouter } from "next/router"
 import { ChangeEvent, useState } from "react"
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { Button } from "../../../../shared/ui/Button"
 import "./SearchBox.scss"
 
@@ -11,7 +12,7 @@ type SearchBoxPropTypes = {
 export function SearchBox({ className }: SearchBoxPropTypes) {
   const [searchParams, setSearchParams] = useSearchParams()
   const searchTextFilter = searchParams.get("text") || ""
-  const navigate = useNavigate()
+  const router = useRouter()
   const pathname = usePathname()
   const [inputText, setInputText] = useState(searchTextFilter)
 
@@ -26,7 +27,7 @@ export function SearchBox({ className }: SearchBoxPropTypes) {
 
   function handleClick() {
     if (pathname === "/") {
-      navigate(`/search?text=${inputText}`)
+      router.push(`/search?text=${inputText}`)
     }
   }
 

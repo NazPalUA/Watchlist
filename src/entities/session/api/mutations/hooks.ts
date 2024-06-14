@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/router"
 import { useNavigateBack } from "../../../../shared/lib"
 import { useAddUserData } from "../../../user"
 import { queryKeys } from "../queryKeys"
@@ -18,7 +18,7 @@ export const useSignInWithProviderMutation = () => {
   const { mutate: addDataToStore } = useAddUserData()
   return useMutation({
     mutationFn: signInWithProvider,
-    onSuccess: (data) => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
         queryKey: SESSION_USER,
       })
@@ -41,7 +41,7 @@ export const useAuthWithEmailAndPasswordMutation = () => {
   const { mutate: addDataToStore } = useAddUserData()
   return useMutation({
     mutationFn: authWithEmailAndPassword,
-    onSuccess: (data) => {
+    onSuccess: data => {
       queryClient.invalidateQueries({
         queryKey: SESSION_USER,
       })
@@ -59,12 +59,12 @@ export const useAuthWithEmailAndPasswordMutation = () => {
 }
 
 export const useLogoutMutation = () => {
-  const navigate = useNavigate()
+  const router = useRouter()
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: signOut,
     onSuccess: () => {
-      navigate("/")
+      router.push("/")
     },
     onSettled: () => {
       queryClient.clear()
