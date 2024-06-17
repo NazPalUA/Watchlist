@@ -1,3 +1,5 @@
+"use client"
+
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useSessionQuery } from "../../../session"
 import { TWatchlistSchema } from "../../model/watchlistSchema"

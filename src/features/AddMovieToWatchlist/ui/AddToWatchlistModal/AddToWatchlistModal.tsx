@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 import {
   useAddMovieToWatchlistMutation,
@@ -33,7 +35,7 @@ export function AddToWatchlistModal() {
   }, [isModalActive])
 
   // Create array of options for Select
-  const optionsArr = watchlistsData?.map((watchlist) => ({
+  const optionsArr = watchlistsData?.map(watchlist => ({
     value: watchlist.id,
     label: watchlist.name,
   }))

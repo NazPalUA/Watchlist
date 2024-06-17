@@ -1,3 +1,5 @@
+"use client"
+
 import { useMoviesDetailsQuery } from "../../../../entities/movie"
 import { useGetWatchlistMoviesQuery } from "../../../../entities/watchlist"
 
@@ -10,12 +12,12 @@ type WatchlistMoviesProps = {
 
 export function WatchlistMovies({ watchlistId }: WatchlistMoviesProps) {
   const { data: userMovies } = useGetWatchlistMoviesQuery(watchlistId)
-  const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
+  const movieIds = userMovies?.map(movie => movie.tmdbId) || []
 
   // Get the copy of current movieIds and their data using the custom hook
   const { data: moviesData } = useMoviesDetailsQuery(movieIds)
 
-  const moviesListHTML = moviesData?.map((movie) => (
+  const moviesListHTML = moviesData?.map(movie => (
     <EditMovie key={movie.id} movie={movie} watchlistId={watchlistId} />
   ))
 

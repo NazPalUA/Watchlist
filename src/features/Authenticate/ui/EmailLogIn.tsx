@@ -1,3 +1,5 @@
+"use client"
+
 import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session"
 import { getForm } from "../../../shared/ui/Form"
 import { TLogInSchema, logInSchema } from "../model/form-login"

@@ -1,3 +1,5 @@
+"use client"
+
 import { doc, setDoc } from "firebase/firestore"
 import { useAuthWithEmailAndPasswordMutation } from "../../../entities/session"
 import { db } from "../../../shared/api/firebase-config"

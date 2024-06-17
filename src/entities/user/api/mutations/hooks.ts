@@ -1,3 +1,5 @@
+"use client"
+
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { AddUserData, EditUserData } from "../../model/types"
 import { queryKeys } from "../queryKeys"

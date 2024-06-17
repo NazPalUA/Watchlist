@@ -1,3 +1,5 @@
+"use client"
+
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import {
   fetchMovieDetails,
@@ -17,9 +19,7 @@ export const useMoviesDetailsQuery = (movieIdsArr: string[]) => {
     queryKey: ["movies", movieIdsArr],
     queryFn: async () => {
       if (movieIdsArr) {
-        const promises = movieIdsArr.map((movieId) =>
-          fetchMovieDetails(movieId)
-        )
+        const promises = movieIdsArr.map(movieId => fetchMovieDetails(movieId))
         const moviesData = await Promise.all(promises)
         return moviesData
       }
@@ -54,7 +54,7 @@ export const useInfinitePopularMoviesQuery = () =>
     queryKey: ["movies", "popular", "infinite"],
     queryFn: ({ pageParam }) => fetchPopularMovies(pageParam),
     initialPageParam: 1,
-    getNextPageParam: (data) => {
+    getNextPageParam: data => {
       if (data.results.length === 0 || data.page === data.total_pages)
         return undefined
       return data.page + 1

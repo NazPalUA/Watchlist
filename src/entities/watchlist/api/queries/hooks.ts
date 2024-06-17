@@ -1,3 +1,5 @@
+"use client"
+
 import { useQuery } from "@tanstack/react-query"
 import { useSessionQuery } from "../../../session"
 import { queryKeys } from "../queryKeys"
@@ -47,7 +49,7 @@ export const useGetSingleWatchlistQuery = (watchlistId: string) => {
     },
     enabled: !!currentUser,
     initialData: () => {
-      const watchlist = watchlists?.find((w) => w.id === watchlistId)
+      const watchlist = watchlists?.find(w => w.id === watchlistId)
       return watchlist
     },
   })
@@ -80,7 +82,7 @@ export const useGetSingleWatchedMovieQuery = (movieId: string) => {
     },
     enabled: !!currentUser,
     initialData: () => {
-      const watchedMovie = watchedMovies?.find((w) => w.tmdbId === movieId)
+      const watchedMovie = watchedMovies?.find(w => w.tmdbId === movieId)
       return watchedMovie
     },
   })
@@ -116,7 +118,7 @@ export const useGetSingleWatchlistMovieQuery = (
     },
     enabled: !!currentUser,
     initialData: () => {
-      const watchlistMovie = watchlistMovies?.find((w) => w.tmdbId === movieId)
+      const watchlistMovie = watchlistMovies?.find(w => w.tmdbId === movieId)
       return watchlistMovie
     },
   })

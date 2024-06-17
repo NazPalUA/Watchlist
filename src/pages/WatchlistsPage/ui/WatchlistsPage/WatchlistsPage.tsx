@@ -1,3 +1,5 @@
+"use client"
+
 import { useSessionQuery } from "../../../../entities/session"
 import Loader from "../../../../shared/ui/Loader"
 

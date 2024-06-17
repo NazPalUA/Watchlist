@@ -1,3 +1,5 @@
+"use client"
+
 import { useSessionQuery } from "../../../entities/session"
 import { useEditUserData, useGetUserDataQuery } from "../../../entities/user"
 import { getForm } from "../../../shared/ui/Form"

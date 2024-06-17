@@ -1,3 +1,5 @@
+"use client"
+
 import InfiniteScroll from "react-infinite-scroll-component"
 import {
   MoviesList,
@@ -16,7 +18,7 @@ export function PopularMovies() {
 
   const { data: sessionData } = useSessionQuery()
 
-  const movies = data?.pages.map((page) => page.results).flat() || []
+  const movies = data?.pages.map(page => page.results).flat() || []
   const uniqueMovies = filterUniqueById(movies)
 
   return (

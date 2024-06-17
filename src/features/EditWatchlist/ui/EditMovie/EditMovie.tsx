@@ -1,3 +1,5 @@
+"use client"
+
 import { useRemoveMovieFromWatchlistMutation } from "../../../../entities/watchlist"
 import type { Movie, MovieDetails } from "../../../../shared/api/tmdb"
 import styles from "./EditMovie.module.scss"
@@ -34,7 +36,7 @@ export default function EditMovie({ movie, watchlistId }: EditMovieProps) {
           ({movie.release_date.toString().slice(0, 4)})
         </span>
       </p>
-      <button className={styles.removeBtn} onClick={(e) => delateMovie(e)}>
+      <button className={styles.removeBtn} onClick={e => delateMovie(e)}>
         Remove
       </button>
     </li>

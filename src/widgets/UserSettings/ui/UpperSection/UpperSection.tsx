@@ -1,3 +1,5 @@
+"use client"
+
 import { useLogoutMutation } from "../../../../entities/session"
 import style from "./UpperSection.module.scss"
 

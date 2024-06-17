@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from "react"
 import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
 import { Cast } from "../../entities/person"

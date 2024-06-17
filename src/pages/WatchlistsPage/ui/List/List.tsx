@@ -1,3 +1,5 @@
+"use client"
+
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
@@ -12,7 +14,7 @@ export function List() {
     isLoading,
   } = useGetWatchlistsQuery()
 
-  const watchListsArrHTML = watchlistsData?.map((watchlist) => (
+  const watchListsArrHTML = watchlistsData?.map(watchlist => (
     <li className={styles.item} key={watchlist.id}>
       <Item data={watchlist} />
     </li>

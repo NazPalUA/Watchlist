@@ -1,3 +1,5 @@
+"use client"
+
 import { useMovieCreditsQuery } from "../.."
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"

@@ -1,3 +1,5 @@
+"use client"
+
 import type { MovieDetails as MovieDetailsType } from "../../../../shared/api/tmdb"
 import { useModalContext } from "../../../../shared/context"
 import { Button } from "../../../../shared/ui/Button"
@@ -31,7 +33,7 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
           </span>
         </h3>
         <p className={styles.movie__genre}>
-          {movieData.genres.map((genre) => genre.name).join(", ")}
+          {movieData.genres.map(genre => genre.name).join(", ")}
         </p>
         <p className={styles.movie__duration}>
           {Math.floor(movieData.runtime / 60)}h {movieData.runtime % 60}m
@@ -46,7 +48,7 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
             </div>
           </div>
           <Button
-            onClick={(e) => {
+            onClick={e => {
               e.preventDefault()
               e.stopPropagation()
               setIsModalActive(true)

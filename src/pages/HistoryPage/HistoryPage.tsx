@@ -1,3 +1,5 @@
+"use client"
+
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import { useSessionQuery } from "../../entities/session"
 import { useHistoryContext } from "../../shared/context"

@@ -1,3 +1,5 @@
+"use client"
+
 import { useModalContext } from "../../../context"
 import styles from "./AddBtn.module.scss"
 
@@ -11,7 +13,7 @@ export default function AddBtn({ className, movieId, ...rest }: AddBtnProps) {
   return (
     <button
       className={styles.addBtn}
-      onClick={(e) => {
+      onClick={e => {
         if (movieId) {
           e.preventDefault()
           e.stopPropagation()

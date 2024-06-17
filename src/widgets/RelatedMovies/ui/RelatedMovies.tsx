@@ -1,3 +1,5 @@
+"use client"
+
 import { MoviesList } from "../../../entities/movie"
 import { useSessionQuery } from "../../../entities/session"
 import { ErrorMessage } from "../../../shared/ui/ErrorMessage"

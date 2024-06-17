@@ -1,3 +1,5 @@
+"use client"
+
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import {
   WatchlistDetails,

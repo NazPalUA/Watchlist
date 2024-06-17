@@ -1,3 +1,5 @@
+"use client"
+
 import InfiniteScroll from "react-infinite-scroll-component"
 import { MoviesList } from "../../../../entities/movie"
 import { useSessionQuery } from "../../../../entities/session"
@@ -17,7 +19,7 @@ export function SearchResults({ searchText }: SearchResultsProps) {
 
   if (isError) return <ErrorMessage error={error} />
 
-  const movies = data?.pages.map((page) => page.results).flat() || []
+  const movies = data?.pages.map(page => page.results).flat() || []
   const uniqueMovies = filterUniqueById(movies)
 
   return (

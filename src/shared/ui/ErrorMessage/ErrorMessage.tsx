@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode, useState } from "react"
 import { PopUp } from "../PopUp"
 import styles from "./ErrorMessage.module.scss"

@@ -1,3 +1,5 @@
+"use client"
+
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
 import { AsideNavLink } from "../../../../shared/ui/AsideNavLink"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
@@ -13,7 +15,7 @@ export function List() {
     isLoading,
   } = useGetWatchlistsQuery()
 
-  const watchListsArrHTML = watchlistsData?.map((watchlist) => (
+  const watchListsArrHTML = watchlistsData?.map(watchlist => (
     <li className={styles.item} key={watchlist.id}>
       <AsideNavLink
         style={{ margin: 0 }}

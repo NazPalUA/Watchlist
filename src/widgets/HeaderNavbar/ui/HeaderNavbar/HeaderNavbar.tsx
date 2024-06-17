@@ -1,3 +1,5 @@
+"use client"
+
 import { useSidebarContext } from "../../../../shared/context"
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu"
 import Logo from "../Logo/Logo"
