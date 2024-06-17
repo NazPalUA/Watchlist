@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const api_key = import.meta.env.VITE_TMDB_API_KEY
+const api_key = process.env.NEXT_PUBLIC_TMDB_API_KEY
 const baseURL = "https://api.themoviedb.org/3"
 
 export const tmdbApi = axios.create({
