@@ -3,6 +3,7 @@
 .app {
   max-width: v.$max-width;
   min-width: v.$min-width;
+  width: 100%;
 
   margin: 0 auto;
 }
