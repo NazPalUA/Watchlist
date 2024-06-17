@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import styles from "./CollapsedNavBar.module.scss"
 import HistoryIcon from "/images/history_icon.svg"
@@ -8,13 +9,13 @@ export function CollapsedNavBar() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <img src={HomeIcon} alt="Hole Link Icon" />
+        <Image src={HomeIcon} alt="Hole Link Icon" />
       </Link>
       <Link href="/watchlists">
-        <img src={WatchlistsIcon} alt="Watchlists Link Icon" />
+        <Image src={WatchlistsIcon} alt="Watchlists Link Icon" />
       </Link>
       <Link href="/history">
-        <img src={HistoryIcon} alt="History Link Icon" />
+        <Image src={HistoryIcon} alt="History Link Icon" />
       </Link>
     </nav>
   )

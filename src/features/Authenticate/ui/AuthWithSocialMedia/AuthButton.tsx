@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import type { SocialMediaProvider } from "../../../../entities/session"
 import { useSignInWithProviderMutation } from "../../../../entities/session"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
@@ -29,7 +30,7 @@ export default function AuthButton({ provider }: AuthButtonProps) {
         className={style.button}
         onClick={() => authWithSocialMedia(provider)}
       >
-        <img src={logoUrl} alt={`${provider} logo`} />
+        <Image src={logoUrl} alt={`${provider} logo`} />
         <span>{buttonText}</span>
       </button>
       {isError && (

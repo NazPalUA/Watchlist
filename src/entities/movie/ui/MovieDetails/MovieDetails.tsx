@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import type { MovieDetails as MovieDetailsType } from "../../../../shared/api/tmdb"
 import { useModalContext } from "../../../../shared/context"
 import { Button } from "../../../../shared/ui/Button"
@@ -16,7 +17,7 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
 
   return (
     <div className={styles.movie}>
-      <img
+      <Image
         className={styles.movie__mainPoster}
         src={
           movieData.poster_path

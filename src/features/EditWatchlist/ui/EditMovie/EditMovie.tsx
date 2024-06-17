@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useRemoveMovieFromWatchlistMutation } from "../../../../entities/watchlist"
 import type { Movie, MovieDetails } from "../../../../shared/api/tmdb"
 import styles from "./EditMovie.module.scss"
@@ -21,7 +22,7 @@ export default function EditMovie({ movie, watchlistId }: EditMovieProps) {
 
   return (
     <li className={styles.item} key={movie.id}>
-      <img
+      <Image
         className={styles.poster}
         src={
           movie.poster_path

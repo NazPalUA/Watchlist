@@ -1,3 +1,4 @@
+import Image from "next/image"
 import styles from "./Rating.module.scss"
 import awfulIcon from "/images/awful_icon.svg"
 import confusedIcon from "/images/confused_icon.png"
@@ -13,16 +14,16 @@ export default function Rating({ children }: RatingProps) {
 
   return (
     <div className={styles.container}>
-      <img
+      <Image
         className={styles.emoji}
         src={
           rating == 0
             ? confusedIcon
             : rating > 80
-            ? greatIcon
-            : rating > 35
-            ? normalIcon
-            : awfulIcon
+              ? greatIcon
+              : rating > 35
+                ? normalIcon
+                : awfulIcon
         }
         alt="rating emoji"
       />

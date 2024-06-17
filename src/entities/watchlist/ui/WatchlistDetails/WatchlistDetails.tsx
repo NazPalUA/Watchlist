@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import getAverageVote from "../../lib/getAverageVote"
 import getUnwatchedRuntime from "../../lib/getUnwatchedRuntime"
@@ -28,7 +29,7 @@ export function WatchlistDetails<T extends Movie>({
       <div className={styles.headerContainer}>
         <h2 className={styles.header}>{name}</h2>
         <Link href={`edit`} className={styles.edit}>
-          <img className={styles.editIcon} src={editIcon} alt="edit icon" />
+          <Image className={styles.editIcon} src={editIcon} alt="edit icon" />
         </Link>
       </div>
       {description !== "" && (

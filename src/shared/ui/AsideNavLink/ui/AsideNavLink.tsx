@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import styles from "./AsideNavLink.module.scss"
@@ -28,7 +29,7 @@ export function AsideNavLink({
       href={to}
       style={style || {}}
     >
-      <img alt={text} src={icon} />
+      <Image alt={text} src={icon} />
       <span>{text}</span>
     </Link>
   )

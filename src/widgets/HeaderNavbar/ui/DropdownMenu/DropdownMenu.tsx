@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useRef, useState } from "react"
 import { useOutsideClick } from "../../lib/useOutsideClick"
 import { DropdownContent } from "../DropdownContent/DropdownContent"
@@ -24,7 +25,7 @@ export function DropdownMenu() {
 
   return (
     <nav className={style.container} ref={dropdownRef}>
-      <img
+      <Image
         onClick={toggleMenu}
         className={style.img}
         src={guestIcon}

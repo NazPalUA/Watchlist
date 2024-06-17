@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import type { Watchlist } from "../../../../entities/watchlist"
 import styles from "./Item.module.scss"
@@ -14,7 +15,7 @@ export function Item({ className = "", data }: ItemProps) {
       href={`/watchlists/${data.id}`}
       className={`${styles.link} ${className}`}
     >
-      <img alt={data.name} src={Icon} />
+      <Image alt={data.name} src={Icon} />
       <span>{data.name}</span>
     </Link>
   )

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import styles from "./Welcome.module.scss"
 import checkmarkWhiteIcon from "/images/checkmark_white_icon.svg"
 import ribbonIcon from "/images/ribbon_icon.svg"
@@ -17,9 +18,9 @@ export const Welcome = ({ className }: WelcomePropTypes) => {
       </p>
       <p className={`${styles.paragraph} ${styles.secondParagraph}`}>
         Just click on a
-        <img className={styles.addIcon} src={ribbonIcon} alt="add icon" />
+        <Image className={styles.addIcon} src={ribbonIcon} alt="add icon" />
         to add a movie, a poster to see more details or a
-        <img
+        <Image
           className={styles.watchedIcon}
           src={checkmarkWhiteIcon}
           alt="watched icon"
