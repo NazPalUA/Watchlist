@@ -1,4 +1,6 @@
-import { useSearchParams } from "react-router-dom"
+"use client"
+
+import { useSearchParams } from "next/navigation"
 import { SearchBox, SearchResults } from "../../features/Search"
 
 import styles from "./SearchResultsPage.module.scss"
@@ -8,8 +10,8 @@ type SearchResultsPagePropTypes = {
 }
 
 function SearchResultsPage({ className }: SearchResultsPagePropTypes) {
-  const [searchParams] = useSearchParams()
-  const searchTextFilter = searchParams.get("text")
+  const searchParams = useSearchParams()
+  const searchTextFilter = searchParams?.get("text")
 
   return (
     <div className={className}>
