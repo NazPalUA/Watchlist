@@ -1,5 +1,5 @@
+import App from "@/src/app/App"
 import { Providers } from "@/src/app/providers"
-import { Layout } from "@/src/app/ui/Layout"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./global.scss"
@@ -21,13 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Layout
-            isSidebarOpen={false}
-            header={<div>HeaderNavbar</div>}
-            sidebar={<div>Sidebar</div>}
-            page={children}
-            footer={<div>FooterNavbar</div>}
-          />
+          <App>{children}</App>
         </Providers>
       </body>
     </html>

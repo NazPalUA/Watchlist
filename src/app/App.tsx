@@ -2,16 +2,19 @@
 
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
-import { Outlet } from "react-router-dom"
 import { useSessionQuery } from "../entities/session"
 import { AddToWatchlistModal } from "../features/AddMovieToWatchlist"
 import { useSidebarContext } from "../shared/context"
 import { FooterNavbar } from "../widgets/FooterNavbar"
 import { HeaderNavbar } from "../widgets/HeaderNavbar"
-import { Layout } from "./ui/Layout"
+import { AppLayout } from "./ui/AppLayout"
 import Sidebar from "./ui/Sidebar/Sidebar"
 
-export default function App() {
+type AppProps = {
+  children: React.ReactNode
+}
+
+export default function App({ children }: AppProps) {
   const { isSidebarOpen } = useSidebarContext()
 
   const { data: currentUser } = useSessionQuery()
@@ -24,11 +27,11 @@ export default function App() {
   return (
     <>
       {currentUser && <AddToWatchlistModal />}
-      <Layout
+      <AppLayout
         isSidebarOpen={isSidebarOpen}
         header={<HeaderNavbar />}
         sidebar={<Sidebar />}
-        page={<Outlet />}
+        page={children}
         footer={<FooterNavbar />}
       />
     </>

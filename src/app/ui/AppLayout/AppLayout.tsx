@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
-import styles from "./Layout.module.scss"
+import styles from "./AppLayout.module.scss"
 
-interface LayoutProps {
+interface AppLayoutProps {
   header: ReactNode
   sidebar: ReactNode
   page: ReactNode
@@ -9,7 +9,7 @@ interface LayoutProps {
   isSidebarOpen: boolean
 }
 
-export function Layout(props: LayoutProps) {
+export function AppLayout(props: AppLayoutProps) {
   const appClassName = `${styles.app} ${
     props.isSidebarOpen ? styles.extendedSidebar : styles.collapsedSidebar
   }`
