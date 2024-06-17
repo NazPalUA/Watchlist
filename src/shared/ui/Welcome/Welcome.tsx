@@ -1,7 +1,7 @@
+import checkmarkWhiteIcon from "@/public/images/checkmark_white_icon.svg"
+import ribbonIcon from "@/public/images/ribbon_icon.svg"
 import Image from "next/image"
 import styles from "./Welcome.module.scss"
-import checkmarkWhiteIcon from "/images/checkmark_white_icon.svg"
-import ribbonIcon from "/images/ribbon_icon.svg"
 
 type WelcomePropTypes = {
   className?: string

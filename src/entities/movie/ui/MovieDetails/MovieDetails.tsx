@@ -1,11 +1,11 @@
 "use client"
 
+import posterNotFound from "@/public/images/poster_not_found.png"
 import Image from "next/image"
 import type { MovieDetails as MovieDetailsType } from "../../../../shared/api/tmdb"
 import { useModalContext } from "../../../../shared/context"
 import { Button } from "../../../../shared/ui/Button"
 import styles from "./MovieDetails.module.scss"
-import posterNotFound from "/images/poster_not_found.png"
 
 type MovieDetailsPropTypes = {
   movieData: MovieDetailsType

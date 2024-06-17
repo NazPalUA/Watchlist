@@ -1,7 +1,7 @@
+import HistoryIcon from "@/public/images/history_icon.svg"
+import HomeIcon from "@/public/images/home_icon.svg"
+import WatchlistsIcon from "@/public/images/watchlist_icon.svg"
 import { AsideNavLink } from "../../../shared/ui/AsideNavLink"
-import HistoryIcon from "/images/history_icon.svg"
-import HomeIcon from "/images/home_icon.svg"
-import WatchlistsIcon from "/images/watchlist_icon.svg"
 
 export function ExpandedNavBar() {
   return (

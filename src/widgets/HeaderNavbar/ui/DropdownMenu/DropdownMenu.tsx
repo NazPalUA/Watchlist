@@ -1,11 +1,11 @@
 "use client"
 
+import guestIcon from "@/public/images/guest_icon.svg"
 import Image from "next/image"
 import { useRef, useState } from "react"
 import { useOutsideClick } from "../../lib/useOutsideClick"
 import { DropdownContent } from "../DropdownContent/DropdownContent"
 import style from "./DropdownMenu.module.scss"
-import guestIcon from "/images/guest_icon.svg"
 
 export function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,9 +1,9 @@
+import awfulIcon from "@/public/images/awful_icon.svg"
+import confusedIcon from "@/public/images/confused_icon.png"
+import greatIcon from "@/public/images/great_icon.svg"
+import normalIcon from "@/public/images/normal_icon.svg"
 import Image from "next/image"
 import styles from "./Rating.module.scss"
-import awfulIcon from "/images/awful_icon.svg"
-import confusedIcon from "/images/confused_icon.png"
-import greatIcon from "/images/great_icon.svg"
-import normalIcon from "/images/normal_icon.svg"
 
 export type RatingProps = {
   children: number

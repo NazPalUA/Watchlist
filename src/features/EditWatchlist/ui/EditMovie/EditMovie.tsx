@@ -1,10 +1,10 @@
 "use client"
 
+import posterNotFound from "@/public/images/poster_not_found.png"
 import Image from "next/image"
 import { useRemoveMovieFromWatchlistMutation } from "../../../../entities/watchlist"
 import type { Movie, MovieDetails } from "../../../../shared/api/tmdb"
 import styles from "./EditMovie.module.scss"
-import posterNotFound from "/images/poster_not_found.png"
 
 type EditMovieProps = {
   movie: Movie | MovieDetails

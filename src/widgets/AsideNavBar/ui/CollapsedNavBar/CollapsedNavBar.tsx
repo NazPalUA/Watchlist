@@ -1,9 +1,9 @@
+import HistoryIcon from "@/public/images/history_icon.svg"
+import HomeIcon from "@/public/images/home_icon.svg"
+import WatchlistsIcon from "@/public/images/watchlist_icon.svg"
 import Image from "next/image"
 import Link from "next/link"
 import styles from "./CollapsedNavBar.module.scss"
-import HistoryIcon from "/images/history_icon.svg"
-import HomeIcon from "/images/home_icon.svg"
-import WatchlistsIcon from "/images/watchlist_icon.svg"
 
 export function CollapsedNavBar() {
   return (

@@ -1,11 +1,11 @@
 "use client"
 
+import Icon from "@/public/images/watchlist_icon.svg"
 import { useGetWatchlistsQuery } from "../../../../entities/watchlist"
 import { AsideNavLink } from "../../../../shared/ui/AsideNavLink"
 import { ErrorMessage } from "../../../../shared/ui/ErrorMessage"
 import Loader from "../../../../shared/ui/Loader"
 import styles from "./List.module.scss"
-import Icon from "/images/watchlist_icon.svg"
 
 export function List() {
   const {

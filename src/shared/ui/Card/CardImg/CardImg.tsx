@@ -1,6 +1,6 @@
+import posterNotFound from "@/public/images/poster_not_found.png"
 import Image, { ImageProps } from "next/image"
 import styles from "./CardImg.module.scss"
-import posterNotFound from "/images/poster_not_found.png"
 
 export type CardImgProps = {
   children: string | undefined

@@ -1,8 +1,8 @@
+import Icon from "@/public/images/watchlist_icon.svg"
 import Image from "next/image"
 import Link from "next/link"
 import type { Watchlist } from "../../../../entities/watchlist"
 import styles from "./Item.module.scss"
-import Icon from "/images/watchlist_icon.svg"
 
 type ItemProps = {
   data: Watchlist
