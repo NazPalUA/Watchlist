@@ -12,6 +12,8 @@ export default function CardImg({ children, variant, ...rest }: CardImgProps) {
   return (
     <Image
       className={styles[`image__${variant}`]}
+      width={300}
+      height={450}
       src={children || posterNotFound}
       alt={variant == "movie-poster" ? "movie poster" : "actor photo"}
       {...rest}
