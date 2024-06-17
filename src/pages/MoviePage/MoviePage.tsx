@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
 import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
 import { Cast } from "../../entities/person"
 import { useHistoryContext } from "../../shared/context"
@@ -9,13 +8,10 @@ import { RelatedMovies } from "../../widgets/RelatedMovies"
 
 type MoviePagePropTypes = {
   className?: string
+  movieId: string
 }
 
-export default function MoviePage({ className }: MoviePagePropTypes) {
-  // useParams hook to get the movieId from the URL parameter
-  const { movieId } = useParams()
-  if (!movieId) return <div>Error</div>
-
+export default function MoviePage({ className, movieId }: MoviePagePropTypes) {
   // useEffect hook to add current movieId to history array in HistoryContext
   const { addToHistory } = useHistoryContext()
   useEffect(() => addToHistory(movieId), [movieId])

@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom"
 import { MoviesList, useMoviesDetailsQuery } from "../../entities/movie"
 import {
   WatchlistDetails,
@@ -11,15 +10,13 @@ import "./WatchlistPage.scss"
 
 type WatchlistPagePropTypes = {
   className?: string
+  watchlistId: string
 }
 
-function WatchlistPage({ className }: WatchlistPagePropTypes) {
-  const { watchlistId } = useParams()
-  if (!watchlistId) return null
-
+function WatchlistPage({ className, watchlistId }: WatchlistPagePropTypes) {
   const { data: watchlistData } = useGetSingleWatchlistQuery(watchlistId)
   const { data: userMovies } = useGetWatchlistMoviesQuery(watchlistId)
-  const movieIds = userMovies?.map((movie) => movie.tmdbId) || []
+  const movieIds = userMovies?.map(movie => movie.tmdbId) || []
 
   const {
     data: moviesData,
