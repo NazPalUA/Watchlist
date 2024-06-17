@@ -11,7 +11,7 @@
   padding: 0;
 
   background-color: transparent;
-  background-image: url("@/public/images/ribbon_icon.svg");
+  background-image: url("../../../../../public/images/ribbon_icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
 
@@ -23,6 +23,6 @@
   }
 
   &:hover {
-    background-image: url("@/public/images/ribbon_light_icon.svg");
+    background-image: url("../../../../../public/images/ribbon_light_icon.svg");
   }
 }
