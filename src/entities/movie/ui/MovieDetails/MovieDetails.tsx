@@ -19,8 +19,8 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
     <div className={styles.movie}>
       <Image
         className={styles.movie__mainPoster}
-        width={300}
-        height={450}
+        width={612}
+        height={919}
         src={
           movieData.poster_path
             ? `https://image.tmdb.org/t/p/original${movieData.poster_path}`
@@ -28,6 +28,7 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
         }
         alt="movie poster"
       />
+
       <div className={styles.movie__topRightContainer}>
         <h3 className={styles.movie__title}>
           {movieData.original_title}{" "}
