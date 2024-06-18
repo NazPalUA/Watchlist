@@ -27,8 +27,6 @@ export function DropdownMenu() {
     <nav className={style.container} ref={dropdownRef}>
       <Image
         onClick={toggleMenu}
-        width={300}
-        height={450}
         className={style.img}
         src={guestIcon}
         alt="guest icon"
