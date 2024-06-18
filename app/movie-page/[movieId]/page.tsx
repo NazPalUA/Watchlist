@@ -1,3 +1,4 @@
+import MoviePage from "@/src/pages/MoviePage"
 import { Metadata } from "next"
 
 type Props = {
@@ -13,11 +14,5 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 }
 
 export default function Movie({ params }: Props) {
-  return (
-    <div>
-      <h1>
-        Movie <span>{params.movieId}</span>
-      </h1>
-    </div>
-  )
+  return <MoviePage movieId={params.movieId} />
 }

@@ -1,3 +1,4 @@
+import LogInPage from "@/src/pages/LogInPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function LogIn() {
-  return <div>LogIn</div>
+  return <LogInPage />
 }
