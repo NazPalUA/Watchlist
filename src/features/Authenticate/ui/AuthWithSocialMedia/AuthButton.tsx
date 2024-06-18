@@ -30,7 +30,7 @@ export default function AuthButton({ provider }: AuthButtonProps) {
         className={style.button}
         onClick={() => authWithSocialMedia(provider)}
       >
-        <Image src={logoUrl} alt={`${provider} logo`} />
+        <Image src={logoUrl} alt={`${provider} logo`} width={48} height={48} />
         <span>{buttonText}</span>
       </button>
       {isError && (
