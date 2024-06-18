@@ -1,7 +1,7 @@
 "use client"
 
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useAddUserData } from "../../../user"
 import { queryKeys } from "../queryKeys"
 import {

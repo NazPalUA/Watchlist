@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useDeleteWatchlistMutation } from "../../../../entities/watchlist"
 import styles from "./EditWatchlistHeader.module.scss"
 

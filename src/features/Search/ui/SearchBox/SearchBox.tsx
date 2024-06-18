@@ -1,7 +1,6 @@
 "use client"
 
-import { usePathname, useSearchParams } from "next/navigation"
-import { useRouter } from "next/router"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { ChangeEvent, useState } from "react"
 
 import { Button } from "../../../../shared/ui/Button"
