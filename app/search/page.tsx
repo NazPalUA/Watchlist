@@ -1,3 +1,4 @@
+import SearchResultsPage from "@/src/pages/SearchResultsPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function Search() {
-  return <div>Search</div>
+  return <SearchResultsPage />
 }
