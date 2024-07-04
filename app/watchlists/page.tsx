@@ -1,3 +1,5 @@
+import WatchlistsPage from "@/src/pages/WatchlistsPage"
+
 export default function Watchlists() {
-  return <div>Watchlists</div>
+  return <WatchlistsPage />
 }
