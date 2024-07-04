@@ -24,8 +24,8 @@ export default function EditMovie({ movie, watchlistId }: EditMovieProps) {
     <li className={styles.item} key={movie.id}>
       <Image
         className={styles.poster}
-        width={300}
-        height={450}
+        width={60}
+        height={90}
         src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
