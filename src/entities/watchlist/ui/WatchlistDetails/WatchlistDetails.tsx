@@ -1,6 +1,7 @@
 import editIcon from "@/public/images/edit_icon.svg"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import getAverageVote from "../../lib/getAverageVote"
 import getUnwatchedRuntime from "../../lib/getUnwatchedRuntime"
 import styles from "./WatchlistDetails.module.scss"
@@ -24,11 +25,13 @@ export function WatchlistDetails<T extends Movie>({
   const avgScore = getAverageVote(moviesData)
   const unwatchedRuntime = getUnwatchedRuntime(moviesData)
 
+  const pathname = usePathname()
+
   return (
     <>
       <div className={styles.headerContainer}>
         <h2 className={styles.header}>{name}</h2>
-        <Link href={`edit`} className={styles.edit}>
+        <Link href={`${pathname}/edit`} className={styles.edit}>
           <Image className={styles.editIcon} src={editIcon} alt="edit icon" />
         </Link>
       </div>
