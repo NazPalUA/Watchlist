@@ -1,4 +1,4 @@
-import MoviePage from "@/src/pages/MoviePage"
+import { Details } from "@/src/pages/MoviePage"
 import { Metadata } from "next"
 
 type Props = {
@@ -14,5 +14,5 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 }
 
 export default function Movie({ params }: Props) {
-  return <MoviePage movieId={params.movieId} />
+  return <Details movieId={params.movieId} />
 }

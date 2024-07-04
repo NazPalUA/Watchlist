@@ -2,21 +2,14 @@
 
 import { useEffect } from "react"
 import { MovieDetails, useMovieDetailsQuery } from "../../entities/movie"
-import { Cast } from "../../entities/person"
 import { useHistoryContext } from "../../shared/context"
 import { ErrorMessage } from "../../shared/ui/ErrorMessage"
 import Loader from "../../shared/ui/Loader"
-import { RelatedMovies } from "../../widgets/RelatedMovies"
 
-type MoviePagePropTypes = {
-  className?: string
-  movieId: string
-}
-
-export default function MoviePage({ className, movieId }: MoviePagePropTypes) {
+export function Details({ movieId }: { movieId: string }) {
   // useEffect hook to add current movieId to history array in HistoryContext
   const { addToHistory } = useHistoryContext()
-  useEffect(() => addToHistory(movieId), [movieId])
+  useEffect(() => addToHistory(movieId), [])
 
   const {
     data: movieData,
@@ -33,11 +26,5 @@ export default function MoviePage({ className, movieId }: MoviePagePropTypes) {
       </ErrorMessage>
     )
 
-  return (
-    <div className={className}>
-      <MovieDetails movieData={movieData} />
-      <Cast movieId={movieId} />
-      <RelatedMovies movieId={movieId} />
-    </div>
-  )
+  return <MovieDetails movieData={movieData} />
 }
