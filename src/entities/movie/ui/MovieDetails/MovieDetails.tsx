@@ -21,6 +21,7 @@ export function MovieDetails({ movieData }: MovieDetailsPropTypes) {
         className={styles.movie__mainPoster}
         width={612}
         height={919}
+        priority={true}
         src={
           movieData.poster_path
             ? `https://image.tmdb.org/t/p/original${movieData.poster_path}`
