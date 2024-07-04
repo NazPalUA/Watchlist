@@ -1,3 +1,4 @@
+import HistoryPage from "@/src/pages/HistoryPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function History() {
-  return <div>History</div>
+  return <HistoryPage />
 }

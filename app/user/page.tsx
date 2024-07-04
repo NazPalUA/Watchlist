@@ -1,3 +1,4 @@
+import UserPage from "@/src/pages/UserPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -5,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function User() {
-  return <div>User</div>
+  return <UserPage />
 }
