@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <App>{children}</App>
+          <div id="overlays" />
         </Providers>
       </body>
     </html>
