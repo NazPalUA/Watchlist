@@ -1,3 +1,4 @@
+import WatchlistPage from "@/src/pages/WatchlistPage"
 import { Metadata } from "next"
 
 type Props = {
@@ -13,11 +14,5 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 }
 
 export default function Watchlist({ params }: Props) {
-  return (
-    <div>
-      <h1>
-        Watchlist <span>{params.watchlistId}</span>
-      </h1>
-    </div>
-  )
+  return <WatchlistPage watchlistId={params.watchlistId} />
 }
