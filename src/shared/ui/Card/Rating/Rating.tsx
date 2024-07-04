@@ -16,6 +16,8 @@ export default function Rating({ children }: RatingProps) {
     <div className={styles.container}>
       <Image
         className={styles.emoji}
+        width={78}
+        height={70}
         src={
           rating == 0
             ? confusedIcon
