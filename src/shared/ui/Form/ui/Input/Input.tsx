@@ -8,3 +8,5 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return <input ref={ref} className={style.input} {...rest} />
   }
 )
+
+Input.displayName = "Input"

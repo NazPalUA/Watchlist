@@ -8,3 +8,5 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     return <textarea ref={ref} className={style.textarea} {...rest} />
   }
 )
+
+TextArea.displayName = "TextArea"
