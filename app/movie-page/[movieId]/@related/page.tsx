@@ -1,4 +1,4 @@
-import { RelatedMovies } from "@/src/pages/MoviePage"
+import { RelatedMovies } from "@/src/views/MoviePage"
 
 type Props = {
   params: {

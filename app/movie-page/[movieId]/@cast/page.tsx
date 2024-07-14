@@ -1,4 +1,4 @@
-import { Cast } from "@/src/pages/MoviePage"
+import { Cast } from "@/src/views/MoviePage"
 
 type Props = {
   params: {

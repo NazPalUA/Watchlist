@@ -1,4 +1,4 @@
-import LogInPage from "@/src/pages/LogInPage"
+import LogInPage from "@/src/views/LogInPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

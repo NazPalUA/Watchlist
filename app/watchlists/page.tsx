@@ -1,4 +1,4 @@
-import WatchlistsPage from "@/src/pages/WatchlistsPage"
+import WatchlistsPage from "@/src/views/WatchlistsPage"
 
 export default function Watchlists() {
   return <WatchlistsPage />

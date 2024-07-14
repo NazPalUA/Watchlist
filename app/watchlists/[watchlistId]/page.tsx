@@ -1,4 +1,4 @@
-import WatchlistPage from "@/src/pages/WatchlistPage"
+import WatchlistPage from "@/src/views/WatchlistPage"
 import { Metadata } from "next"
 
 type Props = {

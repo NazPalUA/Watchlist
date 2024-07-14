@@ -1,4 +1,4 @@
-import { Details } from "@/src/pages/MoviePage"
+import { Details } from "@/src/views/MoviePage"
 import { Metadata } from "next"
 
 type Props = {

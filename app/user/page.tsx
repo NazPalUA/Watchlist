@@ -1,4 +1,4 @@
-import UserPage from "@/src/pages/UserPage"
+import UserPage from "@/src/views/UserPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

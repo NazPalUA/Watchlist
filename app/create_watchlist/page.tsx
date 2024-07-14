@@ -1,4 +1,4 @@
-import CreateWatchlistPage from "@/src/pages/CreateWatchlistPage"
+import CreateWatchlistPage from "@/src/views/CreateWatchlistPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

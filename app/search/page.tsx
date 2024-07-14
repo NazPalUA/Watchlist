@@ -1,4 +1,4 @@
-import SearchResultsPage from "@/src/pages/SearchResultsPage"
+import SearchResultsPage from "@/src/views/SearchResultsPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-import HistoryPage from "@/src/pages/HistoryPage"
+import HistoryPage from "@/src/views/HistoryPage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
