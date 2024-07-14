@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { SearchBox } from "../../features/Search"
 import Welcome from "../../shared/ui/Welcome"
 import { PopularMovies } from "../../widgets/PopularMovies"
@@ -11,7 +12,9 @@ function HomePage({ className }: HomePagePropTypes) {
   return (
     <div className={`${className}`}>
       <Welcome className={styles.welcome} />
-      <SearchBox className={styles.search} />
+      <Suspense fallback={<div>Loading search box...</div>}>
+        <SearchBox className={styles.search} />
+      </Suspense>
       <PopularMovies />
     </div>
   )

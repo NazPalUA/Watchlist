@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { ChangeEvent, Suspense, useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 import { Button } from "../../../../shared/ui/Button"
 import "./SearchBox.scss"
@@ -43,20 +43,18 @@ export function SearchBox({ className }: SearchBoxPropTypes) {
   }
 
   return (
-    <Suspense fallback={<div>Loading search box...</div>}>
-      <div className={`search-box ${className}`}>
-        <input
-          className="search-box__input"
-          type="text"
-          name="search"
-          id="search-box__input"
-          placeholder="Search for movies by title"
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          value={inputText}
-        />
-        <Button onClick={handleClick}>search</Button>
-      </div>
-    </Suspense>
+    <div className={`search-box ${className}`}>
+      <input
+        className="search-box__input"
+        type="text"
+        name="search"
+        id="search-box__input"
+        placeholder="Search for movies by title"
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        value={inputText}
+      />
+      <Button onClick={handleClick}>search</Button>
+    </div>
   )
 }
